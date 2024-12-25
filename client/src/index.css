@@ -1,21 +1,27 @@
-*{
-    margin: 0;
-    padding:0
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Oxanium:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 #root {
-    width:100%;
-    background-image: url('./assets/bg-binary-code.png');
-    background-repeat:repeat;
-    background-attachment: fixed;
-    background-size:auto;
-    background-position: center;
+  width: 100%;
+  background-image: url("./assets/bg-binary-code.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: auto;
+  background-position: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:max-content;
-    overflow-x: hidden;
-    background-color: rgba(0, 0, 0, 0.5); 
-    /* position: relative; */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* position: relative; */
+}

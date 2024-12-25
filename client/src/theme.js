@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
@@ -6,44 +6,48 @@ const theme = createTheme({
       main: "#FBF9ED",
     },
     secondary: {
-      main: "#F48274"
+      main: "#F48274",
     },
     background: {
       main: "#F9E6CE",
-      secondary: "#FFFBF6"
+      secondary: "#FFFBF6",
     },
     text: {
       main: "#1A1A1A",
       secondary: "#444444",
-      tertiary: "#6C6C6C"
-    }
+      tertiary: "#6C6C6C",
+    },
   },
   typography: {
     fontFamily: "Orbitron",
     h1: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
     h2: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
     h3: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
     h4: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
     h5: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
     h6: {
-      fontFamily: "Orbitron"
+      fontFamily: "Orbitron",
     },
+
     body1: {
-      fontFamily: "DM Sans"
+      fontFamily: "DM Sans",
     },
     body2: {
-      fontFamily: "DM Sans"
-    }
+      fontFamily: "DM Sans",
+    },
+    body3: {
+      fontFamily: "Oxanium",
+    },
   },
   components: {
     MuiTextField: {
