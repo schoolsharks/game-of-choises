@@ -97,7 +97,7 @@ const SwipeBar = ({ onSwipe }) => {
             : "none",
         }}
       >
-        {isLargeScreen?"Get Started": "Swipe to Begin"}
+        {isLargeScreen?"Get Started": "Get Started"}
       </Typography>
       {!isLargeScreen &&  <ArrowForward
         sx={{

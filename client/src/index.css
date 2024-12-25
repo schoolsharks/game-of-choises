@@ -2,10 +2,20 @@
     margin: 0;
     padding:0
 }
-#root{
+
+#root {
     width:100%;
-    background:linear-gradient(0deg, #00416A 14.16%, #D6B48D 42.42%, #FFEFDA 102.47%);
-   height:max-content;
+    background-image: url('./assets/bg-binary-code.png');
+    background-repeat:repeat;
+    background-attachment: fixed;
+    background-size:auto;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:max-content;
     overflow-x: hidden;
-    position: relative;
-}
+    background-color: rgba(0, 0, 0, 0.5); 
+    /* position: relative; */
+  }

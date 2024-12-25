@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#01416A",
+      main: "#FBF9ED",
     },
     secondary: {
       main: "#F48274"
@@ -19,24 +19,24 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: "Poppins",
+    fontFamily: "Orbitron",
     h1: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     h2: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     h3: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     h4: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     h5: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     h6: {
-      fontFamily: "Roboto"
+      fontFamily: "Orbitron"
     },
     body1: {
       fontFamily: "DM Sans"
@@ -44,7 +44,34 @@ const theme = createTheme({
     body2: {
       fontFamily: "DM Sans"
     }
-  }
+  },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          // Override for the root of the TextField to ensure text color is white
+          "& .MuiInputBase-input": {
+            color: "#FBF9ED", // Input text color
+          },
+          "& .MuiInputLabel-root": {
+            color: "#FBF9ED", // Label text color
+          },
+          "& .MuiInput-underline:focus": {
+            borderBottomColor: "#FBF9ED",
+          },
+          "& .MuiInput-underline:before": {
+            borderBottomColor: "#FBF9ED", // Inactive underline color
+          },
+          "& .MuiInput-underline:after": {
+            borderBottomColor: "#FBF9ED", // Active underline color
+          },
+          "& .MuiInputLabel-root": {
+            color: "#FBF9ED", // Change the label color globally
+          },
+        },
+      },
+    },
+  },
 });
 
 export default theme;

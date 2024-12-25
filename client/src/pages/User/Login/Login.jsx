@@ -15,6 +15,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
   const { user, error: userError, status } = useSelector((state) => state.user);
 
@@ -32,7 +33,7 @@ const Login = () => {
     if (!response.success) {
       setError(response.error);
     } else {
-      dispatch(createUser({ username: name, email, phone }));
+      dispatch(createUser({ username: name, email, phone, companyName }));
     }
   };
 
@@ -47,10 +48,22 @@ const Login = () => {
       height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
       position="relative"
       alignItems={"center"}
+      
     >
-      <Stack alignItems={"center"} marginTop={"25px"}>
-        <Typography fontSize="0.7rem" fontWeight={"700"} color="#B79470">
-          A Game By
+      <Stack
+        alignItems="center"
+        justifyContent="center"   // Ensures vertical centering
+        marginTop="25px"
+        textAlign={"center"}
+        fontFamily={"Orbitron"}
+      >
+        <Typography
+          fontSize="2.75rem"
+          fontWeight={"600"}
+          lineHeight={"52.8px"}
+          sx={{ textTransform: "uppercase" }}
+          color="#FBF9ED">
+          The Game <br></br>of Choices
         </Typography>
         <Box
           width="120px"
@@ -79,6 +92,7 @@ const Login = () => {
         gap="1rem"
         sx={{ maxWidth: "430px" }}
         marginTop={"1rem"}
+        color={theme.palette.primary.main}
       >
         <TextField
           label="Name *"
@@ -112,6 +126,17 @@ const Login = () => {
             setPhone(e.target.value);
           }}
         />
+        <TextField
+          label="Company Name"
+          variant="standard"
+          placeholder="e.g School Shark"
+          value={companyName}
+          onChange={(e) => {
+            setError("");
+            setCompanyName(e.target.value);
+          }}
+        />
+
         <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
           {error}
         </Typography>
