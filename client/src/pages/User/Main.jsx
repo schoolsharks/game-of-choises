@@ -34,14 +34,14 @@ const Main = () => {
     >
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-        <Route path="/home" element={<AnimatedPage Component={Home} />} />
-            <Route path="/login" element={<AnimatedPage Component={Login} />} />
+          <Route path="/home" element={<AnimatedPage Component={Home} />} />
+          <Route path="/login" element={<AnimatedPage Component={Login} />} />
 
-            <Route
-              path="/completed"
-              element={<AnimatedPage Component={Finished} />}
-            />
-            <Route path="/" element={<Navigate to="/home" />} />
+          <Route
+            path="/completed"
+            element={<AnimatedPage Component={Finished} />}
+          />
+          <Route path="/" element={<Navigate to="/home" />} />
 
           <Route
             path="/questions"

@@ -71,7 +71,7 @@ const Scoreboard = ({ role, totalPlayers, leaderboardData }) => {
             borderRadius={"8px"}
             sx={{ cursor: "pointer", position: "absolute", left: "16px" }}
           >
-           <HomeOutlined sx={{fontSize:"1.7rem",color:"#ffffff"}}/>
+            <HomeOutlined sx={{ fontSize: "1.7rem", color: "#ffffff" }} />
           </Box>
           <Typography
             variant="h5"

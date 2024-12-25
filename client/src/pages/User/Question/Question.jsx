@@ -180,7 +180,7 @@ const Question = () => {
                     margin="16px 4px"
                   >
                     <Typography
-                      color={theme.palette.primary.main}
+                      color={"#FBF9ED"}
                       fontSize="2rem"
                       fontWeight="600"
                     >

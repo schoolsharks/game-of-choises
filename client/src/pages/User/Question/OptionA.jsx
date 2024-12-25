@@ -101,12 +101,13 @@ const OptionA = ({ text, onOptionSelect }) => {
       direction={"row-reverse"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      color={theme.palette.primary.main}
+      // color={theme.palette.primary.main}
+      color={"#FBF9ED"}
       // padding={"20px 12px 20px 55px"
       paddingTop={"20px"}
       paddingBottom={"20px"}
       borderRadius={"30px"}
-      border={`2px solid ${theme.palette.primary.main}`}
+      border={`2px solid #FBF9ED`}
       position={"absolute"}
       right={`2rem`}
       maxWidth={"900px"}

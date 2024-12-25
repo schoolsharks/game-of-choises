@@ -5,17 +5,18 @@ import "./index.css";
 import theme from "./theme.js";
 import { ThemeProvider } from "@emotion/react";
 import { Provider } from "react-redux";
-import {BrowserRouter as Router} from "react-router-dom"
-import store from "./app/store.js"
-
+import { BrowserRouter as Router } from "react-router-dom";
+import store from "./app/store.js";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

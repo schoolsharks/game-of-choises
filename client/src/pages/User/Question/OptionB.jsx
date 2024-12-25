@@ -97,23 +97,22 @@ const OptionB = ({ text, onOptionSelect }) => {
       onTouchEnd={handleOnTouchEnd}
       onTouchMove={handleOnTouchMove}
       onMouseDown={handleOnMouseDown}
-      color={theme.palette.primary.main}
-      direction={"row-reverse"}
+      // color={theme.palette.primary.main}
+      color={"#FBF9ED"}
+      direction={"row"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      border={`2px solid ${theme.palette.primary.main}`}
+      border={`2px solid #FBF9ED`}
       // padding={"20px 55px 20px 12px"}
       paddingTop={"20px"}
       paddingBottom={"20px"}
       borderRadius={"30px"}
-      direction={"row"}
       position={"absolute"}
       left={"2rem"}
       width={"100%"}
       top={"250px"}
       maxWidth={"900px"}
       gap={"12px"}
-      justifyContent={"flex-start"}
       sx={{
         cursor: "pointer",
         scale: isActive ? "1.05" : "1",
