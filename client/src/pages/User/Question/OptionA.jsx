@@ -2,6 +2,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
+import blue from "../../../assets/blue.svg"
 
 const OptionA = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -9,7 +10,7 @@ const OptionA = ({ text, onOptionSelect }) => {
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen=useMediaQuery(theme.breakpoints.up("md"))
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"))
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -30,7 +31,7 @@ const OptionA = ({ text, onOptionSelect }) => {
         const distance = startX - endX;
         const velocity = distance / elapsedTime;
 
-        if(isLargeScreen && elapsedTime<500){
+        if (isLargeScreen && elapsedTime < 500) {
           setPosition(-window.innerWidth);
           onOptionSelect('A')
         }
@@ -101,36 +102,51 @@ const OptionA = ({ text, onOptionSelect }) => {
       justifyContent={"space-between"}
       alignItems={"center"}
       color={theme.palette.primary.main}
-      padding={"20px 12px 20px 55px"}
+      // padding={"20px 12px 20px 55px"
+      paddingTop={"20px"}
+      paddingBottom={"20px"}
       borderRadius={"30px"}
       border={`2px solid ${theme.palette.primary.main}`}
       position={"absolute"}
-      right={`8px`}
+      right={`2rem`}
       maxWidth={"900px"}
       gap={"12px"}
       width={"100%"}
       sx={{
-        cursor:"pointer",
+        cursor: "pointer",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
         userSelect: "none",
         minHeight: "4.5rem",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         transform: `translateX(${position}px)`,
-        [theme.breakpoints.up("sm")]: {
-          right: "150px",
-        },
+        // [theme.breakpoints.up("sm")]: {
+        //   right: "150px",
+        // },
       }}
     >
       <Stack alignItems={"center"}>
-        <Typography fontSize={"1.2rem"} fontWeight={"700"}>
-          A
-        </Typography>
-        {!isLargeScreen && <ArrowBack />}
+        <img
+          src={blue}
+          alt="option A"
+          style={{
+            // width: "2.31rem", 
+            // height: "7.05rem", 
+            objectFit: "contain"
+          }}
+        />
+
       </Stack>
       <Typography
         variant="body1"
-        fontWeight={"700"}
-        sx={{ marginLeft: "28px", [theme.breakpoints.up("sm")]: { marginLeft: "170px" } }}
+        fontWeight={"600"}
+        fontSize={"25px"}
+        lineHeight={"31.2px"}
+        fontFamily={"Oxanium"}
+        sx={{ 
+          marginLeft: "28px", 
+          [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
+        }}
       >
         {text}
       </Typography>

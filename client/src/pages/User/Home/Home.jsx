@@ -34,6 +34,8 @@ const Home = () => {
       >
         Mira’s Path to Homeownership
       </Typography>
+
+      
       <Stack>
         <img
           src={background}
@@ -62,6 +64,8 @@ const Home = () => {
           every month, 10% annual increase
         </Typography>
       </Stack>
+
+
       <Stack
         position={"fixed"}
         bottom={"1.5rem"}

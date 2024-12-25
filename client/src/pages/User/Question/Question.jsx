@@ -75,14 +75,14 @@ const Question = () => {
   return (
     <>
       <Box
-        width="120px"
+        width="440px"
         height="auto"
         sx={{
           aspectRatio: "116/45",
           background: `url(${bgQuestion})`,
           backgroundSize: "contain",
-          backgroundRepeat:"repeat",
-          opacity: "0.2",
+          backgroundRepeat: "repeat",
+          // opacity: "0.6",
         }}
       >
         {status === "loading" && (
@@ -131,7 +131,7 @@ const Question = () => {
                     }px`}
                   sx={{ overflowX: "hidden" }}
                 >
-                  <Stack
+                  {/* <Stack
                     direction="row"
                     marginTop="24px"
                     justifyContent="space-around"
@@ -157,8 +157,9 @@ const Question = () => {
                         {year}
                       </Typography>
                     </Stack>
-                  </Stack>
-                  <LinearProgress
+                  </Stack> */}
+
+                  {/* <LinearProgress
                     variant="determinate"
                     value={(answered * 100) / 25}
                     sx={{
@@ -170,21 +171,37 @@ const Question = () => {
                       backgroundColor: "#7793AF",
                       boxShadow: "0 0 10px #ffffff"
                     }}
-                  />
+                  /> */}
+
+                  {/* questions */}
                   <Stack
                     justifyContent={"center"}
-                    height={"120px"}
+                    height={"250px"}
                     margin="16px 4px"
                   >
                     <Typography
                       color={theme.palette.primary.main}
-                      fontSize="1.3rem"
-                      fontWeight="700"
+                      fontSize="2rem"
+                      fontWeight="600"
                     >
                       {currentQuestion}
                     </Typography>
                   </Stack>
-                  <Stack marginTop="16px" position="relative">
+
+                  {/* options */}
+                  {options && (
+                    <Stack marginTop="16px" position="relative" >
+                        <OptionA
+                          text={options["A"]}
+                          onOptionSelect={handleOptionSelect}
+                        />
+                      <OptionB
+                        text={options["B"]}
+                        onOptionSelect={handleOptionSelect}
+                      />
+                    </Stack>
+                  )}
+                  {/* <Stack marginTop="16px" position="relative" direction="column" columnGap={"2.5rem"}>
                     {options && (
                       <>
                         <OptionA
@@ -197,8 +214,10 @@ const Question = () => {
                         />
                       </>
                     )}
-                  </Stack>
-                  <Stack
+                  </Stack> */}
+
+
+                  {/* <Stack
                     alignItems="center"
                     position="relative"
                     margin="auto 0 35px"
@@ -224,7 +243,7 @@ const Question = () => {
                         <img src={homeIcon} alt="" style={{ width: "32px", objectFit: "contain" }} />
                       </Button>
                     </Box>
-                  </Stack>
+                  </Stack> */}
                 </Stack>
               </motion.div>
             )}

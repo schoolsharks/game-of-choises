@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *{
     margin: 0;
     padding:0
@@ -17,5 +21,14 @@
     height:max-content;
     overflow-x: hidden;
     background-color: rgba(0, 0, 0, 0.5); 
+    height: 100vh;
     /* position: relative; */
   }
+
+  /* .mainbody{
+    background-image: url('./assets/bg-binary-code.png');
+    background-repeat:repeat;
+    background-attachment: fixed;
+    background-size:auto;
+    background-position: center;
+  } */

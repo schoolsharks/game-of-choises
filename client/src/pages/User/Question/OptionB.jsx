@@ -2,6 +2,7 @@ import { ArrowForward } from "@mui/icons-material";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
+import red from "../../../assets/red.svg";
 
 const OptionB = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -9,7 +10,7 @@ const OptionB = ({ text, onOptionSelect }) => {
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen=useMediaQuery(theme.breakpoints.up("md"))
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"))
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -29,7 +30,7 @@ const OptionB = ({ text, onOptionSelect }) => {
         const distance = endX - startX;
         const velocity = distance / elapsedTime;
 
-        if(isLargeScreen && elapsedTime<500){
+        if (isLargeScreen && elapsedTime < 500) {
           setPosition(-window.innerWidth);
           onOptionSelect('A')
         }
@@ -96,25 +97,30 @@ const OptionB = ({ text, onOptionSelect }) => {
       onTouchEnd={handleOnTouchEnd}
       onTouchMove={handleOnTouchMove}
       onMouseDown={handleOnMouseDown}
-      color={"#ffffff"}
+      color={theme.palette.primary.main}
+      direction={"row-reverse"}
+      justifyContent={"space-between"}
       alignItems={"center"}
-      border={`2px solid #ffffff`}
-      padding={"20px 55px 20px 12px"}
+      border={`2px solid ${theme.palette.primary.main}`}
+      // padding={"20px 55px 20px 12px"}
+      paddingTop={"20px"}
+      paddingBottom={"20px"}
       borderRadius={"30px"}
       direction={"row"}
       position={"absolute"}
-      left="8px"
+      left={"2rem"}
       width={"100%"}
-      top={"130px"}
+      top={"250px"}
       maxWidth={"900px"}
       gap={"12px"}
       justifyContent={"flex-start"}
       sx={{
-        cursor:"pointer",
+        cursor: "pointer",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
         userSelect: "none",
         minHeight: "4.5rem",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         transform: `translateX(${position}px)`,
         [theme.breakpoints.up("sm")]: {
           left: "150px",
@@ -122,14 +128,22 @@ const OptionB = ({ text, onOptionSelect }) => {
       }}
     >
       <Stack alignItems={"center"}>
-        <Typography fontSize={"1.2rem"} fontWeight={"700"}>
-          B
-        </Typography>
-        {!isLargeScreen && <ArrowForward />}
+        <img
+          src={red} 
+          alt="Option B"
+          style={{
+            //  width: "2.31rem", 
+            //  height: "7.05rem", 
+             objectFit: "contain" 
+            }}
+        />
       </Stack>
       <Typography
         variant="body1"
-        fontWeight={"700"}
+        fontWeight={"600"}
+        fontSize={"25px"}
+        lineHeight={"31.2px"}
+        fontFamily={"Oxanium"}
         sx={{ marginRight: "28px" }}
       >
         {text}
