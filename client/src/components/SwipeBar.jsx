@@ -59,7 +59,7 @@ const SwipeBar = ({ onSwipe }) => {
       onMouseDown={handleOnMouseDown}
       onMouseUp={handleOnMouseUp}
       sx={{
-        margin: "60px auto 60px",
+        margin: "30px auto 60px",
         border: "3px solid #ffffff",
         color: "#ffffff",
         cursor: "pointer",
@@ -77,7 +77,7 @@ const SwipeBar = ({ onSwipe }) => {
         padding: "21px 22px 21px 22px ",
       }}
     >
-      {!isLargeScreen && (
+      {/* {!isLargeScreen && (
         <ArrowBack
           sx={{
             fontSize: "1rem",
@@ -91,7 +91,7 @@ const SwipeBar = ({ onSwipe }) => {
                 : "translateX(0)",
           }}
         />
-      )}
+      )} */}
       <Typography
         variant="body3"
         fontSize={"40px"}
@@ -107,10 +107,10 @@ const SwipeBar = ({ onSwipe }) => {
               : "none",
         }}
       >
-        {isLargeScreen ? "Get Started" : "Get Started"}
+        Get Started
       </Typography>
       <KeyboardArrowRightIcon style={{ fontSize: "40px" }} />
-      {!isLargeScreen && (
+      {/* {!isLargeScreen && (
         <ArrowForward
           sx={{
             fontSize: "1rem",
@@ -124,7 +124,7 @@ const SwipeBar = ({ onSwipe }) => {
                 : "translateX(0)",
           }}
         />
-      )}
+      )} */}
     </Stack>
   );
 };

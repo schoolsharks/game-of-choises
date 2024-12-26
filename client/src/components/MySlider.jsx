@@ -57,7 +57,7 @@ const MySlider = () => {
         width: "433px",
         margin: "auto",
         // overflow: "hidden",
-        padding: "54px 52px",
+        padding: "48px 52px",
 
         fontFamily: "Oxanium",
       }}

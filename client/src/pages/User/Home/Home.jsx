@@ -14,8 +14,10 @@ const Home = () => {
   return (
     <Stack
       width="100%"
-      height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
+      height="100vh"
+      // height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
       position="relative"
+      overflow="hidden"
     >
       <Typography
         variant={"h3"}
@@ -27,23 +29,22 @@ const Home = () => {
         // top={"150px"}
         maxHeight={"117px"}
         color={theme.palette.primary.main}
-        margin={"100px auto 22px"}
+        margin={"50px auto 22px"}
       >
         THE GAME OF CHOCIES
       </Typography>
 
       <MySlider />
-      <div>
-        <Stack
-          // position={"fixed"}
-          bottom={"60px"}
-          maxHeight={"88px"}
-          maxWidth={"900px"}
-          marginBottom={"100px"}
-        >
-          <SwipeBar onSwipe={handleOnSwipe} />
-        </Stack>
-      </div>
+
+      <Stack
+        // position={"fixed"}
+        bottom={"60px"}
+        maxHeight={"88px"}
+        maxWidth={"900px"}
+        marginBottom={"100px"}
+      >
+        <SwipeBar onSwipe={handleOnSwipe} />
+      </Stack>
     </Stack>
   );
 };
