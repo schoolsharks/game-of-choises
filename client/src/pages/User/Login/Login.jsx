@@ -67,7 +67,7 @@ const Login = () => {
       height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
       position="relative"
       alignItems={"center"}
-      color={theme.palette.primary.main}
+      color={"#FBF9ED"}
     >
       <Stack
         alignItems="center"
@@ -85,7 +85,7 @@ const Login = () => {
           maxWidth={"18rem"}
           top={"6rem"}
           maxHeight={"117px"}
-          color={theme.palette.primary.main}
+          color={"#FBF9ED"}
           margin={"50px auto 22px"}
         >
           THE GAME OF CHOCIES
@@ -93,27 +93,28 @@ const Login = () => {
       </Stack>
 
       <Stack
-        width={"80%"}
+        width={"100%"}
         gap="1rem"
         sx={{ maxWidth: "27rem" }}
         marginTop={"1rem"}
+        marginX={"auto"}
         backgroundColor={"#000000B2"}
-        color={theme.palette.primary.main}
+        color={"#FBF9ED"}
         padding={"1px 2.3rem"}
       >
         <Stack
           width={"85%"}
           gap="0.5rem"
-          sx={{ maxWidth: "433px" }}
+          sx={{ maxWidth: "600px" }}
           marginTop={"1rem"}
-          color={theme.palette.primary.main}
+          color={"#FBF9ED"}
         >
           <Typography
             variant="body3"
             fontWeight={"700"}
             fontSize="2rem"
             // marginTop={"40px"}
-            color={theme.palette.primary.main}
+            color={"#FBF9ED"}
           >
             Login
           </Typography>
@@ -128,7 +129,7 @@ const Login = () => {
           <TextField
             label="Name *"
             variant="standard"
-            // color="white"
+            color="#ffffff"
             placeholder="eg. Vanessa Jenson"
             value={name}
             onChange={(e) => {
@@ -136,24 +137,18 @@ const Login = () => {
               setName(e.target.value);
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "white", // Label color
+              input: {
+                color: '#FBF9ED', 
               },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "white", // Label color when focused
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
               },
-              "& .MuiOutlinedInput-root": {
-                color: "white", // Input text color
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
               },
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color on hover
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color when focused
-              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
             }}
           />
 
@@ -161,6 +156,7 @@ const Login = () => {
             label="Email"
             type="email"
             variant="standard"
+            color="#ffffff"
             placeholder="eg. xoxo@gmail.com"
             value={email}
             onChange={(e) => {
@@ -168,54 +164,70 @@ const Login = () => {
               setEmail(e.target.value);
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "white", // Label color
+              input: {
+                color: '#FBF9ED', 
               },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "white", // Label color when focused
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
               },
-              "& .MuiOutlinedInput-root": {
-                color: "white", // Input text color
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
               },
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color on hover
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white", // Border color when focused
-              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
             }}
           />
           <TextField
             label="Phone Number"
             variant="standard"
             type="number"
+            color="#ffffff"
             placeholder="eg. xxxxxxxxxx"
             value={phone}
             onChange={(e) => {
               setError("");
               setPhone(e.target.value);
             }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
+            }}
           />
           <TextField
             label="Company Name"
             variant="standard"
+            color="#ffffff"
             placeholder="e.g School Shark"
             value={companyName}
             onChange={(e) => {
               setError("");
               setCompanyName(e.target.value);
             }}
-            // sx={{
-            //   "& .MuiInputLabel-root": { color: "white" }, // Label color
-            //   "& .MuiInput-underline:before": { borderBottomColor: "white" },
-            //   "& .MuiInput-underline:hover:before": {
-            //     borderBottomColor: "white",
-            //   },
-            //   "& .MuiInput-underline:after": { borderBottomColor: "white" },
-            // }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
+            }}
           />
 
           <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
@@ -240,7 +252,7 @@ const Login = () => {
             fontWeight="400"
             textAlign={"end"}
             zIndex={1}
-            color={theme.palette.primary.main}
+            color={"#FBF9ED"}
           >
             Invite friends
           </Typography>

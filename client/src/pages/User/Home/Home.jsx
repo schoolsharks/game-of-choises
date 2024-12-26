@@ -28,7 +28,7 @@ const Home = () => {
         maxWidth={"307px"}
         // top={"150px"}
         maxHeight={"117px"}
-        color={theme.palette.primary.main}
+        color={"#FBF9ED"}
         margin={"50px auto 22px"}
       >
         THE GAME <br></br>OF CHOCIES

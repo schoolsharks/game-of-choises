@@ -10,6 +10,7 @@ import homeIcon from "../../../assets/homeIcon.svg";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import shape from "../../../assets/shape.svg"
 
 const Finished = () => {
   const theme = useTheme();
@@ -151,7 +152,8 @@ const Finished = () => {
       paddingTop: "3rem",
       padding: "1rem",
       color: "#FFFFFF",
-      background: "rgba(0,0,0,0.7)"
+      background: "rgba(0,0,0,0.7)",
+      gap: "2rem"
     }}>
       <Link to="#">
         <Stack
@@ -190,18 +192,39 @@ const Finished = () => {
         </Stack>
       </Link>
 
-      <div>
-        {userStatic.personalityName}
-      </div>
-
-      {/* <div className="flex flex-row justify-between">
-        <div className=" border border-white bg-white rounded-2xl">
-          Play again
-        </div>
+      <Stack
+        borderRadius="10px"
+        border="2px solid white"
+        padding="2rem"
+        height="100%"
+      >
         <div>
-          Invite Friends
+          <Typography fontFamily={"Oxanium"} frontWeight={"400"} fontSize={"1rem"}>
+            Your personality <br />
+          </Typography>
+          <Typography fontFamily={"Oxanium"} fontSize={"2rem"} fontWeight={"600"} >{userStatic.personalityName}</Typography>
         </div>
-      </div> */}
+
+        <Stack
+          display={"flex"}
+          flexDirection={"row"}
+        >
+          {/* <img
+              src={shape}>
+                sx={{
+                  width:"162px",
+                  height:"153px"
+                }}
+              </img> */}
+          {/* <Stack display={"flex"} flexDirection={"column"}>
+            {userStatic.subCategory.map((cate, index) => (
+              <div key={index}>{cate}</div>  
+            ))}
+          </Stack> */}
+        </Stack>
+
+
+      </Stack>
 
       <Stack direction="row" justifyContent="space-between" spacing={2}>
         <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", fontSize: "1.5rem", fontFamily: "Oxanium" }}>
