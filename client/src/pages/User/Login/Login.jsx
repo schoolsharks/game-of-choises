@@ -48,19 +48,20 @@ const Login = () => {
       height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
       position="relative"
       alignItems={"center"}
-      
+
     >
       <Stack
         alignItems="center"
         justifyContent="center"   // Ensures vertical centering
         marginTop="25px"
         textAlign={"center"}
-        fontFamily={"Orbitron"}
+        fontFamily="Orbitron"
       >
         <Typography
           fontSize="2.75rem"
           fontWeight={"600"}
           lineHeight={"52.8px"}
+          fontFamily="Orbitron"
           sx={{ textTransform: "uppercase" }}
           color="#FBF9ED">
           The Game <br></br>of Choices
@@ -77,23 +78,41 @@ const Login = () => {
         ></Box>
       </Stack>
       <Stack>
+        {/* <Typography
+          variant="h5"
+          fontWeight={"700"}
+          fontSize="2rem"
+          fontFamily={"Oxanium"}
+          marginTop={"40px"}
+          textAlign={"left"}
+          color={"#FFFFFF"}
+        >
+          Login
+        </Typography> */}
+      </Stack>
+      {/* <Stack
+        width={"80%"}
+        gap="1rem"
+        sx={{
+          maxWidth: "430px",
+          backgroundcolor: "rgba(0, 0, 0, 0.5)"
+        }}
+        marginTop={"1rem"}
+        color={"#FFFFFF"}
+      >
+
         <Typography
           variant="h5"
           fontWeight={"700"}
           fontSize="2rem"
+          fontFamily={"Oxanium"}
           marginTop={"40px"}
-          color={theme.palette.primary.main}
+          textAlign={"left"}
+          color={"#FFFFFF"}
         >
           Login
         </Typography>
-      </Stack>
-      <Stack
-        width={"80%"}
-        gap="1rem"
-        sx={{ maxWidth: "430px" }}
-        marginTop={"1rem"}
-        color={theme.palette.primary.main}
-      >
+
         <TextField
           label="Name *"
           variant="standard"
@@ -140,16 +159,126 @@ const Login = () => {
         <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
           {error}
         </Typography>
-      </Stack>
+
+        <Stack
+          position={"fixed"}
+          bottom={"1.5rem"}
+          width={"100%"}
+          maxWidth={"900px"}
+          alignItems={"center"}
+        >
+          <SwipeBar onSwipe={handleSubmit} />
+        </Stack>
+
+      </Stack> */}
 
       <Stack
-        position={"fixed"}
-        bottom={"1.5rem"}
-        width={"100%"}
-        maxWidth={"900px"}
+        width={"80%"}
+        gap="1rem"
+        sx={{
+          maxWidth: "430px",
+          backgroundColor: "#000000C7",
+          position: "relative", // Ensure positioning for inner elements (especially swipe bar)
+          paddingBottom: "4rem", // Adding space for swipe bar
+        }}
+        marginTop={"1rem"}
+        color={"#FFFFFF"}
       >
-        <SwipeBar onSwipe={handleSubmit} />
+        <Typography
+          variant="h5"
+          fontWeight={"700"}
+          fontSize="2rem"
+          fontFamily={"Oxanium"}
+          marginTop={"40px"}
+          textAlign={"left"}
+          color={"#FFFFFF"}
+        >
+          Login
+        </Typography>
+
+        <TextField
+          label="Name *"
+          variant="standard"
+          placeholder="eg. Vanessa Jenson"
+          value={name}
+          onChange={(e) => {
+            setError("");
+            setName(e.target.value);
+          }}
+          // sx={{ backgroundColor: "transparent", color: "white" }} 
+        />
+        <TextField
+          label="Email"
+          type="email"
+          variant="standard"
+          placeholder="eg. xoxo@gmail.com"
+          value={email}
+          onChange={(e) => {
+            setError("");
+            setEmail(e.target.value);
+          }}
+          sx={{ backgroundColor: "transparent", color: "white" }} // Transparent background for input fields
+        />
+        <TextField
+          label="Phone Number"
+          variant="standard"
+          type="number"
+          placeholder="eg. xxxxxxxxxx"
+          value={phone}
+          onChange={(e) => {
+            setError("");
+            setPhone(e.target.value);
+          }}
+          sx={{ backgroundColor: "transparent", color: "white" }} 
+        />
+        <TextField
+          label="Company Name"
+          variant="standard"
+          placeholder="e.g School Shark"
+          value={companyName}
+          onChange={(e) => {
+            setError("");
+            setCompanyName(e.target.value);
+          }}
+          sx={{ backgroundColor: "transparent", color: "white" }} 
+        />
+
+        <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
+          {error}
+        </Typography>
+
+        {/* <Stack
+          position={"fixed"}
+          bottom={"1.5rem"} 
+          width={"100%"}
+          maxWidth={"900px"}
+          alignItems={"center"} 
+          justifyContent={"center"} 
+          sx={{
+            left: 0,
+            right: 0,
+            display: "flex",
+            justifyContent: "center", 
+            alignItems: "center",
+          }}
+        >
+          <SwipeBar onSwipe={handleSubmit} />
+        </Stack> */}
+
+        <Stack
+          // position={"fixed"}
+          bottom={"60px"}
+          maxHeight={"88px"}
+          maxWidth={"900px"}
+          marginBottom={"100px"}
+        >
+          <SwipeBar onSwipe={handleSubmit} />
+        </Stack>
+
       </Stack>
+
+
+
     </Stack>
   );
 };

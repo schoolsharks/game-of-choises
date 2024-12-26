@@ -26,10 +26,11 @@ const Home = () => {
         maxWidth={"307px"}
         // top={"150px"}
         maxHeight={"117px"}
-        color={theme.palette.primary.main}
+        color={"#FBF9ED"}
         margin={"100px auto 22px"}
+        fontFamily = "Oxanium"
       >
-        THE GAME OF CHOCIES
+        THE GAME <br></br>OF CHOCIES
       </Typography>
 
       <MySlider />

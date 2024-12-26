@@ -76,10 +76,10 @@ export const handleGetQuestion = async (req, res) => {
           B: nextQuestion.options['B'].content
         },
         nextQuesId: nextQuestion.id,
-        year: nextQuestion.year,
-        goalReachPercentage: goalReachPercentage,
-        wealth: updatedUser ? updatedUser.wealth : user.wealth,
-        investment: updatedUser ? updatedUser.investment : user.investment,
+        // year: nextQuestion.year,
+        // goalReachPercentage: goalReachPercentage,
+        // wealth: updatedUser ? updatedUser.wealth : user.wealth,
+        // investment: updatedUser ? updatedUser.investment : user.investment,
         totalPlayers: session.totalPlayers,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });
@@ -120,6 +120,14 @@ const updateUserResponses = async (userId, quesId, response) => {
       const question = questions.find(q => q.id == quesId);
       const option = question.options[response];
 
+      console.log("option", option, userId, quesId, response )
+
+
+      userDoc.Disciplined_Saver += option.Disciplined_Saver;
+      userDoc.Balanced_Spender += option.Balanced_Spender;
+      userDoc.The_Hustler += option.The_Hustler;
+      userDoc.Hopeful_Borrower += option.Hopeful_Borrower;
+      userDoc.Live_for_today_Spender += option.Live_for_today_Spender;
 
       userDoc.wealth += option.wealth;
       userDoc.investment += option.investment;

@@ -121,9 +121,9 @@ const OptionB = ({ text, onOptionSelect }) => {
         minHeight: "4.5rem",
         backgroundColor: "rgba(0, 0, 0, 0.7)",
         transform: `translateX(${position}px)`,
-        [theme.breakpoints.up("sm")]: {
-          left: "150px",
-        },
+        // [theme.breakpoints.up("sm")]: {
+        //   left: "150px",
+        // },
       }}
     >
       <Stack alignItems={"center"}>
