@@ -11,7 +11,7 @@ function App() {
   return (
     <Suspense fallback={<></>}>
       <Routes location={location} key={location.pathname}>
-        <Route path="/admin/*" element={<AdminMain />} />
+        {/* <Route path="/admin/*" element={<AdminMain />} /> */}
         <Route path="/*" element={<UserMain />} />
       </Routes>
     </Suspense>

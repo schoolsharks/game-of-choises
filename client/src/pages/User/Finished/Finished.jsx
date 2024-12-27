@@ -1,12 +1,9 @@
-import { Box, Stack, Typography, useTheme, Button } from "@mui/material";
+import { Stack, Typography, useTheme, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import OurButton from "../../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import TotalPlayers from "../../../components/TotalPlayers";
 import { useNavigate } from "react-router-dom";
 import "./Finished.css";
 import { resetState } from "../../../app/userSlice";
-import homeIcon from "../../../assets/homeIcon.svg";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -20,6 +17,13 @@ const Finished = () => {
     useSelector((state) => state.user);
   // console.log("user is", user);
   const [userStatic, setUserStatic] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  console.log("userStatic.strenghts", userStatic.strengths);
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   const navigate = useNavigate();
 
@@ -51,20 +55,10 @@ const Finished = () => {
     dispatch(resetState());
     navigate("/home");
   };
+  const values = [70, 80, 15, 18, 30];
+  console.log("scoresArray", userStatic.scoreArray);
 
   return (
-    // <Stack className="user-completed-page" height="100vh">
-    //   <Typography
-    //     variant="h5"
-    //     fontWeight="700"
-    //     textAlign="center"
-    //     color={theme.palette.primary.main}
-    //     marginTop="16px"
-    //   >
-    //     Challenge Completed
-    //   </Typography>
-    //   <TotalPlayers players={totalPlayers} />
-
     //   <Stack
     //     color={theme.palette.primary.main}
     //     borderRadius="16px"
@@ -166,6 +160,7 @@ const Finished = () => {
       <Link to="#">
         <Stack
           backgroundColor={"#A00612"}
+          margin={"1rem"}
           paddingX={"0.75rem"}
           paddingY={"1.16rem"}
           borderRadius={"18px"}
@@ -198,11 +193,129 @@ const Finished = () => {
         </Stack>
       </Link>
 
+      {/* landing image as per personality */}
+      <Stack
+        paddingX="1rem"
+        paddingY={"1.5rem"}
+        justifyContent={"end"}
+        alignItems={"end"}
+        sx={{
+          aspectRatio: "110/40",
+          background: `url(${analysisBG})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"}>
+          You are {userStatic.personalityScore}%<br />
+        </Typography>
+        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"}>
+          {userStatic.personalityName}
+          <br />
+        </Typography>
+        <Typography fontFamily={"Oxanium"} fontSize={"1rem"} fontWeight={"400"}>
+          know more
+          <br />
+        </Typography>
+      </Stack>
+
+      {/* subCategory */}
+      {userStatic && userStatic.subCategory?.length > 0 && (
+        <Stack
+          display={"flex"}
+          flexDirection={"row"}
+          gap={"1rem"}
+          justifyContent={"space-between"}
+          flexWrap={"wrap"}
+          margin={"1rem"}
+        >
+          {userStatic.subCategory.map((item, index) => (
+            <Typography
+              fontFamily={"Oxanium"}
+              frontWeight={"600"}
+              fontSize={"1.6rem"}
+              lineHeight={"1.5rem"}
+              key={index}
+              fontStyle={"bold"}
+            >
+              {item} |
+            </Typography>
+          ))}
+        </Stack>
+      )}
+
+      {/* strenghts */}
+      {userStatic && userStatic?.strengths?.length > 0 && (
+        <Stack
+          borderRadius="10px"
+          border="1px solid white"
+          paddingX="1rem"
+          paddingY={"1.5rem"}
+          margin={"1rem"}
+          // height="100%"
+        >
+          <Stack
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            justifyContent={"flex-start"}
+            flexWrap={"wrap"}
+          >
+            {userStatic.strengths.map((item, index) => (
+              <Typography
+                fontFamily={"Oxanium"}
+                frontWeight={"500"}
+                fontSize={"1.1rem"}
+                lineHeight={"1.5rem"}
+                key={index}
+              >
+                {item}
+              </Typography>
+            ))}
+          </Stack>
+        </Stack>
+      )}
+
+      {/* challenges */}
+      {userStatic && userStatic?.challenges?.length > 0 && (
+        <Stack
+          borderRadius="10px"
+          border="1px solid white"
+          paddingX="1rem"
+          paddingY={"1.5rem"}
+          margin={"1rem"}
+          // height="100%"
+        >
+          <Stack
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            justifyContent={"flex-end"}
+            flexWrap={"wrap"}
+          >
+            {userStatic.challenges.map((item, index) => (
+              <Typography
+                fontFamily={"Oxanium"}
+                frontWeight={"500"}
+                fontSize={"1.1rem"}
+                lineHeight={"1.5rem"}
+                key={index}
+              >
+                {item}
+              </Typography>
+            ))}
+          </Stack>
+        </Stack>
+      )}
+
+      {/* analaysis graph */}
       <Stack
         borderRadius="10px"
-        border="2px solid white"
-        padding="2rem"
-        height="100%"
+        border="1px solid white"
+        paddingX="1rem"
+        paddingY={"1.5rem"}
+        gap={"1rem"}
+        margin={"1rem"}
       >
         <div>
           <Typography

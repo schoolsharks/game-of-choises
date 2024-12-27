@@ -11,7 +11,7 @@ import { personalities } from "../utils/data/personalities.js";
 dotenv.config();
 
 export const handleCreateUser = async (req, res) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, companyName } = req.body;
 
   try {
     const admin = await Admin.findOne();
@@ -33,13 +33,14 @@ export const handleCreateUser = async (req, res) => {
     const newUser = new User({
       name,
       email,
+      phone: phone || null,
+      companyName,
       session: admin.current_session,
       responses: [],
       answered_count: 0,
       wealth: 10000,
       investment: 500,
       sq: sq,
-      phone: phone || null,
     });
 
     const token = signToken(newUser._id.toString(), "USER");
@@ -140,7 +141,7 @@ export const handleGetUser = async (req, res) => {
       wealth: userData.wealth,
       totalPlayers: session?.totalPlayers || 0,
       investment: userData.investment,
-      goalReachPercentage: goalReachPercentage,
+      // goalReachPercentage: goalReachPercentage,
       answered: userData.answered_count,
     });
   } catch (error) {
@@ -229,11 +230,24 @@ export const handleAnalysis = async (req, res) => {
 
     // Find personalities with the maximum value and then extracting personlity
 
-    if (maxValue <= 0)
-      return res.status(400).json({
-        success: false,
-        message: "Score is zero",
+    // if (maxValue <= 0)
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Score is zero",
+    //   });
+
+    let personalityPercentages = {};
+    if (maxValue > 0) {
+      personalityList.forEach((personality) => {
+        const score = userDetails[personality];
+        const percentage = (score / maxValue) * 100;
+        personalityPercentages[personality] = percentage.toFixed(0);
       });
+    } else {
+      personalityList.forEach((personality) => {
+        personalityPercentages[personality] = 0;
+      });
+    }
 
     maxPersonalities = personalityList.filter(
       (personality) => userDetails[personality] === maxValue
@@ -261,9 +275,16 @@ export const handleAnalysis = async (req, res) => {
             Hopeful_Borrower: userDetails.Hopeful_Borrower,
             Live_for_today_Spender: userDetails.Live_for_today_Spender,
           },
+          scoreArray: [
+            personalityPercentages["Disciplined_Saver"],
+            personalityPercentages["Balanced_Spender"],
+            personalityPercentages["The_Hustler"],
+            personalityPercentages["Hopeful_Borrower"],
+            personalityPercentages["Live_for_today_Spender"],
+          ],
           avgResponseTime: userDetails.avgResponseTime,
-          // personalityDescription: personalityDescription,
           personalityName: personalityName,
+          personalityScore: personalityPercentages[maxPersonalities[0]],
           subCategory: personalityDescription.subCategory,
           strengths: personalityDescription.strengths,
           challenges: personalityDescription.challenges,
