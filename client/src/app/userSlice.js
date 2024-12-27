@@ -21,12 +21,13 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "user/create",
-  async ({ username, email, phoneNumber }, { rejectWithValue }) => {
+  async ({ username, email, phoneNumber, companyName }, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/users/create`, {
         name: username,
         email,
         phone: phoneNumber,
+        companyName
       });
       const { user, session, sq ,totalPlayers} = response.data;
       localStorage.setItem("user", user)

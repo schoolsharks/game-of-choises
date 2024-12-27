@@ -84,13 +84,13 @@ const Question = () => {
         margin={"auto"}
         display={"flex"}
         alignItems={"center"}
-        sx={{
-          // aspectRatio: "116/45",
-          background: `url(${bgQuestion})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "repeat",
-          // opacity: "0.6",
-        }}
+        // sx={{
+        //   // aspectRatio: "116/45",
+        //   background: `url(${bgQuestion})`,
+        //   backgroundSize: "contain",
+        //   backgroundRepeat: "repeat",
+        //   // opacity: "0.6",
+        // }}
       >
         {status === "loading" && (
           <motion.div

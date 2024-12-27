@@ -16,7 +16,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
   const { user, error: userError, status } = useSelector((state) => state.user);
@@ -35,7 +35,7 @@ const Login = () => {
     if (!response.success) {
       setError(response.error);
     } else {
-      dispatch(createUser({ username: name, email, phone, companyName }));
+      dispatch(createUser({ username: name, email, phoneNumber, companyName }));
     }
   };
 
@@ -184,10 +184,10 @@ const Login = () => {
             type="number"
             color="#ffffff"
             placeholder="eg. xxxxxxxxxx"
-            value={phone}
+            value={phoneNumber}
             onChange={(e) => {
               setError("");
-              setPhone(e.target.value);
+              setPhoneNumber(e.target.value);
             }}
             sx={{
               input: {

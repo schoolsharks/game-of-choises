@@ -119,7 +119,7 @@ const OptionA = ({ text, onOptionSelect }) => {
         transition: "scale 0.3s ease",
         userSelect: "none",
         minHeight: "4.5rem",
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
         transform: `translateX(${position}px)`,
         // [theme.breakpoints.up("sm")]: {
         //   right: "150px",
