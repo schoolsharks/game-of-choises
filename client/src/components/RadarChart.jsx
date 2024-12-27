@@ -30,7 +30,7 @@ const RadarChart = ({ dataValues }) => {
       {
         label: "Data Values",
         data: dataValues, 
-        // backgroundColor: null, 
+        backgroundColor: null, 
         backgroundColor: "linear-gradient(160deg, rgba(160, 6, 18, 1), rgba(255, 125, 135, 1))",
         borderColor: "#ffffff", 
         borderWidth: 2,

@@ -32,7 +32,7 @@ const OptionB = ({ text, onOptionSelect }) => {
 
         if (isLargeScreen && elapsedTime < 500) {
           setPosition(-window.innerWidth);
-          onOptionSelect('A')
+          onOptionSelect('B')
         }
 
         if (distance > 150 && velocity > 0.5) {
