@@ -1,6 +1,6 @@
 .slick-dots {
   position: absolute;
-  bottom: -10%;
+  bottom: -20%;
   left: 80%;
   transform: translateX(-50%);
   display: flex;

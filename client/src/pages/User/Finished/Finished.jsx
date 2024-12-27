@@ -10,7 +10,7 @@ import homeIcon from "../../../assets/homeIcon.svg";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import shape from "../../../assets/shape.svg"
+import shape from "../../../assets/shape.svg";
 
 const Finished = () => {
   const theme = useTheme();
@@ -18,29 +18,35 @@ const Finished = () => {
 
   const { user, name, wealth, investment, totalPlayers, goalReachPercentage } =
     useSelector((state) => state.user);
-
+  // console.log("user is", user);
   const [userStatic, setUserStatic] = useState([]);
 
   const navigate = useNavigate();
 
   const getAnalysis = async (user) => {
     const response = await axios.get(
-      import.meta.env.VITE_SERVER_URL + "/users/analysis", {
-      params: {
-        userId: user
+      import.meta.env.VITE_SERVER_URL + "/users/analysis",
+      {
+        params: {
+          userId: user,
+        },
       }
-    }
     );
     console.log("response", response.data.analyticsData);
     setUserStatic(response.data.analyticsData);
   };
 
   useEffect(() => {
-    console.log("Analysis", user)
+    console.log("Analysis", user);
     getAnalysis(user);
-  }, [])
+  }, []);
 
-  const handleReset = () => {
+  const handleReset = async () => {
+    const response = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/users/storedata`,
+      { userId: user }
+    );
+    console.log("response", response.data.data);
     localStorage.clear();
     dispatch(resetState());
     navigate("/home");
@@ -147,14 +153,16 @@ const Finished = () => {
     //     </Box>
     //   </Stack>
     // </Stack>
-    <Stack style={{
-      height: "100vh",
-      paddingTop: "3rem",
-      padding: "1rem",
-      color: "#FFFFFF",
-      background: "rgba(0,0,0,0.7)",
-      gap: "2rem"
-    }}>
+    <Stack
+      style={{
+        height: "100vh",
+        paddingTop: "3rem",
+        padding: "1rem",
+        color: "#FFFFFF",
+        background: "rgba(0,0,0,0.7)",
+        gap: "2rem",
+      }}
+    >
       <Link to="#">
         <Stack
           backgroundColor={"#A00612"}
@@ -174,19 +182,17 @@ const Finished = () => {
           alignItems={"center"}
           sx={{
             backgroundColor: "#A00612",
-            textDecoration: "none"
+            textDecoration: "none",
           }}
         >
-          <p>
-            Open account with IDFC
-          </p>
+          <p>Open account with IDFC</p>
           <img
             src={idfc}
             alt="option A"
             style={{
-              // width: "2.31rem", 
-              // height: "7.05rem", 
-              objectFit: "contain"
+              // width: "2.31rem",
+              // height: "7.05rem",
+              objectFit: "contain",
             }}
           />
         </Stack>
@@ -199,16 +205,23 @@ const Finished = () => {
         height="100%"
       >
         <div>
-          <Typography fontFamily={"Oxanium"} frontWeight={"400"} fontSize={"1rem"}>
+          <Typography
+            fontFamily={"Oxanium"}
+            frontWeight={"400"}
+            fontSize={"1rem"}
+          >
             Your personality <br />
           </Typography>
-          <Typography fontFamily={"Oxanium"} fontSize={"2rem"} fontWeight={"600"} >{userStatic.personalityName}</Typography>
+          <Typography
+            fontFamily={"Oxanium"}
+            fontSize={"2rem"}
+            fontWeight={"600"}
+          >
+            {userStatic.personalityName}
+          </Typography>
         </div>
 
-        <Stack
-          display={"flex"}
-          flexDirection={"row"}
-        >
+        <Stack display={"flex"} flexDirection={"row"}>
           {/* <img
               src={shape}>
                 sx={{
@@ -222,19 +235,37 @@ const Finished = () => {
             ))}
           </Stack> */}
         </Stack>
-
-
       </Stack>
 
       <Stack direction="row" justifyContent="space-between" spacing={2}>
-        <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", fontSize: "1.5rem", fontFamily: "Oxanium" }}>
+        <Button
+          variant="outlined"
+          onClick={handleReset}
+          color="white"
+          sx={{
+            borderRadius: "15px",
+            paddingX: "19px",
+            paddingY: "12px",
+            fontSize: "1.5rem",
+            fontFamily: "Oxanium",
+          }}
+        >
           Play again
         </Button>
-        <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", fontSize: "1.5rem", fontFamily: "Oxanium" }}>
+        <Button
+          variant="outlined"
+          color="white"
+          sx={{
+            borderRadius: "15px",
+            paddingX: "19px",
+            paddingY: "12px",
+            fontSize: "1.5rem",
+            fontFamily: "Oxanium",
+          }}
+        >
           Invite Friends
         </Button>
       </Stack>
-
     </Stack>
   );
 };
