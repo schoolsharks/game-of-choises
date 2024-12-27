@@ -19,21 +19,21 @@ const MySlider = () => {
   const slides = [
     {
       id: 1,
-      title: "Game Play:",
+      title: "Game Play . . .",
       content1:
         "This game is inspired by the iconic movie The Matrix and is designed to help you make the right financial decisions.",
       content2: "",
     },
     {
       id: 2,
-      title: "How It Works:",
+      title: "How It Works . . .",
       content1:
         " You will face a series of financial scenarios where you must choose between the red pill and the blue pill.",
       content2: "Swipe left or right to make decisions.",
     },
     {
       id: 3,
-      title: "Your Goal:",
+      title: "Your Goal . . .",
       content1:
         "Navigate critical scenarios, face financial dilemmas, and uncover your true character.",
       content2:
@@ -41,7 +41,7 @@ const MySlider = () => {
     },
     {
       id: 4,
-      title: "Disclaimer:",
+      title: "Disclaimer . . .",
       content1:
         "Inspired by The Matrix, this game reimagines its themes to focus on financial decision-making.",
       content2:
@@ -52,13 +52,17 @@ const MySlider = () => {
   return (
     <div
       style={{
-        backgroundColor: "#000000C7",
-        height: "429px",
-        width: "433px",
+        backgroundColor: "#000000CC",
+        height: "50%",
+        maxHeight: "321px",
+        maxWidth: "493px",
+        width: "100%",
+        top: "40%",
+
         margin: "auto",
         // overflow: "hidden",
-        padding: "48px 52px",
-
+        padding: "21px 22px",
+        paddingRight: "22px",
         fontFamily: "Oxanium",
       }}
     >
@@ -67,14 +71,16 @@ const MySlider = () => {
           <div
             key={slide.id}
             style={{
-              height: "429px",
-              width: "433px",
+              height: "100%",
+              maxHeight: "429px",
+              width: "100%",
+
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
-              // justifyContent: "center",
+              justifyContent: "center",
 
-              gap: "10px",
+              gap: "35px",
               fontFamily: "Oxanium",
               color: "#FBF9ED",
             }}
@@ -84,6 +90,7 @@ const MySlider = () => {
                 fontSize: "30px",
                 fontWeight: "700",
                 color: "#FBF9ED",
+                marginBottom: "30px",
               }}
             >
               {slide.title}
@@ -93,6 +100,8 @@ const MySlider = () => {
                 fontSize: "20px",
                 fontWeight: "400",
                 color: "#FBF9ED",
+                width: "90%",
+                marginBottom: "10px",
               }}
             >
               {slide.content1}
@@ -102,6 +111,7 @@ const MySlider = () => {
                 fontSize: "20px",
                 fontWeight: "400",
                 color: "#FBF9ED",
+                width: "90%",
               }}
               className="mt-2"
             >

@@ -14,36 +14,57 @@ const Home = () => {
   return (
     <Stack
       width="100%"
-      height="100vh"
-      // height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
-      position="relative"
-      overflow="hidden"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        alignContent: "center",
+        height: "100vh",
+        gap: "15px",
+      }}
     >
-      <Typography
-        variant={"h3"}
-        fontSize="2.5rem"
-        fontWeight="700"
-        textAlign={"center"}
-        zIndex={1}
-        maxWidth={"307px"}
-        // top={"150px"}
-        maxHeight={"117px"}
-        color={theme.palette.primary.main}
-        margin={"50px auto 22px"}
+      <Stack
+        sx={{
+          height: "75%",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          maxWidth: "493px",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+          gap: "25px",
+        }}
       >
-        THE GAME OF CHOCIES
-      </Typography>
+        <Typography
+          variant={"h3"}
+          fontSize="2.5rem"
+          fontWeight="700"
+          textAlign={"center"}
+          zIndex={1}
+          width={"80%"}
+          maxWidth={"307px"}
+          marginTop={"8%"}
+          color={theme.palette.primary.main}
+        >
+          THE GAME OF CHOCIES
+        </Typography>
 
-      <MySlider />
+        <MySlider />
+      </Stack>
 
       <Stack
-        // position={"fixed"}
-        bottom={"60px"}
+        position={"fixed"}
+        bottom={"8%"}
         maxHeight={"88px"}
-        maxWidth={"900px"}
-        marginBottom={"100px"}
+        maxWidth={"361px"}
+        height={"15%"}
+        width={"75%"}
+        alignContent={"center"}
+        alignSelf={"center"}
       >
-        <SwipeBar onSwipe={handleOnSwipe} />
+        <SwipeBar onSwipe={handleOnSwipe} text={"Get Started"} />
       </Stack>
     </Stack>
   );
