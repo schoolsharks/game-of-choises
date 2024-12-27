@@ -40,92 +40,55 @@ const Login = () => {
   };
 
   if (user) {
-    return <Navigate to="/questions" />;
+    return <Navigate to="/info" />;
   }
 
-  const newtheme = createTheme({
-    components: {
-      MuiTextField: {
-        styleOverrides: {
-          root: {
-            "& .MuiInputLabel-root": { color: "white" },
-            "& .MuiInputLabel-root.Mui-focused": { color: "white" },
-            "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Unfocused underline
-            "& .MuiInput-underline:hover:before": {
-              borderBottomColor: "white",
-            }, // Hover underline
-            "& .MuiInput-underline:after": { borderBottomColor: "white" }, // Focused underline
-          },
-        },
-      },
-    },
-  });
   return (
     <Stack
-      className="user-login"
       width="100%"
-      height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
-      position="relative"
-      alignItems={"center"}
-      color={"#FBF9ED"}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "center",
+        height: "100vh",
+        gap: "30px",
+      }}
     >
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        marginTop="25px"
-        textAlign={"center"}
-        fontFamily="Orbitron"
-      >
+      <Stack fontFamily={"Orbitron"} maxWidth={"390px"}>
         <Typography
           variant={"h3"}
-          fontSize="2.3rem"
-          fontWeight="600"
-          textAlign={"center"}
+          fontSize="35px"
+          fontWeight="700"
           zIndex={1}
-          maxWidth={"18rem"}
-          top={"6rem"}
-          maxHeight={"117px"}
-          color={"#FBF9ED"}
-          margin={"50px auto 22px"}
+          marginTop={"50px"}
+          color={theme.palette.primary.main}
         >
-          THE GAME OF CHOCIES
+          Login
         </Typography>
       </Stack>
 
       <Stack
         width={"100%"}
-        gap="1rem"
-        sx={{ maxWidth: "27rem" }}
-        marginTop={"1rem"}
-        marginX={"auto"}
+        maxWidth="433px"
+        height={"100%"}
         backgroundColor={"#000000B2"}
-        color={"#FBF9ED"}
-        padding={"1px 2.3rem"}
+        color={theme.palette.primary.main}
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"start"}
+        // gap={""}
+        alignContent={"center"}
+        alignItems={"center"}
+        paddingTop={"10px"}
       >
         <Stack
-          width={"85%"}
-          gap="0.5rem"
-          sx={{ maxWidth: "600px" }}
-          marginTop={"1rem"}
-          color={"#FBF9ED"}
-        >
-          <Typography
-            variant="body3"
-            fontWeight={"700"}
-            fontSize="2rem"
-            // marginTop={"40px"}
-            color={"#FBF9ED"}
-          >
-            Login
-          </Typography>
-        </Stack>
-        <Stack
           sx={{
-            width: "100%",
+            width: "90%",
+            maxWidth: "433px",
             gap: "1rem",
           }}
         >
-          {/* <ThemeProvider theme={newtheme}> */}
           <TextField
             label="Name *"
             variant="standard"
@@ -135,20 +98,6 @@ const Login = () => {
             onChange={(e) => {
               setError("");
               setName(e.target.value);
-            }}
-            sx={{
-              input: {
-                color: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:hover:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInputLabel-root': {
-                color: '#FBF9ED',
-              }
             }}
           />
 
@@ -162,20 +111,6 @@ const Login = () => {
             onChange={(e) => {
               setError("");
               setEmail(e.target.value);
-            }}
-            sx={{
-              input: {
-                color: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:hover:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInputLabel-root': {
-                color: '#FBF9ED',
-              }
             }}
           />
           <TextField
@@ -191,17 +126,17 @@ const Login = () => {
             }}
             sx={{
               input: {
-                color: '#FBF9ED', 
+                color: "#FBF9ED",
               },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#FBF9ED', 
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "#FBF9ED",
               },
-              '& .MuiInput-underline:hover:before': {
-                borderBottomColor: '#FBF9ED', 
+              "& .MuiInput-underline:hover:before": {
+                borderBottomColor: "#FBF9ED",
               },
-              '& .MuiInputLabel-root': {
-                color: '#FBF9ED',
-              }
+              "& .MuiInputLabel-root": {
+                color: "#FBF9ED",
+              },
             }}
           />
           <TextField
@@ -214,26 +149,11 @@ const Login = () => {
               setError("");
               setCompanyName(e.target.value);
             }}
-            sx={{
-              input: {
-                color: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInput-underline:hover:before': {
-                borderBottomColor: '#FBF9ED', 
-              },
-              '& .MuiInputLabel-root': {
-                color: '#FBF9ED',
-              }
-            }}
           />
 
           <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
             {error}
           </Typography>
-          {/* </ThemeProvider> */}
         </Stack>
         <Stack
           sx={{
@@ -244,6 +164,8 @@ const Login = () => {
             justifyContent: "end",
             width: "100%",
             cursor: "pointer",
+            paddingRight: "30px",
+            paddingY: "10px",
           }}
         >
           <Typography
@@ -258,18 +180,21 @@ const Login = () => {
           </Typography>
           <SendIcon
             sx={{ color: "white", transform: "rotate(300deg)" }}
-            size={20}
+            size={15}
           />
         </Stack>
 
         <Stack
-          // position={"fixed"}
-          bottom={"60px"}
+          position={"fixed"}
+          bottom={"8%"}
           maxHeight={"88px"}
-          maxWidth={"900px"}
-          marginBottom={"100px"}
+          maxWidth={"361px"}
+          height={"15%"}
+          width={"80%"}
+          alignContent={"center"}
+          alignSelf={"center"}
         >
-          <SwipeBar onSwipe={handleSubmit} />
+          <SwipeBar onSwipe={handleSubmit} text={"Get Started"} />
         </Stack>
       </Stack>
 

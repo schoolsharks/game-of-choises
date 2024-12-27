@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { handleHaptic } from "../utils/haptic";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-const SwipeBar = ({ onSwipe }) => {
+const SwipeBar = ({ onSwipe, text }) => {
   const [isActive, setIsActive] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
@@ -59,44 +59,31 @@ const SwipeBar = ({ onSwipe }) => {
       onMouseDown={handleOnMouseDown}
       onMouseUp={handleOnMouseUp}
       sx={{
-        margin: "30px auto 60px",
         border: "3px solid #ffffff",
         color: "#ffffff",
         cursor: "pointer",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
         borderRadius: "10px",
-        marginBottom: "50px",
-        width: "361px",
-        height: "88px",
-        gap: "2.5rem",
+
+        width: "90%",
+        height: "80%",
+        maxHeight: "88px",
+        maxWidth: "493px",
+        // gap: "2.5rem",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
         userSelect: "none",
         position: "relative",
-        padding: "21px 22px 21px 22px ",
+        padding: "18px 21px",
       }}
     >
-      {/* {!isLargeScreen && (
-        <ArrowBack
-          sx={{
-            fontSize: "1rem",
-            display: isActive && side === "LEFT" ? "none" : "block",
-            position: "absolute",
-            left: "40px",
-            transition: "all 0.3s ease",
-            transform:
-              isActive && side === "RIGHT"
-                ? "translateX(-20px)"
-                : "translateX(0)",
-          }}
-        />
-      )} */}
       <Typography
         variant="body3"
-        fontSize={"40px"}
+        fontSize={"32px"}
         fontWeight={"600"}
         color="#F1E9DE"
+        width="100%"
         sx={{
           transition: "all 0.3s ease",
           transform:
@@ -107,24 +94,9 @@ const SwipeBar = ({ onSwipe }) => {
               : "none",
         }}
       >
-        Get Started
+        {text}
       </Typography>
       <KeyboardArrowRightIcon style={{ fontSize: "40px" }} />
-      {/* {!isLargeScreen && (
-        <ArrowForward
-          sx={{
-            fontSize: "1rem",
-            display: isActive && side === "RIGHT" ? "none" : "block",
-            position: "absolute",
-            right: "40px",
-            transition: "all 0.3s ease",
-            transform:
-              isActive && side === "LEFT"
-                ? "translateX(20px)"
-                : "translateX(0)",
-          }}
-        />
-      )} */}
     </Stack>
   );
 };

@@ -18,7 +18,7 @@
   background-size: auto;
   background-position: center;
   font-size: 16px;
-
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
