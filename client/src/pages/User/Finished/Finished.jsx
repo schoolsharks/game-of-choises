@@ -434,7 +434,8 @@ const Finished = () => {
         </Stack>
       </Stack>
 
-      <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", margin: "1rem", fontSize: "1.5rem", fontFamily: "Oxanium" }}>
+      <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", margin: "1rem", fontSize: "1.5rem", fontFamily: "Oxanium" }}
+      onClick={()=> {localStorage.clear(); navigate("/home")}}>
         Play again
       </Button>
 
