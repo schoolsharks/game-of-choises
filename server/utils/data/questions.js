@@ -112,223 +112,223 @@ export const questions = [
     }
   },
 
-  {
-    id: 5,
-    question: "A savings account offers 7% monthly interest. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Opt for it to benefit from compounding?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:3,
-        Live_for_today_Spender:0,
-        wealth: 11600,
-        investment: 0
-      },
-      B: {
-        content: "Choose a lower-interest account with zero transaction fees?",
-        Disciplined_Saver:0,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 600,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 6,
-    question: "You’ve learned about financial planning through the game. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Ignore the lessons and stick to old habits?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:2,
-        wealth: 30000,
-        investment: 0
-      },
-      B: {
-        content: "Apply the knowledge to set and achieve financial goals?",
-        Disciplined_Saver:3,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 0,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 7,
-    question: "You receive unexpected financial windfall. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Spend it impulsively?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:1,
-        Live_for_today_Spender:2,
-        wealth: -6000,
-        investment: 0
-      },
-      B: {
-        content: "Use it to clear debts or invest wisely?",
-        Disciplined_Saver:2,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 0,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 8,
-    question: "Facing peer pressure to splurge on a vacation, you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Max out your credit cards to join in?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:3,
-        Live_for_today_Spender:2,
-        wealth: -15000,
-        investment: 0
-      },
-      B: {
-        content: "Politely decline and plan a budget-friendly trip instead?",
-        Disciplined_Saver:1,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: -5000,
-        investment: 0
-      }
-    }
-  },
+  // {
+  //   id: 5,
+  //   question: "A savings account offers 7% monthly interest. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Opt for it to benefit from compounding?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:3,
+  //       Live_for_today_Spender:0,
+  //       wealth: 11600,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Choose a lower-interest account with zero transaction fees?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 600,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 6,
+  //   question: "You’ve learned about financial planning through the game. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Ignore the lessons and stick to old habits?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:2,
+  //       wealth: 30000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Apply the knowledge to set and achieve financial goals?",
+  //       Disciplined_Saver:3,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 0,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 7,
+  //   question: "You receive unexpected financial windfall. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Spend it impulsively?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:1,
+  //       Live_for_today_Spender:2,
+  //       wealth: -6000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Use it to clear debts or invest wisely?",
+  //       Disciplined_Saver:2,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 0,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 8,
+  //   question: "Facing peer pressure to splurge on a vacation, you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Max out your credit cards to join in?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:3,
+  //       Live_for_today_Spender:2,
+  //       wealth: -15000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Politely decline and plan a budget-friendly trip instead?",
+  //       Disciplined_Saver:1,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: -5000,
+  //       investment: 0
+  //     }
+  //   }
+  // },
 
-  {
-    id: 9,
-    question: "A savings account offers 7% monthly interest. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Opt for it to benefit from compounding?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:3,
-        Live_for_today_Spender:0,
-        wealth: 11600,
-        investment: 0
-      },
-      B: {
-        content: "Choose a lower-interest account with zero transaction fees?",
-        Disciplined_Saver:0,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 600,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 10,
-    question: "You’ve learned about financial planning through the game. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Ignore the lessons and stick to old habits?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:2,
-        wealth: 30000,
-        investment: 0
-      },
-      B: {
-        content: "Apply the knowledge to set and achieve financial goals?",
-        Disciplined_Saver:3,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 0,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 11,
-    question: "You receive unexpected financial windfall. Do you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Spend it impulsively?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:1,
-        Live_for_today_Spender:2,
-        wealth: -6000,
-        investment: 0
-      },
-      B: {
-        content: "Use it to clear debts or invest wisely?",
-        Disciplined_Saver:2,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: 0,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 12,
-    question: "Facing peer pressure to splurge on a vacation, you:",
-    year: 1,
-    options: {
-      A: {
-        content: "Max out your credit cards to join in?",
-        Disciplined_Saver:0,
-        Balanced_Spender:0,
-        The_Hustler:0,
-        Hopeful_Borrower:3,
-        Live_for_today_Spender:2,
-        wealth: -15000,
-        investment: 0
-      },
-      B: {
-        content: "Politely decline and plan a budget-friendly trip instead?",
-        Disciplined_Saver:1,
-        Balanced_Spender:3,
-        The_Hustler:0,
-        Hopeful_Borrower:0,
-        Live_for_today_Spender:0,
-        wealth: -5000,
-        investment: 0
-      }
-    }
-  },
+  // {
+  //   id: 9,
+  //   question: "A savings account offers 7% monthly interest. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Opt for it to benefit from compounding?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:3,
+  //       Live_for_today_Spender:0,
+  //       wealth: 11600,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Choose a lower-interest account with zero transaction fees?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 600,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 10,
+  //   question: "You’ve learned about financial planning through the game. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Ignore the lessons and stick to old habits?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:2,
+  //       wealth: 30000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Apply the knowledge to set and achieve financial goals?",
+  //       Disciplined_Saver:3,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 0,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 11,
+  //   question: "You receive unexpected financial windfall. Do you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Spend it impulsively?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:1,
+  //       Live_for_today_Spender:2,
+  //       wealth: -6000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Use it to clear debts or invest wisely?",
+  //       Disciplined_Saver:2,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: 0,
+  //       investment: 0
+  //     }
+  //   }
+  // },
+  // {
+  //   id: 12,
+  //   question: "Facing peer pressure to splurge on a vacation, you:",
+  //   year: 1,
+  //   options: {
+  //     A: {
+  //       content: "Max out your credit cards to join in?",
+  //       Disciplined_Saver:0,
+  //       Balanced_Spender:0,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:3,
+  //       Live_for_today_Spender:2,
+  //       wealth: -15000,
+  //       investment: 0
+  //     },
+  //     B: {
+  //       content: "Politely decline and plan a budget-friendly trip instead?",
+  //       Disciplined_Saver:1,
+  //       Balanced_Spender:3,
+  //       The_Hustler:0,
+  //       Hopeful_Borrower:0,
+  //       Live_for_today_Spender:0,
+  //       wealth: -5000,
+  //       investment: 0
+  //     }
+  //   }
+  // },
 
 
 
