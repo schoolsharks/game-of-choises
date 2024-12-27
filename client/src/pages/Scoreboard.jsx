@@ -16,6 +16,7 @@ const Scoreboard = ({ role, totalPlayers, leaderboardData }) => {
   const [leaderboard, setLeaderboard] = useState([]);
   const navigate = useNavigate();
   const previousLeaderboardRef = useRef([]);
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     let interval;

@@ -39,6 +39,33 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+
+  Disciplined_Saver:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  Balanced_Spender:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  The_Hustler:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  Hopeful_Borrower:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  Live_for_today_Spender:{
+    type:Number,
+    required:true,
+    default:0
+  },
+
   wealth: {
     type: Number,
     required: true,

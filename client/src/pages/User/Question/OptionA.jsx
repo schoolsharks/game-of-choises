@@ -146,7 +146,7 @@ const OptionA = ({ text, onOptionSelect }) => {
         fontFamily={"Oxanium"}
         sx={{ 
           marginLeft: "28px", 
-          [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
+          // [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
         }}
       >
         {text}

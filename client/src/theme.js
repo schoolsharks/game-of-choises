@@ -66,7 +66,7 @@ const theme = createTheme({
           "& .MuiInput-underline:before": {
             borderBottomColor: "#FBF9ED", // Inactive underline color
           },
-          "& .MuiInput-underline:after": {
+          "& .MuiInput-underline::after": {
             borderBottomColor: "#FBF9ED", // Active underline color
           },
           "& .MuiInputLabel-root": {

@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import { Admin } from '../models/admin.model.js';
 import signToken from '../utils/signJwt.js';
 import { Session } from '../models/session.model.js';
+import mongoose from 'mongoose';
+import { personalities } from '../utils/data/personalities.js';
 
 dotenv.config();
 
@@ -123,3 +125,72 @@ export const countUsersInSession = async (sessionId) => {
   return await User.countDocuments({ session: sessionId });
 };
 
+export const handleAnalysis = async (req, res) => {
+  const userId = req.query.userId;
+  console.log("userId", userId);
+
+  try {
+    const userDetails = await User.findById(new mongoose.Types.ObjectId(userId));
+
+    const personalityList = ["Disciplined_Saver", "Balanced_Spender", "The_Hustler", "Hopeful_Borrower", "Live_for_today_Spender"];
+
+    console.log("userDetails", userDetails);
+    let maxValue = 0;
+    let maxPersonalities;
+    personalityList.forEach(personality => {
+      if (userDetails[personality] > maxValue) {
+        maxValue = userDetails[personality];
+      }
+    });
+
+    // Find personalities with the maximum value and then extracting personlity
+
+    if (maxValue <= 0)
+      return res.status(400).json({
+        success: false,
+        message: "Score is zero",
+      });
+
+    maxPersonalities = personalityList.filter(personality => userDetails[personality] === maxValue);
+
+    if (maxPersonalities[0]) {
+      let personalityName = maxPersonalities[0].replaceAll("_", " ");
+      console.log(personalityName);
+
+      const personalityDescription = personalities.find(personality => personality.personality === personalityName);
+      console.log("personalityDescription", personalityDescription);
+
+      return res.status(200).json({
+        success: true,
+        message: "Data fetched successfully.",
+        analyticsData: {
+          name: userDetails.name,
+          email: userDetails.email,
+          score: {
+            Disciplined_Saver: userDetails.Disciplined_Saver,
+            Balanced_Spender: userDetails.Balanced_Spender,
+            The_Hustler: userDetails.The_Hustler,
+            Hopeful_Borrower: userDetails.Hopeful_Borrower,
+            Live_for_today_Spender: userDetails.Live_for_today_Spender
+          },
+          avgResponseTime: userDetails.avgResponseTime,
+          // personalityDescription: personalityDescription,
+          personalityName: personalityName,
+          subCategory: personalityDescription.subCategory,
+          strengths: personalityDescription.strengths,
+          challenges: personalityDescription.challenges
+        },
+
+      })
+    }
+    else {
+      return res.status(400).json({
+        success: false,
+        message: "No personlity matched"
+      })
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+}

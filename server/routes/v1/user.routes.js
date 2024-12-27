@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+    handleAnalysis,
     // handleConnectRequest,
     handleCreateUser,
     handleGetUser
@@ -12,6 +13,7 @@ const router = express.Router();
 router.post("/create", handleCreateUser)
 router.get("/getUser", handleGetUser)
 router.post("/ques", handleGetQuestion)
+router.get("/analysis", handleAnalysis)
 // router.post("/connectionRequest",handleConnectRequest)
 
 export default router;

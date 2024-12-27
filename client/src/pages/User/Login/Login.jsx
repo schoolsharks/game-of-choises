@@ -92,7 +92,7 @@ const Login = () => {
           <TextField
             label="Name *"
             variant="standard"
-            // color="white"
+            color="#ffffff"
             placeholder="eg. Vanessa Jenson"
             value={name}
             onChange={(e) => {
@@ -105,6 +105,7 @@ const Login = () => {
             label="Email"
             type="email"
             variant="standard"
+            color="#ffffff"
             placeholder="eg. xoxo@gmail.com"
             value={email}
             onChange={(e) => {
@@ -116,16 +117,32 @@ const Login = () => {
             label="Phone Number"
             variant="standard"
             type="number"
+            color="#ffffff"
             placeholder="eg. xxxxxxxxxx"
             value={phone}
             onChange={(e) => {
               setError("");
               setPhone(e.target.value);
             }}
+            sx={{
+              input: {
+                color: "#FBF9ED",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "#FBF9ED",
+              },
+              "& .MuiInput-underline:hover:before": {
+                borderBottomColor: "#FBF9ED",
+              },
+              "& .MuiInputLabel-root": {
+                color: "#FBF9ED",
+              },
+            }}
           />
           <TextField
             label="Company Name"
             variant="standard"
+            color="#ffffff"
             placeholder="e.g School Shark"
             value={companyName}
             onChange={(e) => {
@@ -157,7 +174,7 @@ const Login = () => {
             fontWeight="400"
             textAlign={"end"}
             zIndex={1}
-            color={theme.palette.primary.main}
+            color={"#FBF9ED"}
           >
             Invite friends
           </Typography>

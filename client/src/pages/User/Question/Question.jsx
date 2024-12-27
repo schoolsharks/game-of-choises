@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Stack,
@@ -17,6 +17,7 @@ import Button from "../../../components/Button";
 import homeIcon from "../../../assets/homeIcon.svg"
 import { Navigate, useNavigate } from "react-router-dom";
 import bgQuestion from "../../../assets/bg-question.png";
+import Advertisement from "../../../components/Advertisement";
 
 const questionVariants = {
   initial: { opacity: 0, x: "100vw" },
@@ -34,6 +35,7 @@ const Question = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState(true);
   const { currentQuestion, status, options, quesId, year } = useSelector(
     (state) => state.question
   );
@@ -74,11 +76,16 @@ const Question = () => {
 
   return (
     <>
+
       <Box
-        width="440px"
-        height="auto"
+        // width="470px"
+        maxWidth={"600px"}
+        height="100vh"
+        margin={"auto"}
+        display={"flex"}
+        alignItems={"center"}
         sx={{
-          aspectRatio: "116/45",
+          // aspectRatio: "116/45",
           background: `url(${bgQuestion})`,
           backgroundSize: "contain",
           backgroundRepeat: "repeat",
@@ -109,29 +116,31 @@ const Question = () => {
           </motion.div>
         )}
 
-        <Stack
-          minHeight={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
-          height="100vh"
-          position="relative"
-        >
-          <AnimatePresence>
-            {currentQuestion && (
-              <motion.div
-                key={currentQuestion}
-                initial="initial"
-                animate="in"
-                exit="out"
-                variants={questionVariants}
-                transition={questionTransition}
-                style={{ position: "relative", zIndex: 0 }}
-              >
-                <Stack
-                  padding="0 12px"
-                  height={`${window.innerHeight < 616 ? 616 : window.innerHeight
-                    }px`}
-                  sx={{ overflowX: "hidden" }}
+        {toggle ? (
+          <Stack
+            minHeight={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
+            height="100vh"
+            position="relative"
+            alignItems={"center"}
+          >
+            <AnimatePresence>
+              {currentQuestion && (
+                <motion.div
+                  key={currentQuestion}
+                  initial="initial"
+                  animate="in"
+                  exit="out"
+                  variants={questionVariants}
+                  transition={questionTransition}
+                  style={{ position: "relative", zIndex: 0 }}
                 >
-                  {/* <Stack
+                  <Stack
+                    padding="0 12px"
+                    height={`${window.innerHeight < 616 ? 616 : window.innerHeight
+                      }px`}
+                    sx={{ overflowX: "hidden" }}
+                  >
+                    {/* <Stack
                     direction="row"
                     marginTop="24px"
                     justifyContent="space-around"
@@ -159,7 +168,7 @@ const Question = () => {
                     </Stack>
                   </Stack> */}
 
-                  {/* <LinearProgress
+                    {/* <LinearProgress
                     variant="determinate"
                     value={(answered * 100) / 25}
                     sx={{
@@ -173,35 +182,35 @@ const Question = () => {
                     }}
                   /> */}
 
-                  {/* questions */}
-                  <Stack
-                    justifyContent={"center"}
-                    height={"250px"}
-                    margin="16px 4px"
-                  >
-                    <Typography
-                      color={"#FBF9ED"}
-                      fontSize="2rem"
-                      fontWeight="600"
+                    {/* questions */}
+                    <Stack
+                      justifyContent={"center"}
+                      height={"250px"}
+                      margin="16px 4px"
                     >
-                      {currentQuestion}
-                    </Typography>
-                  </Stack>
+                      <Typography
+                        color={"#FBF9ED"}
+                        fontSize="2rem"
+                        fontWeight="600"
+                      >
+                        {currentQuestion}
+                      </Typography>
+                    </Stack>
 
-                  {/* options */}
-                  {options && (
-                    <Stack marginTop="16px" position="relative" >
+                    {/* options */}
+                    {options && (
+                      <Stack marginTop="16px" position="relative" >
                         <OptionA
                           text={options["A"]}
                           onOptionSelect={handleOptionSelect}
                         />
-                      <OptionB
-                        text={options["B"]}
-                        onOptionSelect={handleOptionSelect}
-                      />
-                    </Stack>
-                  )}
-                  {/* <Stack marginTop="16px" position="relative" direction="column" columnGap={"2.5rem"}>
+                        <OptionB
+                          text={options["B"]}
+                          onOptionSelect={handleOptionSelect}
+                        />
+                      </Stack>
+                    )}
+                    {/* <Stack marginTop="16px" position="relative" direction="column" columnGap={"2.5rem"}>
                     {options && (
                       <>
                         <OptionA
@@ -217,7 +226,7 @@ const Question = () => {
                   </Stack> */}
 
 
-                  {/* <Stack
+                    {/* <Stack
                     alignItems="center"
                     position="relative"
                     margin="auto 0 35px"
@@ -244,12 +253,19 @@ const Question = () => {
                       </Button>
                     </Box>
                   </Stack> */}
-                </Stack>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </Stack>
+
+
+                  </Stack>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Stack>
+
+        ) : (
+          <Advertisement />
+        )}
       </Box>
+
     </>
   );
 };
