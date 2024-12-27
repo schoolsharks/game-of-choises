@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
   },
+  companyName:{
+    type:String
+  },
   session: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Session',
@@ -66,16 +69,16 @@ const userSchema = new mongoose.Schema({
     default:0
   },
 
-  wealth: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  investment: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
+  // wealth: {
+  //   type: Number,
+  //   required: true,
+  //   default: 0,
+  // },
+  // investment: {
+  //   type: Number,
+  //   required: true,
+  //   default: 0,
+  // },
 
   avgResponseTime: {
     type: Number,
@@ -91,8 +94,8 @@ const userSchema = new mongoose.Schema({
 
 // Index definitions
 userSchema.index({ session: 1 }); 
-userSchema.index({ wealth: -1 }); 
-userSchema.index({ investment: -1 }); 
+// userSchema.index({ wealth: -1 }); 
+// userSchema.index({ investment: -1 }); 
 
 const User = mongoose.model('User', userSchema);
 

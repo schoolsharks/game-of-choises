@@ -13,7 +13,7 @@ dotenv.config();
 
 
 export const handleCreateUser = async (req, res) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, companyName } = req.body;
 
   try {
     const admin = await Admin.findOne();
@@ -34,13 +34,15 @@ export const handleCreateUser = async (req, res) => {
     const newUser = new User({
       name,
       email,
+      phone: phone || null,
+      companyName,
       session: admin.current_session,
       responses: [],
       answered_count: 0,
       wealth: 10000,
       investment: 500,
       sq: sq,
-      phone: phone || null,
+
     });
 
     const token = signToken(newUser._id.toString(), "USER")
@@ -83,22 +85,19 @@ export const handleGetUser = async (req, res) => {
       return res.status(403).json({ success: false, message: `Session mismatch: ${userData.session} vs ${admin.current_session}` });
     }
 
-    let goalReachPercentage;
-
-    const result = await User.aggregate([
-      { $match: { session: userData.session } },
-      {
-        $group: {
-          _id: null,
-          totalUsers: { $sum: 1 },
-          wealthyUsers: { $sum: { $cond: [{ $gt: [{ $add: ['$wealth', '$investment'] }, goalTarget] }, 1, 0] } }
-        }
-      },
-      { $project: { percentage: { $multiply: [{ $divide: ['$wealthyUsers', '$totalUsers'] }, 100] } } }
-    ]);
-
-
-    goalReachPercentage = result.length ? result[0].percentage : 0;
+    // let goalReachPercentage;
+    // const result = await User.aggregate([
+    //   { $match: { session: userData.session } },
+    //   {
+    //     $group: {
+    //       _id: null,
+    //       totalUsers: { $sum: 1 },
+    //       wealthyUsers: { $sum: { $cond: [{ $gt: [{ $add: ['$wealth', '$investment'] }, goalTarget] }, 1, 0] } }
+    //     }
+    //   },
+    //   { $project: { percentage: { $multiply: [{ $divide: ['$wealthyUsers', '$totalUsers'] }, 100] } } }
+    // ]);
+    // goalReachPercentage = result.length ? result[0].percentage : 0;
 
     res.status(200).json({
       success: true,
@@ -110,7 +109,7 @@ export const handleGetUser = async (req, res) => {
       wealth: userData.wealth,
       totalPlayers: session?.totalPlayers || 0,
       investment: userData.investment,
-      goalReachPercentage: goalReachPercentage,
+      // goalReachPercentage: goalReachPercentage,
       answered: userData.answered_count,
     });
 
@@ -145,11 +144,25 @@ export const handleAnalysis = async (req, res) => {
 
     // Find personalities with the maximum value and then extracting personlity
 
-    if (maxValue <= 0)
-      return res.status(400).json({
-        success: false,
-        message: "Score is zero",
+    // if (maxValue <= 0)
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Score is zero",
+    //   });
+
+    let personalityPercentages = {};
+    if (maxValue > 0) {
+      personalityList.forEach(personality => {
+        const score = userDetails[personality];
+        const percentage = (score / maxValue) * 100;
+        personalityPercentages[personality] = percentage.toFixed(0); 
       });
+    } else {
+      personalityList.forEach(personality => {
+        personalityPercentages[personality] = 0;
+      });
+    }
+
 
     maxPersonalities = personalityList.filter(personality => userDetails[personality] === maxValue);
 
@@ -167,15 +180,22 @@ export const handleAnalysis = async (req, res) => {
           name: userDetails.name,
           email: userDetails.email,
           score: {
-            Disciplined_Saver: userDetails.Disciplined_Saver,
-            Balanced_Spender: userDetails.Balanced_Spender,
-            The_Hustler: userDetails.The_Hustler,
-            Hopeful_Borrower: userDetails.Hopeful_Borrower,
-            Live_for_today_Spender: userDetails.Live_for_today_Spender
+            Disciplined_Saver: personalityPercentages["Disciplined_Saver"],
+            Balanced_Spender: personalityPercentages["Balanced_Spender"],
+            The_Hustler: personalityPercentages["The_Hustler"],
+            Hopeful_Borrower: personalityPercentages["Hopeful_Borrower"],
+            Live_for_today_Spender: personalityPercentages["Live_for_today_Spender"]
           },
+          scoreArray : [
+            personalityPercentages["Disciplined_Saver"],
+            personalityPercentages["Balanced_Spender"],
+            personalityPercentages["The_Hustler"],
+            personalityPercentages["Hopeful_Borrower"],
+            personalityPercentages["Live_for_today_Spender"]
+          ],
           avgResponseTime: userDetails.avgResponseTime,
-          // personalityDescription: personalityDescription,
           personalityName: personalityName,
+          personalityScore : personalityPercentages[maxPersonalities[0]],
           subCategory: personalityDescription.subCategory,
           strengths: personalityDescription.strengths,
           challenges: personalityDescription.challenges
