@@ -155,6 +155,7 @@ export const handleGetUser = async (req, res) => {
 export const countUsersInSession = async (sessionId) => {
   return await User.countDocuments({ session: sessionId });
 };
+
 export const handleStorage = async (req, res) => {
   const { userId } = req.body;
   console.log("userId ", userId);
@@ -187,7 +188,9 @@ export const handleStorage = async (req, res) => {
     user.investment = 0;
     user.answered_count = 0;
     await user.save();
-    const newuser = await User.findById(new mongoose.Types.ObjectId(userId));
+    const newuser = await User.findById(
+      new mongoose.Types.ObjectId(userId)
+    ).exec();
     console.log("newuser", newuser);
     return res.status(200).json({
       success: true,

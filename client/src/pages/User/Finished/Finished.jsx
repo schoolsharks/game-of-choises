@@ -192,9 +192,8 @@ const Finished = () => {
           />
         </Stack>
       </Link>
-
       {/* landing image as per personality */}
-      <Stack
+      {/* <Stack
         paddingX="1rem"
         paddingY={"1.5rem"}
         justifyContent={"end"}
@@ -206,46 +205,33 @@ const Finished = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"}>
-          You are {userStatic.personalityScore}%<br />
-        </Typography>
-        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"}>
-          {userStatic.personalityName}
-          <br />
-        </Typography>
-        <Typography fontFamily={"Oxanium"} fontSize={"1rem"} fontWeight={"400"}>
-          know more
-          <br />
-        </Typography>
-      </Stack>
-
+        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"} >You are {userStatic.personalityScore}%<br /></Typography>
+        <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"} >{userStatic.personalityName}<br /></Typography>
+        <Typography fontFamily={"Oxanium"} fontSize={"1rem"} fontWeight={"400"} >know more<br /></Typography>
+      </Stack> */}
       {/* subCategory */}
-      {userStatic && userStatic.subCategory?.length > 0 && (
-        <Stack
-          display={"flex"}
-          flexDirection={"row"}
-          gap={"1rem"}
-          justifyContent={"space-between"}
-          flexWrap={"wrap"}
-          margin={"1rem"}
-        >
-          {userStatic.subCategory.map((item, index) => (
-            <Typography
-              fontFamily={"Oxanium"}
-              frontWeight={"600"}
-              fontSize={"1.6rem"}
-              lineHeight={"1.5rem"}
-              key={index}
-              fontStyle={"bold"}
-            >
-              {item} |
-            </Typography>
-          ))}
-        </Stack>
-      )}
+      {/* {userStatic && userStatic.subCategory?.length > 0
+        &&
+        (
+          <Stack
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            justifyContent={"space-between"}
+            flexWrap={"wrap"}
+            margin={"1rem"}
+          >
+            {userStatic.subCategory.map((item, index) => (
+              <Typography fontFamily={"Oxanium"} frontWeight={"600"} fontSize={"1.6rem"} lineHeight={"1.5rem"} key={index} fontStyle={"bold"}>
+                {item} |
+              </Typography>
+            ))}
+          </Stack>
+        )}
+
 
       {/* strenghts */}
-      {userStatic && userStatic?.strengths?.length > 0 && (
+      {/* {userStatic && userStatic?.strengths?.length > 0 && (
         <Stack
           borderRadius="10px"
           border="1px solid white"
@@ -274,10 +260,10 @@ const Finished = () => {
             ))}
           </Stack>
         </Stack>
-      )}
-
+      )}{" "}
+      */}
       {/* challenges */}
-      {userStatic && userStatic?.challenges?.length > 0 && (
+      {/* {userStatic && userStatic?.challenges?.length > 0 && (
         <Stack
           borderRadius="10px"
           border="1px solid white"
@@ -307,7 +293,6 @@ const Finished = () => {
           </Stack>
         </Stack>
       )}
-
       {/* analaysis graph */}
       <Stack
         borderRadius="10px"
@@ -349,7 +334,6 @@ const Finished = () => {
           </Stack> */}
         </Stack>
       </Stack>
-
       <Stack direction="row" justifyContent="space-between" spacing={2}>
         <Button
           variant="outlined"
