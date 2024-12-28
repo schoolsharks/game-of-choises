@@ -51,8 +51,8 @@ const Finished = () => {
       { userId: user }
     );
     console.log("response", response.data.data);
-    localStorage.clear();
-    dispatch(resetState());
+    // localStorage.clear();
+    // dispatch(resetState());
     navigate("/home");
   };
   const values = [70, 80, 15, 18, 30];

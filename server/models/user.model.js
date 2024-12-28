@@ -91,7 +91,6 @@ const userSchema = new mongoose.Schema(
     },
     prevScore: {
       type: [Object],
-      default: [],
     },
   },
   { timestamps: true, versionKey: false }
