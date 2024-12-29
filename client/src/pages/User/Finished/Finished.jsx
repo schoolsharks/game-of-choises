@@ -7,7 +7,9 @@ import { resetState } from "../../../app/userSlice";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import shape from "../../../assets/shape.svg";
+import rightArrow from "../../../assets/rightArrow.png"
+import RadarChart from "../../../components/RadarChart";
+import analysisBG from "../../../assets/analysisBG.svg"
 
 const Finished = () => {
   const theme = useTheme();
@@ -15,11 +17,12 @@ const Finished = () => {
 
   const { user, name, wealth, investment, totalPlayers, goalReachPercentage } =
     useSelector((state) => state.user);
-  // console.log("user is", user);
-  const [userStatic, setUserStatic] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
 
-  console.log("userStatic.strenghts", userStatic.strengths);
+  const [userStatic, setUserStatic] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  console.log("userStatic.strenghts", userStatic.strengths
+  )
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
@@ -29,21 +32,20 @@ const Finished = () => {
 
   const getAnalysis = async (user) => {
     const response = await axios.get(
-      import.meta.env.VITE_SERVER_URL + "/users/analysis",
-      {
-        params: {
-          userId: user,
-        },
+      import.meta.env.VITE_SERVER_URL + "/users/analysis", {
+      params: {
+        userId: user
       }
+    }
     );
     console.log("response", response.data.analyticsData);
     setUserStatic(response.data.analyticsData);
   };
 
   useEffect(() => {
-    console.log("Analysis", user);
+    console.log("Analysis", user)
     getAnalysis(user);
-  }, []);
+  }, [user])
 
   const handleReset = async () => {
     const response = await axios.post(
@@ -55,108 +57,18 @@ const Finished = () => {
     // dispatch(resetState());
     navigate("/home");
   };
-  const values = [70, 80, 15, 18, 30];
-  console.log("scoresArray", userStatic.scoreArray);
 
   return (
-    //   <Stack
-    //     color={theme.palette.primary.main}
-    //     borderRadius="16px"
-    //     padding="1rem"
-    //     border={`2px solid ${theme.palette.primary.main}`}
-    //     margin="4em 24px 0"
-    //     gap="8px"
-    //   >
-    //     <Typography fontSize={"1.5rem"} fontWeight="500">
-    //       {name}
-    //     </Typography>
-    //     <Stack direction="row" justifyContent={"space-between"}>
-    //       <Typography>Bank Balance</Typography>
-    //       <Typography fontWeight="700">{wealth}</Typography>
-    //     </Stack>
-    //     <Stack direction="row" justifyContent={"space-between"}>
-    //       <Typography>Investments</Typography>
-    //       <Typography fontWeight="700">{investment}</Typography>
-    //     </Stack>
-    //     <Stack direction="row" justifyContent={"space-between"}>
-    //       <Typography>Total Wealth</Typography>
-    //       <Typography fontWeight="700">{wealth + investment}</Typography>
-    //     </Stack>
-    //   </Stack>
-    //   <Stack
-    //     color={"#ffffff"}
-    //     borderRadius="16px"
-    //     padding="1rem"
-    //     border={`2px solid #ffffff`}
-    //     margin="1rem 24px 0"
-    //     gap="8px"
-    //   >
-    //     <Typography fontSize={"1.5rem"} fontWeight="500">
-    //       Goal update
-    //     </Typography>
-    //     <Stack
-    //       sx={{
-    //         width: "max-content",
-    //         borderRadius: "50px",
-    //         background: `conic-gradient(${theme.palette.primary.main} 0% ${goalReachPercentage}%, #ffffff ${goalReachPercentage}% 100%)`,
-    //         overflow: "hidden",
-    //         margin: "auto",
-    //       }}
-    //     >
-    //       <Stack
-    //         sx={{
-    //           margin: "4px",
-    //           borderRadius: "50px",
-    //           padding: "14px 20px",
-    //           // background: "linear-gradient(#a69a85, #68797b)"
-    //           background: "#D6B48D",
-    //         }}
-    //       >
-    //         <Typography fontSize={"1.57rem"} fontWeight={"500"}>
-    //           {Math.round(Number(goalReachPercentage))}% Reached
-    //         </Typography>
-    //       </Stack>
-    //     </Stack>
-    //   </Stack>
 
-    //   <Stack
-    //     alignItems="center"
-    //     position="fixed"
-    //     bottom="50px"
-    //     left="0"
-    //     width="100%"
-    //   >
-    //     <Box width="80%" height="4px" bgcolor="#fff" borderRadius="4px" />
-    //     <Box
-    //       onClick={handleReset}
-    //       position="absolute"
-    //       left="50%"
-    //       sx={{
-    //         top: "50%",
-    //         transform: "translateX(-50%) translateY(-50%)",
-    //       }}
-    //     >
-    //       <OurButton>
-    //         <img
-    //           src={homeIcon}
-    //           alt=""
-    //           style={{ width: "32px", objectFit: "contain" }}
-    //         />
+    <Stack style={{
+      height: "100vh",
+      paddingY: "3rem",
+      // padding: "1rem",
+      color: "#FFFFFF",
+      background: "rgba(0,0,0,0.7)",
+      gap: "2rem"
+    }}>
 
-    //       </OurButton>
-    //     </Box>
-    //   </Stack>
-    // </Stack>
-    <Stack
-      style={{
-        height: "100vh",
-        paddingTop: "3rem",
-        padding: "1rem",
-        color: "#FFFFFF",
-        background: "rgba(0,0,0,0.7)",
-        gap: "2rem",
-      }}
-    >
       <Link to="#">
         <Stack
           backgroundColor={"#A00612"}
@@ -177,23 +89,26 @@ const Finished = () => {
           alignItems={"center"}
           sx={{
             backgroundColor: "#A00612",
-            textDecoration: "none",
+            textDecoration: "none"
           }}
         >
-          <p>Open account with IDFC</p>
+          <p>
+            Open account with IDFC
+          </p>
           <img
             src={idfc}
             alt="option A"
             style={{
-              // width: "2.31rem",
-              // height: "7.05rem",
-              objectFit: "contain",
+              // width: "2.31rem", 
+              // height: "7.05rem", 
+              objectFit: "contain"
             }}
           />
         </Stack>
       </Link>
+
       {/* landing image as per personality */}
-      {/* <Stack
+      <Stack
         paddingX="1rem"
         paddingY={"1.5rem"}
         justifyContent={"end"}
@@ -208,9 +123,10 @@ const Finished = () => {
         <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"} >You are {userStatic.personalityScore}%<br /></Typography>
         <Typography fontFamily={"Oxanium"} fontSize={"3rem"} fontWeight={"500"} >{userStatic.personalityName}<br /></Typography>
         <Typography fontFamily={"Oxanium"} fontSize={"1rem"} fontWeight={"400"} >know more<br /></Typography>
-      </Stack> */}
+      </Stack>
+
       {/* subCategory */}
-      {/* {userStatic && userStatic.subCategory?.length > 0
+      {userStatic && userStatic.subCategory?.length > 0
         &&
         (
           <Stack
@@ -231,68 +147,62 @@ const Finished = () => {
 
 
       {/* strenghts */}
-      {/* {userStatic && userStatic?.strengths?.length > 0 && (
-        <Stack
-          borderRadius="10px"
-          border="1px solid white"
-          paddingX="1rem"
-          paddingY={"1.5rem"}
-          margin={"1rem"}
-          // height="100%"
-        >
+      {userStatic && userStatic?.strengths?.length > 0
+        &&
+        (
           <Stack
-            display={"flex"}
-            flexDirection={"row"}
-            gap={"1rem"}
-            justifyContent={"flex-start"}
-            flexWrap={"wrap"}
+            borderRadius="10px"
+            border="1px solid white"
+            paddingX="1rem"
+            paddingY={"1.5rem"}
+            margin={"1rem"}
+          // height="100%"
           >
-            {userStatic.strengths.map((item, index) => (
-              <Typography
-                fontFamily={"Oxanium"}
-                frontWeight={"500"}
-                fontSize={"1.1rem"}
-                lineHeight={"1.5rem"}
-                key={index}
-              >
-                {item}
-              </Typography>
-            ))}
+            <Stack
+              display={"flex"}
+              flexDirection={"row"}
+              gap={"1rem"}
+              justifyContent={"flex-start"}
+              flexWrap={"wrap"}
+            >
+              {userStatic.strengths.map((item, index) => (
+                <Typography fontFamily={"Oxanium"} frontWeight={"500"} fontSize={"1.1rem"} lineHeight={"1.5rem"} key={index}>
+                  {item}
+                </Typography>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-      )}{" "}
-      */}
+        )}
+
       {/* challenges */}
-      {/* {userStatic && userStatic?.challenges?.length > 0 && (
-        <Stack
-          borderRadius="10px"
-          border="1px solid white"
-          paddingX="1rem"
-          paddingY={"1.5rem"}
-          margin={"1rem"}
-          // height="100%"
-        >
+      {userStatic && userStatic?.challenges?.length > 0
+        &&
+        (
           <Stack
-            display={"flex"}
-            flexDirection={"row"}
-            gap={"1rem"}
-            justifyContent={"flex-end"}
-            flexWrap={"wrap"}
+            borderRadius="10px"
+            border="1px solid white"
+            paddingX="1rem"
+            paddingY={"1.5rem"}
+            margin={"1rem"}
+          // height="100%"
           >
-            {userStatic.challenges.map((item, index) => (
-              <Typography
-                fontFamily={"Oxanium"}
-                frontWeight={"500"}
-                fontSize={"1.1rem"}
-                lineHeight={"1.5rem"}
-                key={index}
-              >
-                {item}
-              </Typography>
-            ))}
+            <Stack
+              display={"flex"}
+              flexDirection={"row"}
+              gap={"1rem"}
+              justifyContent={"flex-end"}
+              flexWrap={"wrap"}
+            >
+              {userStatic.challenges.map((item, index) => (
+                <Typography fontFamily={"Oxanium"} frontWeight={"500"} fontSize={"1.1rem"} lineHeight={"1.5rem"} key={index}>
+                  {item}
+                </Typography>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-      )}
+        )}
+
+
       {/* analaysis graph */}
       <Stack
         borderRadius="10px"
@@ -302,67 +212,238 @@ const Finished = () => {
         gap={"1rem"}
         margin={"1rem"}
       >
-        <div>
-          <Typography
-            fontFamily={"Oxanium"}
-            frontWeight={"400"}
-            fontSize={"1rem"}
-          >
-            Your personality <br />
-          </Typography>
-          <Typography
-            fontFamily={"Oxanium"}
-            fontSize={"2rem"}
-            fontWeight={"600"}
-          >
-            {userStatic.personalityName}
-          </Typography>
-        </div>
+        <Typography
+          fontFamily={"Oxanium"}
+          fontWeight={"500"}
+          fontSize={"1.6rem"}
+          sx={{
+            textDecoration: "underline"
+          }}
+        >
+          Analysis
+        </Typography>
+        {/* graph */}
+        <Stack>
+          <RadarChart dataValues={userStatic?.scoreArray} />
+        </Stack>
 
-        <Stack display={"flex"} flexDirection={"row"}>
-          {/* <img
-              src={shape}>
+        {/* map the value from userStatic.score */}
+        {userStatic && userStatic.scoreArray
+          &&
+          (
+            <Stack
+              display={"flex"}
+              flexDirection={"column"}
+              gap={"1rem"}>
+              <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"space-between"}>
+                <Typography>
+                  A. Disciplined Saver
+                </Typography>
+                <Typography>
+                  {userStatic?.scoreArray[0]}%
+                </Typography>
+              </Stack>
+
+              <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"space-between"}>
+                <Typography>
+                  B. Balanced Spender
+                </Typography>
+                <Typography>
+                  {userStatic?.scoreArray[1]}%
+                </Typography>
+              </Stack>
+
+              <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"space-between"}>
+                <Typography>
+                  C. The Hustler
+                </Typography>
+                <Typography>
+                  {userStatic?.scoreArray[2]}%
+                </Typography>
+              </Stack>
+
+              <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"space-between"}>
+                <Typography>
+                  D. Hopeful Borrower
+                </Typography>
+                <Typography>
+                  {userStatic?.scoreArray[3]}%
+                </Typography>
+              </Stack>
+
+              <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"space-between"}>
+                <Typography>
+                  E. Live-for-today Spender
+                </Typography>
+                <Typography>
+                  {userStatic?.scoreArray[4]}%
+                </Typography>
+              </Stack>
+            </Stack>
+          )}
+      </Stack>
+
+      {/* claim your reward */}
+      <Stack
+        borderRadius="10px"
+        border="1px solid white"
+        paddingX="1rem"
+        paddingY={"1.5rem"}
+        gap={"1rem"}
+        margin={"1rem"}
+      >
+        <Typography fontFamily={"Oxanium"} frontWeight={"700"} fontSize={"1.8rem"} lineHeight={"2.1rem"}>
+          Claim your reward <br />
+        </Typography>
+        <Stack
+          borderRadius="10px"
+          border="2px solid white"
+
+          backgroundColor={"#A00612"}
+        >
+
+          <Stack
+            backgroundColor={"#ffffff"}
+            height={"300px"}
+            borderRadius={"5px"}
+          >
+          </Stack>
+          <Stack
+            borderRadius="10px"
+            paddingY={"1.5rem"}
+            backgroundColor={"#A00612"}
+            textAlign={"left"}
+            gap={"1rem"}
+            paddingX="1rem"
+          >
+            <Typography
+              fontFamily={"Oxanium"}
+              frontWeight={"500"}
+              fontSize={"1.2rem"}
+              lineHeight={"1.2rem"}
+            >
+              What will make you Switch to IDFC? <br />
+            </Typography>
+
+            <Stack
+              gap={"0.8rem"}
+            >
+              <Button
+                variant="contained"
                 sx={{
-                  width:"162px",
-                  height:"153px"
+                  backgroundColor: selectedOption === 'optionA' ? '#A00620' : '#A00612',
+                  textTransform: "none",
+                  fontWeight: 500,
+                  paddingY: "9px",
+                  border: "1px solid white",
+                  justifyContent: "left",
+                  fontFamily: "Oxanium",
+                  fontWeight: "500",
+                  fontSize: "1rem",
+                  width: '100%',
                 }}
-              </img> */}
-          {/* <Stack display={"flex"} flexDirection={"column"}>
-            {userStatic.subCategory.map((cate, index) => (
-              <div key={index}>{cate}</div>  
-            ))}
-          </Stack> */}
+                onClick={() => setSelectedOption('optionA')}
+              >
+                1. Option A
+              </Button>
+
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: selectedOption === 'optionB' ? '#A00620' : '#A00612',
+                  textTransform: "none",
+                  fontWeight: 500,
+                  paddingY: "9px",
+                  border: "1px solid white",
+                  justifyContent: "left",
+                  fontFamily: "Oxanium",
+                  fontWeight: "500",
+                  fontSize: "1rem",
+                  width: '100%',
+                }}
+                onClick={() => setSelectedOption('optionB')}
+              >
+                2. Option B
+              </Button>
+
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: selectedOption === 'optionC' ? '#A00620' : '#A00612', // Change background if selected
+                  textTransform: "none",
+                  fontWeight: 500,
+                  paddingY: "9px",
+                  border: "1px solid white",
+                  justifyContent: "left",
+                  fontFamily: "Oxanium",
+                  fontWeight: "500",
+                  fontSize: "1rem",
+                  width: '100%', // Make button full width
+                }}
+                onClick={() => setSelectedOption('optionC')}
+              >
+                3. Option C
+              </Button>
+            </Stack>
+
+            <Stack
+              display={"flex"}
+              flexDirection={"row"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+              borderRadius="5px"
+              border="1px solid white"
+              paddingX="1.2rem"
+              paddingY={"0.8rem"}
+              backgroundColor="rgba(0,0,0,0.4)"
+              color="#F1E9DE"
+              sx={{
+                opacity: "0.7"
+              }}
+            >
+              <Typography
+                fontWeight={"700"}
+                fontFamily={"Oxanium"}
+                fontSize={"1.2rem"}
+              >
+                Claim reward
+              </Typography>
+
+              <img
+                src={rightArrow}
+                height={"16px"}
+              >
+              </img>
+
+            </Stack>
+
+          </Stack>
+
         </Stack>
       </Stack>
-      <Stack direction="row" justifyContent="space-between" spacing={2}>
-        <Button
-          variant="outlined"
-          onClick={handleReset}
-          color="white"
-          sx={{
-            borderRadius: "15px",
-            paddingX: "19px",
-            paddingY: "12px",
-            fontSize: "1.5rem",
-            fontFamily: "Oxanium",
-          }}
-        >
-          Play again
-        </Button>
-        <Button
-          variant="outlined"
-          color="white"
-          sx={{
-            borderRadius: "15px",
-            paddingX: "19px",
-            paddingY: "12px",
-            fontSize: "1.5rem",
-            fontFamily: "Oxanium",
-          }}
-        >
-          Invite Friends
-        </Button>
-      </Stack>
+
+      <Button variant="outlined" color="white" sx={{ borderRadius: '15px', paddingX: "19px", paddingY: "12px", margin: "1rem", fontSize: "1.5rem", fontFamily: "Oxanium" }}
+        onClick={handleReset}
+      >
+        Play again
+      </Button>
+
+
     </Stack>
   );
 };

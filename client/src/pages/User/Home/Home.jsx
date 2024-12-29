@@ -46,7 +46,8 @@ const Home = () => {
           width={"80%"}
           maxWidth={"307px"}
           marginTop={"8%"}
-          color={theme.palette.primary.main}
+          color={"#FBF9ED"}
+          fontFamily={"Orbitron"}
         >
           THE GAME OF CHOCIES
         </Typography>

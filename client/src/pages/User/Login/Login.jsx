@@ -16,7 +16,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
   const { user, error: userError, status } = useSelector((state) => state.user);
@@ -35,69 +35,120 @@ const Login = () => {
     if (!response.success) {
       setError(response.error);
     } else {
-      dispatch(createUser({ username: name, email, phone, companyName }));
+      dispatch(createUser({ username: name, email, phoneNumber, companyName }));
     }
   };
 
   if (user) {
-    return <Navigate to="/info" />;
+    return <Navigate to="/questions" />;
   }
 
+  const newtheme = createTheme({
+    components: {
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& .MuiInputLabel-root": { color: "white" },
+            "& .MuiInputLabel-root.Mui-focused": { color: "white" },
+            "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Unfocused underline
+            "& .MuiInput-underline:hover:before": {
+              borderBottomColor: "white",
+            }, // Hover underline
+            "& .MuiInput-underline:after": { borderBottomColor: "white" }, // Focused underline
+          },
+        },
+      },
+    },
+  });
   return (
     <Stack
+      className="user-login"
       width="100%"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        height: "100vh",
-        gap: "30px",
-      }}
+      height={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
+      position="relative"
+      alignItems={"center"}
+      color={"#FBF9ED"}
     >
-      <Stack fontFamily={"Orbitron"} maxWidth={"390px"}>
+      <Stack
+        alignItems="center"
+        justifyContent="center"
+        marginTop="25px"
+        textAlign={"center"}
+        fontFamily="Orbitron"
+      >
         <Typography
           variant={"h3"}
-          fontSize="35px"
-          fontWeight="700"
+          fontSize="2.3rem"
+          fontWeight="600"
+          textAlign={"center"}
           zIndex={1}
-          marginTop={"50px"}
-          color={theme.palette.primary.main}
+          maxWidth={"18rem"}
+          top={"6rem"}
+          maxHeight={"117px"}
+          color={"#FBF9ED"}
+          margin={"50px auto 22px"}
         >
-          Login
+          THE GAME OF CHOCIES
         </Typography>
       </Stack>
 
       <Stack
         width={"100%"}
-        maxWidth="433px"
-        height={"100%"}
+        gap="1rem"
+        sx={{ maxWidth: "27rem" }}
+        marginTop={"1rem"}
+        marginX={"auto"}
         backgroundColor={"#000000B2"}
-        color={theme.palette.primary.main}
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"start"}
-        // gap={""}
-        alignContent={"center"}
-        alignItems={"center"}
-        paddingTop={"10px"}
+        color={"#FBF9ED"}
+        padding={"1px 2.3rem"}
       >
         <Stack
+          width={"85%"}
+          gap="0.5rem"
+          sx={{ maxWidth: "600px" }}
+          marginTop={"1rem"}
+          color={"#FBF9ED"}
+        >
+          <Typography
+            variant="body3"
+            fontWeight={"700"}
+            fontSize="2rem"
+            // marginTop={"40px"}
+            color={"#FBF9ED"}
+          >
+            Login
+          </Typography>
+        </Stack>
+        <Stack
           sx={{
-            width: "90%",
-            maxWidth: "433px",
+            width: "100%",
             gap: "1rem",
           }}
         >
+          {/* <ThemeProvider theme={newtheme}> */}
           <TextField
             label="Name *"
             variant="standard"
-            // color="white"
+            color="#ffffff"
             placeholder="eg. Vanessa Jenson"
             value={name}
             onChange={(e) => {
               setError("");
               setName(e.target.value);
+            }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
             }}
           />
 
@@ -105,38 +156,84 @@ const Login = () => {
             label="Email"
             type="email"
             variant="standard"
+            color="#ffffff"
             placeholder="eg. xoxo@gmail.com"
             value={email}
             onChange={(e) => {
               setError("");
               setEmail(e.target.value);
             }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
+            }}
           />
           <TextField
             label="Phone Number"
             variant="standard"
             type="number"
+            color="#ffffff"
             placeholder="eg. xxxxxxxxxx"
-            value={phone}
+            value={phoneNumber}
             onChange={(e) => {
               setError("");
-              setPhone(e.target.value);
+              setPhoneNumber(e.target.value);
+            }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
             }}
           />
           <TextField
             label="Company Name"
             variant="standard"
+            color="#ffffff"
             placeholder="e.g School Shark"
             value={companyName}
             onChange={(e) => {
               setError("");
               setCompanyName(e.target.value);
             }}
+            sx={{
+              input: {
+                color: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInput-underline:hover:before': {
+                borderBottomColor: '#FBF9ED', 
+              },
+              '& .MuiInputLabel-root': {
+                color: '#FBF9ED',
+              }
+            }}
           />
 
           <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
             {error}
           </Typography>
+          {/* </ThemeProvider> */}
         </Stack>
         <Stack
           sx={{
@@ -147,8 +244,6 @@ const Login = () => {
             justifyContent: "end",
             width: "100%",
             cursor: "pointer",
-            paddingRight: "30px",
-            paddingY: "10px",
           }}
         >
           <Typography
@@ -157,13 +252,13 @@ const Login = () => {
             fontWeight="400"
             textAlign={"end"}
             zIndex={1}
-            color={theme.palette.primary.main}
+            color={"#FBF9ED"}
           >
             Invite friends
           </Typography>
           <SendIcon
             sx={{ color: "white", transform: "rotate(300deg)" }}
-            size={15}
+            size={20}
           />
         </Stack>
 
@@ -178,7 +273,7 @@ const Login = () => {
           alignSelf={"center"}
         >
           <SwipeBar onSwipe={handleSubmit} text={"Get Started"} />
-        </Stack>
+        </Stack> 
       </Stack>
 
       {/* </div> */}
