@@ -1,5 +1,6 @@
 import { Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 
 import SwipeBar from "../../../components/SwipeBar";
 import MySlider from "../../../components/MySlider";
@@ -11,13 +12,25 @@ const Home = () => {
   const handleOnSwipe = () => {
     navigate("/login");
   };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setwindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Stack
       width="100%"
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
         alignItems: "center",
         alignContent: "center",
         height: "100vh",
@@ -26,42 +39,49 @@ const Home = () => {
     >
       <Stack
         sx={{
-          height: "75%",
+          height: "80%",
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          maxWidth: "493px",
-          justifyContent: "center",
+          maxWidth: "431px",
+          paddingBottom: "3%",
+          paddingTop: windowHeight > 600 ? "17%" : "3%",
+          justifyContent: "start",
           alignContent: "center",
           alignItems: "center",
-          gap: "25px",
+          gap: "30px",
         }}
       >
         <Typography
           variant={"h3"}
-          fontSize="2.5rem"
-          fontWeight="700"
+          fontSize="44px"
+          fontWeight="400"
           textAlign={"center"}
           zIndex={1}
           width={"80%"}
-          maxWidth={"307px"}
-          marginTop={"8%"}
+          maxWidth={"280px"}
+          marginTop="5%"
           color={"#FBF9ED"}
-          fontFamily={"Orbitron"}
+          className="lcd-font"
+          sx={{
+            fontFamily: "LSC Solid",
+            lineHeight: "52.8px",
+            letterSpacing: "5%",
+          }}
         >
-          THE GAME OF CHOCIES
+          THE GAME OF CHOICES
         </Typography>
 
         <MySlider />
       </Stack>
 
       <Stack
-        position={"fixed"}
-        bottom={"8%"}
+        position={"relative"}
+        marginBottom={"10px"}
         maxHeight={"88px"}
         maxWidth={"361px"}
-        height={"15%"}
-        width={"75%"}
+        height={"12%"}
+        width={"80%"}
         alignContent={"center"}
         alignSelf={"center"}
       >

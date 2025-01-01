@@ -6,5 +6,8 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
   },
+  css: {
+    postcss: "./postcss.config.js",
+  },
   plugins: [react()],
 });

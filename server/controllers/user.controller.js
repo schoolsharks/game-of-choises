@@ -27,7 +27,7 @@ export const handleCreateUser = async (req, res) => {
     const sq = jwt.sign(
       { sequence: shuffledQuestionIds },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1h" }
     );
 
     const newUser = new User({

@@ -9,6 +9,7 @@ import { createUser } from "../../../app/userSlice";
 import "../../../App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
+import send from "../../../assets/send.png";
 
 const Login = () => {
   const theme = useTheme();
@@ -43,6 +44,17 @@ const Login = () => {
     return <Navigate to="/info" />;
   }
 
+  const handleInviteClick = () => {
+    const websiteURL = window.location.origin;
+    navigator.clipboard
+      .writeText(websiteURL)
+      .then(() => {
+        alert("Website URL copied to clipboard: " + websiteURL);
+      })
+      .catch((err) => {
+        console.error("Failed to copy URL: ", err);
+      });
+  };
   return (
     <Stack
       width="100%"
@@ -59,12 +71,18 @@ const Login = () => {
         <Typography
           variant={"h3"}
           fontSize="35px"
-          fontWeight="700"
+          fontWeight="400"
           zIndex={1}
           marginTop={"50px"}
           color={theme.palette.primary.main}
+          className="lcd-font"
+          sx={{
+            fontFamily: "LSC Solid",
+            lineHeight: "52.8px",
+            letterSpacing: "5%",
+          }}
         >
-          Login
+          LOGIN
         </Typography>
       </Stack>
 
@@ -72,7 +90,6 @@ const Login = () => {
         width={"100%"}
         maxWidth="433px"
         height={"100%"}
-        backgroundColor={"#000000B2"}
         color={theme.palette.primary.main}
         display={"flex"}
         flexDirection={"column"}
@@ -86,7 +103,11 @@ const Login = () => {
           sx={{
             width: "90%",
             maxWidth: "433px",
-            gap: "1rem",
+            gap: "25px",
+
+            fontFamily: "LSC Solid",
+            lineHeight: "52.8px",
+            letterSpacing: "5%",
           }}
         >
           <TextField
@@ -145,7 +166,10 @@ const Login = () => {
             flexDirection: "row",
             alignContent: "center",
             justifyContent: "end",
+            alignItems: "center",
             width: "100%",
+            height: "40%",
+            maxHeight: "300px",
             cursor: "pointer",
             paddingRight: "30px",
             paddingY: "10px",
@@ -158,18 +182,28 @@ const Login = () => {
             textAlign={"end"}
             zIndex={1}
             color={theme.palette.primary.main}
+            onClick={handleInviteClick}
           >
             Invite friends
           </Typography>
-          <SendIcon
-            sx={{ color: "white", transform: "rotate(300deg)" }}
-            size={15}
+          <Box
+            component="img"
+            src={send}
+            alt="send"
+            loading="lazy"
+            sx={{
+              width: "24px",
+              height: "24px",
+
+              objectFit: "center",
+            }}
+            alignContent={"center"}
           />
         </Stack>
 
         <Stack
-          position={"fixed"}
-          bottom={"8%"}
+          position={"relative"}
+          marginBottom={"10px"}
           maxHeight={"88px"}
           maxWidth={"361px"}
           height={"15%"}

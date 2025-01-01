@@ -19,35 +19,38 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Orbitron",
+    typography: {
+      fontFamily: "LSC Solid, sans-serif",
+    },
+
     h1: {
       fontFamily: "Orbitron",
     },
-    h2: {
-      fontFamily: "Orbitron",
-    },
-    h3: {
-      fontFamily: "Orbitron",
-    },
-    h4: {
-      fontFamily: "Orbitron",
-    },
-    h5: {
-      fontFamily: "Orbitron",
-    },
-    h6: {
-      fontFamily: "Orbitron",
-    },
+    // h2: {
+    //   fontFamily: "Orbitron",
+    // },
+    // h3: {
+    //   fontFamily: "Orbitron",
+    // },
+    // h4: {
+    //   fontFamily: "Orbitron",
+    // },
+    // h5: {
+    //   fontFamily: "Orbitron",
+    // },
+    // h6: {
+    //   fontFamily: "Orbitron",
+    // },
 
-    body1: {
-      fontFamily: "DM Sans",
-    },
-    body2: {
-      fontFamily: "DM Sans",
-    },
-    body3: {
-      fontFamily: "Oxanium",
-    },
+    // body1: {
+    //   fontFamily: "DM Sans",
+    // },
+    // body2: {
+    //   fontFamily: "DM Sans",
+    // },
+    // body3: {
+    //   fontFamily: "LCD Solid",
+    // },
   },
   components: {
     MuiTextField: {
@@ -56,9 +59,11 @@ const theme = createTheme({
           // Override for the root of the TextField to ensure text color is white
           "& .MuiInputBase-input": {
             color: "#FBF9ED", // Input text color
+            fontFamily: "LSC Solid",
           },
           "& .MuiInputLabel-root": {
             color: "#FBF9ED", // Label text color
+            fontFamily: "LSC Solid",
           },
           "& .MuiInput-underline:focus": {
             borderBottomColor: "#FBF9ED",
@@ -70,7 +75,9 @@ const theme = createTheme({
             borderBottomColor: "#FBF9ED", // Active underline color
           },
           "& .MuiInputLabel-root": {
-            color: "#FBF9ED", // Change the label color globally
+            color: "#FBF9ED",
+            fontFamily: "LSC Solid",
+            // Change the label color globally
           },
         },
       },

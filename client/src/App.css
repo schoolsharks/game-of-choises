@@ -10,7 +10,16 @@ body,
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "LSC Solid";
+  src: url("../public/fonts/LcdSolid-VPzB.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+body {
+  font-family: "LSC Solid", sans-serif;
+}
 .overlay {
   position: fixed;
   top: 0;

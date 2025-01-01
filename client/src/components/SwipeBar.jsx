@@ -66,10 +66,10 @@ const SwipeBar = ({ onSwipe, text }) => {
         alignItems: "center",
         borderRadius: "10px",
 
-        width: "90%",
-        height: "80%",
-        maxHeight: "88px",
-        maxWidth: "493px",
+        width: "100%",
+        height: "100%",
+        // maxHeight: "88px",
+        maxWidth: "361px",
         // gap: "2.5rem",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
@@ -81,7 +81,7 @@ const SwipeBar = ({ onSwipe, text }) => {
       <Typography
         variant="body3"
         fontSize={"32px"}
-        fontWeight={"600"}
+        fontWeight={"400"}
         color="#F1E9DE"
         width="100%"
         sx={{
@@ -92,6 +92,9 @@ const SwipeBar = ({ onSwipe, text }) => {
                 ? "translateX(20px)"
                 : "translateX(-20px)"
               : "none",
+
+          fontFamily: "LSC Solid",
+          lineHeight: "32.96px",
         }}
       >
         {text}
