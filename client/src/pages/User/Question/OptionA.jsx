@@ -1,8 +1,8 @@
-import { ArrowBack } from "@mui/icons-material";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blue from "../../../assets/blue.svg"
+import blueAA from "../../../assets/blueAA.svg"
+import optionArrowLeft from "../../../assets/optionArrowLeft.svg"
 
 const OptionA = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -93,64 +93,136 @@ const OptionA = ({ text, onOptionSelect }) => {
   };
 
   return (
+    // <Stack
+    //   onTouchStart={handleOnTouchStart}
+    //   onTouchEnd={handleOnTouchEnd}
+    //   onTouchMove={handleOnTouchMove}
+    //   onMouseDown={handleOnMouseDown}
+    //   direction={"row-reverse"}
+    //   justifyContent={"space-between"}
+    //   alignItems={"center"}
+    //   // color={theme.palette.primary.main}
+    //   color={"#FBF9ED"}
+    //   // padding={"20px 12px 20px 55px"
+    //   paddingTop={"20px"}
+    //   paddingBottom={"20px"}
+    //   borderRadius={"30px"}
+    //   border={`2px solid #FBF9ED`}
+    //   position={"absolute"}
+    //   right={`2rem`}
+    //   maxWidth={"900px"}
+    //   gap={"12px"}
+    //   width={"100%"}
+    //   sx={{
+    //     cursor: "pointer",
+    //     scale: isActive ? "1.05" : "1",
+    //     transition: "scale 0.3s ease",
+    //     userSelect: "none",
+    //     minHeight: "4.5rem",
+    //     // backgroundColor: "rgba(0, 0, 0, 0.4)",
+    //     transform: `translateX(${position}px)`,
+    //     backgroundImage:'url("../../../assets/blueA.svg")',
+    //     backgroundSize: 'cover',
+    //     backgroundPosition: 'center',
+    //     // [theme.breakpoints.up("sm")]: {
+    //     //   right: "150px",
+    //     // },
+    //   }}
+    // >
+    //   <Stack alignItems={"center"}>
+    //     <img
+    //       src={blueA}
+    //       alt="option A"
+    //       style={{
+    //         // width: "2.31rem", 
+    //         // height: "7.05rem", 
+    //         position:'relative',
+    //         objectFit: "contain"
+    //       }}
+    //     />
+
+    //   </Stack>
+    //   <Typography
+    //     variant="body1"
+    //     fontWeight={"600"}
+    //     fontSize={"25px"}
+    //     lineHeight={"31.2px"}
+    //     fontFamily={"Oxanium"}
+    //     sx={{ 
+    //       marginLeft: "28px", 
+    //       position:'absolute'
+    //       // [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
+    //     }}
+    //   >
+    //     {text}
+    //   </Typography>
+    // </Stack>
+
+
+
+
+
     <Stack
       onTouchStart={handleOnTouchStart}
       onTouchEnd={handleOnTouchEnd}
       onTouchMove={handleOnTouchMove}
       onMouseDown={handleOnMouseDown}
-      direction={"row-reverse"}
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      // color={theme.palette.primary.main}
       color={"#FBF9ED"}
-      // padding={"20px 12px 20px 55px"
-      paddingTop={"20px"}
-      paddingBottom={"20px"}
-      borderRadius={"30px"}
-      border={`2px solid #FBF9ED`}
-      position={"absolute"}
-      right={`2rem`}
-      maxWidth={"900px"}
-      gap={"12px"}
-      width={"100%"}
       sx={{
         cursor: "pointer",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
         userSelect: "none",
         minHeight: "4.5rem",
-        backgroundColor: "rgba(0, 0, 0, 0.4)",
         transform: `translateX(${position}px)`,
-        // [theme.breakpoints.up("sm")]: {
-        //   right: "150px",
-        // },
+        position: "realtive",
+        width: "346px",
       }}
     >
-      <Stack alignItems={"center"}>
+      <Stack alignItems={"left"} marginLeft={"-12px"}>
         <img
-          src={blue}
+          src={blueAA}
           alt="option A"
           style={{
-            // width: "2.31rem", 
-            // height: "7.05rem", 
+            width: "346px",               // 441 - 87 +2(padding)
+            position: 'relative',
             objectFit: "contain"
           }}
         />
 
       </Stack>
-      <Typography
-        variant="body1"
-        fontWeight={"600"}
-        fontSize={"25px"}
-        lineHeight={"31.2px"}
-        fontFamily={"Oxanium"}
-        sx={{ 
-          marginLeft: "28px", 
-          // [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
-        }}
-      >
-        {text}
-      </Typography>
+      <Stack
+        display={"flex"}
+        alignItems={"center"}
+        flexDirection={"row"}
+        gap={"2rem"}
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          textAlign: "right",
+          width: "346px",
+          paddingLeft: "10px",
+          paddingRight: "45px"
+
+        }}>
+
+        <img src={optionArrowLeft}/>
+
+        {/* <ArrowBackIosIcon /> */}
+
+        <Typography
+          variant="body1"
+          fontWeight={"400"}
+          lineHeight={"25px"}
+          fontSize={"20px"}
+          fontFamily={"LSC Solid"}
+          width={"100%"}
+        >
+          {text}
+        </Typography>
+      </Stack>
     </Stack>
   );
 };

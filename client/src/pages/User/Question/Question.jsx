@@ -78,8 +78,8 @@ const Question = () => {
     <>
 
       <Box
-        // width="470px"
-        maxWidth={"600px"}
+        width="431px"
+        // maxWidth={"600px"}
         height="100vh"
         margin={"auto"}
         display={"flex"}
@@ -190,8 +190,10 @@ const Question = () => {
                     >
                       <Typography
                         color={"#FBF9ED"}
-                        fontSize="2rem"
-                        fontWeight="600"
+                        fontSize="30px"
+                        lineHeight={"40px"}
+                        fontWeight="400"
+                        fontFamily={"LSC Solid"}
                       >
                         {currentQuestion}
                       </Typography>
@@ -199,7 +201,7 @@ const Question = () => {
 
                     {/* options */}
                     {options && (
-                      <Stack marginTop="16px" position="relative" >
+                      <Stack marginTop="16px" display={"flex"} flexDirection={"column"} gap={"3rem"} >
                         <OptionA
                           text={options["A"]}
                           onOptionSelect={handleOptionSelect}

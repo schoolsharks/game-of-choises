@@ -30,8 +30,7 @@ const RadarChart = ({ dataValues }) => {
       {
         label: "Data Values",
         data: dataValues, 
-        backgroundColor: null, 
-        backgroundColor: "linear-gradient(160deg, rgba(160, 6, 18, 1), rgba(255, 125, 135, 1))",
+        backgroundColor: "#A00612",
         borderColor: "#ffffff", 
         borderWidth: 2,
       },
@@ -43,8 +42,8 @@ const RadarChart = ({ dataValues }) => {
       const chart = chartRef.current;
       const ctx = chart.ctx;
       const gradient = ctx.createLinearGradient(0, 0, 0, chart.height);
-      gradient.addColorStop(0, "rgba(160, 6, 18, 1)"); // Start color
-      gradient.addColorStop(1, "rgba(255, 125, 135, 1)"); // End color
+      gradient.addColorStop(0, "#A00612"); // Start color
+      gradient.addColorStop(0.7732, "#FF7D87"); // End color
 
       data.datasets[0].backgroundColor = gradient;
       chart.update();
@@ -91,3 +90,5 @@ const RadarChart = ({ dataValues }) => {
 };
 
 export default RadarChart;
+
+
