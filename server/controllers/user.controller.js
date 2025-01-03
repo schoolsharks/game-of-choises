@@ -23,12 +23,6 @@ export const handleCreateUser = async (req, res) => {
       return res.status(403).json({ message: "No Active Session" });
     }
 
-<<<<<<< HEAD
-
-    const shuffledQuestionIds = questions.map(q => q.id);
-    const sq = jwt.sign({ sequence: shuffledQuestionIds }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    
-=======
     const shuffledQuestionIds = questions.map((q) => q.id);
     const sq = jwt.sign(
       { sequence: shuffledQuestionIds },
@@ -36,7 +30,6 @@ export const handleCreateUser = async (req, res) => {
       { expiresIn: "1h" }
     );
 
->>>>>>> 86021134164161836067fb3300c2e17e2453cba9
     const newUser = new User({
       name,
       email,
