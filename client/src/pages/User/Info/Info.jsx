@@ -14,14 +14,17 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Padding } from "@mui/icons-material";
-
+import "./Info.css";
 const Info = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
-  const handleOnSwipe = () => {
-    navigate("/questions");
-  };
 
+  const navigate = useNavigate();
+  const [showLoading, setShowLoading] = useState(false);
+  const [slide, setSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [cursorVisible, setCursorVisible] = useState(false);
+  // Info data for different slides
   const Infodata = [
     {
       id: 1,
@@ -37,7 +40,7 @@ const Info = () => {
       content1: "The",
       content2: "HUSTLER",
       desc1:
-        "Just like Neo, embark on a financial journey, evolving from inexperienced to confident.Represents bold and ambitious decision-making",
+        "Just like Neo, embark on a financial journey, evolving from inexperienced to confident. Represents bold and ambitious decision-making",
     },
     {
       id: 3,
@@ -45,7 +48,7 @@ const Info = () => {
       content1: "SAVER",
       content2: "DISCIPLINEO",
       desc1:
-        "Just like Morpheus, a wise advisor who inspires discipline and strategic thinking to build financial security",
+        "Just like Morpheus, a wise advisor who inspires discipline and strategic thinking to build financial security  ",
     },
     {
       id: 4,
@@ -53,7 +56,7 @@ const Info = () => {
       content1: "BALANCEO",
       content2: "SPENDER",
       desc1:
-        "Just like Trinity a supportive companion who emphasises balance between enjoying life now and planning for the future",
+        "Just like Trinity a supportive companion who emphasizes balance between enjoying life now and planning for the future  ",
     },
     {
       id: 5,
@@ -61,7 +64,7 @@ const Info = () => {
       content1: "HOPEFUL",
       content2: "BORROWER",
       desc1:
-        " Just like Agent Smith, embodies poor financial habits and misleading shortcuts, testing your decision-making skills",
+        "Just like Agent Smith, embodies poor financial habits and misleading shortcuts, testing your decision-making skills  ",
     },
     {
       id: 6,
@@ -69,42 +72,109 @@ const Info = () => {
       content1: "LIVE-FOR-TODAY",
       content2: "SPENDER",
       desc1:
-        "Just like the matrix system,  you symbolize societal pressure and impulsive behaviors that hinder financial stability",
+        "Just like the matrix system, you symbolize societal pressure and impulsive behaviors that hinder financial stability  ",
     },
   ];
 
-  const [slide, setslide] = useState(0);
-  const data = Infodata[slide];
-
-  const handlePrev = () => {
-    if (slide > 0) {
-      setslide(slide - 1);
-    }
+  const handleOnSwipe = () => {
+    setShowLoading(true);
   };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      setwindowHeight(window.innerHeight);
+      setWindowHeight(window.innerHeight);
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const handleNext = () => {
-    if (slide < Infodata.length - 1) {
-      setslide(slide + 1);
+  const data = Infodata[slide];
+
+  const handlePrev = () => {
+    if (slide > 0) {
+      setSlide(slide - 1);
     }
   };
 
-  // Animation variants for text
-  // const textVariants = {
-  //   hidden: { x: "-100%", opacity: 0 },
-  //   visible: { x: 0, opacity: 1, transition: { duration: 0.8 } },
-  // };
-  // // First, create a new animation variant for fade effect
+  const handleNext = () => {
+    if (slide < Infodata.length - 1) {
+      setSlide(slide + 1);
+    }
+  };
+
+  const LoadingScreen = () => {
+    console.log("hello");
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        navigate("/questions");
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }, []);
+
+    return (
+      <Stack
+        width="210px"
+        height="100vh"
+        margin={"auto"}
+        justifyContent="center"
+      >
+        <Typography
+          variant="typ"
+          sx={{
+            width: "210px",
+            color: "#FFFFFF",
+            position: "relative",
+            display: "inline-block",
+            fontSize: "30px",
+            wordWrap: "break-word",
+            "& .Typewriter": {
+              "& *": {
+                fontSize: "inherit",
+                wordBreak: "break-word",
+              },
+            },
+          }}
+        >
+          <span
+            id="typewriter-text"
+            style={{
+              display: "inline-block",
+              fontSize: "30px",
+              width: "100%",
+              marginRight: "10px",
+              whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
+              textIndent: "-30px",
+              lineHeight: "35px",
+              textAlign: "center",
+              position: "relative",
+              overflowWrap: "break-word",
+            }}
+          >
+            <Typewriter
+              options={{
+                delay: 30,
+                cursor: "|",
+                width: "100%",
+                wrapperClassName: "typewriter-wrapper",
+                strings: ["Let's get started"], // Using \n for explicit line break
+                autoStart: true,
+                loop: false,
+                cursorBlinking: true,
+              }}
+            />
+          </span>
+        </Typography>
+      </Stack>
+    );
+  };
+
+  if (showLoading) {
+    return <LoadingScreen />;
+  }
+
+  // Animation variants for fade-in effect
   const fadeVariants = {
     hidden: {
       opacity: 0,
@@ -123,10 +193,11 @@ const Info = () => {
       width="100%"
       sx={{
         display: "flex",
-        justifyContent: "start",
+        justifyContent: "space-between",
         alignItems: "center",
         alignContent: "center",
-        height: "100vh",
+        height: windowHeight > 690 ? "100vh" : "107vh",
+        paddingBottom: "25px",
         gap: "20px",
         // width: "100vw",
       }}
@@ -135,23 +206,23 @@ const Info = () => {
         width="100%"
         maxWidth="431px"
         maxHeight="750px"
-        height="85%"
         position="relative"
         // overflow="hidden"
         display="flex"
         justifyContent="space-between"
+        // gap="5px"
         flexDirection="column"
         alignContent="center"
         alignItems="center"
         sx={{
           paddingBottom: "10px",
+          height: windowHeight > 680 ? " 85vh" : "97vh",
         }}
       >
         <Box
           sx={{
             width: "100%",
             height: "90%",
-
             objectFit: "center",
             display: "flex",
             flexDirection: "column",
@@ -168,9 +239,9 @@ const Info = () => {
             loading="lazy"
             sx={{
               width: "100%",
-              height: windowHeight > 900 ? "370px" : "200px",
+              height: windowHeight > 650 ? "370px" : "200px",
               // maxHeight: windowHeight > 800 ? "370px" : "300px",
-              opacity: "60%",
+              opacity: "90%",
               objectFit: "center",
             }}
             alignContent={"center"}
@@ -235,15 +306,9 @@ const Info = () => {
               {data.content2}
             </Typography>
           </motion.div>
-          {/* <motion.div
-            key={data.desc1} // Key ensures Framer Motion detects slide change
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            height="50%"
-            variants={textVariants}
-          > */}
-          <typography
+
+          <Typography
+            variant="typ"
             style={{
               fontSize: "20px",
               fontWeight: "400",
@@ -255,21 +320,36 @@ const Info = () => {
               marginBottom: "15px",
               lineHeight: "30px",
               alignContent: "start",
+              display: "inline",
             }}
           >
             <Typewriter
-              key={data.id} // Restart animation for each slide
+              key={data.id}
               options={{
-                delay: 25,
+                delay: 2,
+                cursor: "|",
+                wrapperClassName: "typewriter-wrapper",
               }}
               onInit={(typewriter) => {
                 typewriter
                   .typeString(data.desc1) // Type the current slide description
+                  .callFunction(() => setCursorVisible(true))
                   .pauseFor(500)
                   .start();
               }}
             />
-          </typography>
+            {/* <span
+              id={`cursor-${data.id}`}
+              style={{
+                display: "none",
+                backgroundColor: "#FBF9ED",
+                animation: "blink 1s step-start infinite",
+                width: "15px",
+                height: "30px",
+                marginLeft: "5px",
+              }}
+            /> */}
+          </Typography>
 
           {/* </motion.div> */}
         </Box>
@@ -278,12 +358,14 @@ const Info = () => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "end",
             width: "80%",
+            // height: "10%",
             height: "10%",
-            margin: " 10px auto",
+            alignContent: "center",
+            // margin: " 10px auto",
 
-            paddingBottom: "15px",
+            // paddingY: "15px",
           }}
         >
           <IconButton
@@ -312,6 +394,7 @@ const Info = () => {
       <Stack
         position={"relative"}
         marginBottom={"10px"}
+        // marginTop={"20px"}
         maxHeight={"88px"}
         maxWidth={"361px"}
         height={"15%"}

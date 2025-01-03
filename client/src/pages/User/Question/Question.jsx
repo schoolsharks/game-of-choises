@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Typewriter from "typewriter-effect";
+import "../Info/Info.css";
 import {
   Stack,
   Typography,
@@ -14,7 +16,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import OptionA from "./OptionA";
 import OptionB from "./OptionB";
 import Button from "../../../components/Button";
-import homeIcon from "../../../assets/homeIcon.svg"
+import homeIcon from "../../../assets/homeIcon.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 import bgQuestion from "../../../assets/bg-question.png";
 import Advertisement from "../../../components/Advertisement";
@@ -76,7 +78,6 @@ const Question = () => {
 
   return (
     <>
-
       <Box
         width="431px"
         // maxWidth={"600px"}
@@ -102,7 +103,9 @@ const Question = () => {
               top: 0,
               left: isLargeScreen ? "-100%" : "0",
               width: isLargeScreen ? "175vw" : "100vw",
-              height: `${window.innerHeight < 616 ? 616 : window.innerHeight}px`,
+              height: `${
+                window.innerHeight < 616 ? 616 : window.innerHeight
+              }px`,
               minHeight: "100vh",
               display: "flex",
               alignItems: "center",
@@ -118,7 +121,9 @@ const Question = () => {
 
         {toggle ? (
           <Stack
-            minHeight={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
+            minHeight={`${
+              window.innerHeight < 616 ? 616 : window.innerHeight
+            }px`}
             height="100vh"
             position="relative"
             alignItems={"center"}
@@ -136,8 +141,9 @@ const Question = () => {
                 >
                   <Stack
                     padding="0 12px"
-                    height={`${window.innerHeight < 616 ? 616 : window.innerHeight
-                      }px`}
+                    height={`${
+                      window.innerHeight < 616 ? 616 : window.innerHeight
+                    }px`}
                     sx={{ overflowX: "hidden" }}
                   >
                     {/* <Stack
@@ -186,22 +192,72 @@ const Question = () => {
                     <Stack
                       justifyContent={"center"}
                       height={"250px"}
-                      margin="16px 4px"
+                      margin="16px 0px"
+                      display={"flex"}
+                      width={"100%"}
+                      flexDirection={"row"}
+                      alignContent={"start"}
+                      alignItems={"center"}
                     >
                       <Typography
-                        color={"#FBF9ED"}
-                        fontSize="30px"
-                        lineHeight={"40px"}
-                        fontWeight="400"
-                        fontFamily={"LSC Solid"}
+                        variant="typ"
+                        sx={{
+                          width: "90%",
+                          color: "#FFFFFF",
+                          position: "relative",
+                          display: "inline-block",
+                          fontSize: "28px",
+                          wordWrap: "break-word",
+                          "& .Typewriter": {
+                            "& *": {
+                              fontSize: "inherit",
+                              wordBreak: "break-word",
+                            },
+                          },
+                        }}
                       >
-                        {currentQuestion}
+                        <span
+                          id="typewriter-text"
+                          style={{
+                            display: "inline-block",
+                            fontSize: "28px",
+                            width: "100%",
+                            marginRight: "15px",
+                            whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
+
+                            lineHeight: "35px",
+                            textAlign: "start",
+                            position: "relative",
+                            overflowWrap: "break-word",
+                          }}
+                        >
+                          <Typewriter
+                            // key={data.id}
+                            options={{
+                              delay: 2,
+                              cursor: "|",
+                              wrapperClassName: "typewriter-wrapper",
+                            }}
+                            onInit={(typewriter) => {
+                              typewriter
+                                .typeString(currentQuestion) // Type the current slide description
+
+                                .pauseFor(500)
+                                .start();
+                            }}
+                          />
+                        </span>
                       </Typography>
                     </Stack>
 
                     {/* options */}
                     {options && (
-                      <Stack marginTop="16px" display={"flex"} flexDirection={"column"} gap={"3rem"} >
+                      <Stack
+                        marginTop="16px"
+                        display={"flex"}
+                        flexDirection={"column"}
+                        gap={"3rem"}
+                      >
                         <OptionA
                           text={options["A"]}
                           onOptionSelect={handleOptionSelect}
@@ -226,7 +282,6 @@ const Question = () => {
                       </>
                     )}
                   </Stack> */}
-
 
                     {/* <Stack
                     alignItems="center"
@@ -255,19 +310,15 @@ const Question = () => {
                       </Button>
                     </Box>
                   </Stack> */}
-
-
                   </Stack>
                 </motion.div>
               )}
             </AnimatePresence>
           </Stack>
-
         ) : (
           <Advertisement />
         )}
       </Box>
-
     </>
   );
 };

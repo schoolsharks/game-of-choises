@@ -61,10 +61,10 @@ const Login = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "start",
+        justifyContent: "space-between",
         alignItems: "center",
         height: "100vh",
-        gap: "30px",
+        gap: "20px",
       }}
     >
       <Stack fontFamily={"Orbitron"} maxWidth={"390px"}>
@@ -73,7 +73,7 @@ const Login = () => {
           fontSize="35px"
           fontWeight="400"
           zIndex={1}
-          marginTop={"50px"}
+          marginTop={"80px"}
           color={theme.palette.primary.main}
           className="lcd-font"
           sx={{
@@ -93,112 +93,130 @@ const Login = () => {
         color={theme.palette.primary.main}
         display={"flex"}
         flexDirection={"column"}
-        justifyContent={"start"}
+        justifyContent={"space-between"}
+        marginBottom={"40px"}
         // gap={""}
         alignContent={"center"}
         alignItems={"center"}
         paddingTop={"10px"}
       >
         <Stack
-          sx={{
-            width: "90%",
-            maxWidth: "433px",
-            gap: "25px",
-
-            fontFamily: "LSC Solid",
-            lineHeight: "52.8px",
-            letterSpacing: "5%",
-          }}
+          display={"flex"}
+          flexDirection={"column"}
+          justifyContent={"start"}
+          paddingBottom={"20px"}
+          height={"75%"}
+          width={"100%"}
+          gap={"10px"}
+          alignContent={"center"}
+          alignItems={"center"}
+          paddingTop={"10px"}
         >
-          <TextField
-            label="Name *"
-            variant="standard"
-            // color="white"
-            placeholder="eg. Vanessa Jenson"
-            value={name}
-            onChange={(e) => {
-              setError("");
-              setName(e.target.value);
-            }}
-          />
-
-          <TextField
-            label="Email"
-            type="email"
-            variant="standard"
-            placeholder="eg. xoxo@gmail.com"
-            value={email}
-            onChange={(e) => {
-              setError("");
-              setEmail(e.target.value);
-            }}
-          />
-          <TextField
-            label="Phone Number"
-            variant="standard"
-            type="number"
-            placeholder="eg. xxxxxxxxxx"
-            value={phone}
-            onChange={(e) => {
-              setError("");
-              setPhone(e.target.value);
-            }}
-          />
-          <TextField
-            label="Company Name"
-            variant="standard"
-            placeholder="e.g School Shark"
-            value={companyName}
-            onChange={(e) => {
-              setError("");
-              setCompanyName(e.target.value);
-            }}
-          />
-
-          <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
-            {error}
-          </Typography>
-        </Stack>
-        <Stack
-          sx={{
-            gap: "10px",
-            display: "flex",
-            flexDirection: "row",
-            alignContent: "center",
-            justifyContent: "end",
-            alignItems: "center",
-            width: "100%",
-            height: "40%",
-            maxHeight: "300px",
-            cursor: "pointer",
-            paddingRight: "30px",
-            paddingY: "10px",
-          }}
-        >
-          <Typography
-            variant={"body3"}
-            fontSize="1.4rem"
-            fontWeight="400"
-            textAlign={"end"}
-            zIndex={1}
-            color={theme.palette.primary.main}
-            onClick={handleInviteClick}
-          >
-            Invite friends
-          </Typography>
-          <Box
-            component="img"
-            src={send}
-            alt="send"
-            loading="lazy"
+          <Stack
             sx={{
-              width: "24px",
-              height: "24px",
-
-              objectFit: "center",
+              width: "90%",
+              maxWidth: "433px",
+              gap: "25px",
+              // height: "40%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              fontFamily: "LSC Solid",
+              lineHeight: "52.8px",
+              letterSpacing: "5%",
             }}
-            alignContent={"center"}
-          />
+          >
+            <TextField
+              label="Name *"
+              variant="standard"
+              // color="white"
+              placeholder="eg. Vanessa Jenson"
+              value={name}
+              onChange={(e) => {
+                setError("");
+                setName(e.target.value);
+              }}
+            />
+
+            <TextField
+              label="Email"
+              type="email"
+              variant="standard"
+              placeholder="eg. xoxo@gmail.com"
+              value={email}
+              onChange={(e) => {
+                setError("");
+                setEmail(e.target.value);
+              }}
+            />
+            <TextField
+              label="Phone Number"
+              variant="standard"
+              type="number"
+              placeholder="eg. xxxxxxxxxx"
+              value={phone}
+              onChange={(e) => {
+                setError("");
+                setPhone(e.target.value);
+              }}
+            />
+            <TextField
+              label="Company Name"
+              variant="standard"
+              placeholder="e.g School Shark"
+              value={companyName}
+              onChange={(e) => {
+                setError("");
+                setCompanyName(e.target.value);
+              }}
+            />
+
+            <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
+              {error}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              gap: "10px",
+              display: "flex",
+              flexDirection: "row",
+              alignContent: "center",
+              justifyContent: "end",
+              alignItems: "center",
+              width: "100%",
+              // height: "40%",
+              marginTop: "30px",
+              maxHeight: "300px",
+              cursor: "pointer",
+              paddingRight: "30px",
+              paddingY: "10px",
+            }}
+          >
+            <Typography
+              variant={"body3"}
+              fontSize="1.4rem"
+              fontWeight="400"
+              textAlign={"end"}
+              zIndex={1}
+              color={theme.palette.primary.main}
+              onClick={handleInviteClick}
+            >
+              Invite friends
+            </Typography>
+            <Box
+              component="img"
+              src={send}
+              alt="send"
+              loading="lazy"
+              sx={{
+                width: "24px",
+                height: "24px",
+
+                objectFit: "center",
+              }}
+              alignContent={"center"}
+            />
+          </Stack>
         </Stack>
 
         <Stack

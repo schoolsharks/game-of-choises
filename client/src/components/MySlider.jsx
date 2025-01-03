@@ -168,15 +168,22 @@ const MySlider = () => {
               {index === currentSlide && (
                 <Typewriter
                   options={{
-                    delay: 25,
+                    delay: 5,
+                    cursor: "",
+                    cursorBlinking: false,
                   }}
                   onInit={(typewriter) => {
                     typewriter
                       .typeString(slide.content1)
                       .pauseFor(500)
-                      .callFunction(handleContent1Complete)
+                      .callFunction(
+                        slide.content2
+                          ? handleContent1Complete
+                          : handleTypingComplete
+                      )
                       .start();
                   }}
+                  className="hide-cursor"
                 />
               )}
             </div>
@@ -192,10 +199,11 @@ const MySlider = () => {
                 lineHeight: "30px",
               }}
             >
-              {index === currentSlide && content2Typing && (
+              {slide?.content2 && index === currentSlide && content2Typing && (
                 <Typewriter
                   options={{
-                    delay: 25,
+                    delay: 5,
+                    cursor: "",
                   }}
                   onInit={(typewriter) => {
                     typewriter
@@ -204,6 +212,7 @@ const MySlider = () => {
                       .callFunction(handleTypingComplete)
                       .start();
                   }}
+                  className="hide-cursor"
                 />
               )}
             </div>

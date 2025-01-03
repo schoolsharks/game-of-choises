@@ -1,8 +1,8 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blueAA from "../../../assets/blueAA.svg"
-import optionArrowLeft from "../../../assets/optionArrowLeft.svg"
+import blueAA from "../../../assets/blueAA.svg";
+import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 
 const OptionA = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -10,7 +10,7 @@ const OptionA = ({ text, onOptionSelect }) => {
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"))
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -24,7 +24,6 @@ const OptionA = ({ text, onOptionSelect }) => {
 
     const handleMouseUp = () => {
       if (isActive) {
-
         setIsActive(false);
         const elapsedTime = Date.now() - startTime;
         const endX = position + startX;
@@ -33,7 +32,7 @@ const OptionA = ({ text, onOptionSelect }) => {
 
         if (isLargeScreen && elapsedTime < 500) {
           setPosition(-window.innerWidth);
-          onOptionSelect('A')
+          onOptionSelect("A");
         }
 
         if (distance > 150 && velocity > 0.5) {
@@ -134,8 +133,8 @@ const OptionA = ({ text, onOptionSelect }) => {
     //       src={blueA}
     //       alt="option A"
     //       style={{
-    //         // width: "2.31rem", 
-    //         // height: "7.05rem", 
+    //         // width: "2.31rem",
+    //         // height: "7.05rem",
     //         position:'relative',
     //         objectFit: "contain"
     //       }}
@@ -148,19 +147,15 @@ const OptionA = ({ text, onOptionSelect }) => {
     //     fontSize={"25px"}
     //     lineHeight={"31.2px"}
     //     fontFamily={"Oxanium"}
-    //     sx={{ 
-    //       marginLeft: "28px", 
+    //     sx={{
+    //       marginLeft: "28px",
     //       position:'absolute'
-    //       // [theme.breakpoints.up("sm")]: { marginLeft: "170px" } 
+    //       // [theme.breakpoints.up("sm")]: { marginLeft: "170px" }
     //     }}
     //   >
     //     {text}
     //   </Typography>
     // </Stack>
-
-
-
-
 
     <Stack
       onTouchStart={handleOnTouchStart}
@@ -184,12 +179,11 @@ const OptionA = ({ text, onOptionSelect }) => {
           src={blueAA}
           alt="option A"
           style={{
-            width: "346px",               // 441 - 87 +2(padding)
-            position: 'relative',
-            objectFit: "contain"
+            width: "346px", // 441 - 87 +2(padding)
+            position: "relative",
+            objectFit: "contain",
           }}
         />
-
       </Stack>
       <Stack
         display={"flex"}
@@ -204,11 +198,10 @@ const OptionA = ({ text, onOptionSelect }) => {
           textAlign: "right",
           width: "346px",
           paddingLeft: "10px",
-          paddingRight: "45px"
-
-        }}>
-
-        <img src={optionArrowLeft}/>
+          paddingRight: "45px",
+        }}
+      >
+        <img src={optionArrowLeft} />
 
         {/* <ArrowBackIosIcon /> */}
 

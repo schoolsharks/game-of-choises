@@ -18,40 +18,42 @@ const theme = createTheme({
       tertiary: "#6C6C6C",
     },
   },
-  typography: {
-    typography: {
-      fontFamily: "LSC Solid, sans-serif",
-    },
-
-    h1: {
-      fontFamily: "Orbitron",
-    },
-    // h2: {
-    //   fontFamily: "Orbitron",
-    // },
-    // h3: {
-    //   fontFamily: "Orbitron",
-    // },
-    // h4: {
-    //   fontFamily: "Orbitron",
-    // },
-    // h5: {
-    //   fontFamily: "Orbitron",
-    // },
-    // h6: {
-    //   fontFamily: "Orbitron",
-    // },
-
-    // body1: {
-    //   fontFamily: "DM Sans",
-    // },
-    // body2: {
-    //   fontFamily: "DM Sans",
-    // },
-    // body3: {
-    //   fontFamily: "LCD Solid",
-    // },
+  typ: {
+    fontFamily: "LSC Solid, sans-serif",
   },
+  h3: {
+    fontFamily: "OCR-A BT, sans-serif",
+  },
+
+  h1: {
+    fontFamily: "Orbitron",
+  },
+  // h2: {
+  //   fontFamily: "Orbitron",
+  // },
+  // h3: {
+  //   fontFamily: "Orbitron",
+  // },
+  // h4: {
+  //   fontFamily: "Orbitron",
+  // },
+  // h5: {
+  //   fontFamily: "Orbitron",
+  // },
+  // h6: {
+  //   fontFamily: "Orbitron",
+  // },
+
+  // body1: {
+  //   fontFamily: "DM Sans",
+  // },
+  // body2: {
+  //   fontFamily: "DM Sans",
+  // },
+  // body3: {
+  //   fontFamily: "LCD Solid",
+  // },
+
   components: {
     MuiTextField: {
       styleOverrides: {
