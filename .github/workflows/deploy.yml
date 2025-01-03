@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-     # Step 2: Install and Build Client
+      # Step 2: Build Client
       - name: Build Client
         run: |
           cd client
@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       # Step 3: Prepare Remote Client Directory
-      - name: Clean and Prepare Remote Client Directory
+      - name: Clean Remote Client Directory
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -35,46 +35,44 @@ jobs:
             mkdir -p /home/ubuntu/game-of-choises/client/
 
       # Step 4: Upload Built Client Files
-      - name: Deploy Client Build Files
+      - name: Upload Client Files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "client/dist/*"
+          source: "client/dist/**/*"
           target: "/home/ubuntu/game-of-choises/client/dist/"
-          strip_components: 2
 
-      # Step 5: Install Server Dependencies and Build
-      - name: Install and Build Server
+      # Step 5: Install and Build Server
+      - name: Install Server Dependencies
         run: |
           cd server
           npm ci
 
       # Step 6: Prepare Remote Server Directory
-      - name: Clean and Prepare Remote Server Directory
+      - name: Clean Remote Server Directory
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
-            sudo rm -rf /home/ubuntu/sarie-webapp/server
-            mkdir -p /home/ubuntu/sarie-webapp/server
+            sudo rm -rf /home/ubuntu/game-of-choises/server
+            mkdir -p /home/ubuntu/game-of-choises/server
 
       # Step 7: Upload Server Files
-      - name: Deploy Server Files
+      - name: Upload Server Files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "server/*, server/package*.json"
+          source: "server/**/*"
           target: "/home/ubuntu/game-of-choises/server/"
-          strip_components: 1
 
-      # Step 8: Install Server Dependencies on EC2
-      - name: Install Server Dependencies
+      # Step 8: Install Dependencies on EC2
+      - name: Install Dependencies
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -84,8 +82,8 @@ jobs:
             cd /home/ubuntu/game-of-choises/server
             npm ci --production
 
-      # Step 9: Restart PM2 Server Application
-      - name: Restart PM2 Application
+      # Step 9: Restart PM2
+      - name: Restart Application
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
