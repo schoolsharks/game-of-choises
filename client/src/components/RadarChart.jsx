@@ -28,7 +28,7 @@ const RadarChart = ({ dataValues }) => {
     labels: ["A", "B", "C", "D", "E"], 
     datasets: [
       {
-        label: "Data Values",
+        label: "Score",
         data: dataValues, 
         backgroundColor: "#A00612",
         borderColor: "#ffffff", 
