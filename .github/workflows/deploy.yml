@@ -1,30 +1,59 @@
-name: Deploy to AWS EC2
+name: CI/CD Pipeline for Node.js and React Application
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Also trigger on PRs to the main branch
 
 jobs:
-  deploy:
-    name: Deploy Application
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Step 1: Checkout the code from the repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Build Client
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Use the specific version of Node.js
+
+      # Step 3: Install Client Dependencies and Build the Client
       - name: Build Client
         run: |
           cd client
-          echo "VITE_BACKEND_BASE_URL=${{ secrets.VITE_BACKEND_BASE_URL }}" > .env
-          npm ci
+          npm install
           npm run build
 
-      # Step 3: Prepare Remote Client Directory
-      - name: Clean Remote Client Directory
+      # Step 4: Run Linting & Tests for Client (optional but recommended)
+      - name: Lint Client
+        run: |
+          cd client
+          npm run lint
+          
+      - name: Test Client
+        run: |
+          cd client
+          npm test
+
+      # Step 5: Install Server Dependencies and Build the Server
+      - name: Install Server Dependencies
+        run: |
+          cd server
+          npm install
+          
+      - name: Run Server Tests (optional)
+        run: |
+          cd server
+          npm test
+
+      # Step 6: Prepare Deployment Files for the Client and Server
+      - name: Prepare Remote Directories
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -32,47 +61,32 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
             sudo rm -rf /home/ubuntu/game-of-choises/client/dist
-            mkdir -p /home/ubuntu/game-of-choises/client/
-
-      # Step 4: Upload Built Client Files
-      - name: Upload Client Files
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USER }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "client/dist/**/*"
-          target: "/home/ubuntu/game-of-choises/client/dist/"
-
-      # Step 5: Install and Build Server
-      - name: Install Server Dependencies
-        run: |
-          cd server
-          npm ci
-
-      # Step 6: Prepare Remote Server Directory
-      - name: Clean Remote Server Directory
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USER }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
-          script: |
             sudo rm -rf /home/ubuntu/game-of-choises/server
+            mkdir -p /home/ubuntu/game-of-choises/client
             mkdir -p /home/ubuntu/game-of-choises/server
 
-      # Step 7: Upload Server Files
-      - name: Upload Server Files
+      # Step 7: Upload Built Client Files to EC2
+      - name: Deploy Client Build Files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "server/**/*"
+          source: "client/dist/*"
+          target: "/home/ubuntu/game-of-choises/client/dist/"
+
+      # Step 8: Upload Server Files to EC2
+      - name: Deploy Server Files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          source: "server/*, server/package*.json"
           target: "/home/ubuntu/game-of-choises/server/"
 
-      # Step 8: Install Dependencies on EC2
-      - name: Install Dependencies
+      # Step 9: Install Server Dependencies on EC2
+      - name: Install Server Dependencies on EC2
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -80,10 +94,10 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/game-of-choises/server
-            npm ci --production
+            npm install --production
 
-      # Step 9: Restart PM2
-      - name: Restart Application
+      # Step 10: Restart PM2 Server Application
+      - name: Restart PM2 Application
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
