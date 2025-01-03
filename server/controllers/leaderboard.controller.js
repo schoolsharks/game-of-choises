@@ -7,8 +7,6 @@ const getCurrentSession = async () => {
   return admin ? admin.current_session : null;
 };
 
-
-
 export const getTopUsers = async (req,res) => {
   try {
     const currentSession = await getCurrentSession();

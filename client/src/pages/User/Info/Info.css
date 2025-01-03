@@ -1,0 +1,22 @@
+.typewriter-wrapper {
+  font-size: 20px;
+  gap: "20px";
+}
+
+.Typewriter__cursor {
+  display: inline-block;
+  margin-left: 10px;
+  width: 12px;
+  height: 25px;
+  align-content: "center";
+  align-self: "center";
+  justify-content: "center";
+  margin: "auto";
+
+  background-color: #fbf9ed;
+  color: transparent;
+}
+.typewriter-text {
+  font-size: 36px;
+  color: #ffffff;
+}

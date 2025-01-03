@@ -48,22 +48,22 @@ export const handleGetQuestion = async (req, res) => {
       nextQuesId = user.answered_count < sequence.length ? sequence[user.answered_count] : null;
     }
 
-    let goalReachPercentage;
+    // let goalReachPercentage;
 
-    if (updatedUser.answered_count === questions.length) {
-      const result = await User.aggregate([
-        { $match: { session: user.session } },
-        {
-          $group: {
-            _id: null,
-            totalUsers: { $sum: 1 },
-            wealthyUsers: { $sum: { $cond: [{ $gt: [{ $add: ['$wealth', '$investment'] }, goalTarget] }, 1, 0] } }
-          }
-        },
-        { $project: { percentage: { $multiply: [{ $divide: ['$wealthyUsers', '$totalUsers'] }, 100] } } }
-      ]);
-      goalReachPercentage = result.length ? result[0].percentage : 0;
-    }
+    // if (updatedUser.answered_count === questions.length) {
+    //   const result = await User.aggregate([
+    //     { $match: { session: user.session } },
+    //     {
+    //       $group: {
+    //         _id: null,
+    //         totalUsers: { $sum: 1 },
+    //         // wealthyUsers: { $sum: { $cond: [{ $gt: [{ $add: ['$wealth', '$investment'] }, goalTarget] }, 1, 0] } }
+    //       }
+    //     },
+    //     { $project: { percentage: { $multiply: [{ $divide: ['$wealthyUsers', '$totalUsers'] }, 100] } } }
+    //   ]);
+    //   goalReachPercentage = result.length ? result[0].percentage : 0;
+    // }
 
 
     if (nextQuesId) {
@@ -76,10 +76,10 @@ export const handleGetQuestion = async (req, res) => {
           B: nextQuestion.options['B'].content
         },
         nextQuesId: nextQuestion.id,
-        year: nextQuestion.year,
-        goalReachPercentage: goalReachPercentage,
-        wealth: updatedUser ? updatedUser.wealth : user.wealth,
-        investment: updatedUser ? updatedUser.investment : user.investment,
+        // year: nextQuestion.year,
+        // goalReachPercentage: goalReachPercentage,
+        // wealth: updatedUser ? updatedUser.wealth : user.wealth,
+        // investment: updatedUser ? updatedUser.investment : user.investment,
         totalPlayers: session.totalPlayers,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });
@@ -121,9 +121,17 @@ const updateUserResponses = async (userId, quesId, response) => {
       const question = questions.find(q => q.id == quesId);
       const option = question.options[response];
 
+      console.log("option", option, userId, quesId, response )
 
-      userDoc.wealth += option.wealth;
-      userDoc.investment += option.investment;
+
+      userDoc.Disciplined_Saver += option.Disciplined_Saver;
+      userDoc.Balanced_Spender += option.Balanced_Spender;
+      userDoc.The_Hustler += option.The_Hustler;
+      userDoc.Hopeful_Borrower += option.Hopeful_Borrower;
+      userDoc.Live_for_today_Spender += option.Live_for_today_Spender;
+
+      // userDoc.wealth += option.wealth;
+      // userDoc.investment += option.investment;
       userDoc.answered_count += 1;
 
 

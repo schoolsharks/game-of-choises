@@ -11,6 +11,7 @@ function App() {
   return (
     <Suspense fallback={<></>}>
       <Routes location={location} key={location.pathname}>
+        {/* <div className="h-5 w-5 bg-red-300"></div> */}
         {/* <Route path="/admin/*" element={<AdminMain />} /> */}
         <Route path="/*" element={<UserMain />} />
       </Routes>

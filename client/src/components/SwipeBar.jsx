@@ -2,14 +2,14 @@ import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { handleHaptic } from "../utils/haptic";
-
-const SwipeBar = ({ onSwipe }) => {
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+const SwipeBar = ({ onSwipe, text }) => {
   const [isActive, setIsActive] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
   const [side, setSide] = useState("");
-  const theme=useTheme()
-  const isLargeScreen=useMediaQuery(theme.breakpoints.up("md"))
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const handleStart = (x, type) => {
     setIsActive(true);
     setStartX(x);
@@ -45,7 +45,7 @@ const SwipeBar = ({ onSwipe }) => {
   };
 
   const handleOnMouseUp = (e) => {
-    if(isLargeScreen){
+    if (isLargeScreen) {
       onSwipe();
     }
     handleEnd(e.clientX);
@@ -59,56 +59,47 @@ const SwipeBar = ({ onSwipe }) => {
       onMouseDown={handleOnMouseDown}
       onMouseUp={handleOnMouseUp}
       sx={{
-        margin: "0 32px",
-        border: "2px solid #ffffff",
+        border: "3px solid #ffffff",
         color: "#ffffff",
-        padding: "1rem",
-        cursor:"pointer",
-        justifyContent: "center",
+        cursor: "pointer",
+        justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: "20px",
-        gap: "1.5rem",
+        borderRadius: "10px",
+
+        width: "100%",
+        height: "100%",
+        // maxHeight: "88px",
+        maxWidth: "361px",
+        // gap: "2.5rem",
         scale: isActive ? "1.05" : "1",
         transition: "scale 0.3s ease",
         userSelect: "none",
         position: "relative",
+        padding: "18px 21px",
       }}
     >
-     {!isLargeScreen && <ArrowBack
-        sx={{
-          fontSize: "1rem",
-          display: isActive && side === "LEFT" ? "none" : "block",
-          position: "absolute",
-          left: "40px",
-          transition: "all 0.3s ease",
-          transform: isActive && side === "RIGHT" ? "translateX(-20px)" : "translateX(0)",
-        }}
-      />}
       <Typography
-        variant="body1"
-        fontSize={"1.25rem"}
-        textAlign={"center"}
+        variant="body3"
+        fontSize={"32px"}
+        fontWeight={"400"}
+        color="#F1E9DE"
+        width="100%"
         sx={{
           transition: "all 0.3s ease",
-          transform: isActive && !isLargeScreen
-            ? side === "LEFT"
-              ? "translateX(20px)"
-              : "translateX(-20px)"
-            : "none",
+          transform:
+            isActive && !isLargeScreen
+              ? side === "LEFT"
+                ? "translateX(20px)"
+                : "translateX(-20px)"
+              : "none",
+
+          fontFamily: "LSC Solid",
+          lineHeight: "32.96px",
         }}
       >
-        {isLargeScreen?"Get Started": "Swipe to Begin"}
+        {text}
       </Typography>
-      {!isLargeScreen &&  <ArrowForward
-        sx={{
-          fontSize: "1rem",
-          display: isActive && side === "RIGHT" ? "none" : "block",
-          position: "absolute",
-          right: "40px",
-          transition: "all 0.3s ease",
-          transform: isActive && side === "LEFT" ? "translateX(20px)" : "translateX(0)",
-        }}
-      />}
+      <KeyboardArrowRightIcon style={{ fontSize: "40px" }} />
     </Stack>
   );
 };

@@ -1,0 +1,56 @@
+.slick-dots {
+  position: fixed;
+  bottom: 0%;
+  left: 80%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+.slick-dots li button {
+  background-color: transparent;
+  outline: none;
+}
+
+.slick-dots li button:before {
+  content: "";
+  font-size: 8px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ffefda;
+  opacity: 1;
+}
+.slick-dots li:not(.slick-active) button:hover:before {
+  color: #ffefda;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+.responsive-dots {
+  position: fixed;
+  bottom: 26%;
+  left: 68%; /* Default position for larger screens */
+}
+
+@media (max-width: 768px) {
+  .responsive-dots {
+    left: 80%; /* For screens smaller than 768px */
+  }
+}
+
+.blinking-div {
+  animation: blink 1s infinite;
+}
