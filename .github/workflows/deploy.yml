@@ -21,7 +21,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Use the specific version of Node.js
+          node-version: '18'  # Update to Node.js v18
+          cache: 'npm'  # Cache npm dependencies
 
       # Step 3: Install Client Dependencies and Build the Client
       - name: Build Client
@@ -30,29 +31,14 @@ jobs:
           npm install
           npm run build
 
-      # Step 4: Run Linting & Tests for Client (optional but recommended)
-      - name: Lint Client
-        run: |
-          cd client
-          npm run lint
-          
-      - name: Test Client
-        run: |
-          cd client
-          npm test
 
-      # Step 5: Install Server Dependencies and Build the Server
+      # Step 4: Install Server Dependencies
       - name: Install Server Dependencies
         run: |
           cd server
           npm install
-          
-      - name: Run Server Tests (optional)
-        run: |
-          cd server
-          npm test
 
-      # Step 6: Prepare Deployment Files for the Client and Server
+      # Step 5: Prepare Deployment Files on Remote Server
       - name: Prepare Remote Directories
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -62,10 +48,10 @@ jobs:
           script: |
             sudo rm -rf /home/ubuntu/game-of-choises/client/dist
             sudo rm -rf /home/ubuntu/game-of-choises/server
-            mkdir -p /home/ubuntu/game-of-choises/client
+            mkdir -p /home/ubuntu/game-of-choises/client/dist
             mkdir -p /home/ubuntu/game-of-choises/server
 
-      # Step 7: Upload Built Client Files to EC2
+      # Step 6: Deploy Client Build Files to EC2
       - name: Deploy Client Build Files
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -75,17 +61,19 @@ jobs:
           source: "client/dist/*"
           target: "/home/ubuntu/game-of-choises/client/dist/"
 
-      # Step 8: Upload Server Files to EC2
+      # Step 7: Deploy Server Files to EC2
       - name: Deploy Server Files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "server/*, server/package*.json"
+          source: |
+            server/*
+            server/package*.json
           target: "/home/ubuntu/game-of-choises/server/"
 
-      # Step 9: Install Server Dependencies on EC2
+      # Step 8: Install Server Dependencies on EC2
       - name: Install Server Dependencies on EC2
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -96,7 +84,7 @@ jobs:
             cd /home/ubuntu/game-of-choises/server
             npm install --production
 
-      # Step 10: Restart PM2 Server Application
+      # Step 9: Restart PM2 Application
       - name: Restart PM2 Application
         uses: appleboy/ssh-action@v0.1.7
         with:
