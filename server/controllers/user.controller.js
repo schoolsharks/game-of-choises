@@ -24,11 +24,9 @@ export const handleCreateUser = async (req, res) => {
     }
 
 
-
-
     const shuffledQuestionIds = questions.map(q => q.id);
     const sq = jwt.sign({ sequence: shuffledQuestionIds }, process.env.JWT_SECRET, { expiresIn: '1d' });
-
+    
     const newUser = new User({
       name,
       email,
