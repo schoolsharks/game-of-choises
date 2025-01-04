@@ -59,8 +59,8 @@ const Home = () => {
           fontWeight="400"
           textAlign={"center"}
           zIndex={1}
-          width={"80%"}
-          maxWidth={"280px"}
+          // width={"80%"}
+          // maxWidth={"280px"}
           marginTop="5%"
           color={"#FBF9ED"}
           className="lcd-font"
