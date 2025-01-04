@@ -324,7 +324,7 @@ const Info = () => {
               margin: "auto",
               // padding: "0px 10px 0px 20px",
               marginBottom: "15px",
-              lineHeight: "28px",
+              lineHeight: "25px",
               alignContent: "start",
               display: "inline",
             }}
