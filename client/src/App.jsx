@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import "./App.css";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
-const AdminMain = lazy(() => import("./pages/Admin/Main"));
+// const AdminMain = lazy(() => import("./pages/Admin/Main"));
 const UserMain = lazy(() => import("./pages/User/Main"));
 
 function App() {
