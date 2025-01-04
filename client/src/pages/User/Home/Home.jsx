@@ -70,7 +70,7 @@ const Home = () => {
             letterSpacing: "5%",
           }}
         >
-          THE GAME OF CHOICES
+          THE GAME <br/>OF CHOICES
         </Typography>
 
         <MySlider />
