@@ -192,7 +192,7 @@ const OptionB = ({ text, onOptionSelect }) => {
           alt="Option B"
           style={{
             width: "354px",
-            height: "500px", // Adjusted width
+            // height: "500px", // Adjusted width
             padding: "10px", // Add padding around the content
             position: "relative",
             objectFit: "contain", // Ensures the image content fits inside
