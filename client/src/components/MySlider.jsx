@@ -69,10 +69,12 @@ const MySlider = () => {
     appendDots: (dots) => {
       const dotPositionStyle =
         windowWidth > 768
-          ? windowHeight > 768
+          ? windowHeight > 800
             ? { bottom: "30%", left: "68%" }
-            : { bottom: "18%", left: "68%" }
-          : { bottom: "30%", left: "80%" };
+            : { bottom: "15%", left: "68%" }
+          : windowWidth > 600
+          ? { bottom: "30%", left: "80%" }
+          : { bottom: "18%", left: "80%" };
 
       return (
         <div style={{ position: "fixed", ...dotPositionStyle }}>
@@ -134,7 +136,7 @@ const MySlider = () => {
             <div className="flex w-fit justify-start gap-3 items-start">
               <h2
                 style={{
-                  fontSize: "30px",
+                  fontSize: windowWidth < 400 ? "25px" : "30px",
                   fontWeight: "400",
                   color: "#FBF9ED",
                   marginBottom: "20px",
@@ -157,7 +159,7 @@ const MySlider = () => {
             {/* Typewriter Animation for content1 */}
             <div
               style={{
-                fontSize: "20px",
+                fontSize: windowWidth < 400 ? "15px" : "20px",
                 fontWeight: "400",
                 color: "#FBF9ED",
                 width: "100%",
@@ -191,7 +193,7 @@ const MySlider = () => {
             {/* Typewriter Animation for content2 */}
             <div
               style={{
-                fontSize: "20px",
+                fontSize: windowWidth < 400 ? "15px" : "20px",
                 fontWeight: "400",
                 color: "#FBF9ED",
                 width: "100%",

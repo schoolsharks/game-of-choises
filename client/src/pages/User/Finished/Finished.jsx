@@ -103,7 +103,8 @@ const Finished = () => {
     <Stack
       sx={{
         height: "100vh",
-        width: "431px",
+        width: "100%",
+        maxWidth: "431px",
         margin: "auto",
         color: "#FFFFFF",
         background: "rgba(0,0,0,0.7)",
@@ -239,6 +240,7 @@ const Finished = () => {
               paddingX="19px"
               paddingY="11px"
               marginX="1rem"
+              height="100px"
               backgroundColor="#A0061280"
             >
               <Stack
@@ -295,6 +297,7 @@ const Finished = () => {
               paddingX="19px"
               paddingY="11px"
               marginX="1rem"
+              height="100px"
               backgroundColor="#A0061280"
             >
               <Stack

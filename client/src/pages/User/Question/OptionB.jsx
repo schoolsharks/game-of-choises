@@ -1,7 +1,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import redBB from "../../../assets/redBB.svg"
+import redBB from "../../../assets/redBB.webp";
 import optionArrowRight from "../../../assets/optionArrowRight.svg";
 const OptionB = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -9,7 +9,7 @@ const OptionB = ({ text, onOptionSelect }) => {
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"))
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -31,13 +31,13 @@ const OptionB = ({ text, onOptionSelect }) => {
 
         if (isLargeScreen && elapsedTime < 500) {
           setPosition(-window.innerWidth);
-          onOptionSelect('B')
+          onOptionSelect("B");
         }
 
         if (distance > 150 && velocity > 0.5) {
           setPosition(window.innerWidth);
           handleHaptic();
-          onOptionSelect('B');
+          onOptionSelect("B");
         } else {
           setPosition(0);
         }
@@ -52,6 +52,18 @@ const OptionB = ({ text, onOptionSelect }) => {
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isActive, startX, startTime, position, onOptionSelect]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setwindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleOnTouchStart = (e) => {
     setIsActive(true);
@@ -70,7 +82,7 @@ const OptionB = ({ text, onOptionSelect }) => {
     if (distance > 150 && velocity > 0.5) {
       setPosition(window.innerWidth);
       handleHaptic();
-      onOptionSelect('B');
+      onOptionSelect("B");
     } else {
       setPosition(0);
     }
@@ -127,12 +139,12 @@ const OptionB = ({ text, onOptionSelect }) => {
     // >
     //   <Stack alignItems={"center"}>
     //     <img
-    //       src={red} 
+    //       src={red}
     //       alt="Option B"
     //       style={{
-    //         //  width: "2.31rem", 
-    //         //  height: "7.05rem", 
-    //          objectFit: "contain" 
+    //         //  width: "2.31rem",
+    //         //  height: "7.05rem",
+    //          objectFit: "contain"
     //         }}
     //     />
     //   </Stack>
@@ -148,7 +160,6 @@ const OptionB = ({ text, onOptionSelect }) => {
     //   </Typography>
     // </Stack>
 
-
     <Stack
       onTouchStart={handleOnTouchStart}
       onTouchEnd={handleOnTouchEnd}
@@ -163,24 +174,37 @@ const OptionB = ({ text, onOptionSelect }) => {
         minHeight: "4.5rem",
         transform: `translateX(${position}px)`,
         position: "realtive",
-        marginLeft: "auto",
-        marginRight: "0",
-        width: "346px",
+        paddingRight: "12px",
+        // marginLeft: "auto",
+        // marginRight: "0",
+        // marginBottom: "200px",
+        // width: "431px",
       }}
     >
-
-      <Stack marginRight={"-12px"} alignItems={"end"}>
+      <Stack
+        sx={{
+          marginRight: windowWidth < 400 ? "-2.5rem" : "-4rem",
+        }}
+        alignItems={"end"}
+      >
         <img
           src={redBB}
           alt="Option B"
           style={{
-            width: "346px",               // 441 - 87 +2(padding)
-            position: 'relative',
-            objectFit: "contain"
+            width: "354px",
+            height: "500px", // Adjusted width
+            padding: "10px", // Add padding around the content
+            position: "relative",
+            objectFit: "contain", // Ensures the image content fits inside
+            height: "auto", // Automatically adjusts height based on content
+            boxSizing: "border-box",
+            paddingBottom: "20px",
+            paddingTop: "10px",
+
+            // paddingRight: "25px", // Ensures padding is included in the element's dimensions
           }}
         />
       </Stack>
-
 
       <Stack
         display={"flex"}
@@ -190,33 +214,31 @@ const OptionB = ({ text, onOptionSelect }) => {
         sx={{
           position: "absolute",
           top: "50%",
-          left: "50%",
+          left: windowWidth < 400 ? "50%" : "60%",
+
           transform: "translate(-50%, -50%)",
           textAlign: "left",
           width: "346px",
-          paddingLeft: "55px",
-          paddingRight: "15px"
-
-        }}>
-
+        }}
+      >
         <img src={optionArrowRight} />
 
         <Typography
           variant="body1"
           fontWeight={"400"}
           lineHeight={"25px"}
-          fontSize={"20px"}
+          fontSize={"18px"}
           fontFamily={"LSC Solid"}
-          width={"100%"}
+          width={"65%"}
+          // paddingLeft={"10px"}
+          // paddingRight={"10px"}
+          // marginY={"30px"}
+          // paddingY={"30px"}
         >
           {text}
         </Typography>
-
-
-
       </Stack>
     </Stack>
-
   );
 };
 

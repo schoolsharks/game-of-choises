@@ -1,5 +1,6 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { handleHaptic } from "../utils/haptic";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -50,7 +51,18 @@ const SwipeBar = ({ onSwipe, text }) => {
     }
     handleEnd(e.clientX);
   };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setwindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Stack
       direction="row"
@@ -75,16 +87,16 @@ const SwipeBar = ({ onSwipe, text }) => {
         transition: "scale 0.3s ease",
         userSelect: "none",
         position: "relative",
-        padding: "18px 21px",
+        padding: "18px 18px",
       }}
     >
       <Typography
         variant="body3"
-        fontSize={"32px"}
         fontWeight={"400"}
         color="#F1E9DE"
         width="100%"
         sx={{
+          fontSize: windowWidth > 400 ? "32px" : "25px",
           transition: "all 0.3s ease",
           transform:
             isActive && !isLargeScreen
@@ -99,7 +111,7 @@ const SwipeBar = ({ onSwipe, text }) => {
       >
         {text}
       </Typography>
-      <KeyboardArrowRightIcon style={{ fontSize: "40px" }} />
+      <KeyboardArrowRightIcon style={{ fontSize: "35px" }} />
     </Stack>
   );
 };

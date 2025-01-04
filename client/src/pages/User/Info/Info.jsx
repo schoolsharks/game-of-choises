@@ -196,9 +196,9 @@ const Info = () => {
         justifyContent: "space-between",
         alignItems: "center",
         alignContent: "center",
-        height: windowHeight > 690 ? "100vh" : "107vh",
+        height: "100vh",
         paddingBottom: "25px",
-        gap: "20px",
+        gap: "15px",
         // width: "100vw",
       }}
     >
@@ -215,19 +215,20 @@ const Info = () => {
         alignContent="center"
         alignItems="center"
         sx={{
-          paddingBottom: "10px",
-          height: windowHeight > 680 ? " 85vh" : "97vh",
+          // paddingBottom: "10px",
+          height: windowWidth < 400 ? "89%" : "85%",
+          maxHeight: "700px",
         }}
       >
         <Box
           sx={{
             width: "100%",
-            height: "90%",
+            height: "100%",
             objectFit: "center",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "start",
-            gap: windowHeight > 800 ? "25px" : "10px",
+            justifyContent: "space-between",
+            gap: windowHeight > 800 ? "20px" : "10px",
             alignContent: "center",
             alignItems: "center",
           }}
@@ -239,7 +240,12 @@ const Info = () => {
             loading="lazy"
             sx={{
               width: "100%",
-              height: windowHeight > 650 ? "370px" : "200px",
+              height:
+                windowHeight > 650
+                  ? windowWidth > 400
+                    ? "370px"
+                    : "300px"
+                  : "200px",
               // maxHeight: windowHeight > 800 ? "370px" : "300px",
               opacity: "90%",
               objectFit: "center",
@@ -310,15 +316,15 @@ const Info = () => {
           <Typography
             variant="typ"
             style={{
-              fontSize: "20px",
+              fontSize: windowWidth < 400 ? "17px" : "20px",
               fontWeight: "400",
               color: "#FBF9ED",
               width: "80%",
-              height: "100%",
+              height: "90%",
               margin: "auto",
               // padding: "0px 10px 0px 20px",
               marginBottom: "15px",
-              lineHeight: "30px",
+              lineHeight: "25px",
               alignContent: "start",
               display: "inline",
             }}
@@ -360,8 +366,8 @@ const Info = () => {
             justifyContent: "space-between",
             alignItems: "end",
             width: "80%",
-            // height: "10%",
             height: "10%",
+            // height: "10%",
             alignContent: "center",
             // margin: " 10px auto",
 
@@ -386,21 +392,23 @@ const Info = () => {
               color: slide === 5 ? "gray" : "primary.main",
             }}
           >
-            <ArrowForwardIosIcon />
+            <ArrowForwardIosIcon size={20} />
           </IconButton>
         </Box>
       </Stack>
 
       <Stack
         position={"relative"}
-        marginBottom={"10px"}
+        // marginBottom={"10px"}
         // marginTop={"20px"}
         maxHeight={"88px"}
         maxWidth={"361px"}
-        height={"15%"}
         width={"80%"}
         alignContent={"center"}
         alignSelf={"center"}
+        sx={{
+          height: windowWidth < 400 ? "10%" : "12%",
+        }}
       >
         <SwipeBar onSwipe={handleOnSwipe} text={"Play"} />
       </Stack>
