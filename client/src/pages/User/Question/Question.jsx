@@ -197,13 +197,16 @@ const Question = () => {
 
                   {/* questions */}
                   <Stack
-                    minHeight={"160px"}
+                    minHeight={"230px"}
                     // margin="16px 0px"
                     display={"flex"}
                     width={"100%"}
                     maxWidth={"431px"}
                     marginTop={"50px"}
-                    marginBottom={"15px"}
+                    marginBottom={"20px"}
+                    sx={{
+                      minHeight: window.innerWidth < 500 ? "220px" : "180px",
+                    }}
                   >
                     <Typography
                       variant="typ"
@@ -261,7 +264,7 @@ const Question = () => {
                   {/* options */}
                   {options && (
                     <Stack
-                      // marginTop="10px"
+                      marginTop="15px"
                       display={"flex"}
                       flexDirection={"column"}
                       maxWidth={"380px"}
