@@ -1,7 +1,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blueAA from "../../../assets/blueAA.svg";
+import blueAA from "../../../assets/blueAA.webp";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 
 const OptionA = ({ text, onOptionSelect }) => {
@@ -177,11 +177,23 @@ const OptionA = ({ text, onOptionSelect }) => {
       <Stack alignItems={"left"} marginLeft={"-12px"}>
         <img
           src={blueAA}
-          alt="option A"
+          alt="Option B"
           style={{
-            width: "346px", // 441 - 87 +2(padding)
+            maxWidth: "356px",
+            // height: "800px", // Adjusted width
+            padding: "10px", // Add padding around the content
             position: "relative",
-            objectFit: "contain",
+            objectFit: "contain", // Ensures the image content fits inside
+            height: "auto", // Automatically adjusts height based on content
+            boxSizing: "border-box",
+            // paddingRight: "30px",
+            // marginTop: "15px",
+            // marginBottom: "20px",
+
+            // marginLeft: "32px",
+            // marginRight: "10px",
+
+            // paddingRight: "25px", // Ensures padding is included in the element's dimensions
           }}
         />
       </Stack>
@@ -193,12 +205,12 @@ const OptionA = ({ text, onOptionSelect }) => {
         sx={{
           position: "absolute",
           top: "50%",
-          left: "50%",
+          left: "45%",
           transform: "translate(-50%, -50%)",
           textAlign: "right",
           width: "346px",
-          paddingLeft: "10px",
-          paddingRight: "45px",
+          paddingLeft: "35px",
+          // paddingRight: "45px",
         }}
       >
         <img src={optionArrowLeft} />
@@ -208,10 +220,13 @@ const OptionA = ({ text, onOptionSelect }) => {
         <Typography
           variant="body1"
           fontWeight={"400"}
-          lineHeight={"25px"}
-          fontSize={"20px"}
+          lineHeight={"23px"}
+          fontSize={"1.1rem"}
           fontFamily={"LSC Solid"}
           width={"100%"}
+          paddingX={"10px"}
+          paddingRight={"2.5rem"}
+          paddingY={"10px"}
         >
           {text}
         </Typography>

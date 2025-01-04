@@ -39,7 +39,7 @@ const Home = () => {
     >
       <Stack
         sx={{
-          height: "80%",
+          height: "85%",
           display: "flex",
           flexDirection: "column",
           width: "100%",
@@ -79,7 +79,7 @@ const Home = () => {
         position={"relative"}
         marginBottom={"10px"}
         maxHeight={"88px"}
-        maxWidth={"361px"}
+        maxWidth={"370px"}
         height={"12%"}
         width={"80%"}
         alignContent={"center"}
