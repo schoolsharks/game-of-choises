@@ -45,7 +45,8 @@ const Home = () => {
           width: "100%",
           maxWidth: "431px",
           paddingBottom: "3%",
-          paddingTop: windowHeight > 600 ? "17%" : "3%",
+          // paddingTop: windowHeight > 600 ? "17%" : "3%",
+          paddingTop: "55px",
           justifyContent: "start",
           alignContent: "center",
           alignItems: "center",
@@ -58,8 +59,8 @@ const Home = () => {
           fontWeight="400"
           textAlign={"center"}
           zIndex={1}
-          width={"80%"}
-          maxWidth={"280px"}
+          // width={"80%"}
+          // maxWidth={"280px"}
           marginTop="5%"
           color={"#FBF9ED"}
           className="lcd-font"
@@ -69,7 +70,7 @@ const Home = () => {
             letterSpacing: "5%",
           }}
         >
-          THE GAME OF CHOICES
+          THE GAME <br/>OF CHOICES
         </Typography>
 
         <MySlider />
