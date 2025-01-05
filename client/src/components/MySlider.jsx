@@ -133,7 +133,7 @@ const MySlider = () => {
               color: "#FBF9ED",
             }}
           >
-            <div className="flex w-fit justify-start gap-3 items-start">
+            <div className="flex   gap-3  w-fit justify-start  items-start">
               <h2
                 style={{
                   fontSize: windowWidth < 400 ? "25px" : "30px",
@@ -170,7 +170,7 @@ const MySlider = () => {
               {index === currentSlide && (
                 <Typewriter
                   options={{
-                    delay: 5,
+                    delay: 20,
                     cursor: "",
                     cursorBlinking: false,
                   }}
@@ -204,7 +204,7 @@ const MySlider = () => {
               {slide?.content2 && index === currentSlide && content2Typing && (
                 <Typewriter
                   options={{
-                    delay: 5,
+                    delay: 20,
                     cursor: "",
                   }}
                   onInit={(typewriter) => {

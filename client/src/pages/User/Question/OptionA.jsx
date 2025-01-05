@@ -178,6 +178,7 @@ const OptionA = ({ text, onOptionSelect }) => {
         <img
           src={blueAA}
           alt="Option B"
+          loading="lazy"
           style={{
             maxWidth: "356px",
             // height: "800px", // Adjusted width
@@ -221,7 +222,7 @@ const OptionA = ({ text, onOptionSelect }) => {
           variant="body1"
           fontWeight={"400"}
           lineHeight={"23px"}
-          fontSize={"1.1rem"}
+          fontSize={"1rem"}
           fontFamily={"LSC Solid"}
           width={"100%"}
           paddingX={"10px"}

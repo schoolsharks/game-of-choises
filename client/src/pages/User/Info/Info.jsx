@@ -332,7 +332,7 @@ const Info = () => {
             <Typewriter
               key={data.id}
               options={{
-                delay: 2,
+                delay: 20,
                 cursor: "|",
                 wrapperClassName: "typewriter-wrapper",
               }}

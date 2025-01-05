@@ -11,46 +11,46 @@ const SwipeBar = ({ onSwipe, text }) => {
   const [side, setSide] = useState("");
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
-  const handleStart = (x, type) => {
-    setIsActive(true);
-    setStartX(x);
-    setStartTime(Date.now());
-    setSide(x < window.innerWidth / 2 ? "LEFT" : "RIGHT");
-    handleHaptic();
-  };
+  // const handleStart = (x, type) => {
+  //   setIsActive(true);
+  //   setStartX(x);
+  //   setStartTime(Date.now());
+  //   setSide(x < window.innerWidth / 2 ? "LEFT" : "RIGHT");
+  //   handleHaptic();
+  // // };
 
-  const handleEnd = (x) => {
-    setIsActive(false);
-    const endX = x;
-    const elapsedTime = Date.now() - startTime;
-    const distance = Math.abs(startX - endX);
-    const velocity = distance / elapsedTime;
-    if (distance > 150 && velocity > 0.5) {
-      handleHaptic();
-      if (onSwipe) {
-        onSwipe();
-      }
-    }
-  };
+  // const handleEnd = (x) => {
+  //   setIsActive(false);
+  //   const endX = x;
+  //   const elapsedTime = Date.now() - startTime;
+  //   const distance = Math.abs(startX - endX);
+  //   const velocity = distance / elapsedTime;
+  //   if (distance > 150 && velocity > 0.5) {
+  //     handleHaptic();
+  //     if (onSwipe) {
+  //       onSwipe();
+  //     }
+  //   }
+  // };
 
-  const handleOnTouchStart = (e) => {
-    handleStart(e.targetTouches[0].clientX, "touch");
-  };
+  // const handleOnTouchStart = (e) => {
+  //   handleStart(e.targetTouches[0].clientX, "touch");
+  // };
 
-  const handleOnTouchEnd = (e) => {
-    handleEnd(e.changedTouches[0].clientX);
-  };
+  // const handleOnTouchEnd = (e) => {
+  //   handleEnd(e.changedTouches[0].clientX);
+  // };
 
-  const handleOnMouseDown = (e) => {
-    handleStart(e.clientX, "mouse");
-  };
+  // const handleOnMouseDown = (e) => {
+  //   handleStart(e.clientX, "mouse");
+  // };
 
-  const handleOnMouseUp = (e) => {
-    if (isLargeScreen) {
-      onSwipe();
-    }
-    handleEnd(e.clientX);
-  };
+  // const handleOnMouseUp = (e) => {
+  //   if (isLargeScreen) {
+  //     onSwipe();
+  //   }
+  //   handleEnd(e.clientX);
+  // };
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
 
@@ -66,10 +66,7 @@ const SwipeBar = ({ onSwipe, text }) => {
   return (
     <Stack
       direction="row"
-      onTouchStart={handleOnTouchStart}
-      onTouchEnd={handleOnTouchEnd}
-      onMouseDown={handleOnMouseDown}
-      onMouseUp={handleOnMouseUp}
+      onClick={onSwipe}
       sx={{
         border: "3px solid #ffffff",
         color: "#ffffff",

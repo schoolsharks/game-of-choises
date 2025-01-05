@@ -17,10 +17,16 @@ import { resetState } from "../../../app/userSlice";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import person3 from "../../../assets/person3.png";
+import person4 from "../../../assets/person4.png";
+import person5 from "../../../assets/person5.png";
+import person6 from "../../../assets/person6.png";
+import person2 from "../../../assets/person2.png";
 import rightArrow from "../../../assets/rightArrow.png";
 import RadarChart from "../../../components/RadarChart";
 import analysisBG from "../../../assets/analysisBG.svg";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Translate } from "@mui/icons-material";
 
 const options = [
   {
@@ -58,10 +64,25 @@ const Finished = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [toggle, setToggle] = useState(false);
 
+  const data1 = [
+    "Disciplined Saver",
+    "Balanced Spender",
+    "The Hustler",
+    "Hopeful Borrower",
+    "Live for today Spender",
+  ];
+  const data2 = [person3, person4, person2, person5, person6];
+  const index = data1.findIndex((item) => item === userStatic?.personalityName);
+  // console.log(index);
+
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
+  console.log(userStatic);
+  // if (localStorage.getItem("dataValues")) {
+  //   localStorage.removeItem("dataValues");
+  // }
+  // localStorage.setItem("dataValues", userStatic?.scoreArray);
   const getAnalysis = async (user) => {
     const response = await axios.get(
       import.meta.env.VITE_SERVER_URL + "/users/analysis",
@@ -97,19 +118,20 @@ const Finished = () => {
         console.error("Failed to copy URL: ", err);
       });
   };
-  let str1 = "";
-  let str2 = "";
+  console.log(userStatic?.personalityName);
+  const personalityImage = data2[index];
   return (
     <Stack
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         width: "100%",
         maxWidth: "431px",
         margin: "auto",
         color: "#FFFFFF",
         background: "rgba(0,0,0,0.7)",
         position: "relative",
-        overflow: "hidden", // Prevent outer scroll
+
+        overflowX: "hidden", // Prevent outer scroll
       }}
     >
       {/* Sticky Header */}
@@ -155,22 +177,22 @@ const Finished = () => {
       {/* Scrollable Content */}
       <Stack
         sx={{
-          overflowY: "auto",
-          height: "calc(100vh - 80px)", // Adjust based on header height
+          overflowX: "auto",
+          height: "calc(100vh - 80px)",
           paddingBottom: "2rem",
           gap: "2rem",
+          width: "100%",
         }}
       >
-        {/* Personality Section */}
         <Stack
           paddingX="1rem"
-          paddingY="1.5rem"
+          paddingY="2.8rem"
           justifyContent="end"
           alignItems="end"
           sx={{
-            aspectRatio: "90/40",
-            background: `url(${analysisBG})`,
-            backgroundSize: "contain",
+            aspectRatio: "70/45",
+            background: `url(${personalityImage})`,
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
@@ -187,6 +209,7 @@ const Finished = () => {
             fontSize="30px"
             lineHeight="36px"
             fontWeight="400"
+            marginTop={"14px"}
           >
             {userStatic.personalityName}
           </Typography>
@@ -271,7 +294,7 @@ const Finished = () => {
                     <Typewriter
                       // key={data.id}
                       options={{
-                        delay: 2,
+                        delay: 20,
                         cursor: "|",
                         wrapperClassName: "typewriter-wrapper",
                       }}
@@ -324,13 +347,13 @@ const Finished = () => {
                     text="40px"
                     alignItems="end"
                     sx={{
-                      textIndent: "20px",
+                      textIndent: "70px",
                     }}
                   >
                     <Typewriter
                       // key={data.id}
                       options={{
-                        delay: 2,
+                        delay: 20,
                         cursor: "|",
                         wrapperClassName: "typewriter-wrapper",
                       }}
@@ -380,7 +403,13 @@ const Finished = () => {
           >
             Personality Representation
           </Typography>
-          <Stack>
+          <Stack
+            sx={{
+              width: "100%",
+              margin: "auto",
+              transform: "translateX(-2.6rem)",
+            }}
+          >
             <RadarChart dataValues={userStatic?.scoreArray} />
           </Stack>
 

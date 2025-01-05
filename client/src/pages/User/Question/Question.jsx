@@ -122,7 +122,7 @@ const Question = () => {
       {toggle ? (
         <Stack
           minHeight={`${window.innerHeight < 616 ? 616 : window.innerHeight}px`}
-          height="auto"
+          // height="auto"
           width="100%"
           maxWidth={"431px"}
           position="relative"
@@ -197,13 +197,14 @@ const Question = () => {
 
                   {/* questions */}
                   <Stack
-                    minHeight={"230px"}
+                    height={"140px"}
                     // margin="16px 0px"
                     display={"flex"}
                     width={"100%"}
                     maxWidth={"431px"}
-                    marginTop={"50px"}
-                    marginBottom={"20px"}
+                    marginTop={"40px"}
+                    // marginBottom={"20px"}
+                    alignSelf={"flex-start"}
                     sx={{
                       minHeight: window.innerWidth < 500 ? "220px" : "180px",
                     }}
@@ -245,7 +246,7 @@ const Question = () => {
                         <Typewriter
                           // key={data.id}
                           options={{
-                            delay: 2,
+                            delay: 20,
                             cursor: "|",
                             wrapperClassName: "typewriter-wrapper",
                           }}
@@ -264,7 +265,7 @@ const Question = () => {
                   {/* options */}
                   {options && (
                     <Stack
-                      marginTop="15px"
+                      marginTop="10px"
                       display={"flex"}
                       flexDirection={"column"}
                       maxWidth={"380px"}

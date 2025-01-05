@@ -222,7 +222,7 @@ export const handleAnalysis = async (req, res) => {
       "Live_for_today_Spender",
     ];
 
-    console.log("userDetails hai ab", userDetails);
+    // console.log("userDetails hai ab", userDetails);
     let maxValue = 0;
     let maxPersonalities;
     personalityList.forEach((personality) => {

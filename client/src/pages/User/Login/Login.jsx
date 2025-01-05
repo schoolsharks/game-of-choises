@@ -32,7 +32,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     setError("");
-    const response = loginValidation(email, name);
+    const response = loginValidation(email, name, phone);
     if (!response.success) {
       setError(response.error);
     } else {

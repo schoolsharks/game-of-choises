@@ -189,10 +189,11 @@ const OptionB = ({ text, onOptionSelect }) => {
       >
         <img
           src={redBB}
+          loading="lazy"
           alt="Option B"
           style={{
             width: "354px",
-            height: "500px", // Adjusted width
+            // Adjusted width
             padding: "10px", // Add padding around the content
             position: "relative",
             objectFit: "contain", // Ensures the image content fits inside
@@ -227,7 +228,7 @@ const OptionB = ({ text, onOptionSelect }) => {
           variant="body1"
           fontWeight={"400"}
           lineHeight={"25px"}
-          fontSize={"18px"}
+          fontSize={"1 rem"}
           fontFamily={"LSC Solid"}
           width={"65%"}
           // paddingLeft={"10px"}
