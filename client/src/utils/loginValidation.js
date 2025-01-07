@@ -1,6 +1,9 @@
-export const loginValidation = (email, name, phone) => {
+export const loginValidation = (email, name, phone, companyName) => {
   if (name.trim() === "") {
     return { success: false, error: "Name is required" };
+  }
+  if (companyName.trim() === "") {
+    return { success: false, error: "Company Name is required" };
   }
 
   if (email.trim() != "") {

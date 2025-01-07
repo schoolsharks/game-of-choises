@@ -1,8 +1,43 @@
+// OptionA.jsx
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import blueAA from "../../../assets/blueAA.webp";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
+import { motion, AnimatePresence } from "framer-motion";
+
+const optionVariants = {
+  initial: {
+    opacity: 0,
+    x: -50,
+    scale: 0.95,
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 100,
+      delay: 0.2,
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: -100,
+    scale: 0.95,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  hover: {
+    scale: 1.02,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
 
 const OptionA = ({ text, onOptionSelect }) => {
   const theme = useTheme();
@@ -10,7 +45,7 @@ const OptionA = ({ text, onOptionSelect }) => {
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("xxl"));
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -92,147 +127,89 @@ const OptionA = ({ text, onOptionSelect }) => {
   };
 
   return (
-    // <Stack
-    //   onTouchStart={handleOnTouchStart}
-    //   onTouchEnd={handleOnTouchEnd}
-    //   onTouchMove={handleOnTouchMove}
-    //   onMouseDown={handleOnMouseDown}
-    //   direction={"row-reverse"}
-    //   justifyContent={"space-between"}
-    //   alignItems={"center"}
-    //   // color={theme.palette.primary.main}
-    //   color={"#FBF9ED"}
-    //   // padding={"20px 12px 20px 55px"
-    //   paddingTop={"20px"}
-    //   paddingBottom={"20px"}
-    //   borderRadius={"30px"}
-    //   border={`2px solid #FBF9ED`}
-    //   position={"absolute"}
-    //   right={`2rem`}
-    //   maxWidth={"900px"}
-    //   gap={"12px"}
-    //   width={"100%"}
-    //   sx={{
-    //     cursor: "pointer",
-    //     scale: isActive ? "1.05" : "1",
-    //     transition: "scale 0.3s ease",
-    //     userSelect: "none",
-    //     minHeight: "4.5rem",
-    //     // backgroundColor: "rgba(0, 0, 0, 0.4)",
-    //     transform: `translateX(${position}px)`,
-    //     backgroundImage:'url("../../../assets/blueA.svg")',
-    //     backgroundSize: 'cover',
-    //     backgroundPosition: 'center',
-    //     // [theme.breakpoints.up("sm")]: {
-    //     //   right: "150px",
-    //     // },
-    //   }}
-    // >
-    //   <Stack alignItems={"center"}>
-    //     <img
-    //       src={blueA}
-    //       alt="option A"
-    //       style={{
-    //         // width: "2.31rem",
-    //         // height: "7.05rem",
-    //         position:'relative',
-    //         objectFit: "contain"
-    //       }}
-    //     />
-
-    //   </Stack>
-    //   <Typography
-    //     variant="body1"
-    //     fontWeight={"600"}
-    //     fontSize={"25px"}
-    //     lineHeight={"31.2px"}
-    //     fontFamily={"Oxanium"}
-    //     sx={{
-    //       marginLeft: "28px",
-    //       position:'absolute'
-    //       // [theme.breakpoints.up("sm")]: { marginLeft: "170px" }
-    //     }}
-    //   >
-    //     {text}
-    //   </Typography>
-    // </Stack>
-
-    <Stack
-      onTouchStart={handleOnTouchStart}
-      onTouchEnd={handleOnTouchEnd}
-      onTouchMove={handleOnTouchMove}
-      onMouseDown={handleOnMouseDown}
-      color={"#FBF9ED"}
-      sx={{
-        cursor: "pointer",
-        scale: isActive ? "1.05" : "1",
-        transition: "scale 0.3s ease",
-        userSelect: "none",
-        minHeight: "4.5rem",
-        transform: `translateX(${position}px)`,
-        position: "realtive",
-        width: "346px",
-      }}
-    >
-      <Stack alignItems={"left"} marginLeft={"-12px"}>
-        <img
-          src={blueAA}
-          alt="Option B"
-          loading="lazy"
-          style={{
-            maxWidth: "356px",
-            // height: "800px", // Adjusted width
-            padding: "10px", // Add padding around the content
-            position: "relative",
-            objectFit: "contain", // Ensures the image content fits inside
-            height: "auto", // Automatically adjusts height based on content
-            boxSizing: "border-box",
-            // paddingRight: "30px",
-            // marginTop: "15px",
-            // marginBottom: "20px",
-
-            // marginLeft: "32px",
-            // marginRight: "10px",
-
-            // paddingRight: "25px", // Ensures padding is included in the element's dimensions
-          }}
-        />
-      </Stack>
-      <Stack
-        display={"flex"}
-        alignItems={"center"}
-        flexDirection={"row"}
-        gap={"2rem"}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "45%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "right",
-          width: "346px",
-          paddingLeft: "35px",
-          // paddingRight: "45px",
-        }}
+    <AnimatePresence>
+      <motion.div
+        variants={optionVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        whileHover="hover"
+        style={{ width: "346px" }}
       >
-        <img src={optionArrowLeft} />
-
-        {/* <ArrowBackIosIcon /> */}
-
-        <Typography
-          variant="body1"
-          fontWeight={"400"}
-          lineHeight={"23px"}
-          fontSize={"1rem"}
-          fontFamily={"LSC Solid"}
-          width={"100%"}
-          paddingX={"10px"}
-          paddingRight={"2.5rem"}
-          paddingY={"10px"}
+        <Stack
+          onTouchStart={handleOnTouchStart}
+          onTouchEnd={handleOnTouchEnd}
+          onTouchMove={handleOnTouchMove}
+          onMouseDown={handleOnMouseDown}
+          color={"#FBF9ED"}
+          sx={{
+            cursor: "pointer",
+            scale: isActive ? "1.05" : "1",
+            transition: "scale 0.3s ease",
+            userSelect: "none",
+            minHeight: "4.5rem",
+            transform: `translateX(${position}px)`,
+            position: "relative",
+            width: "100%",
+          }}
         >
-          {text}
-        </Typography>
-      </Stack>
-    </Stack>
+          <Stack alignItems={"left"} marginLeft={"-12px"}>
+            <motion.img
+              src={blueAA}
+              alt="Option A"
+              loading="lazy"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                maxWidth: "356px",
+                padding: "10px",
+                position: "relative",
+                objectFit: "contain",
+                height: "auto",
+                boxSizing: "border-box",
+              }}
+            />
+          </Stack>
+          <Stack
+            display={"flex"}
+            alignItems={"center"}
+            flexDirection={"row"}
+            gap={"2rem"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "45%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "right",
+              width: "346px",
+              paddingLeft: "35px",
+            }}
+          >
+            <motion.img
+              src={optionArrowLeft}
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
+            />
+
+            <Typography
+              variant="body1"
+              fontWeight={"400"}
+              lineHeight={"23px"}
+              fontSize={"1rem"}
+              fontFamily={"LSC Solid"}
+              width={"100%"}
+              paddingX={"10px"}
+              paddingRight={"2.5rem"}
+              paddingY={"10px"}
+            >
+              {text}
+            </Typography>
+          </Stack>
+        </Stack>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

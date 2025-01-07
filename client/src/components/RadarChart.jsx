@@ -10,10 +10,11 @@ const RadarChart = ({ dataValues }) => {
     const resizeCanvas = () => {
       const container = canvas.parentNode;
       const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
 
-      let size = screenWidth > 500 ? 425 : screenWidth > 400 ? 400 : 340;
-      canvas.width = size;
-      canvas.height = size - 50;
+      let size = screenWidth > 500 ? 500 : screenWidth > 400 ? 400 : 340;
+      canvas.width = screenWidth > 500 ? size - 90 : size - 50;
+      canvas.height = screenWidth > 500 ? size - 140 : size - 110;
 
       const centerX = size / 2;
       const centerY = size / 2;
@@ -25,7 +26,17 @@ const RadarChart = ({ dataValues }) => {
     const drawChart = (ctx, centerX, centerY, radius) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const gridLevels = 3;
+      const gridLevels = 6;
+
+      // Create gradient
+      const gradient = ctx.createLinearGradient(
+        centerX,
+        centerY - radius,
+        centerX,
+        centerY + radius
+      );
+      gradient.addColorStop(0, "#A00612");
+      gradient.addColorStop(1, "#FF7D87");
 
       // Modified pentagon points calculation for vertical BC and DE
       const getPentagonPoints = (scale) => {
@@ -83,11 +94,11 @@ const RadarChart = ({ dataValues }) => {
         ctx.closePath();
         // Make the outermost line thicker
         if (i === gridLevels) {
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.8)"; // More opaque for outer border
-          ctx.lineWidth = 3; // Thicker line for outer border
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
+          ctx.lineWidth = 2.5;
         } else {
           ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-          ctx.lineWidth = 1;
+          ctx.lineWidth = 0.5 + i / 10;
         }
         ctx.stroke();
       }
@@ -104,14 +115,14 @@ const RadarChart = ({ dataValues }) => {
 
       // Data points with new pentagon shape
       const dataPoints = [
-        { value: parseFloat(dataValues?.[0] || 0) / 100 }, // A
-        { value: parseFloat(dataValues?.[1] || 0) / 100 }, // B
-        { value: parseFloat(dataValues?.[2] || 0) / 100 }, // C
-        { value: parseFloat(dataValues?.[3] || 0) / 100 }, // D
-        { value: parseFloat(dataValues?.[4] || 0) / 100 }, // E
+        { value: parseFloat(dataValues?.[0] || 0) / 100 },
+        { value: parseFloat(dataValues?.[1] || 0) / 100 },
+        { value: parseFloat(dataValues?.[2] || 0) / 100 },
+        { value: parseFloat(dataValues?.[3] || 0) / 100 },
+        { value: parseFloat(dataValues?.[4] || 0) / 100 },
       ];
 
-      // Draw data polygon with new shape
+      // Draw data polygon with gradient
       ctx.beginPath();
       const dataPolygonPoints = dataPoints.map((point, i) => {
         const basePoints = getPentagonPoints(point.value);
@@ -123,7 +134,7 @@ const RadarChart = ({ dataValues }) => {
         ctx.lineTo(dataPolygonPoints[i].x, dataPolygonPoints[i].y);
       }
       ctx.closePath();
-      ctx.fillStyle = "rgba(208, 66, 77, 0.9)";
+      ctx.fillStyle = gradient; // Apply the gradient here
       ctx.fill();
       ctx.strokeStyle = "#FFFFFF";
       ctx.lineWidth = 1.5;
@@ -137,7 +148,7 @@ const RadarChart = ({ dataValues }) => {
       ctx.textBaseline = "middle";
 
       labels.forEach((label, i) => {
-        const point = getPentagonPoints(1.15)[i]; // Slightly larger scale for labels
+        const point = getPentagonPoints(1.15)[i];
         ctx.fillText(label, point.x, point.y);
       });
     };

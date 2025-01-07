@@ -1,15 +1,61 @@
+// OptionB.jsx
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import redBB from "../../../assets/redBB.webp";
 import optionArrowRight from "../../../assets/optionArrowRight.svg";
+import { motion, AnimatePresence } from "framer-motion";
+
+const optionVariants = {
+  initial: {
+    opacity: 0,
+    x: 50,
+    scale: 0.95,
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 100,
+      delay: 0.3, // Slightly delayed after Option A
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: 100,
+    scale: 0.95,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  hover: {
+    scale: 1.02,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
 const OptionB = ({ text, onOptionSelect }) => {
   const theme = useTheme();
   const [isActive, setIsActive] = useState(false);
   const [position, setPosition] = useState(0);
   const [startX, setStartX] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("xxl"));
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -30,7 +76,7 @@ const OptionB = ({ text, onOptionSelect }) => {
         const velocity = distance / elapsedTime;
 
         if (isLargeScreen && elapsedTime < 500) {
-          setPosition(-window.innerWidth);
+          setPosition(window.innerWidth);
           onOptionSelect("B");
         }
 
@@ -52,18 +98,6 @@ const OptionB = ({ text, onOptionSelect }) => {
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isActive, startX, startTime, position, onOptionSelect]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setwindowHeight(window.innerHeight);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleOnTouchStart = (e) => {
     setIsActive(true);
@@ -103,143 +137,92 @@ const OptionB = ({ text, onOptionSelect }) => {
   };
 
   return (
-    // <Stack
-    //   onTouchStart={handleOnTouchStart}
-    //   onTouchEnd={handleOnTouchEnd}
-    //   onTouchMove={handleOnTouchMove}
-    //   onMouseDown={handleOnMouseDown}
-    //   // color={theme.palette.primary.main}
-    //   color={"#FBF9ED"}
-    //   direction={"row"}
-    //   justifyContent={"space-between"}
-    //   alignItems={"center"}
-    //   border={`2px solid #FBF9ED`}
-    //   // padding={"20px 55px 20px 12px"}
-    //   paddingTop={"20px"}
-    //   paddingBottom={"20px"}
-    //   borderRadius={"30px"}
-    //   position={"absolute"}
-    //   left={"2rem"}
-    //   width={"100%"}
-    //   top={"250px"}
-    //   maxWidth={"900px"}
-    //   gap={"12px"}
-    //   sx={{
-    //     cursor: "pointer",
-    //     scale: isActive ? "1.05" : "1",
-    //     transition: "scale 0.3s ease",
-    //     userSelect: "none",
-    //     minHeight: "4.5rem",
-    //     backgroundColor: "rgba(0, 0, 0, 0.4)",
-    //     transform: `translateX(${position}px)`,
-    //     // [theme.breakpoints.up("sm")]: {
-    //     //   left: "150px",
-    //     // },
-    //   }}
-    // >
-    //   <Stack alignItems={"center"}>
-    //     <img
-    //       src={red}
-    //       alt="Option B"
-    //       style={{
-    //         //  width: "2.31rem",
-    //         //  height: "7.05rem",
-    //          objectFit: "contain"
-    //         }}
-    //     />
-    //   </Stack>
-    //   <Typography
-    //     variant="body1"
-    //     fontWeight={"600"}
-    //     fontSize={"25px"}
-    //     lineHeight={"31.2px"}
-    //     fontFamily={"Oxanium"}
-    //     sx={{ marginRight: "28px" }}
-    //   >
-    //     {text}
-    //   </Typography>
-    // </Stack>
-
-    <Stack
-      onTouchStart={handleOnTouchStart}
-      onTouchEnd={handleOnTouchEnd}
-      onTouchMove={handleOnTouchMove}
-      onMouseDown={handleOnMouseDown}
-      color={"#FBF9ED"}
-      sx={{
-        cursor: "pointer",
-        scale: isActive ? "1.05" : "1",
-        transition: "scale 0.3s ease",
-        userSelect: "none",
-        minHeight: "4.5rem",
-        transform: `translateX(${position}px)`,
-        position: "realtive",
-        paddingRight: "12px",
-        // marginLeft: "auto",
-        // marginRight: "0",
-        // marginBottom: "200px",
-        // width: "431px",
-      }}
-    >
-      <Stack
-        sx={{
-          marginRight: windowWidth < 400 ? "-2.5rem" : "-4rem",
-        }}
-        alignItems={"end"}
+    <AnimatePresence>
+      <motion.div
+        variants={optionVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        whileHover="hover"
       >
-        <img
-          src={redBB}
-          loading="lazy"
-          alt="Option B"
-          style={{
-            width: "354px",
-            // Adjusted width
-            padding: "10px", // Add padding around the content
+        <Stack
+          onTouchStart={handleOnTouchStart}
+          onTouchEnd={handleOnTouchEnd}
+          onTouchMove={handleOnTouchMove}
+          onMouseDown={handleOnMouseDown}
+          color={"#FBF9ED"}
+          sx={{
+            cursor: "pointer",
+            scale: isActive ? "1.05" : "1",
+            transition: "scale 0.3s ease",
+            userSelect: "none",
+            minHeight: "4.5rem",
+            transform: `translateX(${position}px)`,
             position: "relative",
-            objectFit: "contain", // Ensures the image content fits inside
-            height: "auto", // Automatically adjusts height based on content
-            boxSizing: "border-box",
-            paddingBottom: "20px",
-            paddingTop: "10px",
-
-            // paddingRight: "25px", // Ensures padding is included in the element's dimensions
+            paddingRight: "12px",
           }}
-        />
-      </Stack>
-
-      <Stack
-        display={"flex"}
-        alignItems={"center"}
-        flexDirection={"row-reverse"}
-        gap={"2rem"}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: windowWidth < 400 ? "50%" : "60%",
-
-          transform: "translate(-50%, -50%)",
-          textAlign: "left",
-          width: "346px",
-        }}
-      >
-        <img src={optionArrowRight} />
-
-        <Typography
-          variant="body1"
-          fontWeight={"400"}
-          lineHeight={"25px"}
-          fontSize={"1 rem"}
-          fontFamily={"LSC Solid"}
-          width={"65%"}
-          // paddingLeft={"10px"}
-          // paddingRight={"10px"}
-          // marginY={"30px"}
-          // paddingY={"30px"}
         >
-          {text}
-        </Typography>
-      </Stack>
-    </Stack>
+          <Stack
+            sx={{
+              marginRight: windowWidth < 400 ? "-2.5rem" : "-4.4rem",
+            }}
+            alignItems={"end"}
+          >
+            <motion.img
+              src={redBB}
+              loading="lazy"
+              alt="Option B"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                width: "354px",
+                padding: "10px",
+                position: "relative",
+                objectFit: "contain",
+                height: "auto",
+                boxSizing: "border-box",
+                paddingBottom: "20px",
+                paddingTop: "10px",
+              }}
+            />
+          </Stack>
+
+          <Stack
+            display={"flex"}
+            alignItems={"center"}
+            flexDirection={"row-reverse"}
+            gap={"2rem"}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: windowWidth < 400 ? "50%" : "60%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "left",
+              width: "346px",
+            }}
+          >
+            <motion.img
+              src={optionArrowRight}
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            />
+
+            <Typography
+              variant="body1"
+              fontWeight={"400"}
+              lineHeight={"25px"}
+              fontSize={"1rem"}
+              fontFamily={"LSC Solid"}
+              width={"65%"}
+            >
+              {text}
+            </Typography>
+          </Stack>
+        </Stack>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

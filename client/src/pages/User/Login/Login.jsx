@@ -32,7 +32,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     setError("");
-    const response = loginValidation(email, name, phone);
+    const response = loginValidation(email, name, phone, companyName);
     if (!response.success) {
       setError(response.error);
     } else {
@@ -63,7 +63,7 @@ const Login = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        height: "100vh",
+        minHeight: "100vh",
         gap: "20px",
       }}
     >
@@ -139,7 +139,7 @@ const Login = () => {
             />
 
             <TextField
-              label="Email"
+              label="Email *"
               type="email"
               variant="standard"
               placeholder="eg. xoxo@gmail.com"
@@ -150,7 +150,7 @@ const Login = () => {
               }}
             />
             <TextField
-              label="Phone Number"
+              label="Phone Number *"
               variant="standard"
               type="number"
               placeholder="eg. xxxxxxxxxx"
@@ -161,7 +161,7 @@ const Login = () => {
               }}
             />
             <TextField
-              label="Company Name"
+              label="Company Name *"
               variant="standard"
               placeholder="e.g School Shark"
               value={companyName}

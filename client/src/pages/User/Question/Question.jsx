@@ -22,11 +22,30 @@ import bgQuestion from "../../../assets/bg-question.png";
 import Advertisement from "../../../components/Advertisement";
 
 const questionVariants = {
-  initial: { opacity: 0, x: "100vw" },
-  in: { opacity: 1, x: 0 },
-  out: { opacity: 0, x: "-100vw" },
+  initial: { opacity: 0, x: "100vw", scale: 0.8 },
+  in: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 90,
+    },
+  },
+  out: {
+    opacity: 0,
+    x: "-100vw",
+    scale: 0.8,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 90,
+    },
+  },
 };
 
+// Remove the separate transition object since we're defining transitions in variants
 const questionTransition = {
   type: "tween",
   ease: "anticipate",
@@ -99,19 +118,20 @@ const Question = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           style={{
             position: "absolute",
             top: 0,
-            left: isLargeScreen ? "-100%" : "0",
-            width: isLargeScreen ? "175vw" : "100vw",
+            // left: isLargeScreen ? "-100%" : "0",
+            width: "100vw",
             height: `${window.innerHeight < 616 ? 616 : window.innerHeight}px`,
             minHeight: "100vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "rgba(0, 0, 0, 0.079)",
-            clipPath: "-10px -10px -10px -50px",
+            clipPath: "-20px -20px -20px -50px",
             zIndex: 1,
           }}
         >
@@ -128,19 +148,21 @@ const Question = () => {
           position="relative"
           alignItems={"center"}
         >
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             {currentQuestion && (
               <motion.div
                 key={currentQuestion}
                 initial="initial"
                 animate="in"
                 exit="out"
-                width="100%"
-                height="100%"
-                maxWidth="100%"
                 variants={questionVariants}
-                transition={questionTransition}
-                style={{ position: "relative", zIndex: 0 }}
+                style={{
+                  position: "relative",
+                  zIndex: 0,
+                  width: "100%",
+                  height: "100%",
+                  maxWidth: "100%",
+                }}
               >
                 <Stack
                   padding="0 0px"

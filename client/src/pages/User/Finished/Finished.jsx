@@ -17,11 +17,12 @@ import { resetState } from "../../../app/userSlice";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import person3 from "../../../assets/person3.png";
-import person4 from "../../../assets/person4.png";
-import person5 from "../../../assets/person5.png";
-import person6 from "../../../assets/person6.png";
-import person2 from "../../../assets/person2.png";
+
+import person3 from "../../../assets/person3.svg";
+import person4 from "../../../assets/person4.svg";
+import person5 from "../../../assets/person5.svg";
+import person6 from "../../../assets/person6.svg";
+import person2 from "../../../assets/person2.svg";
 import rightArrow from "../../../assets/rightArrow.png";
 import RadarChart from "../../../components/RadarChart";
 import analysisBG from "../../../assets/analysisBG.svg";
@@ -100,10 +101,11 @@ const Finished = () => {
   }, [user]);
 
   const handleReset = async () => {
-    const response = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/users/storedata`,
-      { userId: user }
-    );
+    // const response = await axios.post(
+    //   `${import.meta.env.VITE_SERVER_URL}/users/storedata`,
+    //   { userId: user }
+    // );
+    localStorage.clear();
     navigate("/home");
   };
 
@@ -189,11 +191,16 @@ const Finished = () => {
           paddingY="2.8rem"
           justifyContent="end"
           alignItems="end"
+          minHeight={"210px"}
           sx={{
-            aspectRatio: "70/45",
+            width: "100%",
+            minHeight: "210px",
             background: `url(${personalityImage})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+
+            // opacity: "0.9",
           }}
         >
           <Typography
@@ -260,17 +267,18 @@ const Finished = () => {
             <Stack
               borderRadius="10px"
               border="2px dotted white"
-              paddingX="19px"
-              paddingY="11px"
+              paddingRight="50px"
+              paddingTop="11px"
+              paddingLeft={"14px"}
               marginX="1rem"
-              height="100px"
+              minHeight="100px"
               backgroundColor="#A0061280"
             >
               <Stack
                 display="flex"
                 flexDirection="row"
                 gap="4px"
-                justifyContent="flex-start"
+                // justifyContent="flex-start"s
                 flexWrap="wrap"
               >
                 <div
@@ -317,10 +325,10 @@ const Finished = () => {
             <Stack
               borderRadius="10px"
               border="2px dotted white"
-              paddingX="19px"
-              paddingY="11px"
+              paddingLeft="50px"
+              paddingTop="11px"
               marginX="1rem"
-              height="100px"
+              minHeight="100px"
               backgroundColor="#A0061280"
             >
               <Stack
@@ -342,9 +350,9 @@ const Finished = () => {
                     fontFamily="OCR-A BT"
                     fontWeight="400"
                     width="100%"
-                    fontSize="17px"
+                    fontSize="16px"
                     lineHeight="25px"
-                    text="40px"
+                    text="10px"
                     alignItems="end"
                     sx={{
                       textIndent: "70px",
@@ -407,7 +415,13 @@ const Finished = () => {
             sx={{
               width: "100%",
               margin: "auto",
-              transform: "translateX(-2.6rem)",
+              transform:
+                window.innerWidth > 500
+                  ? "translateX(-3.5rem)"
+                  : window.innerWidth > 400
+                  ? "translateX(-0.2rem)"
+                  : "translateX(-1rem)",
+              objectFit: "cove",
             }}
           >
             <RadarChart dataValues={userStatic?.scoreArray} />
@@ -694,13 +708,13 @@ const Finished = () => {
             alignContent: "center",
             justifyContent: "end",
             alignItems: "center",
-            width: "100%",
+            width: "88%",
             // height: "40%",
-            marginTop: "30px",
+            marginTop: "10px",
             maxHeight: "300px",
             cursor: "pointer",
-            paddingRight: "30px",
-            paddingY: "10px",
+            // paddingRight: "30px",
+            paddingY: "6px",
           }}
         >
           <Typography

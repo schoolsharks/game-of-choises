@@ -9,7 +9,7 @@ const MySlider = () => {
   const sliderRef = useRef(null); // Ref for the slider
   const [currentSlide, setCurrentSlide] = useState(0); // Track current slide
   const [content2Typing, setContent2Typing] = useState(false); // Track when content2 starts typing
-
+  const [content1Typing, setContent1Typing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setwindowHeight] = useState(window.innerHeight); // Track window width for responsive styles
 
@@ -64,14 +64,16 @@ const MySlider = () => {
     arrows: false,
     beforeChange: (_, next) => {
       setCurrentSlide(next);
-      setContent2Typing(false); // Reset content2 typing flag for the next slide
+      setContent2Typing(false);
+      setContent1Typing(false);
+      // Reset content2 typing flag for the next slide
     },
     appendDots: (dots) => {
       const dotPositionStyle =
         windowWidth > 768
           ? windowHeight > 800
-            ? { bottom: "30%", left: "68%" }
-            : { bottom: "15%", left: "68%" }
+            ? { bottom: "30%", left: "75%" }
+            : { bottom: "15%", left: "75%" }
           : windowWidth > 600
           ? { bottom: "30%", left: "80%" }
           : { bottom: "18%", left: "80%" };
@@ -96,6 +98,9 @@ const MySlider = () => {
 
   const handleContent1Complete = () => {
     setContent2Typing(true); // Start typing content2
+  };
+  const handletitleComplete = () => {
+    setContent1Typing(true); // Start typing content2
   };
 
   const handleTypingComplete = () => {
@@ -133,7 +138,7 @@ const MySlider = () => {
               color: "#FBF9ED",
             }}
           >
-            <div className="flex   gap-3  w-fit justify-start  items-start">
+            {/* <div className="flex   gap-3  w-fit justify-start  items-start">
               <h2
                 style={{
                   fontSize: windowWidth < 400 ? "25px" : "30px",
@@ -151,9 +156,35 @@ const MySlider = () => {
                   height: "30px",
                   width: "15px",
                   backgroundColor: "white",
-                  animation: "blink 1s infinite", // Blink animation
+                  animation: "blink 1s infinite", 
                 }}
               ></div>
+            </div> */}
+            <div
+              style={{
+                fontSize: windowWidth < 400 ? "25px" : "30px",
+                fontWeight: "400",
+                color: "#FBF9ED",
+                width: "100%",
+                marginBottom: "20px",
+                lineHeight: "30px",
+              }}
+            >
+              {index === currentSlide && (
+                <Typewriter
+                  options={{
+                    delay: 60,
+                    cursor: "",
+                  }}
+                  onInit={(typewriter) => {
+                    typewriter
+                      .typeString(slide.title)
+                      .pauseFor(400)
+                      .callFunction(handletitleComplete)
+                      .start();
+                  }}
+                />
+              )}
             </div>
 
             {/* Typewriter Animation for content1 */}
@@ -167,7 +198,7 @@ const MySlider = () => {
                 lineHeight: "30px",
               }}
             >
-              {index === currentSlide && (
+              {index === currentSlide && content1Typing && (
                 <Typewriter
                   options={{
                     delay: 20,
@@ -177,7 +208,7 @@ const MySlider = () => {
                   onInit={(typewriter) => {
                     typewriter
                       .typeString(slide.content1)
-                      .pauseFor(500)
+                      .pauseFor(400)
                       .callFunction(
                         slide.content2
                           ? handleContent1Complete

@@ -2,12 +2,12 @@ import { Stack, Typography, IconButton, useTheme, Box } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion"; // Import Framer Motion
 import Typewriter from "typewriter-effect";
-import person1 from "../../../assets/person1.png";
-import person3 from "../../../assets/person3.png";
-import person4 from "../../../assets/person4.png";
-import person5 from "../../../assets/person5.png";
-import person6 from "../../../assets/person6.png";
-import person2 from "../../../assets/person2.png";
+import person1 from "../../../assets/person1.svg";
+import person3 from "../../../assets/person3.svg";
+import person4 from "../../../assets/person4.svg";
+import person5 from "../../../assets/person5.svg";
+import person6 from "../../../assets/person6.svg";
+import person2 from "../../../assets/person2.svg";
 import SwipeBar from "../../../components/SwipeBar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -241,13 +241,13 @@ const Info = () => {
             sx={{
               width: "100%",
               height:
-                windowHeight > 650
+                windowHeight > 670
                   ? windowWidth > 400
-                    ? "370px"
-                    : "300px"
-                  : "200px",
+                    ? "360px"
+                    : "280px"
+                  : "220px",
               // maxHeight: windowHeight > 800 ? "370px" : "300px",
-              opacity: "90%",
+              // opacity: "90%",
               objectFit: "center",
             }}
             alignContent={"center"}
@@ -316,15 +316,15 @@ const Info = () => {
           <Typography
             variant="typ"
             style={{
-              fontSize: windowWidth < 400 ? "17px" : "20px",
+              fontSize: windowWidth < 400 ? "15px" : "20px",
               fontWeight: "400",
               color: "#FBF9ED",
               width: "80%",
-              height: "90%",
+              height: "92%",
               margin: "auto",
               // padding: "0px 10px 0px 20px",
               marginBottom: "15px",
-              lineHeight: "25px",
+              lineHeight: "27px",
               alignContent: "start",
               display: "inline",
             }}
