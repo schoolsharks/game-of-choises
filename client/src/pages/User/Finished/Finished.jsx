@@ -106,6 +106,7 @@ const Finished = () => {
     //   { userId: user }
     // );
     localStorage.clear();
+    window.location.reload();
     navigate("/home");
   };
 

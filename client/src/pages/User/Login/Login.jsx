@@ -24,7 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (status === "succeeded") {
-      navigate("/questions");
+      navigate("/info");
     } else if (status === "failed") {
       setError(userError);
     }
