@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [currentSlide,setCurrentSlide]=useState(0)
   const handleOnSwipe = () => {
     navigate("/login");
   };
@@ -24,6 +25,11 @@ const Home = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleNext=()=>{
+    setCurrentSlide((prev)=>prev+1)
+  }
+
   return (
     <Stack
       width="100%"
@@ -73,7 +79,7 @@ const Home = () => {
           THE GAME <br/>OF CHOICES
         </Typography>
 
-        <MySlider />
+        <MySlider currentSlide={currentSlide}/>
       </Stack>
 
       <Stack
@@ -85,8 +91,10 @@ const Home = () => {
         width={"80%"}
         alignContent={"center"}
         alignSelf={"center"}
-      >
-        <SwipeBar onSwipe={handleOnSwipe} text={"Get Started"} />
+      >{
+        currentSlide<3?<SwipeBar onSwipe={handleNext} text={"Next"} />:<SwipeBar onSwipe={handleOnSwipe} text={"Get Started"} />
+      }
+        {/* <SwipeBar onSwipe={handleOnSwipe} text={"Get Started"} /> */}
       </Stack>
     </Stack>
   );
