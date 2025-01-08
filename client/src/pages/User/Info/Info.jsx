@@ -77,7 +77,14 @@ const Info = () => {
   ];
 
   const handleOnSwipe = () => {
-    setShowLoading(true);
+    if(Infodata.length -1 === slide)
+    {
+      setShowLoading(true);
+    }
+    else{
+      handleNext();
+    }
+    
   };
 
   useEffect(() => {
@@ -360,7 +367,7 @@ const Info = () => {
           {/* </motion.div> */}
         </Box>
 
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -394,7 +401,7 @@ const Info = () => {
           >
             <ArrowForwardIosIcon size={20} />
           </IconButton>
-        </Box>
+        </Box> */}
       </Stack>
 
       <Stack
@@ -410,7 +417,9 @@ const Info = () => {
           height: windowWidth < 400 ? "10%" : "12%",
         }}
       >
-        <SwipeBar onSwipe={handleOnSwipe} text={"Play"} />
+        <SwipeBar 
+        onSwipe={handleOnSwipe} 
+        text={slide === Infodata.length -1 ? "Play" : 'Next'} />
       </Stack>
     </Stack>
   );
