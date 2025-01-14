@@ -38,7 +38,7 @@ body {
   background-image: url("./assets/bg-binary-code.png");
   background-repeat: repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   z-index: -1;
 }
 a {

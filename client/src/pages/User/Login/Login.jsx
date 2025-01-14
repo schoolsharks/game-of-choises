@@ -1,4 +1,13 @@
-import { Box, Stack, TextField, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  Dialog,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Logo from "../../../assets/SchoolSharks-logo.webp";
 import SwipeBar from "../../../components/SwipeBar";
@@ -10,6 +19,7 @@ import "../../../App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
 import send from "../../../assets/send.png";
+import { Close } from "@mui/icons-material";
 
 const Login = () => {
   const theme = useTheme();
@@ -20,6 +30,8 @@ const Login = () => {
   const [phone, setPhone] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
+  const [tncModal, setTncModal] = useState(false);
+  const [tncAccepted, setTncAccepted] = useState(false);
   const { user, error: userError, status } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -62,29 +74,26 @@ const Login = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        alignItems: "center",
         minHeight: "100vh",
         gap: "20px",
       }}
     >
-      <Stack fontFamily={"Orbitron"} maxWidth={"390px"}>
-        <Typography
-          variant={"h3"}
-          fontSize="35px"
-          fontWeight="400"
-          zIndex={1}
-          marginTop={"80px"}
-          color={theme.palette.primary.main}
-          className="lcd-font"
-          sx={{
-            fontFamily: "LSC Solid",
-            lineHeight: "52.8px",
-            letterSpacing: "5%",
-          }}
-        >
-          LOGIN
-        </Typography>
-      </Stack>
+      <Typography
+        fontSize="40PX"
+        fontWeight="400"
+        zIndex={1}
+        marginTop={"80px"}
+        color={theme.palette.primary.main}
+        className="lcd-font"
+        sx={{
+          fontFamily: "LSC Solid",
+          lineHeight: "52.8px",
+          letterSpacing: "5%",
+          margin: "auto 16px 0",
+        }}
+      >
+        LOGIN
+      </Typography>
 
       <Stack
         width={"100%"}
@@ -121,9 +130,12 @@ const Login = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              fontFamily: "LSC Solid",
+              fontFamily: "OCR-A BT",
               lineHeight: "52.8px",
               letterSpacing: "5%",
+              "&.MuiInputBase-input, .MuiInputLabel-root": {
+                fontFamily: "OCR-A BT",
+              },
             }}
           >
             <TextField
@@ -170,6 +182,36 @@ const Login = () => {
                 setCompanyName(e.target.value);
               }}
             />
+
+            <Stack direction={"row"} alignItems={"center"}>
+              <Checkbox
+                checked={tncAccepted}
+                onChange={() => setTncAccepted((prev) => !prev)}
+                sx={{
+                  "&.MuiCheckbox-root": { color: "#ffffff" },
+                }}
+              />
+              <Typography
+                fontFamily={"OCR-A BT"}
+                fontWeight={"500"}
+                color={"#ffffffad"}
+              >
+                I agree to the
+                <span
+                  onClick={() => setTncModal(true)}
+                  style={{
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    marginLeft: "4px",
+                    fontFamily: "Roboto",
+                    color: "#ffffff",
+                  }}
+                >
+                  Terms & conditions{" "}
+                </span>
+                of IDFC
+              </Typography>
+            </Stack>
 
             <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
               {error}
@@ -234,8 +276,82 @@ const Login = () => {
       </Stack>
 
       {/* </div> */}
+
+      <Dialog
+        open={tncModal}
+        onClose={() => {
+          setTncModal(false);
+        }}
+        PaperProps={{
+          sx: {
+            bgcolor: "#00000024",
+            backdropFilter: "blur(4px)",
+            borderRadius: "12px",
+            border: "2px solid #fff",
+            overflowY: "scroll",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            scrollbarWidth: "none",
+          },
+        }}
+      >
+        <Stack padding={"12px"} color={"#fff"}>
+          <Stack alignItems={"flex-end"}>
+            <IconButton onClick={() => setTncModal(false)}>
+              <Close sx={{ color: "#fff" }} />
+            </IconButton>
+          </Stack>
+          <TermsAndConditionsContent />
+        </Stack>
+      </Dialog>
     </Stack>
   );
 };
 
 export default Login;
+
+const TermsAndConditionsContent = () => {
+  return (
+    <>
+      <Typography fontSize={"1.5rem"} textAlign={"center"}>
+        TERMS & CONDITIONS
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+      <Typography marginTop={"8px"}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+        corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
+        nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
+      </Typography>
+    </>
+  );
+};
