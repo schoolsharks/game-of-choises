@@ -229,7 +229,7 @@ const Login = () => {
           alignContent={"center"}
           alignSelf={"center"}
         >
-          <SwipeBar onSwipe={handleSubmit} text={"Get Started"} />
+          <SwipeBar onSwipe={handleSubmit} text={"Play Now"} />
         </Stack>
       </Stack>
 

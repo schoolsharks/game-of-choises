@@ -2,7 +2,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import redBB from "../../../assets/redBB.webp";
+import redBB from "../../../assets/optionB.png";
 import optionArrowRight from "../../../assets/optionArrowRight.svg";
 import { motion, AnimatePresence } from "framer-motion";
 

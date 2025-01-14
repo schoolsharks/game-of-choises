@@ -2,7 +2,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blueAA from "../../../assets/blueAA.webp";
+import blueAA from "../../../assets/optionA.png";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
