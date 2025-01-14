@@ -16,6 +16,7 @@ import Finished from "./Finished/Finished";
 import { initializeAuth } from "../../services/auth/initializeAuth";
 import { useDispatch } from "react-redux";
 import AnimatedPage from "../../utils/AnimatedPage";
+import LoadingScreen from "./LoadingScreen/LoadingScreen";
 
 const Main = () => {
   const theme = useTheme();
@@ -42,7 +43,7 @@ const Main = () => {
         <Routes location={location} key={location.pathname}>
           <Route path="/home" element={<AnimatedPage Component={Home} />} />
           <Route path="/login" element={<AnimatedPage Component={Login} />} />
-          <Route path="/info" element={<AnimatedPage Component={Info} />} />
+          <Route path="/info" element={<AnimatedPage Component={LoadingScreen} />} />
 
           <Route
             path="/completed"

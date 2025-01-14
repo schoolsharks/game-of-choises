@@ -2,7 +2,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blueAA from "../../../assets/blueAA.webp";
+import blueAA from "../../../assets/optionA.png";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -154,13 +154,10 @@ const OptionA = ({ text, onOptionSelect }) => {
           }}
         >
           <Stack alignItems={"left"} marginLeft={"-12px"}>
-            <motion.img
+            <img
               src={blueAA}
               alt="Option A"
               loading="lazy"
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
               style={{
                 maxWidth: "356px",
                 padding: "10px",

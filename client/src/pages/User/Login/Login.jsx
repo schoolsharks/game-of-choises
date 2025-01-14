@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Checkbox,
   Dialog,
   IconButton,
@@ -18,7 +19,7 @@ import { createUser } from "../../../app/userSlice";
 import "../../../App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
-import send from "../../../assets/send.png";
+import sendIcon from "../../../assets/send.png";
 import { Close } from "@mui/icons-material";
 
 const Login = () => {
@@ -48,7 +49,11 @@ const Login = () => {
     if (!response.success) {
       setError(response.error);
     } else {
-      dispatch(createUser({ username: name, email, phone, companyName }));
+      if (!tncAccepted) {
+        setError("Accept terms and conditions to continue");
+      } else {
+        dispatch(createUser({ username: name, email, phone, companyName }));
+      }
     }
   };
 
@@ -56,16 +61,15 @@ const Login = () => {
     return <Navigate to="/info" />;
   }
 
-  const handleInviteClick = () => {
-    const websiteURL = window.location.origin;
-    navigator.clipboard
-      .writeText(websiteURL)
-      .then(() => {
-        alert("Website URL copied to clipboard: " + websiteURL);
-      })
-      .catch((err) => {
-        console.error("Failed to copy URL: ", err);
+  const handleShare = async () => {
+    if (navigator.share) {
+      await navigator.share({
+        url: location.href,
       });
+    } else {
+      navigator.clipboard.writeText(location.href);
+      alert("Website URL copied to clipboard");
+    }
   };
   return (
     <Stack
@@ -73,7 +77,6 @@ const Login = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
         minHeight: "100vh",
         gap: "20px",
       }}
@@ -89,7 +92,7 @@ const Login = () => {
           fontFamily: "LSC Solid",
           lineHeight: "52.8px",
           letterSpacing: "5%",
-          margin: "auto 16px 0",
+          margin: "120px 16px 0",
         }}
       >
         LOGIN
@@ -98,15 +101,14 @@ const Login = () => {
       <Stack
         width={"100%"}
         maxWidth="433px"
-        height={"100%"}
         color={theme.palette.primary.main}
         display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"space-between"}
         marginBottom={"40px"}
         // gap={""}
+        justifyContent={"space-between"}
         alignContent={"center"}
         alignItems={"center"}
+        flex={1}
         paddingTop={"10px"}
       >
         <Stack
@@ -212,66 +214,61 @@ const Login = () => {
                 of IDFC
               </Typography>
             </Stack>
-
-            <Typography color="#d61a1a" sx={{ minHeight: "1rem" }}>
-              {error}
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              gap: "10px",
-              display: "flex",
-              flexDirection: "row",
-              alignContent: "center",
-              justifyContent: "end",
-              alignItems: "center",
-              width: "100%",
-              // height: "40%",
-              marginTop: "30px",
-              maxHeight: "300px",
-              cursor: "pointer",
-              paddingRight: "30px",
-              paddingY: "10px",
-            }}
-          >
-            <Typography
-              variant={"body3"}
-              fontSize="1.4rem"
-              fontWeight="400"
-              textAlign={"end"}
-              zIndex={1}
-              color={theme.palette.primary.main}
-              onClick={handleInviteClick}
-            >
-              Invite friends
-            </Typography>
-            <Box
-              component="img"
-              src={send}
-              alt="send"
-              loading="lazy"
-              sx={{
-                width: "24px",
-                height: "24px",
-
-                objectFit: "center",
-              }}
-              alignContent={"center"}
-            />
+            {error && (
+              <Typography
+                color="#ff0000"
+                sx={{
+                  minHeight: "1rem",
+                  bgcolor: "#fff",
+                  borderRadius: "2px",
+                  padding: "0 8px",
+                }}
+              >
+                {error}!
+              </Typography>
+            )}
           </Stack>
         </Stack>
-
         <Stack
           position={"relative"}
-          marginBottom={"10px"}
           maxHeight={"88px"}
-          maxWidth={"361px"}
-          height={"15%"}
+          maxWidth={"370px"}
+          height={"12%"}
           width={"80%"}
+          marginBottom="12px"
           alignContent={"center"}
           alignSelf={"center"}
         >
           <SwipeBar onSwipe={handleSubmit} text={"Get Started"} />
+          <Stack
+            alignContent={"center"}
+            justifyContent={"end"}
+            flexDirection={"row"}
+            marginTop={"8px"}
+          >
+            <Button onClick={handleShare}>
+              <Typography
+                variant={"button"}
+                fontSize="20px"
+                fontWeight="400"
+                textAlign={"center"}
+                zIndex={1}
+                // width={"80%"}
+                // maxWidth={"280px"}
+                color={"#FBF9ED"}
+                className="lcd-font"
+                sx={{
+                  fontFamily: "LSC Solid",
+                  letterSpacing: "5%",
+                }}
+              >
+                Share
+              </Typography>
+              <Box>
+                <img src={sendIcon} alt="send icon" />
+              </Box>
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
 

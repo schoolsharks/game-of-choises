@@ -25,7 +25,7 @@ import person6 from "../../../assets/person6.svg";
 import person2 from "../../../assets/person2.svg";
 import rightArrow from "../../../assets/rightArrow.png";
 import RadarChart from "../../../components/RadarChart";
-import analysisBG from "../../../assets/analysisBG.svg";
+import analysisBG from "../../../assets//aestheticCompletedImage.png";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Translate } from "@mui/icons-material";
 import personalitiesGrid from "../../../assets/personalities-grid.jpg";

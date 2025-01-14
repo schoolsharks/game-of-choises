@@ -14,6 +14,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Padding } from "@mui/icons-material";
+import handIcon from "../../../assets/handIcon.png";
+
 import "./Info.css";
 const Info = () => {
   const theme = useTheme();
@@ -77,14 +79,11 @@ const Info = () => {
   ];
 
   const handleOnSwipe = () => {
-    if(Infodata.length -1 === slide)
-    {
+    if (Infodata.length - 1 === slide) {
       setShowLoading(true);
-    }
-    else{
+    } else {
       handleNext();
     }
-    
   };
 
   useEffect(() => {
@@ -111,68 +110,104 @@ const Info = () => {
   };
 
   const LoadingScreen = () => {
-    console.log("hello");
     useEffect(() => {
       const timer = setTimeout(() => {
         navigate("/questions");
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }, []);
 
     return (
-      <Stack
-        width="210px"
-        height="100vh"
-        margin={"auto"}
-        justifyContent="center"
-      >
-        <Typography
-          variant="typ"
-          sx={{
-            width: "210px",
-            color: "#FFFFFF",
-            position: "relative",
-            display: "inline-block",
-            fontSize: "30px",
-            wordWrap: "break-word",
-            "& .Typewriter": {
-              "& *": {
-                fontSize: "inherit",
-                wordBreak: "break-word",
-              },
-            },
-          }}
+      <Stack>
+        <Stack
+          width="210px"
+          height="80vh"
+          margin={"auto"}
+          justifyContent="center"
         >
-          <span
-            id="typewriter-text"
-            style={{
+          <Typography
+            variant="typ"
+            sx={{
+              width: "210px",
+              color: "#FFFFFF",
+              position: "relative",
               display: "inline-block",
               fontSize: "30px",
-              width: "100%",
-              marginRight: "10px",
-              whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
-              textIndent: "-30px",
-              lineHeight: "35px",
-              textAlign: "center",
-              position: "relative",
-              overflowWrap: "break-word",
+              wordWrap: "break-word",
+              "& .Typewriter": {
+                "& *": {
+                  fontSize: "inherit",
+                  wordBreak: "break-word",
+                },
+              },
             }}
           >
-            <Typewriter
-              options={{
-                delay: 30,
-                cursor: "|",
+            <span
+              id="typewriter-text"
+              style={{
+                display: "inline-block",
+                fontSize: "40px",
                 width: "100%",
-                wrapperClassName: "typewriter-wrapper",
-                strings: ["Let's get started"], // Using \n for explicit line break
-                autoStart: true,
-                loop: false,
-                cursorBlinking: true,
+                marginRight: "10px",
+                whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
+                textIndent: "-30px",
+                lineHeight: "35px",
+                textAlign: "center",
+                position: "relative",
+                overflowWrap: "break-word",
               }}
-            />
-          </span>
-        </Typography>
+            >
+              <Typewriter
+                options={{
+                  delay: 30,
+                  cursor: "|",
+                  width: "100%",
+                  wrapperClassName: "typewriter-wrapper",
+                  strings: ["Let's get started"], // Using \n for explicit line break
+                  autoStart: true,
+                  loop: false,
+                  cursorBlinking: true,
+                }}
+              />
+            </span>
+          </Typography>
+        </Stack>
+
+        <Stack direction={"column"} alignItems={"center"} gap={2}>
+          <Typography
+            variant={"caption"}
+            fontSize={"15px"}
+            fontWeight="100"
+            textAlign={"center"}
+            zIndex={1}
+            color={"#FBF9ED"}
+            className="lcd-font"
+            sx={{
+              fontFamily: "LSC Solid",
+              letterSpacing: "5%",
+            }}
+          >
+            Swipe left for option A
+          </Typography>
+          <Typography
+            variant={"caption"}
+            fontSize={"15px"}
+            fontWeight="100"
+            textAlign={"center"}
+            zIndex={1}
+            color={"#FBF9ED"}
+            className="lcd-font"
+            sx={{
+              fontFamily: "LSC Solid",
+              letterSpacing: "5%",
+            }}
+          >
+            Swipe right for option B
+          </Typography>
+
+          <img src={handIcon} alt="hand Icon" width={"40px"} />
+        </Stack>
       </Stack>
     );
   };
@@ -417,9 +452,10 @@ const Info = () => {
           height: windowWidth < 400 ? "10%" : "12%",
         }}
       >
-        <SwipeBar 
-        onSwipe={handleOnSwipe} 
-        text={slide === Infodata.length -1 ? "Play" : 'Next'} />
+        <SwipeBar
+          onSwipe={handleOnSwipe}
+          text={slide === Infodata.length - 1 ? "Play" : "Next"}
+        />
       </Stack>
     </Stack>
   );

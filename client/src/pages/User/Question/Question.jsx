@@ -105,6 +105,9 @@ const Question = () => {
       alignItems={"center"}
       flexDirection={"column"}
       justifyContent={"start"}
+      sx={{
+        background: "linear-gradient(360deg, #A00612 0%, #000000 100%)",
+      }}
 
       // sx={{
       //   // aspectRatio: "116/45",
@@ -224,7 +227,7 @@ const Question = () => {
                     display={"flex"}
                     width={"100%"}
                     maxWidth={"431px"}
-                    marginTop={"40px"}
+                    marginTop={"100px"}
                     // marginBottom={"20px"}
                     alignSelf={"flex-start"}
                     sx={{
@@ -265,7 +268,8 @@ const Question = () => {
                           overflowWrap: "break-word",
                         }}
                       >
-                        <Typewriter
+                        {currentQuestion}
+                        {/* <Typewriter
                           // key={data.id}
                           options={{
                             delay: 20,
@@ -279,7 +283,7 @@ const Question = () => {
                               .pauseFor(500)
                               .start();
                           }}
-                        />
+                        /> */}
                       </span>
                     </Typography>
                   </Stack>
