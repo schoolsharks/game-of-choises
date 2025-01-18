@@ -278,6 +278,12 @@ export const handleAnalysis = async (req, res) => {
             Hopeful_Borrower: userDetails.Hopeful_Borrower,
             Live_for_today_Spender: userDetails.Live_for_today_Spender,
           },
+          riskTaker: {
+            Savings_Behaviour: (userDetails.Disciplined_Saver / 50) * 100,
+            Investment_Risk_Tolerance: ((userDetails.The_Hustler + userDetails.Balanced_Spender) / 50) * 100,
+            Debt_Management: (userDetails.Hopeful_Borrower / 50) * 100,
+            Lifestyle_Choices: (userDetails.Live_for_today_Spender / 50) * 100
+          },
           scoreArray: [
             personalityPercentages["Disciplined_Saver"],
             personalityPercentages["Balanced_Spender"],
@@ -287,6 +293,9 @@ export const handleAnalysis = async (req, res) => {
           ],
           avgResponseTime: userDetails.avgResponseTime,
           personalityName: personalityName,
+          badge: personalityDescription.badge,
+          badge_tagline: personalityDescription.badge_tagline,
+          insights: personalityDescription.insights,
           personalityScore: personalityPercentages[maxPersonalities[0]],
           subCategory: personalityDescription.subCategory,
           strengths: personalityDescription.strengths,

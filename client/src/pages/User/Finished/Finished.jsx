@@ -17,7 +17,6 @@ import { resetState } from "../../../app/userSlice";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import analysis2 from "../../../assets/analysis2.svg"
 import diamond from "../../../assets/diamond.svg"
 
 import person3 from "../../../assets/person3.svg";
@@ -30,6 +29,12 @@ import RadarChart from "../../../components/RadarChart";
 // import analysisBG from "../../../assets//aestheticCompletedImage.png";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import personalitiesGrid from "../../../assets/personalities-grid.jpg";
+
+import risk from "../../../assets/risk.svg"
+import yolo from "../../../assets/yolo.svg"
+import dreamer from "../../../assets/dreamer.svg"
+import balances_strategist from "../../../assets/balanced_strategist.svg"
+import budget_guru from "../../../assets/budget_guru.svg";
 
 const options = [
   {
@@ -262,7 +267,7 @@ const Finished = () => {
         </Stack>
         {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
 
-        <div style={{ position: "relative", display: "inline-block", height:"156px" }}>
+        <div style={{ position: "relative", display: "inline-block", height: "156px" }}>
           <img src={personalitiesGrid} alt="" style={{ opacity: "0.5", width: "100%", height: "156px" }} />
           <Typography
             fontFamily="LSC Solid"
@@ -275,8 +280,8 @@ const Finished = () => {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              color: "white", 
-              zIndex: 1, 
+              color: "white",
+              zIndex: 1,
             }}
           >
             {userStatic.personalityName}
@@ -288,7 +293,7 @@ const Finished = () => {
             padding: "40px 16px",
             background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
-          
+
           borderBottom={"1px solid white"}
         >
           {/* <Typography
@@ -348,7 +353,7 @@ const Finished = () => {
             </Stack>
           )}
 
-          <Typography fontFamily={"OCR-A BT"} fontSize={"1.25rem"}>You start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.</Typography>
+          <Typography fontFamily={"OCR-A BT"} fontSize={"1.25rem"}>{userStatic.insights}</Typography>
         </Stack>
 
 
@@ -507,9 +512,17 @@ const Finished = () => {
                 width: "88px",
                 height: "79px",
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
+                color:"white"
               }}>
-              <img src={analysis2} style={{ maxWidth: "none" }} />
+              <img src={
+                userStatic.badge === "The Dreamer in Debt" ? dreamer :
+                  userStatic.badge === "The Risk-Taker" ? risk :
+                    userStatic.badge === "The Balanced Strategist" ? balances_strategist :
+                      userStatic.badge === "The Budget Guru" ? budget_guru :
+                        yolo
+              }
+                style={{ maxWidth: "none" }} />
             </Stack>
             <Stack
               display={"flex"}
@@ -529,7 +542,7 @@ const Finished = () => {
                 fontSize="25px"
                 lineHeight={"25px"}
               >
-                The Risk Taker
+                {userStatic.badge}
               </Typography>
               <Typography
                 fontFamily="OCR-A BT"
@@ -537,7 +550,7 @@ const Finished = () => {
                 fontSize="15px"
                 lineHeight={"17px"}
               >
-                The one who plays big for high rewards.
+                {userStatic.badge_tagline}
               </Typography>
             </Stack>
           </Stack>
