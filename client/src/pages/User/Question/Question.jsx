@@ -176,7 +176,7 @@ const Question = () => {
                   width="100%"
                   height={"100%"}
                   gap={"10px"}
-                  sx={{ overflowX: "hidden" }}
+                  // sx={{ overflowX: "hidden",overflowY:"visible" }}
                 >
                   {/* <Stack
                     direction="row"
@@ -222,7 +222,7 @@ const Question = () => {
 
                   {/* questions */}
                   <Stack
-                    height={"140px"}
+                    minHeight={"140px"}
                     // margin="16px 0px"
                     display={"flex"}
                     width={"100%"}
@@ -257,7 +257,7 @@ const Question = () => {
                         id="typewriter-text"
                         style={{
                           display: "inline-block",
-                          fontSize: "28px",
+                          fontSize: "20px",
                           width: "100%",
                           marginRight: "25px",
                           whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
@@ -297,7 +297,7 @@ const Question = () => {
                       maxWidth={"380px"}
                       width={"95%"}
                       sx={{
-                        gap: window.innerWidth < 400 ? "30px" : "3rem",
+                        // gap: window.innerWidth < 400 ? "0" : "3rem",
                       }}
                     >
                       <OptionA

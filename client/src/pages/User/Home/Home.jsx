@@ -76,7 +76,8 @@ const Home = () => {
         // justifyContent: "space-between",
         alignItems: "center",
         alignContent: "center",
-        height: "100vh",
+        minHeight: "100vh",
+        flex:"1",
         gap: "15px",
       }}
     >
@@ -94,6 +95,7 @@ const Home = () => {
           alignContent: "center",
           alignItems: "center",
           gap: "30px",
+          flex:"1",
         }}
       >
         {isSplashScreenOn ? (
@@ -101,6 +103,7 @@ const Home = () => {
             initial={{ scale: 1 }}
             animate={{ scale: 1.25 }}
             transition={{ duration: 1.2 , ease: [.08,.72,.15,.62], delay:0.3}}
+            style={{height:"100%",display:"flex",justifyContent:"center"}}
           >
             <Typography
               variant={"h3"}
@@ -110,7 +113,7 @@ const Home = () => {
               zIndex={1}
               // width={"80%"}
               // maxWidth={"280px"}
-              marginTop="5%"
+              margin="auto"
               color={"#FBF9ED"}
               className="lcd-font"
               sx={{
@@ -135,6 +138,7 @@ const Home = () => {
           maxHeight={"88px"}
           maxWidth={"370px"}
           height={"12%"}
+          marginTop={"auto"}
           width={"80%"}
           alignContent={"center"}
           alignSelf={"center"}

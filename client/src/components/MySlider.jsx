@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import Typewriter from "typewriter-effect";
 import "./custom.css";
 import gemIcon from "../assets/gemIcon.svg";
@@ -72,7 +72,8 @@ const MySlider = ({ currentSlide }) => {
           maxWidth: "431px",
           width: "100%",
           height: "80%",
-          margin: "auto",
+          flex:"1",
+          margin: "0 auto",
           position: "relative",
         }}
       >
@@ -119,7 +120,7 @@ const MySlider = ({ currentSlide }) => {
               padding: "26px",
             }}
           >
-            <Typography fontSize={"1.25rem"} fontFamily="OCR-A BT">
+            <Typography fontSize={"18px"} fontFamily="OCR-A BT">
               Just like in The Matrix, The Game Of Choices challenges you to
               make decisions that shape your path.
               <br />
@@ -199,6 +200,7 @@ const MySlider = ({ currentSlide }) => {
           height: "80%",
           margin: "auto",
           position: "relative",
+          flex:"1"
         }}
       >
         <div
@@ -239,7 +241,7 @@ const MySlider = ({ currentSlide }) => {
             padding: "26px",
           }}
         >
-          <Typography fontSize={"1.25rem"} fontFamily="OCR-A BT">
+          <Typography fontSize={"18px"} fontFamily="OCR-A BT">
             Swipe left or right to build good habits, unlock your financial
             strengths, and uncover your financial personality.
             <br />

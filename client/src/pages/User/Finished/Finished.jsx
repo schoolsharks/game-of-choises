@@ -17,7 +17,7 @@ import { resetState } from "../../../app/userSlice";
 import idfc from "../../../assets/IDFC.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import diamond from "../../../assets/diamond.svg"
+import diamond from "../../../assets/diamond.svg";
 
 import person3 from "../../../assets/person3.svg";
 import person4 from "../../../assets/person4.svg";
@@ -30,10 +30,10 @@ import RadarChart from "../../../components/RadarChart";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import personalitiesGrid from "../../../assets/personalities-grid.jpg";
 
-import risk from "../../../assets/risk.svg"
-import yolo from "../../../assets/yolo.svg"
-import dreamer from "../../../assets/dreamer.svg"
-import balances_strategist from "../../../assets/balanced_strategist.svg"
+import risk from "../../../assets/risk.svg";
+import yolo from "../../../assets/yolo.svg";
+import dreamer from "../../../assets/dreamer.svg";
+import balances_strategist from "../../../assets/balanced_strategist.svg";
 import budget_guru from "../../../assets/budget_guru.svg";
 
 const options = [
@@ -60,7 +60,6 @@ const options = [
   },
 ];
 
-
 const riskTaker = [
   {
     id: 1,
@@ -80,7 +79,7 @@ const riskTaker = [
   {
     id: 4,
     text: "Lifestyle Choices",
-    percentage: 80
+    percentage: 80,
   },
 ];
 
@@ -88,29 +87,34 @@ const personalities = [
   {
     id: 1,
     heading: "THE HUSTLER ",
-    content: "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success."
+    content:
+      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
   },
   {
     id: 2,
     heading: "BALANCED SPENDER",
-    content: "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success."
+    content:
+      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
   },
   {
     id: 3,
     heading: "DISCIPLINED SAVER",
-    content: "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success."
+    content:
+      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
   },
   {
     id: 4,
     heading: "HOPEFUL BORROWER",
-    content: "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success."
+    content:
+      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
   },
   {
     id: 5,
     heading: "LIVE-FOR-TODAY SPENDER",
-    content: "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success."
-  }
-]
+    content:
+      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+  },
+];
 
 const Finished = () => {
   const theme = useTheme();
@@ -246,9 +250,7 @@ const Finished = () => {
           width: "100%",
         }}
       >
-        <Stack
-          margin={"30px"}
-          gap="1rem">
+        <Stack margin={"30px"} gap="1rem">
           <Typography
             fontFamily="LSC Solid"
             fontSize="34px"
@@ -261,14 +263,25 @@ const Finished = () => {
             fontFamily="OCR-A BT"
             fontSize="20px"
             lineHeight="25px"
-            fontWeight="400">
+            fontWeight="400"
+          >
             You’ve completed the Financial Matrix
           </Typography>
         </Stack>
         {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
 
-        <div style={{ position: "relative", display: "inline-block", height: "156px" }}>
-          <img src={personalitiesGrid} alt="" style={{ opacity: "0.5", width: "100%", height: "156px" }} />
+        <div
+          style={{
+            position: "relative",
+            display: "inline-block",
+            height: "156px",
+          }}
+        >
+          <img
+            src={personalitiesGrid}
+            alt=""
+            style={{ opacity: "0.5", width: "100%", height: "156px" }}
+          />
           <Typography
             fontFamily="LSC Solid"
             fontSize="30px"
@@ -293,7 +306,6 @@ const Finished = () => {
             padding: "40px 16px",
             background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
-
           borderBottom={"1px solid white"}
         >
           {/* <Typography
@@ -353,9 +365,10 @@ const Finished = () => {
             </Stack>
           )}
 
-          <Typography fontFamily={"OCR-A BT"} fontSize={"1.25rem"}>{userStatic.insights}</Typography>
+          <Typography fontFamily={"OCR-A BT"} fontSize={"1.25rem"}>
+            {userStatic.insights}
+          </Typography>
         </Stack>
-
 
         {/* <Stack gap="1rem">
           {userStatic && userStatic?.strengths?.length > 0 && (
@@ -497,7 +510,7 @@ const Finished = () => {
           gap="1rem"
           margin="3rem 1rem 0"
           sx={{
-            background: "linear-gradient(180deg, #A00612 0%, #000000 100%)"
+            background: "linear-gradient(180deg, #A00612 0%, #000000 100%)",
           }}
         >
           <Stack
@@ -513,21 +526,25 @@ const Finished = () => {
                 height: "79px",
                 display: "flex",
                 justifyContent: "center",
-                color:"white"
-              }}>
-              <img src={
-                userStatic.badge === "The Dreamer in Debt" ? dreamer :
-                  userStatic.badge === "The Risk-Taker" ? risk :
-                    userStatic.badge === "The Balanced Strategist" ? balances_strategist :
-                      userStatic.badge === "The Budget Guru" ? budget_guru :
-                        yolo
-              }
-                style={{ maxWidth: "none" }} />
+                color: "white",
+              }}
+            >
+              <img
+                src={
+                  userStatic.badge === "The Dreamer in Debt"
+                    ? dreamer
+                    : userStatic.badge === "The Risk-Taker"
+                    ? risk
+                    : userStatic.badge === "The Balanced Strategist"
+                    ? balances_strategist
+                    : userStatic.badge === "The Budget Guru"
+                    ? budget_guru
+                    : yolo
+                }
+                style={{ maxWidth: "none" }}
+              />
             </Stack>
-            <Stack
-              display={"flex"}
-              flexDirection={"column"}
-              gap={"2px"}>
+            <Stack display={"flex"} flexDirection={"column"} gap={"2px"}>
               <Typography
                 fontFamily="OCR-A BT"
                 fontWeight="400"
@@ -557,10 +574,7 @@ const Finished = () => {
 
           <Stack marginTop="2rem" gap={"2rem"}>
             {riskTaker.map((option) => (
-              <Stack
-                key={option.id}
-                gap={"0.5rem"}
-              >
+              <Stack key={option.id} gap={"0.5rem"}>
                 <Stack
                   display={"flex"}
                   flexDirection={"row"}
@@ -584,34 +598,18 @@ const Finished = () => {
                     {option.percentage}%
                   </Typography>
                 </Stack>
-                <LinearProgress
-                  variant="determinate"
-                  value={option.percentage}
+                <Box
+                  height={"22px"}
+                  width={`${option.percentage}%`}
                   sx={{
-                    height: "22px",
-                    background: "transparent",
-                    position: "relative",
-                    "& .MuiLinearProgress-bar": {
-                      borderRadius: "15px",
-                      // border: `2px solid ${option.percentage > 0 ? "#D15151" : "transparent"}`,
-                      background: `linear-gradient(90deg, transparent ${100 - (option.percentage > 50 ? option.percentage : 2 * option.percentage)}%, #FE7C86 ${option.percentage}%)`
-                    },
-                    "&:after": {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      zIndex: 1, // To ensure the border is above the progress bar
-                    }
+                    background:
+                      "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
+                      borderRadius:"0 12px 12px 0"
                   }}
                 />
               </Stack>
             ))}
           </Stack>
-
-
         </Stack>
 
         {/* Personality Analysis Graph */}
@@ -623,7 +621,7 @@ const Finished = () => {
           gap="1rem"
           margin="3rem 1rem 0"
           sx={{
-            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)"
+            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
         >
           <Typography
@@ -644,8 +642,8 @@ const Finished = () => {
                 window.innerWidth > 500
                   ? "translateX(-3.5rem)"
                   : window.innerWidth > 400
-                    ? "translateX(-0.2rem)"
-                    : "translateX(-1rem)",
+                  ? "translateX(-0.2rem)"
+                  : "translateX(-1rem)",
               objectFit: "cove",
             }}
           >
@@ -671,12 +669,14 @@ const Finished = () => {
                     display={"flex"}
                     flexDirection={"row"}
                     alignItems={"center"}
-                    gap={"8px"}>
+                    gap={"8px"}
+                  >
                     <Stack
                       sx={{
                         width: "19px",
-                        height: "19px"
-                      }}>
+                        height: "19px",
+                      }}
+                    >
                       <img src={diamond} style={{ maxWidth: "none" }} />
                     </Stack>
                     <Typography
@@ -711,7 +711,7 @@ const Finished = () => {
           gap="1rem"
           margin="3rem 1rem 0"
           sx={{
-            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)"
+            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
         >
           <Stack
@@ -721,7 +721,7 @@ const Finished = () => {
             alignItems={"center"}
           >
             <Typography
-              fontFamily={'OCR-A BT'}
+              fontFamily={"OCR-A BT"}
               fontWeight={"400"}
               fontSize={"25px"}
               lineHeight={"30px"}
@@ -741,11 +741,7 @@ const Finished = () => {
           {personlityToggle && (
             <Stack marginTop={"2rem"} gap={"2rem"}>
               {personalities.map((option) => (
-                <Stack
-                  key={option.in}
-                  marginBottom={"1rem"}
-                  gap={"0.5rem"}
-                >
+                <Stack key={option.in} marginBottom={"1rem"} gap={"0.5rem"}>
                   <Typography
                     fontFamily="OCR-A BT"
                     fontSize="25px"
@@ -767,8 +763,6 @@ const Finished = () => {
               ))}
             </Stack>
           )}
-
-
         </Stack>
 
         {/* Offerings Section */}
@@ -779,10 +773,9 @@ const Finished = () => {
           paddingX="21px"
           margin={"3rem 0 0"}
           sx={{
-            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)"
+            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
         >
-
           <Stack
             textAlign="right"
             display="flex"
@@ -1005,7 +998,6 @@ const Finished = () => {
           </Stack>
         </Stack>
 
-
         {/* Claim Reward Section */}
         <Stack
           borderRadius="7px"
@@ -1195,7 +1187,6 @@ const Finished = () => {
             alignContent={"center"}
           />
         </Stack>
-
       </Stack>
     </Stack>
   );

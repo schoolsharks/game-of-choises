@@ -2,7 +2,7 @@
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
-import blueAA from "../../../assets/optionA.png";
+import blueAA from "../../../assets/optionA.webp";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -165,6 +165,7 @@ const OptionA = ({ text, onOptionSelect }) => {
                 objectFit: "contain",
                 height: "auto",
                 boxSizing: "border-box",
+                filter:"drop-shadow(0 10px 10px #00000074)"
               }}
             />
           </Stack>

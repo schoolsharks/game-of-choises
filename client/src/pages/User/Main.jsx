@@ -34,7 +34,7 @@ const Main = () => {
       width="100%"
       maxWidth="900px"
       height="100%"
-      margin={"auto"}
+      margin={"0 auto"}
       sx={{
         overflow: isLargeScreen ? "" : "hidden",
       }}
