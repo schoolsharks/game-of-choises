@@ -162,8 +162,10 @@ const OptionA = ({ text, onOptionSelect }) => {
                 maxWidth: "356px",
                 padding: "10px",
                 position: "relative",
-                objectFit: "contain",
-                height: "auto",
+                objectFit: "fill",
+                // height: "auto",
+                height: "180px",
+
                 boxSizing: "border-box",
                 filter:"drop-shadow(0 10px 10px #00000074)"
               }}

@@ -222,7 +222,6 @@ const Question = () => {
 
                   {/* questions */}
                   <Stack
-                    minHeight={"140px"}
                     // margin="16px 0px"
                     display={"flex"}
                     width={"100%"}
@@ -231,7 +230,7 @@ const Question = () => {
                     // marginBottom={"20px"}
                     alignSelf={"flex-start"}
                     sx={{
-                      minHeight: window.innerWidth < 500 ? "220px" : "180px",
+                      minHeight: window.innerWidth < 500 ? "180px" : "180px",
                     }}
                   >
                     <Typography
