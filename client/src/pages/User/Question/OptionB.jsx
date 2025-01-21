@@ -181,7 +181,7 @@ const OptionB = ({ text, onOptionSelect }) => {
                 position: "relative",
                 objectFit: "fill",
                 // height: "auto",
-                height: "180px",
+                height: "160px",
                 boxSizing: "border-box",
                 // paddingBottom: "20px",
                 paddingTop: "10px",
