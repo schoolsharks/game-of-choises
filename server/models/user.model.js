@@ -42,7 +42,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-
+    activeSet :{
+      type: String, 
+      enum : [null, 'SET_1', 'SET_2'],
+      default: null
+    },
     Disciplined_Saver: {
       type: Number,
       required: true,

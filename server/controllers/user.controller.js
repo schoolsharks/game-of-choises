@@ -1,5 +1,5 @@
 import { User } from "../models/user.model.js";
-import { goalTarget, questions } from "../utils/data/questions.js";
+import { goalTarget, questions, SET_1, SET_2 } from "../utils/data/questions.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Admin } from "../models/admin.model.js";
@@ -9,6 +9,29 @@ import mongoose from "mongoose";
 import { personalities } from "../utils/data/personalities.js";
 
 dotenv.config();
+
+function aggregateValues(set) {
+  const aggregatedValues = {
+    Max_Disciplined_Saver: 0,
+    Max_Balanced_Spender: 0,
+    Max_The_Hustler: 0,
+    Max_Hopeful_Borrower: 0,
+    Max_Live_for_today_Spender: 0
+  };
+
+  set.forEach(item => {
+    Object.values(item.options).forEach(option => {
+      aggregatedValues.Max_Disciplined_Saver += option.Disciplined_Saver;
+      aggregatedValues.Max_Balanced_Spender += option.Balanced_Spender;
+      aggregatedValues.Max_The_Hustler += option.The_Hustler;
+      aggregatedValues.Max_Hopeful_Borrower += option.Hopeful_Borrower;
+      aggregatedValues.Max_Live_for_today_Spender += option.Live_for_today_Spender;
+    });
+  });
+
+  return aggregatedValues;
+}
+
 
 export const handleCreateUser = async (req, res) => {
   const { name, email, phone, companyName } = req.body;
@@ -187,6 +210,13 @@ export const handleStorage = async (req, res) => {
     user.avgResponseTime = 0;
     user.investment = 0;
     user.answered_count = 0;
+
+
+    if (user.activeSet === "SET_2")
+      user.activeSet = null
+    else if (user.activeSet === "SET_1")
+      user.activeSet = "SET_2"
+
     await user.save();
     const newuser = await User.findById(
       new mongoose.Types.ObjectId(userId)
@@ -214,6 +244,20 @@ export const handleAnalysis = async (req, res) => {
       new mongoose.Types.ObjectId(userId)
     );
 
+    let questionSet;
+    if(userDetails.activeSet === "SET_1")
+      questionSet = SET_1
+    else if(userDetails.activeSet === "SET_2"){
+      questionSet = SET_2
+    }
+    let {
+      Max_Disciplined_Saver, 
+      Max_Balanced_Spender, 
+      Max_Hopeful_Borrower, 
+      Max_Live_for_today_Spender, 
+      Max_The_Hustler
+    } = aggregateValues(questionSet);
+
     const personalityList = [
       "Disciplined_Saver",
       "Balanced_Spender",
@@ -230,14 +274,6 @@ export const handleAnalysis = async (req, res) => {
         maxValue = userDetails[personality];
       }
     });
-
-    // Find personalities with the maximum value and then extracting personlity
-
-    // if (maxValue <= 0)
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: "Score is zero",
-    //   });
 
     let personalityPercentages = {};
     if (maxValue > 0) {
@@ -263,7 +299,7 @@ export const handleAnalysis = async (req, res) => {
       const personalityDescription = personalities.find(
         (personality) => personality.personality === personalityName
       );
-      console.log("personalityDescription", personalityDescription);
+      // console.log("personalityDescription", personalityDescription);
 
       return res.status(200).json({
         success: true,
@@ -272,24 +308,24 @@ export const handleAnalysis = async (req, res) => {
           name: userDetails.name,
           email: userDetails.email,
           score: {
-            Disciplined_Saver: userDetails.Disciplined_Saver,
-            Balanced_Spender: userDetails.Balanced_Spender,
-            The_Hustler: userDetails.The_Hustler,
-            Hopeful_Borrower: userDetails.Hopeful_Borrower,
-            Live_for_today_Spender: userDetails.Live_for_today_Spender,
+            Disciplined_Saver: (userDetails.Disciplined_Saver/ Max_Disciplined_Saver)*100,
+            Balanced_Spender: (userDetails.Balanced_Spender/ Max_Balanced_Spender)*100,
+            The_Hustler: (userDetails.The_Hustler/Max_The_Hustler)*100,
+            Hopeful_Borrower: (userDetails.Hopeful_Borrower/ Max_Hopeful_Borrower)*100,
+            Live_for_today_Spender: (userDetails.Live_for_today_Spender/ Max_Live_for_today_Spender)*100,
           },
           riskTaker: {
-            Savings_Behaviour: (userDetails.Disciplined_Saver / 50) * 100,
-            Investment_Risk_Tolerance: ((userDetails.The_Hustler + userDetails.Balanced_Spender) / 50) * 100,
-            Debt_Management: (userDetails.Hopeful_Borrower / 50) * 100,
-            Lifestyle_Choices: (userDetails.Live_for_today_Spender / 50) * 100
+            Savings_Behaviour: Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),
+            Investment_Risk_Tolerance: Math.round(((userDetails.The_Hustler + userDetails.Balanced_Spender) / (Max_The_Hustler + Max_Balanced_Spender)) * 100),
+            Debt_Management: Math.round((userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100),
+            Lifestyle_Choices: Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100)
           },
           scoreArray: [
-            personalityPercentages["Disciplined_Saver"],
-            personalityPercentages["Balanced_Spender"],
-            personalityPercentages["The_Hustler"],
-            personalityPercentages["Hopeful_Borrower"],
-            personalityPercentages["Live_for_today_Spender"],
+            Math.round((userDetails.Disciplined_Saver/ Max_Disciplined_Saver)*100),
+            Math.round((userDetails.Balanced_Spender/ Max_Balanced_Spender)*100),
+            Math.round((userDetails.The_Hustler/Max_The_Hustler)*100),
+            Math.round((userDetails.Hopeful_Borrower/ Max_Hopeful_Borrower)*100),
+            Math.round((userDetails.Live_for_today_Spender/ Max_Live_for_today_Spender)*100),
           ],
           avgResponseTime: userDetails.avgResponseTime,
           personalityName: personalityName,

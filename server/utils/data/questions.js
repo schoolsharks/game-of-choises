@@ -2,7 +2,7 @@
 
 export const goalTarget = 7500000
 
-export const set1 = [
+export const questions = [
   {
     id: 1,
     question: "IDFC’s First Bank’s savings account offers over 7% monthly interest. Do you:",
@@ -756,7 +756,7 @@ export const set1 = [
   // }
 ]
 
-export const questions = [
+export const SET_1 = [
   {
     id: 1,
     question: "You’ve saved ₹25,000, but concert tickets cost ₹20,000",
@@ -1580,7 +1580,7 @@ export const questions = [
 ];
 
 
-export const set2 = [
+export const SET_2 = [
   {
     id: 1,
     question: "You’re tempted to upgrade your streaming subscription to premium for ₹999/month.",

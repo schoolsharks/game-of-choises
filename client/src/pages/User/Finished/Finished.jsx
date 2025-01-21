@@ -60,28 +60,28 @@ const options = [
   },
 ];
 
-const riskTaker = [
-  {
-    id: 1,
-    text: "Savings Behaviour",
-    percentage: 70,
-  },
-  {
-    id: 2,
-    text: "Investment Risk Tolerance",
-    percentage: 60,
-  },
-  {
-    id: 3,
-    text: "Debt Management",
-    percentage: 90,
-  },
-  {
-    id: 4,
-    text: "Lifestyle Choices",
-    percentage: 80,
-  },
-];
+// const riskTaker = [
+//   {
+//     id: 1,
+//     text: "Savings Behaviour",
+//     percentage: 70,
+//   },
+//   {
+//     id: 2,
+//     text: "Investment Risk Tolerance",
+//     percentage: 60,
+//   },
+//   {
+//     id: 3,
+//     text: "Debt Management",
+//     percentage: 90,
+//   },
+//   {
+//     id: 4,
+//     text: "Lifestyle Choices",
+//     percentage: 80,
+//   },
+// ];
 
 const personalities = [
   {
@@ -165,13 +165,13 @@ const Finished = () => {
   }, [user]);
 
   const handleReset = async () => {
-    // const response = await axios.post(
-    //   `${import.meta.env.VITE_SERVER_URL}/users/storedata`,
-    //   { userId: user }
-    // );
-    localStorage.clear();
-    window.location.reload();
+    const response = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/users/storedata`,
+      { userId: user }
+    );
+    // localStorage.clear();
     navigate("/home");
+    window.location.reload();
   };
 
   const handleInviteClick = () => {
@@ -573,8 +573,8 @@ const Finished = () => {
           </Stack>
 
           <Stack marginTop="2rem" gap={"2rem"}>
-            {riskTaker.map((option) => (
-              <Stack key={option.id} gap={"0.5rem"}>
+            {userStatic.riskTaker && Object.entries(userStatic.riskTaker).map(([key, percentage]) => (
+              <Stack key={key} gap={"0.5rem"}>
                 <Stack
                   display={"flex"}
                   flexDirection={"row"}
@@ -587,7 +587,7 @@ const Finished = () => {
                     lineHeight="25px"
                     fontWeight={"400"}
                   >
-                    {option.text}
+                    {key}
                   </Typography>
                   <Typography
                     fontFamily="OCR-A BT"
@@ -595,12 +595,12 @@ const Finished = () => {
                     lineHeight="25px"
                     fontWeight={"400"}
                   >
-                    {option.percentage}%
+                    {percentage}%
                   </Typography>
                 </Stack>
                 <Box
                   height={"22px"}
-                  width={`${option.percentage}%`}
+                  width={`${percentage}%`}
                   sx={{
                     background:
                       "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
