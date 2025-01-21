@@ -16,9 +16,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import OptionA from "./OptionA";
 import OptionB from "./OptionB";
 import Button from "../../../components/Button";
-import homeIcon from "../../../assets/homeIcon.svg";
+// import homeIcon from "../../../assets/homeIcon.svg";
 import { Navigate, useNavigate } from "react-router-dom";
-import bgQuestion from "../../../assets/bg-question.png";
+// import bgQuestion from "../../../assets/bg-question.png";
 import Advertisement from "../../../components/Advertisement";
 
 const questionVariants = {
@@ -242,7 +242,6 @@ const Question = () => {
                         position: "relative",
                         marginLeft: "25px",
                         display: "inline-block",
-                        fontSize: "28px",
                         wordWrap: "break-word",
                         "& .Typewriter": {
                           "& *": {
@@ -260,7 +259,6 @@ const Question = () => {
                           width: "100%",
                           marginRight: "25px",
                           whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
-
                           lineHeight: "35px",
                           textAlign: "start",
                           position: "relative",

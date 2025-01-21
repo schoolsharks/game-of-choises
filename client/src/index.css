@@ -35,7 +35,7 @@ body {
   transform: translateX(-50%);
   width: 100%;
   height: 100%;
-  background-image: url("./assets/bg-binary-code.png");
+  background-image: url("./assets/bg-binary-code.webp");
   background-repeat: repeat;
   background-position: center;
   background-size: cover;

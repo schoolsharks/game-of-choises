@@ -19,22 +19,21 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import diamond from "../../../assets/diamond.svg";
 
-import person3 from "../../../assets/person3.svg";
-import person4 from "../../../assets/person4.svg";
-import person5 from "../../../assets/person5.svg";
-import person6 from "../../../assets/person6.svg";
-import person2 from "../../../assets/person2.svg";
+// import person3 from "../../../assets/person3.svg";
+// import person4 from "../../../assets/person4.svg";
+// import person5 from "../../../assets/person5.svg";
+// import person6 from "../../../assets/person6.svg";
+// import person2 from "../../../assets/person2.svg";
 import rightArrow from "../../../assets/rightArrow.png";
 import RadarChart from "../../../components/RadarChart";
-// import analysisBG from "../../../assets//aestheticCompletedImage.png";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import personalitiesGrid from "../../../assets/personalities-grid.jpg";
 
-import risk from "../../../assets/risk.svg";
-import yolo from "../../../assets/yolo.svg";
-import dreamer from "../../../assets/dreamer.svg";
-import balances_strategist from "../../../assets/balanced_strategist.svg";
-import budget_guru from "../../../assets/budget_guru.svg";
+import risk from "../../../assets/risk.webp";
+import yolo from "../../../assets/yolo.webp";
+import dreamer from "../../../assets/dreamer.webp";
+import balances_strategist from "../../../assets/balanced_strategist.webp";
+import budget_guru from "../../../assets/budget_guru.webp";
 
 const options = [
   {
@@ -129,20 +128,21 @@ const Finished = () => {
   const [toggle, setToggle] = useState(false);
   const [personlityToggle, setPersonalityToggle] = useState(false);
 
-  const data1 = [
-    "Disciplined Saver",
-    "Balanced Spender",
-    "The Hustler",
-    "Hopeful Borrower",
-    "Live for today Spender",
-  ];
-  const data2 = [person3, person4, person2, person5, person6];
-  const index = data1.findIndex((item) => item === userStatic?.personalityName);
+  // const data1 = [
+  //   "Disciplined Saver",
+  //   "Balanced Spender",
+  //   "The Hustler",
+  //   "Hopeful Borrower",
+  //   "Live for today Spender",
+  // ];
+  // const data2 = [person3, person4, person2, person5, person6];
+  // const index = data1.findIndex((item) => item === userStatic?.personalityName);
   // console.log(index);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
   console.log(userStatic);
   // if (localStorage.getItem("dataValues")) {
   //   localStorage.removeItem("dataValues");
@@ -186,7 +186,7 @@ const Finished = () => {
       });
   };
   console.log(userStatic?.personalityName);
-  const personalityImage = data2[index];
+  // const personalityImage = data2[index];
   return (
     <Stack
       sx={{
@@ -250,21 +250,11 @@ const Finished = () => {
           width: "100%",
         }}
       >
-        <Stack margin={"30px"} gap="1rem">
-          <Typography
-            fontFamily="LSC Solid"
-            fontSize="34px"
-            lineHeight="25px"
-            fontWeight="400"
-          >
+        <Stack margin={"30px 16px"} gap="1rem">
+          <Typography fontFamily="LSC Solid" fontSize="1.7rem" fontWeight="400">
             Congratulations!
           </Typography>
-          <Typography
-            fontFamily="OCR-A BT"
-            fontSize="20px"
-            lineHeight="25px"
-            fontWeight="400"
-          >
+          <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
             You’ve completed the Financial Matrix
           </Typography>
         </Stack>
@@ -282,23 +272,41 @@ const Finished = () => {
             alt=""
             style={{ opacity: "0.5", width: "100%", height: "156px" }}
           />
-          <Typography
-            fontFamily="LSC Solid"
-            fontSize="30px"
-            lineHeight="36px"
-            fontWeight="400"
-            whiteSpace={"nowrap"}
+          <Stack
             sx={{
               position: "absolute",
               top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "white",
-              zIndex: 1,
+              // left: "50%",
+              transform: "translate(16px ,-50%)",
             }}
           >
-            {userStatic.personalityName}
-          </Typography>
+            <Typography
+              fontFamily="LSC Solid"
+              fontSize="30px"
+              lineHeight="36px"
+              fontWeight="400"
+              whiteSpace={"nowrap"}
+              sx={{
+                color: "white",
+                zIndex: 1,
+              }}
+            >
+              {userStatic.personalityName}
+            </Typography>
+            <Typography
+              fontFamily="OCR-A BT"
+              fontSize="20px"
+              lineHeight="36px"
+              fontWeight="400"
+              whiteSpace={"nowrap"}
+              sx={{
+                color: "white",
+                zIndex: 1,
+              }}
+            >
+              Your Dominent Archetype
+            </Typography>
+          </Stack>
         </div>
 
         <Stack
@@ -604,7 +612,7 @@ const Finished = () => {
                   sx={{
                     background:
                       "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
-                      borderRadius:"0 12px 12px 0"
+                    borderRadius: "0 12px 12px 0",
                   }}
                 />
               </Stack>
