@@ -1,9 +1,10 @@
 import { Session } from '../models/session.model.js';
 import { User } from '../models/user.model.js';
-import { goalTarget, questions, SET_1, SET_2 } from '../utils/data/questions.js';
+import { goalTarget, questions, SET_1, SET_2, trigger_SET_1 } from '../utils/data/questions.js';
 import jwt from 'jsonwebtoken';
 
 import mongoose from 'mongoose';
+import { shuffleArray, shuffleQuestions } from '../utils/shuffleArray.js';
 
 
 const MAX_RETRIES = 10;
@@ -189,8 +190,10 @@ export const handleGetQuestion = async (req, res) => {
     const sequence = sqDecoded.sequence;
 
     // console.log("sequence", sequence);
+    const questionSequece = sequence.map((q)=>q.id);
+    // console.log("sequence", sequence)
 
-    console.log(user);
+    // console.log(user);
     let questionSet;
     if (user.activeSet === null) {
       user.activeSet = "SET_1"
@@ -204,9 +207,10 @@ export const handleGetQuestion = async (req, res) => {
       questionSet = SET_2;
     }
 
-    console.log("questionSet", questionSet);
+    // console.log("questionSet", questionSet);
 
-    if (user.answered_count === questionSet.length) {
+    // console.log("user.answerdCpunt", user.answered_count, sequence.length)
+    if (user.answered_count === sequence.length) {
       return res.status(200).json({ message: 'You have answered all the questions' });
     }
 
@@ -221,33 +225,17 @@ export const handleGetQuestion = async (req, res) => {
 
     let nextQuesId;
     if (updatedUser) {
-      nextQuesId = updatedUser.answered_count < questionSet.length ? questionSet[updatedUser.answered_count] : null;
+      nextQuesId = updatedUser.answered_count < sequence.length ? questionSet.find((q)=> q.id === sequence[updatedUser.answered_count])  : null;
     } else {
-      nextQuesId = user.answered_count < questionSet.length ? questionSet[user.answered_count] : null;
+      nextQuesId = user.answered_count < sequence.length ? questionSet.find((q)=> q.id === sequence[user.answered_count]) : null;
     }
 
-    // let goalReachPercentage;
-
-    // if (updatedUser.answered_count === questions.length) {
-    //   const result = await User.aggregate([
-    //     { $match: { session: user.session } },
-    //     {
-    //       $group: {
-    //         _id: null,
-    //         totalUsers: { $sum: 1 },
-    //         // wealthyUsers: { $sum: { $cond: [{ $gt: [{ $add: ['$wealth', '$investment'] }, goalTarget] }, 1, 0] } }
-    //       }
-    //     },
-    //     { $project: { percentage: { $multiply: [{ $divide: ['$wealthyUsers', '$totalUsers'] }, 100] } } }
-    //   ]);
-    //   goalReachPercentage = result.length ? result[0].percentage : 0;
-    // }
-
+    // console.log("nextQuesId", nextQuesId)
 
     if (nextQuesId) {
-      console.log("questionSet", nextQuesId)
+      // console.log("questionSet", nextQuesId);
       const nextQuestion = nextQuesId;
-      console.log("nextQuestion", nextQuestion);
+      // console.log("nextQuestion", nextQuestion);
       const session = await Session.findById(user.session).select("totalPlayers")
       res.status(200).json({
         nextQ: nextQuestion.question,
@@ -256,15 +244,11 @@ export const handleGetQuestion = async (req, res) => {
           B: nextQuestion.options['B'].content
         },
         nextQuesId: nextQuestion.id,
-        // year: nextQuestion.year,
-        // goalReachPercentage: goalReachPercentage,
-        // wealth: updatedUser ? updatedUser.wealth : user.wealth,
-        // investment: updatedUser ? updatedUser.investment : user.investment,
         totalPlayers: session.totalPlayers,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });
     } else {
-      res.status(200).json({ message: 'You have answered all the questions' });
+      res.status(200).json({ message: 'You have answered all the questions nextQuesId' });
     }
 
 
@@ -297,7 +281,7 @@ export const updateUserResponses = async (userId, quesId, response, questionSet)
       const question = questionSet.find(q => q.id == quesId);
       const option = question.options[response];
 
-      console.log("option", option, userId, quesId, response)
+      // console.log("option", option, userId, quesId, response)
 
 
       userDoc.Disciplined_Saver += option.Disciplined_Saver;
@@ -305,9 +289,6 @@ export const updateUserResponses = async (userId, quesId, response, questionSet)
       userDoc.The_Hustler += option.The_Hustler;
       userDoc.Hopeful_Borrower += option.Hopeful_Borrower;
       userDoc.Live_for_today_Spender += option.Live_for_today_Spender;
-
-      // userDoc.wealth += option.wealth;
-      // userDoc.investment += option.investment;
       userDoc.answered_count += 1;
 
 

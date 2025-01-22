@@ -327,433 +327,6 @@ export const questions = [
       }
     }
   },
-
-
-  // {
-  //   id: 5,
-  //   question: "A savings account offers 7% monthly interest. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Opt for it to benefit from compounding?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:3,
-  //       Live_for_today_Spender:0,
-  //       wealth: 11600,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Choose a lower-interest account with zero transaction fees?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 600,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 6,
-  //   question: "You’ve learned about financial planning through the game. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Ignore the lessons and stick to old habits?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:2,
-  //       wealth: 30000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Apply the knowledge to set and achieve financial goals?",
-  //       Disciplined_Saver:3,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 7,
-  //   question: "You receive unexpected financial windfall. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Spend it impulsively?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:1,
-  //       Live_for_today_Spender:2,
-  //       wealth: -6000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Use it to clear debts or invest wisely?",
-  //       Disciplined_Saver:2,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 8,
-  //   question: "Facing peer pressure to splurge on a vacation, you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Max out your credit cards to join in?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:3,
-  //       Live_for_today_Spender:2,
-  //       wealth: -15000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Politely decline and plan a budget-friendly trip instead?",
-  //       Disciplined_Saver:1,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: -5000,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-
-  // {
-  //   id: 9,
-  //   question: "A savings account offers 7% monthly interest. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Opt for it to benefit from compounding?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:3,
-  //       Live_for_today_Spender:0,
-  //       wealth: 11600,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Choose a lower-interest account with zero transaction fees?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 600,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 10,
-  //   question: "You’ve learned about financial planning through the game. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Ignore the lessons and stick to old habits?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:2,
-  //       wealth: 30000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Apply the knowledge to set and achieve financial goals?",
-  //       Disciplined_Saver:3,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 11,
-  //   question: "You receive unexpected financial windfall. Do you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Spend it impulsively?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:1,
-  //       Live_for_today_Spender:2,
-  //       wealth: -6000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Use it to clear debts or invest wisely?",
-  //       Disciplined_Saver:2,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 12,
-  //   question: "Facing peer pressure to splurge on a vacation, you:",
-  //   year: 1,
-  //   options: {
-  //     A: {
-  //       content: "Max out your credit cards to join in?",
-  //       Disciplined_Saver:0,
-  //       Balanced_Spender:0,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:3,
-  //       Live_for_today_Spender:2,
-  //       wealth: -15000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Politely decline and plan a budget-friendly trip instead?",
-  //       Disciplined_Saver:1,
-  //       Balanced_Spender:3,
-  //       The_Hustler:0,
-  //       Hopeful_Borrower:0,
-  //       Live_for_today_Spender:0,
-  //       wealth: -5000,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-
-
-
-
-  // {
-  //   id: 15,
-  //   question: "A wedding expense arises, requiring Mira to spend INR 25,00,000.",
-  //   year: 8,
-  //   options: {
-  //     A: {
-  //       content: "Take a personal loan for 10 years  to cover the wedding costs.",
-  //       wealth: -2500000,
-  //       investment: 802096
-  //     },
-  //     B: {
-  //       content: "Withdraw from her investment portfolio.",
-  //       wealth: 0,
-  //       investment: -2308254
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 15,
-  //   question: "Mira has an opportunity for a job abroad with higher salary but higher cost of living.",
-  //   year: 9,
-  //   options: {
-  //     A: {
-  //       content: "Take the job and start saving 10% (20,000) more monthly.",
-  //       wealth: 240000,
-  //       investment: 305175
-  //     },
-  //     B: {
-  //       content: "Stay local, cut expenses, and save aggressively.",
-  //       wealth: 60000,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 16,
-  //   question: "Mira can upgrade to a car for INR 5,00,000.",
-  //   year: 9,
-  //   options: {
-  //     A: {
-  //       content: "Upgrade and enjoy",
-  //       wealth: -500000,
-  //       investment: 390624
-  //     },
-  //     B: {
-  //       content: "Save the money for family planning or future expenses.",
-  //       wealth: 0,
-  //       investment: 387058
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 17,
-  //   question: "A market boom increases Mira's stock portfolio value by 20%.",
-  //   year: 10,
-  //   options: {
-  //     A: {
-  //       content: "Keep the stocks (equity), hoping for more gains.",
-  //       wealth: 0,
-  //       investment: 732420
-  //     },
-  //     B: {
-  //       content: "Sell the stocks (equity) and secure the profits now.",
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 18,
-  //   question: "Mira loses her job for 6 months.",
-  //   year: 11,
-  //   options: {
-  //     A: {
-  //       content: "Cut lifestyle expenses like streaming subscriptions and dining out.",
-  //       wealth: -800000,
-  //       investment: 195312
-  //     },
-  //     B: {
-  //       content: "Use her emergency fund for everyday expenses.",
-  //       wealth: 0,
-  //       investment: 26882
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 19,
-  //   question: "Family expenses rise; Mira needs INR 6,00,000 for children's education.",
-  //   year: 12,
-  //   options: {
-  //     A: {
-  //       content: "Take out an education loan.",
-  //       wealth: -600000,
-  //       investment: 964784
-  //     },
-  //     B: {
-  //       content: "Withdraw from long-term investments.",
-  //       wealth: 0,
-  //       investment: -600000
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 20,
-  //   question: "Large side hustle one off contract INR 5,00,000.",
-  //   year: 13,
-  //   options: {
-  //     A: {
-  //       content: "Invest fully in tech-focused mutual funds.",
-  //       wealth: 0,
-  //       investment: 1125392
-  //     },
-  //     B: {
-  //       content: "Spend part of it on a lifestyle upgrade, like travel or a home makeover.",
-  //       wealth: 0,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 21,
-  //   question: "Mira is close to achieving her goal of buying a house worth INR 1 crore.",
-  //   year: 13,
-  //   options: {
-  //     A: {
-  //       content: "Make 20% Down Payment. For a 1Cr home loan",
-  //       wealth: -2000000,
-  //       investment: 1507470
-  //     },
-  //     B: {
-  //       content: "Delay the house purchase and invest further in high-growth opportunities.",
-  //       wealth: 0,
-  //       investment: 771827
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 22,
-  //   question: "The real estate market crashes by 15%.",
-  //   year: 14,
-  //   options: {
-  //     A: {
-  //       content: "Stay Put",
-  //       wealth: 0,
-  //       investment: 1884340
-  //     },
-  //     B: {
-  //       content: "Take advantage of the lower prices and buy immediately (Reduced Price of 75,00,00 Cash down) no loan",
-  //       wealth: -7500000,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 23,
-  //   question: "Mira plans to start a side business requiring INR 2,00,000.",
-  //   year: 15,
-  //   options: {
-  //     A: {
-  //       content: "Start the business and explore entrepreneurship.",
-  //       wealth: -200000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Stick to her full-time job and save more.",
-  //       wealth: 1200000,
-  //       investment: 1884340
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 24,
-  //   question: "Mira can contribute INR 5,00,000 towards her sibling's wedding.",
-  //   year: 15,
-  //   options: {
-  //     A: {
-  //       content: "Contribute the full amount to family.",
-  //       wealth: -500000,
-  //       investment: 0
-  //     },
-  //     B: {
-  //       content: "Contribute half and save the rest.",
-  //       wealth: -250000,
-  //       investment: 0
-  //     }
-  //   }
-  // },
-  // {
-  //   id: 25,
-  //   question: "Mira receives a surprise bonus of INR 1,00,000 for excellent performance.",
-  //   year: 15,
-  //   options: {
-  //     A: {
-  //       content: "Invest the bonus in future tech.",
-  //       wealth: 0,
-  //       investment: 1205980
-  //     },
-  //     B: {
-  //       content: "Bank deposit",
-  //       wealth: 0,
-  //       investment: 896827
-  //     }
-  //   }
-  // }
 ]
 
 export const SET_1 = [
@@ -787,34 +360,6 @@ export const SET_1 = [
   },
   {
     id: 2,
-    question: "A sudden medical emergency requires ₹10 lakhs, but your insurance only covers half.",
-    topic: "The Emergency Decision",
-    year: 1,
-    options: {
-      A: {
-        content: "Take a high-interest loan to cover the remaining costs.",
-        Disciplined_Saver: -5,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 5,
-        Live_for_today_Spender: 0,
-        wealth: -200000,
-        investment: 0
-      },
-      B: {
-        content: "Use your emergency fund and restructure your budget to recover.",
-        Disciplined_Saver: 7,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-        wealth: -10000,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 3,
     question: "A spontaneous trip tempts you to dip into your emergency fund.",
     topic: "Emergency Fund Temptation",
     year: 1,
@@ -842,35 +387,35 @@ export const SET_1 = [
     }
   },
   {
-    id: 4,
-    question: "A colleague faces a personal financial crisis and asks for a loan. Helping them might strain your budget but strengthen your workplace bond.",
-    topic: "Colleague’s Crisis",
+    id: 3,
+    question: "A sudden medical emergency requires ₹10 lakhs, but your insurance only covers half.",
+    topic: "The Emergency Decision",
     year: 1,
     options: {
       A: {
-        content: "Lend the money without expecting repayment.",
-        Disciplined_Saver: 0,
+        content: "Take a high-interest loan to cover the remaining costs.",
+        Disciplined_Saver: -5,
         Balanced_Spender: 0,
         The_Hustler: 0,
-        Hopeful_Borrower: 4,
-        Live_for_today_Spender: 3,
-        wealth: -10000,
+        Hopeful_Borrower: 5,
+        Live_for_today_Spender: 0,
+        wealth: -200000,
         investment: 0
       },
       B: {
-        content: "Offer partial help while suggesting professional financial advice.",
-        Disciplined_Saver: 3,
-        Balanced_Spender: 4,
+        content: "Use your emergency fund and restructure your budget to recover.",
+        Disciplined_Saver: 7,
+        Balanced_Spender: 0,
         The_Hustler: 0,
         Hopeful_Borrower: 0,
         Live_for_today_Spender: 0,
-        wealth: 2000,
+        wealth: -10000,
         investment: 0
       }
     }
   },
   {
-    id: 5,
+    id: 4,
     question: "A friend starts a crowdfunding campaign for their passion project.",
     topic: "Crowdfunding a Friend’s Dream",
     year: 1,
@@ -898,35 +443,35 @@ export const SET_1 = [
     }
   },
   {
-    id: 6,
-    question: "The cryptocurrency market crashes, wiping out 70% of your investment.",
-    topic: "The Crypto Crash",
+    id: 5,
+    question: "A colleague faces a personal financial crisis and asks for a loan. Helping them might strain your budget but strengthen your workplace bond.",
+    topic: "Colleague’s Crisis",
     year: 1,
     options: {
       A: {
-        content: "Panic and sell everything to cut your losses.",
-        Disciplined_Saver: 3,
+        content: "Lend the money without expecting repayment.",
+        Disciplined_Saver: 0,
         Balanced_Spender: 0,
         The_Hustler: 0,
-        Hopeful_Borrower: -5,
-        Live_for_today_Spender: 0,
-        wealth: -30000,
+        Hopeful_Borrower: 4,
+        Live_for_today_Spender: 3,
+        wealth: -10000,
         investment: 0
       },
       B: {
-        content: "Stay invested, believing in long-term recovery.",
-        Disciplined_Saver: -3,
-        Balanced_Spender: 0,
-        The_Hustler: 5,
+        content: "Offer partial help while suggesting professional financial advice.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 4,
+        The_Hustler: 0,
         Hopeful_Borrower: 0,
         Live_for_today_Spender: 0,
-        wealth: 10000,
+        wealth: 2000,
         investment: 0
       }
     }
   },
   {
-    id: 7,
+    id: 6,
     question: "The crypto market is booming again.",
     topic: "Cryptocurrency Temptation",
     year: 1,
@@ -949,6 +494,34 @@ export const SET_1 = [
         Hopeful_Borrower: 0,
         Live_for_today_Spender: 0,
         wealth: 12000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 7,
+    question: "The cryptocurrency market crashes, wiping out 70% of your investment.",
+    topic: "The Crypto Crash",
+    year: 1,
+    options: {
+      A: {
+        content: "Panic and sell everything to cut your losses.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: -5,
+        Live_for_today_Spender: 0,
+        wealth: -30000,
+        investment: 0
+      },
+      B: {
+        content: "Stay invested, believing in long-term recovery.",
+        Disciplined_Saver: -3,
+        Balanced_Spender: 0,
+        The_Hustler: 5,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 10000,
         investment: 0
       }
     }
@@ -983,34 +556,6 @@ export const SET_1 = [
   },
   {
     id: 9,
-    question: "You’re offered a high-paying corporate job but must work long hours in a city you dislike.",
-    topic: "Career vs. Dream Life",
-    year: 1,
-    options: {
-      A: {
-        content: "Accept it, prioritizing money over personal satisfaction.",
-        Disciplined_Saver: 0,
-        Balanced_Spender: -3,
-        The_Hustler: 7,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-        wealth: 20000,
-        investment: 0
-      },
-      B: {
-        content: "Decline and pursue a lower-paying remote job that aligns with your passion.",
-        Disciplined_Saver: 0,
-        Balanced_Spender: 7,
-        The_Hustler: -3,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-        wealth: 5000,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 10,
     question: "Your boss offers a promotion that requires relocation to a bustling city.",
     topic: "Career vs. Mountain Dream",
     year: 1,
@@ -1037,6 +582,35 @@ export const SET_1 = [
       }
     }
   },
+  {
+    id: 10,
+    question: "You’re offered a high-paying corporate job but must work long hours in a city you dislike.",
+    topic: "Career vs. Dream Life",
+    year: 1,
+    options: {
+      A: {
+        content: "Accept it, prioritizing money over personal satisfaction.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: -3,
+        The_Hustler: 7,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 20000,
+        investment: 0
+      },
+      B: {
+        content: "Decline and pursue a lower-paying remote job that aligns with your passion.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 7,
+        The_Hustler: -3,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 5000,
+        investment: 0
+      }
+    }
+  },
+  
   {
     id: 11,
     question: "A new AI app promises to automate your investments.",
@@ -1317,6 +891,7 @@ export const SET_1 = [
       }
     }
   },
+
   {
     id: 21,
     question: "You receive a notice for a tax audit.",
@@ -1375,6 +950,34 @@ export const SET_1 = [
   },
   {
     id: 23,
+    question: "You inherit ₹25 lakhs from a relative.",
+    topic: "The Unexpected Windfall",
+    year: 1,
+    options: {
+      A: {
+        content: "Splurge on luxury vacations and gadgets because life’s too short.",
+        Disciplined_Saver: -5,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 7,
+        wealth: 5000,
+        investment: 0
+      },
+      B: {
+        content: "Invest in a balanced portfolio and clear outstanding debts.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 7,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: -3,
+        wealth: 150000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 24,
     question: "You’re tempted to buy a house in a luxurious neighborhood beyond your budget.",
     topic: "Dream House Dilemma",
     year: 1,
@@ -1402,7 +1005,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 24,
+    id: 25,
     question: "You see a trendy crowdfunding campaign for a sustainable startup.",
     topic: "Crowdfunding the Future",
     year: 1,
@@ -1430,7 +1033,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 25,
+    id: 26,
     question: "Your local community is starting a sustainable initiative (e.g., installing solar panels for shared spaces). Contributing a large amount will impact your savings but showcase your commitment to sustainability.",
     topic: "Sustainable Initiative",
     year: 1,
@@ -1458,7 +1061,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 26,
+    id: 27,
     question: "IDFC FIRST Bank offers a savings account with 7% monthly interest and a goal-based app to automate investments.",
     topic: "High Interest vs. Trusted Stability",
     year: 1,
@@ -1488,7 +1091,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 27,
+    id: 28,
     question: "IDFC FIRST Bank’s account offers free airport lounge access and ₹50,000 trip cancellation cover.",
     topic: "Lifestyle Perks vs. Practical Decisions",
     year: 1,
@@ -1518,7 +1121,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 28,
+    id: 29,
     question: "IDFC FIRST Bank provides ₹6 lakh lost card liability and ₹50 lakh accident insurance.",
     topic: "Insurance and Liability",
     year: 1,
@@ -1548,7 +1151,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 29,
+    id: 30,
     question: "IDFC FIRST Bank’s app offers categorized expenses and automated SIPs.",
     topic: "Tech Convenience vs. Old School Methods",
     year: 1,
@@ -1723,6 +1326,34 @@ export const SET_2 = [
   },
   {
     id: 6,
+    question: "The cryptocurrency market crashes, wiping out 70% of your investment.",
+    topic: "The Crypto Crash",
+    year: 1,
+    options: {
+      A: {
+        content: "Panic and sell everything to cut your losses.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: -5,
+        Live_for_today_Spender: 0,
+        wealth: -30000,
+        investment: 0
+      },
+      B: {
+        content: "Stay invested, believing in long-term recovery.",
+        Disciplined_Saver: -3,
+        Balanced_Spender: 0,
+        The_Hustler: 5,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 10000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 7,
     question: "A fund supports sustainability but offers lower returns.",
     topic: "Ethical Investing",
     year: 1,
@@ -1750,7 +1381,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 7,
+    id: 8,
     question: "You’re offered an early retirement package at age 30.",
     topic: "Early Retirement Daydreams",
     year: 1,
@@ -1778,7 +1409,35 @@ export const SET_2 = [
     }
   },
   {
-    id: 8,
+    id: 9,
+    question: "A colleague faces a personal financial crisis and asks for a loan. Helping them might strain your budget but strengthen your workplace bond.",
+    topic: "Colleague’s Crisis",
+    year: 1,
+    options: {
+      A: {
+        content: "Lend the money without expecting repayment.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 4,
+        Live_for_today_Spender: 3,
+        wealth: -10000,
+        investment: 0
+      },
+      B: {
+        content: "Offer partial help while suggesting professional financial advice.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 4,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 2000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 10,
     question: "A bank offers a green savings account linked to tree-planting initiatives.",
     topic: "Green Savings Account",
     year: 1,
@@ -1806,7 +1465,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 9,
+    id: 11,
     question: "A new laptop launches, and your current one is 3 years old but functional.",
     topic: "Tech Gadget Temptation",
     year: 1,
@@ -1834,7 +1493,35 @@ export const SET_2 = [
     }
   },
   {
-    id: 10,
+    id: 12,
+    question: "A sudden medical emergency requires ₹10 lakhs, but your insurance only covers half.",
+    topic: "The Emergency Decision",
+    year: 1,
+    options: {
+      A: {
+        content: "Take a high-interest loan to cover the remaining costs.",
+        Disciplined_Saver: -5,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 5,
+        Live_for_today_Spender: 0,
+        wealth: -200000,
+        investment: 0
+      },
+      B: {
+        content: "Use your emergency fund and restructure your budget to recover.",
+        Disciplined_Saver: 7,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: -10000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 13,
     question: "Your friend’s Instagram stories show their luxury vacation.",
     topic: "Vacation FOMO",
     year: 1,
@@ -1862,7 +1549,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 11,
+    id: 14,
     question: "An expensive gadget offers a BNPL option with zero initial payment.",
     topic: "Buy Now Pay Later (BNPL)",
     year: 1,
@@ -1890,7 +1577,35 @@ export const SET_2 = [
     }
   },
   {
-    id: 12,
+    id: 15,
+    question: "Your local community is starting a sustainable initiative (e.g., installing solar panels for shared spaces). Contributing a large amount will impact your savings but showcase your commitment to sustainability.",
+    topic: "Sustainable Initiative",
+    year: 1,
+    options: {
+      A: {
+        content: "Contribute generously to lead the initiative and boost your social standing.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 3,
+        Live_for_today_Spender: 4,
+        wealth: -5000,
+        investment: 0
+      },
+      B: {
+        content: "Contribute moderately after reviewing the project’s feasibility.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 4,
+        The_Hustler: 3,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 1000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 16,
     question: "A luxury car upgrade tempts you to use your emergency fund.",
     topic: "Emergency Fund Sacrifice",
     year: 1,
@@ -1918,7 +1633,35 @@ export const SET_2 = [
     }
   },
   {
-    id: 13,
+    id: 17,
+    question: "You’re offered a high-paying corporate job but must work long hours in a city you dislike.",
+    topic: "Career vs. Dream Life",
+    year: 1,
+    options: {
+      A: {
+        content: "Accept it, prioritizing money over personal satisfaction.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: -3,
+        The_Hustler: 7,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 20000,
+        investment: 0
+      },
+      B: {
+        content: "Decline and pursue a lower-paying remote job that aligns with your passion.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 7,
+        The_Hustler: -3,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 5000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 18,
     question: "The market crashes, and your investments lose value.",
     topic: "Stock Market Dilemma",
     year: 1,
@@ -1946,7 +1689,35 @@ export const SET_2 = [
     }
   },
   {
-    id: 14,
+    id: 19,
+    question: "You inherit ₹25 lakhs from a relative.",
+    topic: "The Unexpected Windfall",
+    year: 1,
+    options: {
+      A: {
+        content: "Splurge on luxury vacations and gadgets because life’s too short.",
+        Disciplined_Saver: -5,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 7,
+        wealth: 5000,
+        investment: 0
+      },
+      B: {
+        content: "Invest in a balanced portfolio and clear outstanding debts.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 7,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: -3,
+        wealth: 150000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 20,
     question: "A side gig promises quick passive income.",
     topic: "Passive Income Temptation",
     year: 1,
@@ -1974,7 +1745,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 15,
+    id: 21,
     question: "Limited-edition sneakers drop, costing half your savings.",
     topic: "The Sneaker Drop",
     year: 1,
@@ -2002,7 +1773,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 16,
+    id: 22,
     question: "A job with high pay but no benefits is offered.",
     topic: "Dream Job Trade-Off",
     year: 1,
@@ -2030,7 +1801,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 17,
+    id: 23,
     question: "You’ve saved for a home, but a luxury apartment tempts you.",
     topic: "Luxury Apartment Temptation",
     year: 1,
@@ -2058,7 +1829,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 18,
+    id: 24,
     question: "Your friend is crowdfunding for their startup.",
     topic: "Friends’ Crowdfunding Campaign",
     year: 1,
@@ -2086,7 +1857,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 19,
+    id: 25,
     question: "Your monthly streaming services exceed your entertainment budget.",
     topic: "Streaming Service Overload",
     year: 1,
@@ -2114,7 +1885,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 20,
+    id: 26,
     question: "A certification course aligns with your career goals but costs a lot upfront.",
     topic: "Investing in Yourself",
     year: 1,
@@ -2141,8 +1912,9 @@ export const SET_2 = [
       }
     }
   },
+
   {
-    id: 26,
+    id: 27,
     question: "IDFC FIRST Bank offers a savings account with 7% monthly interest and a goal-based app to automate investments.",
     topic: "High Interest vs. Trusted Stability",
     year: 1,
@@ -2172,7 +1944,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 27,
+    id: 28,
     question: "IDFC FIRST Bank’s account offers free airport lounge access and ₹50,000 trip cancellation cover.",
     topic: "Lifestyle Perks vs. Practical Decisions",
     year: 1,
@@ -2202,7 +1974,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 28,
+    id: 29,
     question: "IDFC FIRST Bank provides ₹6 lakh lost card liability and ₹50 lakh accident insurance.",
     topic: "Insurance and Liability",
     year: 1,
@@ -2232,7 +2004,7 @@ export const SET_2 = [
     }
   },
   {
-    id: 29,
+    id: 30,
     question: "IDFC FIRST Bank’s app offers categorized expenses and automated SIPs.",
     topic: "Tech Convenience vs. Old School Methods",
     year: 1,
@@ -2262,3 +2034,22 @@ export const SET_2 = [
     }
   }
 ];
+
+
+export const trigger_SET_1 = [
+  { questionId: 6, triggerAfter: 7 },
+  { questionId: 9, triggerAfter: 10 },
+  { questionId: 2, triggerAfter: 3 },
+  { questionId: 4, triggerAfter: 5 },
+  { questionId: 25, triggerAfter: 26 },
+  { questionId: 22, triggerAfter: 23 },
+];
+
+export const trigger_SET_2 = [
+  { questionId: 5, triggerAfter: 6 },
+  { questionId: 16, triggerAfter: 17 },
+  { questionId: 11, triggerAfter: 12 },
+  { questionId: 8, triggerAfter: 9 },
+  { questionId: 14, triggerAfter: 15 },
+  { questionId: 18, triggerAfter: 19 },
+]

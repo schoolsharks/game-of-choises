@@ -1,5 +1,5 @@
 import { User } from "../models/user.model.js";
-import { goalTarget, questions, SET_1, SET_2 } from "../utils/data/questions.js";
+import { goalTarget, questions, SET_1, SET_2, trigger_SET_1, trigger_SET_2 } from "../utils/data/questions.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Admin } from "../models/admin.model.js";
@@ -7,6 +7,7 @@ import signToken from "../utils/signJwt.js";
 import { Session } from "../models/session.model.js";
 import mongoose from "mongoose";
 import { personalities } from "../utils/data/personalities.js";
+import { shuffleQuestions } from "../utils/shuffleArray.js";
 
 dotenv.config();
 
@@ -47,8 +48,12 @@ export const handleCreateUser = async (req, res) => {
     }
 
     const shuffledQuestionIds = questions.map((q) => q.id);
+    const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
+
+    const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+    console.log("shuffledQuestionArray", questionIdsArray);
     const sq = jwt.sign(
-      { sequence: shuffledQuestionIds },
+      { sequence: questionIdsArray },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
@@ -213,9 +218,35 @@ export const handleStorage = async (req, res) => {
 
 
     if (user.activeSet === "SET_2")
-      user.activeSet = null
-    else if (user.activeSet === "SET_1")
+    {
+      user.activeSet = 'SET_1'
+
+      const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
+      console.log("shuffledQuestionArray", shuffledQuestionArray)
+      const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+      const sq = jwt.sign(
+        { sequence: questionIdsArray },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+
+      user.sq = sq;
+    }
+    else if (user.activeSet === "SET_1") 
+      {
+      const shuffledQuestionArray = shuffleQuestions(SET_2, trigger_SET_2);
+      console.log("shuffledQuestionArray", shuffledQuestionArray)
+      const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+      const sq = jwt.sign(
+        { sequence: questionIdsArray },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+
       user.activeSet = "SET_2"
+      user.sq = sq;
+      console.log("set 2 created");
+    }
 
     await user.save();
     const newuser = await User.findById(
@@ -245,16 +276,16 @@ export const handleAnalysis = async (req, res) => {
     );
 
     let questionSet;
-    if(userDetails.activeSet === "SET_1")
+    if (userDetails.activeSet === "SET_1")
       questionSet = SET_1
-    else if(userDetails.activeSet === "SET_2"){
+    else if (userDetails.activeSet === "SET_2") {
       questionSet = SET_2
     }
     let {
-      Max_Disciplined_Saver, 
-      Max_Balanced_Spender, 
-      Max_Hopeful_Borrower, 
-      Max_Live_for_today_Spender, 
+      Max_Disciplined_Saver,
+      Max_Balanced_Spender,
+      Max_Hopeful_Borrower,
+      Max_Live_for_today_Spender,
       Max_The_Hustler
     } = aggregateValues(questionSet);
 
@@ -308,11 +339,11 @@ export const handleAnalysis = async (req, res) => {
           name: userDetails.name,
           email: userDetails.email,
           score: {
-            Disciplined_Saver: (userDetails.Disciplined_Saver/ Max_Disciplined_Saver)*100,
-            Balanced_Spender: (userDetails.Balanced_Spender/ Max_Balanced_Spender)*100,
-            The_Hustler: (userDetails.The_Hustler/Max_The_Hustler)*100,
-            Hopeful_Borrower: (userDetails.Hopeful_Borrower/ Max_Hopeful_Borrower)*100,
-            Live_for_today_Spender: (userDetails.Live_for_today_Spender/ Max_Live_for_today_Spender)*100,
+            Disciplined_Saver: (userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100,
+            Balanced_Spender: (userDetails.Balanced_Spender / Max_Balanced_Spender) * 100,
+            The_Hustler: (userDetails.The_Hustler / Max_The_Hustler) * 100,
+            Hopeful_Borrower: (userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100,
+            Live_for_today_Spender: (userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100,
           },
           riskTaker: {
             Savings_Behaviour: Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),
@@ -321,11 +352,11 @@ export const handleAnalysis = async (req, res) => {
             Lifestyle_Choices: Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100)
           },
           scoreArray: [
-            Math.round((userDetails.Disciplined_Saver/ Max_Disciplined_Saver)*100),
-            Math.round((userDetails.Balanced_Spender/ Max_Balanced_Spender)*100),
-            Math.round((userDetails.The_Hustler/Max_The_Hustler)*100),
-            Math.round((userDetails.Hopeful_Borrower/ Max_Hopeful_Borrower)*100),
-            Math.round((userDetails.Live_for_today_Spender/ Max_Live_for_today_Spender)*100),
+            Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),
+            Math.round((userDetails.Balanced_Spender / Max_Balanced_Spender) * 100),
+            Math.round((userDetails.The_Hustler / Max_The_Hustler) * 100),
+            Math.round((userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100),
+            Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100),
           ],
           avgResponseTime: userDetails.avgResponseTime,
           personalityName: personalityName,

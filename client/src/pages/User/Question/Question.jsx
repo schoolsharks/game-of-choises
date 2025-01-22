@@ -91,7 +91,7 @@ const Question = () => {
     );
   };
 
-  if (answered === 25) {
+  if (answered === 30) {
     return <Navigate to="/completed" />;
   }
 
