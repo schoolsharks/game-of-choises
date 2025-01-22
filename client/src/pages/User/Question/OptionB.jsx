@@ -11,6 +11,7 @@ const optionVariants = {
     opacity: 0,
     x: 50,
     scale: 0.95,
+    delay:0.6
   },
   animate: {
     opacity: 1,
@@ -20,7 +21,7 @@ const optionVariants = {
       type: "spring",
       damping: 12,
       stiffness: 100,
-      delay: 0.3, // Slightly delayed after Option A
+      delay: 0.9, // Slightly delayed after Option A
     },
   },
   exit: {
@@ -28,13 +29,13 @@ const optionVariants = {
     x: 100,
     scale: 0.95,
     transition: {
-      duration: 0.3,
+      duration: 0.9,
     },
   },
   hover: {
     scale: 1.02,
     transition: {
-      duration: 0.2,
+      duration: 0.8,
     },
   },
 };
@@ -194,7 +195,7 @@ const OptionB = ({ text, onOptionSelect }) => {
             display={"flex"}
             alignItems={"center"}
             flexDirection={"row-reverse"}
-            gap={"2rem"}
+            gap={"1rem"}
             sx={{
               position: "absolute",
               top: "50%",
@@ -218,6 +219,7 @@ const OptionB = ({ text, onOptionSelect }) => {
               fontSize={"1rem"}
               fontFamily={"LSC Solid"}
               width={"65%"}
+              // paddingLeft={"2.5rem"}
             >
               {text}
             </Typography>

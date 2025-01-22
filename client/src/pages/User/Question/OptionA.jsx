@@ -1,16 +1,17 @@
 // OptionA.jsx
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { duration, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import blueAA from "../../../assets/optionA.webp";
 import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, delay } from "framer-motion";
 
 const optionVariants = {
   initial: {
     opacity: 0,
     x: -50,
     scale: 0.95,
+    delay :0.3
   },
   animate: {
     opacity: 1,
@@ -20,7 +21,7 @@ const optionVariants = {
       type: "spring",
       damping: 12,
       stiffness: 100,
-      delay: 0.2,
+      delay: 0.5,
     },
   },
   exit: {
@@ -28,13 +29,13 @@ const optionVariants = {
     x: -100,
     scale: 0.95,
     transition: {
-      duration: 0.3,
+      duration: 0.6,
     },
   },
   hover: {
     scale: 1.02,
     transition: {
-      duration: 0.2,
+      duration: 0.5,
     },
   },
 };
@@ -175,7 +176,7 @@ const OptionA = ({ text, onOptionSelect }) => {
             display={"flex"}
             alignItems={"center"}
             flexDirection={"row"}
-            gap={"2rem"}
+            gap={"1rem"}
             sx={{
               position: "absolute",
               top: "50%",

@@ -34,6 +34,7 @@ import yolo from "../../../assets/yolo.webp";
 import dreamer from "../../../assets/dreamer.webp";
 import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
+import personalityGrid2 from "../../../assets/personalityGrid2.svg";
 
 const options = [
   {
@@ -219,7 +220,7 @@ const Finished = () => {
           borderRadius="18px"
           border="1px solid #FBF9ED"
           fontWeight="600"
-          fontSize="1.25rem"
+          fontSize="1.1rem"
           lineHeight="26px"
           fontFamily="OCR-A BT"
           display="flex"
@@ -229,6 +230,7 @@ const Finished = () => {
           gap="1rem"
           alignItems="center"
           marginBottom={"30px"}
+          whiteSpace={"nowrap"}
         >
           <p>Start banking with IDFC</p>
           <img
@@ -249,14 +251,15 @@ const Finished = () => {
           paddingBottom: "2rem",
           width: "100%",
         }}
+
       >
-        <Stack margin={"30px 16px"} gap="1rem">
-          <Typography fontFamily="LSC Solid" fontSize="1.7rem" fontWeight="400">
-            Congratulations!
-          </Typography>
-          <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
-            You’ve completed the Financial Matrix
-          </Typography>
+        <Stack margin={"30px 2.5rem"} gap="1rem">
+            <Typography fontFamily="LSC Solid" fontSize="1.7rem" fontWeight="400">
+              Congratulations!
+            </Typography>
+            <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
+              You’ve completed the Financial Matrix
+            </Typography>
         </Stack>
         {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
 
@@ -265,12 +268,12 @@ const Finished = () => {
             position: "relative",
             display: "inline-block",
             height: "156px",
-          }}
+          }}          
         >
           <img
             src={personalitiesGrid}
             alt=""
-            style={{ opacity: "0.5", width: "100%", height: "156px" }}
+            style={{ opacity: "0.5", width: "100%", height: "156px", backgroundSize:"cover" }}
           />
           <Stack
             sx={{
@@ -362,7 +365,7 @@ const Finished = () => {
                   <div
                     className="blinking-div"
                     style={{
-                      height: "28px",
+                      height: "22px",
                       width: "11px",
                       backgroundColor: "white",
                       animation: "blink 1s infinite",
@@ -542,12 +545,12 @@ const Finished = () => {
                   userStatic.badge === "The Dreamer in Debt"
                     ? dreamer
                     : userStatic.badge === "The Risk-Taker"
-                    ? risk
-                    : userStatic.badge === "The Balanced Strategist"
-                    ? balances_strategist
-                    : userStatic.badge === "The Budget Guru"
-                    ? budget_guru
-                    : yolo
+                      ? risk
+                      : userStatic.badge === "The Balanced Strategist"
+                        ? balances_strategist
+                        : userStatic.badge === "The Budget Guru"
+                          ? budget_guru
+                          : yolo
                 }
                 style={{ maxWidth: "none" }}
               />
@@ -643,6 +646,8 @@ const Finished = () => {
             Personality Representation
           </Typography>
           <Stack
+            display={"flex"}
+            justifyContent={"center"}
             sx={{
               width: "100%",
               margin: "auto",
@@ -650,8 +655,8 @@ const Finished = () => {
                 window.innerWidth > 500
                   ? "translateX(-3.5rem)"
                   : window.innerWidth > 400
-                  ? "translateX(-0.2rem)"
-                  : "translateX(-1rem)",
+                    ? "translateX(-0.2rem)"
+                    : "translateX(-1rem)",
               objectFit: "cove",
             }}
           >
