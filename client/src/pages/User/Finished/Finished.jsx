@@ -34,8 +34,8 @@ import yolo from "../../../assets/yolo.webp";
 import dreamer from "../../../assets/dreamer.webp";
 import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
-import personalityGrid2 from "../../../assets/personalityGrid2.svg";
-import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
+// import personalityGrid2 from "../../../assets/personalityGrid2.svg";
+// import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
 const options = [
   {
@@ -274,7 +274,7 @@ const Finished = () => {
           <img
             src={personalitiesGrid}
             alt=""
-            style={{ opacity: "0.5", width: "100%", height: "156px", backgroundSize:"contain" }}
+            style={{ opacity: "0.5", width: "100%", height: "156px",objectFit:"cover" }}
           />
           <Stack
             sx={{

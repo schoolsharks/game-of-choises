@@ -54,7 +54,7 @@ const Home = () => {
       });
     } else {
       navigator.clipboard.writeText(location.href);
-      alert("Website URL copied to clipboard")
+      alert("Website URL copied to clipboard");
     }
   };
 
@@ -76,8 +76,8 @@ const Home = () => {
         // justifyContent: "space-between",
         alignItems: "center",
         alignContent: "center",
-        minHeight: "100vh",
-        flex:"1",
+        minHeight: window.innerHeight + "px",
+        flex: "1",
         gap: "15px",
       }}
     >
@@ -90,20 +90,28 @@ const Home = () => {
           maxWidth: "431px",
           paddingBottom: "3%",
           // paddingTop: windowHeight > 600 ? "17%" : "3%",
-          paddingTop: "55px",
+          // paddingTop: "55px",
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
           gap: "30px",
-          flex:"1",
+          flex: "1",
         }}
       >
         {isSplashScreenOn ? (
           <motion.div
             initial={{ scale: 1 }}
             animate={{ scale: 1.25 }}
-            transition={{ duration: 1.2 , ease: [.08,.72,.15,.62], delay:0.3}}
-            style={{height:"100%",display:"flex",justifyContent:"center"}}
+            transition={{
+              duration: 1.2,
+              ease: [0.08, 0.72, 0.15, 0.62],
+              delay: 0.3,
+            }}
+            style={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <Typography
               variant={"h3"}
@@ -127,17 +135,19 @@ const Home = () => {
             </Typography>
           </motion.div>
         ) : (
+          <Box paddingTop={"20px"}>
           <MySlider currentSlide={currentSlide} />
+          </Box>
         )}
       </Stack>
 
       {!isSplashScreenOn && (
         <Stack
           position={"relative"}
-          marginBottom={"50px"}
-          maxHeight={"88px"}
+          marginBottom={"0px"}
+          // maxHeight={"88px"}
           maxWidth={"370px"}
-          height={"12%"}
+          // height={"12%"}
           marginTop={"auto"}
           width={"80%"}
           alignContent={"center"}

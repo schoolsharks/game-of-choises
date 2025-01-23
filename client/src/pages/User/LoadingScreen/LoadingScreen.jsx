@@ -16,13 +16,13 @@ const LoadingScreen = () => {
   }, []);
 
   return (
-    <Stack>
-      <Stack
-        height="80vh"
-        margin={"auto"}
-        justifyContent="center"
-        padding={"16px"}
-      >
+    <Stack
+      height={"100%"}
+      sx={{
+        minHeight: window.innerHeight + "px",
+      }}
+    >
+      <Stack margin={"auto"} justifyContent="center" padding={"16px"}>
         <Typography
           sx={{
             color: "#FFFFFF",
@@ -35,6 +35,11 @@ const LoadingScreen = () => {
                 fontSize: "inherit",
                 wordBreak: "break-word",
               },
+            },
+            "& .Typewriter__cursor": {
+              fontSize: "50px", 
+              lineHeight: "40px", 
+              height:"38px",
             },
           }}
         >
@@ -60,16 +65,17 @@ const LoadingScreen = () => {
                 wrapperClassName: "typewriter-wrapper",
                 strings: ["Let's get started"],
                 autoStart: true,
+                fontSize: "50px",
                 loop: false,
                 cursorBlinking: true,
-                deleteSpeed:Infinity
+                deleteSpeed: Infinity,
               }}
             />
           </span>
         </Typography>
       </Stack>
 
-      <Stack direction={"column"} alignItems={"center"}>
+      <Stack direction={"column"} alignItems={"center"} marginBottom={"12px"}>
         <Typography
           variant={"caption"}
           fontSize={"10px"}

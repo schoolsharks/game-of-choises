@@ -77,12 +77,12 @@ const Login = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        minHeight: window.innerHeight + "px",
         gap: "20px",
       }}
     >
       <Typography
-        fontSize="40PX"
+        fontSize="40px"
         fontWeight="400"
         zIndex={1}
         marginTop={"80px"}
@@ -92,7 +92,7 @@ const Login = () => {
           fontFamily: "LSC Solid",
           lineHeight: "52.8px",
           letterSpacing: "5%",
-          margin: "120px 16px 0",
+          margin: "48px 16px 0",
         }}
       >
         LOGIN

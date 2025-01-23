@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import "./custom.css";
 import gemIcon from "../assets/gemIcon.svg";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 const MySlider = ({ currentSlide }) => {
@@ -72,7 +72,7 @@ const MySlider = ({ currentSlide }) => {
           maxWidth: "431px",
           width: "100%",
           height: "80%",
-          flex:"1",
+          flex: "1",
           margin: "0 auto",
           position: "relative",
         }}
@@ -87,19 +87,35 @@ const MySlider = ({ currentSlide }) => {
             marginBottom: "30px",
           }}
         >
-          <Typewriter
-            options={{
-              delay: 60,
-              cursor: "",
+          <Box
+            sx={{
+              "& .Typewriter": {
+                "& *": {
+                  fontSize: "inherit",
+                  wordBreak: "break-word",
+                },
+              },
+              "& .Typewriter__cursor": {
+                fontSize: "50px",
+                lineHeight: "52px",
+                height: "35px",
+              },
             }}
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("WELCOME")
-                .pauseFor(400)
-                .callFunction(handletitleComplete)
-                .start();
-            }}
-          />
+          >
+            <Typewriter
+              options={{
+                delay: 60,
+                cursor: "",
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("WELCOME")
+                  .pauseFor(400)
+                  .callFunction(handletitleComplete)
+                  .start();
+              }}
+            />
+          </Box>
         </div>
 
         <motion.div
@@ -200,7 +216,7 @@ const MySlider = ({ currentSlide }) => {
           height: "80%",
           margin: "auto",
           position: "relative",
-          flex:"1"
+          flex: "1",
         }}
       >
         <div
@@ -213,6 +229,21 @@ const MySlider = ({ currentSlide }) => {
             padding: "0 30px",
           }}
         >
+           <Box
+            sx={{
+              "& .Typewriter": {
+                "& *": {
+                  fontSize: "inherit",
+                  wordBreak: "break-word",
+                },
+              },
+              "& .Typewriter__cursor": {
+                fontSize: "50px",
+                lineHeight: "52px",
+                height: "35px",
+              },
+            }}
+          >
           <Typewriter
             options={{
               delay: 60,
@@ -226,6 +257,7 @@ const MySlider = ({ currentSlide }) => {
                 .start();
             }}
           />
+          </Box>
         </div>
 
         <motion.div
@@ -276,7 +308,7 @@ const MySlider = ({ currentSlide }) => {
                     width: "15px",
                     objectFit: "contain",
                     verticalAlign: "middle",
-                    mixBlendMode:"hard-light"
+                    mixBlendMode: "hard-light",
                   }}
                 />
                 <Typography

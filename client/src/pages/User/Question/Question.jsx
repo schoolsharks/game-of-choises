@@ -97,7 +97,7 @@ const Question = () => {
 
   return (
     <Box
-      minHeight="100vh"
+      minHeight={window.innerHeight + "px"}
       margin={"auto"}
       width={"100%"}
       maxWidth={"431px"}
