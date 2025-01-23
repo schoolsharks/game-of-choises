@@ -976,36 +976,9 @@ export const SET_1 = [
       }
     }
   },
+  
   {
     id: 24,
-    question: "You’re tempted to buy a house in a luxurious neighborhood beyond your budget.",
-    topic: "Dream House Dilemma",
-    year: 1,
-    options: {
-      A: {
-        content: "Stretch your finances for the dream.",
-        Disciplined_Saver: 0,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 3,
-        wealth: 5000,
-        investment: 0
-      },
-      B: {
-        content: "Choose a home within your means.",
-        Disciplined_Saver: 3,
-        Balanced_Spender: 3,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-        wealth: 25000,
-        investment: 0
-      }
-    }
-  },
-  {
-    id: 25,
     question: "You see a trendy crowdfunding campaign for a sustainable startup.",
     topic: "Crowdfunding the Future",
     year: 1,
@@ -1033,7 +1006,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 26,
+    id: 25,
     question: "Your local community is starting a sustainable initiative (e.g., installing solar panels for shared spaces). Contributing a large amount will impact your savings but showcase your commitment to sustainability.",
     topic: "Sustainable Initiative",
     year: 1,
@@ -1056,6 +1029,34 @@ export const SET_1 = [
         Hopeful_Borrower: 0,
         Live_for_today_Spender: 0,
         wealth: 1000,
+        investment: 0
+      }
+    }
+  },
+  {
+    id: 26,
+    question: "You’re tempted to buy a house in a luxurious neighborhood beyond your budget.",
+    topic: "Dream House Dilemma",
+    year: 1,
+    options: {
+      A: {
+        content: "Stretch your finances for the dream.",
+        Disciplined_Saver: 0,
+        Balanced_Spender: 0,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 3,
+        wealth: 5000,
+        investment: 0
+      },
+      B: {
+        content: "Choose a home within your means.",
+        Disciplined_Saver: 3,
+        Balanced_Spender: 3,
+        The_Hustler: 0,
+        Hopeful_Borrower: 0,
+        Live_for_today_Spender: 0,
+        wealth: 25000,
         investment: 0
       }
     }
@@ -2041,7 +2042,7 @@ export const trigger_SET_1 = [
   { questionId: 9, triggerAfter: 10 },
   { questionId: 2, triggerAfter: 3 },
   { questionId: 4, triggerAfter: 5 },
-  { questionId: 25, triggerAfter: 26 },
+  { questionId: 24, triggerAfter: 25 },
   { questionId: 22, triggerAfter: 23 },
 ];
 
