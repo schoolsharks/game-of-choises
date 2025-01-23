@@ -180,17 +180,17 @@ const OptionA = ({ text, onOptionSelect }) => {
               fontSize="1rem"
               fontFamily="LSC Solid"
               color="#FBF9ED"
-              sx={{ width: "70%" }}
+              // sx={{ width: "70%" }}
             >
               {text}
             </Typography>
-            <motion.img
+            {/* <motion.img
               src={optionArrowLeft}
               alt="Option Arrow"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.3 }}
-            />
+            /> */}
           </Stack>
           {/* <Box 
             component={"img"}

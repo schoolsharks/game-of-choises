@@ -753,12 +753,12 @@ const Finished = () => {
           </Stack>
 
           {personlityToggle && (
-            <Stack marginTop={"2rem"} gap={"2rem"}>
+            <Stack marginTop={"2rem"} gap={"1rem"}>
               {personalities.map((option) => (
                 <Stack key={option.in} marginBottom={"1rem"} gap={"0.5rem"}>
                   <Typography
                     fontFamily="OCR-A BT"
-                    fontSize="25px"
+                    fontSize="24px"
                     lineHeight="25px"
                     fontWeight={"400"}
                     textTransform={"uppercase"}
@@ -767,7 +767,7 @@ const Finished = () => {
                   </Typography>
                   <Typography
                     fontFamily="OCR-A BT"
-                    fontSize="20px"
+                    fontSize="18px"
                     lineHeight="25px"
                     fontWeight={"400"}
                   >

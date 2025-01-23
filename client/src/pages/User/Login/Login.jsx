@@ -79,6 +79,7 @@ const Login = () => {
         flexDirection: "column",
         minHeight: window.innerHeight + "px",
         gap: "20px",
+        justifyContent: "center",
       }}
     >
       <Typography
@@ -122,6 +123,8 @@ const Login = () => {
           alignContent={"center"}
           alignItems={"center"}
           paddingTop={"10px"}
+          bgcolor={"#020101A6"}
+          
         >
           <Stack
             sx={{
