@@ -72,28 +72,28 @@ const LoadingScreen = () => {
       <Stack direction={"column"} alignItems={"center"}>
         <Typography
           variant={"caption"}
-          fontSize={"15px"}
+          fontSize={"10px"}
           fontWeight="100"
           textAlign={"center"}
           zIndex={1}
           color={"#FBF9ED"}
           sx={{
             fontFamily: "OCR-A BT",
-            fontSize: "1.25rem",
+            fontSize: "1.0rem",
           }}
         >
           Swipe left for option A
         </Typography>
         <Typography
           variant={"caption"}
-          fontSize={"15px"}
+          fontSize={"10px"}
           fontWeight="100"
           textAlign={"center"}
           zIndex={1}
           color={"#FBF9ED"}
           sx={{
             fontFamily: "OCR-A BT",
-            fontSize: "1.25rem",
+            fontSize: "1.0rem",
             marginBottom: "4px",
           }}
         >

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const RadarChart = ({ dataValues }) => {
   const canvasRef = React.useRef(null);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -159,8 +172,19 @@ const RadarChart = ({ dataValues }) => {
     return () => window.removeEventListener("resize", resizeCanvas);
   }, [dataValues]);
 
+  const getMarginClass = () => {
+    if (windowWidth >= 421 && windowWidth <= 480)
+      return "ml-[-18px]"
+    else if (windowWidth >= 401 && windowWidth <= 420) {
+      return "ml-[-14px]";
+    }
+    else if(windowWidth >=384 && windowWidth <= 400)
+      return "ml-[10px]"
+    return "mx-auto";
+  };
+
   return (
-    <div className="w-full mx-auto">
+    <div className={`w-full ${getMarginClass()}`}>
       <canvas ref={canvasRef} />
     </div>
   );

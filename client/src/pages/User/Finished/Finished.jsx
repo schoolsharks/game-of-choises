@@ -35,6 +35,7 @@ import dreamer from "../../../assets/dreamer.webp";
 import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
 import personalityGrid2 from "../../../assets/personalityGrid2.svg";
+import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
 const options = [
   {
@@ -253,7 +254,7 @@ const Finished = () => {
         }}
 
       >
-        <Stack margin={"30px 2.5rem"} gap="1rem">
+        <Stack margin={"30px 1rem"} gap="1rem">
             <Typography fontFamily="LSC Solid" fontSize="1.7rem" fontWeight="400">
               Congratulations!
             </Typography>
@@ -273,7 +274,7 @@ const Finished = () => {
           <img
             src={personalitiesGrid}
             alt=""
-            style={{ opacity: "0.5", width: "100%", height: "156px", backgroundSize:"cover" }}
+            style={{ opacity: "0.5", width: "100%", height: "156px", backgroundSize:"contain" }}
           />
           <Stack
             sx={{
@@ -285,7 +286,7 @@ const Finished = () => {
           >
             <Typography
               fontFamily="LSC Solid"
-              fontSize="30px"
+              fontSize="1.8rem"
               lineHeight="36px"
               fontWeight="400"
               whiteSpace={"nowrap"}

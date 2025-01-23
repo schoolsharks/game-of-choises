@@ -201,6 +201,7 @@ const Info = () => {
             sx={{
               fontFamily: "LSC Solid",
               letterSpacing: "5%",
+              fontSize:"10px"
             }}
           >
             Swipe right for option B
