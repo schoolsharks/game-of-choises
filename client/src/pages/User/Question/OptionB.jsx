@@ -1,5 +1,5 @@
 // OptionB.jsx
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import redBB from "../../../assets/optionB.webp";
@@ -11,7 +11,7 @@ const optionVariants = {
     opacity: 0,
     x: 50,
     scale: 0.95,
-    delay:0.6
+    delay: 0.6,
   },
   animate: {
     opacity: 1,
@@ -145,6 +145,11 @@ const OptionB = ({ text, onOptionSelect }) => {
         animate="animate"
         exit="exit"
         whileHover="hover"
+        style={{
+          width: "346px",
+          marginLeft: "auto",
+          marginTop:"10px"
+        }}
       >
         <Stack
           onTouchStart={handleOnTouchStart}
@@ -157,72 +162,41 @@ const OptionB = ({ text, onOptionSelect }) => {
             scale: isActive ? "1.05" : "1",
             transition: "scale 0.3s ease",
             userSelect: "none",
-            minHeight: "4.5rem",
-            transform: `translateX(${position}px)`,
+            transform: `translateX(${position + 52}px)`,
             position: "relative",
             paddingRight: "12px",
+            minHeight: "175px",
+            background: `url(${redBB})`,
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+            justifyContent:"center"
           }}
         >
           <Stack
-            sx={{
-              marginRight: windowWidth < 400 ? "-2.5rem" : "-4.4rem",
-            }}
-            alignItems={"end"}
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            padding="12px"
+            margin={"24px"}
           >
-            <motion.img
-              src={redBB}
-              loading="lazy"
-              alt="Option B"
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                width: "354px",
-                padding: "10px",
-                position: "relative",
-                objectFit: "fill",
-                // height: "auto",
-                height: "160px",
-                boxSizing: "border-box",
-                // paddingBottom: "20px",
-                paddingTop: "10px",
-                filter:"drop-shadow(0 10px 10px #00000074)"
-              }}
-            />
-          </Stack>
-
-          <Stack
-            display={"flex"}
-            alignItems={"center"}
-            flexDirection={"row-reverse"}
-            gap={"1rem"}
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: windowWidth < 400 ? "50%" : "60%",
-              transform: "translate(-50%, -50%)",
-              textAlign: "left",
-              width: "346px",
-            }}
-          >
+            <Typography
+              variant="body1"
+              fontWeight="400"
+              lineHeight="25px"
+              fontSize="1rem"
+              fontFamily="LSC Solid"
+              color="#FBF9ED"
+              sx={{ width: "70%" }}
+            >
+              {text}
+            </Typography>
             <motion.img
               src={optionArrowRight}
+              alt="Option Arrow"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.3 }}
             />
-
-            <Typography
-              variant="body1"
-              fontWeight={"400"}
-              lineHeight={"25px"}
-              fontSize={"1rem"}
-              fontFamily={"LSC Solid"}
-              width={"65%"}
-              // paddingLeft={"2.5rem"}
-            >
-              {text}
-            </Typography>
           </Stack>
         </Stack>
       </motion.div>

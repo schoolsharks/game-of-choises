@@ -1,5 +1,12 @@
 // OptionA.jsx
-import { duration, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  duration,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import blueAA from "../../../assets/optionA.webp";
@@ -11,7 +18,7 @@ const optionVariants = {
     opacity: 0,
     x: -50,
     scale: 0.95,
-    delay :0.3
+    delay: 0.3,
   },
   animate: {
     opacity: 1,
@@ -148,43 +155,76 @@ const OptionA = ({ text, onOptionSelect }) => {
             scale: isActive ? "1.05" : "1",
             transition: "scale 0.3s ease",
             userSelect: "none",
-            minHeight: "4.5rem",
             transform: `translateX(${position}px)`,
             position: "relative",
             width: "100%",
+            minHeight: "175px",
+            background: `url(${blueAA})`,
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+            justifyContent: "center",
+            overflow:"hidden"
           }}
         >
-          <Stack alignItems={"left"} marginLeft={"-12px"}>
-            <img
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            padding="12px"
+            margin={"24px"}
+          >
+            <Typography
+              variant="body1"
+              fontWeight="400"
+              lineHeight="25px"
+              fontSize="1rem"
+              fontFamily="LSC Solid"
+              color="#FBF9ED"
+              sx={{ width: "70%" }}
+            >
+              {text}
+            </Typography>
+            <motion.img
+              src={optionArrowLeft}
+              alt="Option Arrow"
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            />
+          </Stack>
+          {/* <Box 
+            component={"img"}
               src={blueAA}
               alt="Option A"
               loading="lazy"
               style={{
                 maxWidth: "356px",
-                padding: "10px",
                 position: "relative",
                 objectFit: "fill",
                 // height: "auto",
-                height: "160px",
-
+                minHeight: "175px",
+                height:"100%",
                 boxSizing: "border-box",
-                filter:"drop-shadow(0 10px 10px #00000074)"
+                filter:"drop-shadow(0 10px 10px #00000074)",
+                position:"absolute",
+                width:"100%",
+                height:"100%",
+                zIndex:"-1"
               }}
             />
-          </Stack>
           <Stack
-            display={"flex"}
+            direction={"row"}
             alignItems={"center"}
-            flexDirection={"row"}
             gap={"1rem"}
             sx={{
-              position: "absolute",
-              top: "50%",
-              left: "45%",
-              transform: "translate(-50%, -50%)",
+              // position: "absolute",
+              // top: "50%",
+              // left: "45%",
+              // transform: "translate(-50%, -50%)",
               textAlign: "right",
               width: "346px",
               paddingLeft: "35px",
+              margin:"48px 0 20px"
             }}
           >
             <motion.img
@@ -207,7 +247,7 @@ const OptionA = ({ text, onOptionSelect }) => {
             >
               {text}
             </Typography>
-          </Stack>
+          </Stack> */}
         </Stack>
       </motion.div>
     </AnimatePresence>
