@@ -1061,6 +1061,7 @@ export const SET_1 = [
       }
     }
   },
+  
   {
     id: 27,
     question: "IDFC FIRST Bank offers a savings account with 7% monthly interest and a goal-based app to automate investments.",
