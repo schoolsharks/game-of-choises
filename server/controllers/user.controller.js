@@ -8,6 +8,7 @@ import { Session } from "../models/session.model.js";
 import mongoose from "mongoose";
 import { personalities } from "../utils/data/personalities.js";
 import { shuffleQuestions } from "../utils/shuffleArray.js";
+import { Offer } from "../models/offers.model.js";
 
 dotenv.config();
 
@@ -31,6 +32,38 @@ function aggregateValues(set) {
   });
 
   return aggregatedValues;
+}
+
+const evaluatingOfferPercentage = async () => {
+  try {
+    const totaluser = await User.countDocuments();
+    const offers = await Offer.aggregate([
+      {
+        $project: {
+          offer: 1,
+          count: 1,
+          percentage: {
+            $cond: {
+              if: { $eq: [{ $literal: totaluser }, 0] },
+              then: 0,
+              else: {
+                $round: [
+                  { $multiply: [{ $divide: ["$count", totaluser] }, 100] },
+                  0
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]);
+
+    return offers;
+  }
+  catch(error){
+    console.log();
+    return [];
+  }
 }
 
 
@@ -217,8 +250,7 @@ export const handleStorage = async (req, res) => {
     user.answered_count = 0;
 
 
-    if (user.activeSet === "SET_2")
-    {
+    if (user.activeSet === "SET_2") {
       user.activeSet = 'SET_1'
 
       const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
@@ -232,8 +264,7 @@ export const handleStorage = async (req, res) => {
 
       user.sq = sq;
     }
-    else if (user.activeSet === "SET_1") 
-      {
+    else if (user.activeSet === "SET_1") {
       const shuffledQuestionArray = shuffleQuestions(SET_2, trigger_SET_2);
       console.log("shuffledQuestionArray", shuffledQuestionArray)
       const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
@@ -330,7 +361,8 @@ export const handleAnalysis = async (req, res) => {
       const personalityDescription = personalities.find(
         (personality) => personality.personality === personalityName
       );
-      // console.log("personalityDescription", personalityDescription);
+
+      const offers = await evaluatingOfferPercentage();
 
       return res.status(200).json({
         success: true,
@@ -358,6 +390,7 @@ export const handleAnalysis = async (req, res) => {
             Math.round((userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100),
             Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100),
           ],
+          offers,
           avgResponseTime: userDetails.avgResponseTime,
           personalityName: personalityName,
           badge: personalityDescription.badge,

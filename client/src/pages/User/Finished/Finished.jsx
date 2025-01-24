@@ -42,24 +42,23 @@ import { ShareOutlined } from "@mui/icons-material";
 const options = [
   {
     id: 1,
-    text: "IDFC First Bank provides ₹6 lakh lost card liability. Do you:",
+    text: "Savings & Investments",
     percentage: 70,
   },
   {
     id: 2,
-    text: "Do you agree with the new terms and conditions?",
+    text: "Travel & Lifestyle Perks",
     percentage: 50,
   },
   {
     id: 3,
-    text: "Would you like to opt for the premium plan?",
+    text: "Protection & Security",
     percentage: 90,
   },
-  { id: 4, text: "Do you want to receive promotional offers?", percentage: 30 },
   {
-    id: 5,
-    text: "Are you interested in the new savings scheme?",
-    percentage: 85,
+    id: 4,
+    text: "Technology & Convenience",
+    percentage: 30
   },
 ];
 
@@ -852,7 +851,7 @@ const Finished = () => {
 
           {toggle && (
             <Stack marginTop="2rem">
-              {options.map((option) => (
+              {userStatic.offers && userStatic.offers.map((option) => (
                 <Stack
                   key={option.id}
                   border="0.5px solid white"
@@ -867,7 +866,7 @@ const Finished = () => {
                     lineHeight="18.15px"
                     fontWeight={"400"}
                   >
-                    {option.text}
+                    {option.offer}
                   </Typography>
                   <LinearProgress
                     variant="determinate"
@@ -895,6 +894,7 @@ const Finished = () => {
               ))}
             </Stack>
           )}
+
         </Stack>
 
         {/* Lifestyle Benefits Section */}

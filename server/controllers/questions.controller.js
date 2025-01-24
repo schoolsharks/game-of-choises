@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 
 import mongoose from 'mongoose';
 import { shuffleArray, shuffleQuestions } from '../utils/shuffleArray.js';
+import { Offer } from '../models/offers.model.js';
 
 
 const MAX_RETRIES = 10;
@@ -190,7 +191,7 @@ export const handleGetQuestion = async (req, res) => {
     const sequence = sqDecoded.sequence;
 
     // console.log("sequence", sequence);
-    const questionSequece = sequence.map((q)=>q.id);
+    const questionSequece = sequence.map((q) => q.id);
     // console.log("sequence", sequence)
 
     // console.log(user);
@@ -225,9 +226,9 @@ export const handleGetQuestion = async (req, res) => {
 
     let nextQuesId;
     if (updatedUser) {
-      nextQuesId = updatedUser.answered_count < sequence.length ? questionSet.find((q)=> q.id === sequence[updatedUser.answered_count])  : null;
+      nextQuesId = updatedUser.answered_count < sequence.length ? questionSet.find((q) => q.id === sequence[updatedUser.answered_count]) : null;
     } else {
-      nextQuesId = user.answered_count < sequence.length ? questionSet.find((q)=> q.id === sequence[user.answered_count]) : null;
+      nextQuesId = user.answered_count < sequence.length ? questionSet.find((q) => q.id === sequence[user.answered_count]) : null;
     }
 
     // console.log("nextQuesId", nextQuesId)
@@ -276,6 +277,22 @@ export const updateUserResponses = async (userId, quesId, response, questionSet)
         await session.abortTransaction();
         session.endSession();
         return null;
+      }
+
+      if ([27, 28, 29, 30].includes(quesId)) {
+        const updatedOffer = await Offer.findOneAndUpdate(
+          {
+            quesId: quesId,
+            correctOption: response
+          },
+          {
+            $inc: { count: 1 }
+          },
+          {
+            new: true
+          }
+        );
+        console.log("updatedUser", updatedOffer);
       }
 
       const question = questionSet.find(q => q.id == quesId);
