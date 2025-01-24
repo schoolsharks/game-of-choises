@@ -198,7 +198,7 @@ const Finished = () => {
         maxWidth: "431px",
         margin: "auto",
         color: "#FFFFFF",
-        background: "rgba(0, 0, 0, 0.589)",
+        // background: "rgba(0, 0, 0, 0.589)",
         position: "relative",
 
         overflowX: "hidden", // Prevent outer scroll
@@ -253,7 +253,7 @@ const Finished = () => {
           width: "100%",
         }}
       >
-        <Stack margin={"30px 24px"}>
+        <Stack margin={"30px 24px 45px"}>
           <Typography fontFamily="LSC Solid" fontSize="30px" fontWeight="400">
             Congratulations!
           </Typography>
@@ -263,134 +263,133 @@ const Finished = () => {
         </Stack>
         {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
 
-        <Stack sx={{ border: "0.5px solid white",borderWidth:"0.5px 0 0.5px 0"}}>
-        <div
-          style={{
-            position: "relative",
-            display: "inline-block",
-            height: "156px",
-          }}
-        >
-          <img
-            src={personalitiesGrid}
-            alt=""
+        <Stack sx={{ borderTop:"1px solid white",borderBottom:"1px solid white"}}>
+          <div
             style={{
-              opacity: "0.5",
-              width: "100%",
+              position: "relative",
+              display: "inline-block",
               height: "156px",
-              objectFit: "cover",
             }}
-          />
+          >
+            <img
+              src={personalitiesGrid}
+              alt=""
+              style={{
+                opacity: "0.8",
+                width: "100%",
+                height: "156px",
+                objectFit: "cover",
+              }}
+            />
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "50%",
+                // left: "50%",
+                transform: "translate(0,-50%)",
+                padding:"36px 24px"
+              }}
+            >
+              <Typography
+                fontFamily="LSC Solid"
+                fontSize="2.2rem"
+                lineHeight="42px"
+                fontWeight="400"
+                // whiteSpace={"nowrap"}
+                sx={{
+                  color: "white",
+                  zIndex: 1,
+                }}
+              >
+                {/* Live for today spendor */}
+                {userStatic.personalityName}
+              </Typography>
+              <Typography
+                fontFamily="OCR-A BT"
+                fontSize="20px"
+                lineHeight="36px"
+                fontWeight="400"
+                whiteSpace={"nowrap"}
+                sx={{
+                  color: "white",
+                  zIndex: 1,
+                }}
+              >
+                Your Dominent Archetype
+              </Typography>
+            </Stack>
+          </div>
+
           <Stack
             sx={{
-              position: "absolute",
-              top: "50%",
-              // left: "50%",
-              transform: "translate(0,-50%)",
-              padding:"24px"
+              padding: "56px 24px 35px",
+              background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
             }}
           >
-            <Typography
+            {/* <Typography
               fontFamily="LSC Solid"
-              fontSize="1.8rem"
+              fontSize="45px"
               lineHeight="36px"
               fontWeight="400"
-              // whiteSpace={"nowrap"}
-              sx={{
-                color: "white",
-                zIndex: 1,
-              }}
             >
-              {/* Live for today spendor */}
-              {userStatic.personalityName}
-            </Typography>
-            <Typography
+              You are {userStatic.personalityScore}%
+            </Typography> */}
+            {/* <Typography
               fontFamily="OCR-A BT"
-              fontSize="20px"
+              fontSize="30px"
               lineHeight="36px"
               fontWeight="400"
-              whiteSpace={"nowrap"}
-              sx={{
-                color: "white",
-                zIndex: 1,
-              }}
+              marginTop={"14px"}
+              textTransform={"uppercase"}
             >
-              Your Dominent Archetype
+              {userStatic.personalityName}
+            </Typography> */}
+
+            {/* SubCategory Section */}
+            {userStatic && userStatic.subCategory?.length > 0 && (
+              <Stack
+                display="flex"
+                flexDirection="row"
+                gap="1rem"
+                justifyContent="flex-start"
+                flexWrap="wrap"
+              >
+                {userStatic.subCategory.map((item, index) => (
+                  <Typography
+                    key={index}
+                    fontFamily="LSC Solid"
+                    fontWeight="400"
+                    fontSize="22px"
+                    lineHeight="23px"
+                    fontStyle="bold"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    gap="10px"
+                  >
+                    {item}
+                    <div
+                      className="blinking-div"
+                      style={{
+                        height: "22px",
+                        width: "11px",
+                        backgroundColor: "white",
+                        animation: "blink 1s infinite",
+                      }}
+                    />
+                  </Typography>
+                ))}
+              </Stack>
+            )}
+
+            <Typography
+              fontFamily={"OCR-A BT"}
+              fontSize={"1.25rem"}
+              marginTop={"28px"}
+            >
+              {userStatic.insights}
             </Typography>
           </Stack>
-        </div>
-
-        <Stack
-          sx={{
-            padding: "35px 24px",
-            background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
-          }}
-          borderBottom={"0.5px solid white"}
-        >
-          {/* <Typography
-            fontFamily="LSC Solid"
-            fontSize="45px"
-            lineHeight="36px"
-            fontWeight="400"
-          >
-            You are {userStatic.personalityScore}%
-          </Typography> */}
-          {/* <Typography
-            fontFamily="OCR-A BT"
-            fontSize="30px"
-            lineHeight="36px"
-            fontWeight="400"
-            marginTop={"14px"}
-            textTransform={"uppercase"}
-          >
-            {userStatic.personalityName}
-          </Typography> */}
-
-          {/* SubCategory Section */}
-          {userStatic && userStatic.subCategory?.length > 0 && (
-            <Stack
-              display="flex"
-              flexDirection="row"
-              gap="1rem"
-              justifyContent="flex-start"
-              flexWrap="wrap"
-            >
-              {userStatic.subCategory.map((item, index) => (
-                <Typography
-                  key={index}
-                  fontFamily="LSC Solid"
-                  fontWeight="400"
-                  fontSize="22px"
-                  lineHeight="23px"
-                  fontStyle="bold"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  gap="10px"
-                >
-                  {item}
-                  <div
-                    className="blinking-div"
-                    style={{
-                      height: "22px",
-                      width: "11px",
-                      backgroundColor: "white",
-                      animation: "blink 1s infinite",
-                    }}
-                  />
-                </Typography>
-              ))}
-            </Stack>
-          )}
-
-          <Typography
-            fontFamily={"OCR-A BT"}
-            fontSize={"1.25rem"}
-            marginTop={"28px"}
-          >
-            {userStatic.insights}
-          </Typography>
-        </Stack>
         </Stack>
 
         {/* <Stack gap="1rem">
@@ -579,8 +578,11 @@ const Finished = () => {
                 fontFamily="OCR-A BT"
                 fontWeight="400"
                 fontSize="25px"
+                margin={"4px 0"}
+                lineHeight={"27px"}
               >
-                {userStatic.badge}
+                The Balanced Strategist
+                {/* {userStatic.badge} */}
               </Typography>
               <Typography
                 fontFamily="OCR-A BT"
