@@ -198,7 +198,7 @@ const Finished = () => {
         maxWidth: "431px",
         margin: "auto",
         color: "#FFFFFF",
-        background: "rgba(0,0,0,0.7)",
+        background: "rgba(0, 0, 0, 0.589)",
         position: "relative",
 
         overflowX: "hidden", // Prevent outer scroll
