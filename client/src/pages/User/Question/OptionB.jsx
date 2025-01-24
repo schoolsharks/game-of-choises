@@ -148,7 +148,7 @@ const OptionB = ({ text, onOptionSelect }) => {
         style={{
           width: "346px",
           marginLeft: "auto",
-          marginTop:"10px"
+          marginTop:"20px"
         }}
       >
         <Stack
@@ -165,19 +165,18 @@ const OptionB = ({ text, onOptionSelect }) => {
             transform: `translateX(${position + 52}px)`,
             position: "relative",
             paddingRight: "12px",
-            minHeight: "175px",
+            minHeight: "160px",
             background: `url(${redBB})`,
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
-            justifyContent:"center"
+            justifyContent:"center",
           }}
         >
           <Stack
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            padding="12px"
-            margin={"24px"}
+            margin={"12px 12px 12px 60px"}
           >
             <Typography
               variant="body1"

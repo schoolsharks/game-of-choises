@@ -44,7 +44,7 @@ const RadarChart = ({ dataValues }) => {
       // Create gradient
       const gradient = ctx.createLinearGradient(
         centerX,
-        centerY - radius,
+        centerY - radius + 60,
         centerX,
         centerY + radius
       );
@@ -85,13 +85,23 @@ const RadarChart = ({ dataValues }) => {
 
       // Fill grid background
       const outerPoints = getPentagonPoints(1);
+
+
+      const bggradient = ctx.createRadialGradient(
+        centerX, centerY, 80, 
+        centerX, centerY, 24  
+      );
+      bggradient.addColorStop(0, "#A0061240"); 
+      bggradient.addColorStop(1, "#a00613ae"); 
+
+
       ctx.beginPath();
       ctx.moveTo(outerPoints[0].x, outerPoints[0].y);
       for (let i = 1; i < outerPoints.length; i++) {
         ctx.lineTo(outerPoints[i].x, outerPoints[i].y);
       }
       ctx.closePath();
-      ctx.fillStyle = "rgba(160, 6, 18, 0.2)";
+      ctx.fillStyle = bggradient;
       ctx.fill();
 
       // Draw grid lines with thicker outer border

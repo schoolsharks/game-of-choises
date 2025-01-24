@@ -5,6 +5,7 @@ import {
   useTheme,
   Button,
   Box,
+  IconButton,
 } from "@mui/material";
 // import Typewriter from "typewriter-effect";
 import SwipeBar from "../../../components/SwipeBar";
@@ -27,13 +28,14 @@ import diamond from "../../../assets/diamond.svg";
 import rightArrow from "../../../assets/rightArrow.png";
 import RadarChart from "../../../components/RadarChart";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import personalitiesGrid from "../../../assets/personalities-grid.jpg";
+import personalitiesGrid from "../../../assets/personalities-grid.png";
 
 import risk from "../../../assets/risk.webp";
 import yolo from "../../../assets/yolo.webp";
 import dreamer from "../../../assets/dreamer.webp";
 import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
+import { ShareOutlined } from "@mui/icons-material";
 // import personalityGrid2 from "../../../assets/personalityGrid2.svg";
 // import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
@@ -89,31 +91,31 @@ const personalities = [
     id: 1,
     heading: "THE HUSTLER ",
     content:
-      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+      "You're ambitious and risk-tolerant. Your bold moves can lead to great rewards, but watch out for overconfidence!",
   },
   {
     id: 2,
     heading: "BALANCED SPENDER",
     content:
-      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+      "You’ve mastered the art of balance! While you prioritize your financial goals, you also ensure life is enjoyable in the moment.",
   },
   {
     id: 3,
     heading: "DISCIPLINED SAVER",
     content:
-      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+      "You're the strategist of the financial world. Your meticulous planning ensures a secure future, but don’t forget to enjoy the present once in a while.",
   },
   {
     id: 4,
     heading: "HOPEFUL BORROWER",
     content:
-      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+      "You’re optimistic and rely on external support, but learning to plan better will ease your financial journey.",
   },
   {
     id: 5,
     heading: "LIVE-FOR-TODAY SPENDER",
     content:
-      "start as a hustler, making bold choices in your financial journey. Over time, you evolve into someone empowered, learning from your mistakes and striving for success.",
+      "You know how to enjoy life to the fullest, but future-you might appreciate a bit more financial foresight.",
   },
 ];
 
@@ -230,7 +232,6 @@ const Finished = () => {
           color="#FFFFFF"
           gap="1rem"
           alignItems="center"
-          marginBottom={"30px"}
           whiteSpace={"nowrap"}
         >
           <p>Start banking with IDFC</p>
@@ -252,29 +253,34 @@ const Finished = () => {
           paddingBottom: "2rem",
           width: "100%",
         }}
-
       >
-        <Stack margin={"30px 1rem"} gap="1rem">
-            <Typography fontFamily="LSC Solid" fontSize="1.7rem" fontWeight="400">
-              Congratulations!
-            </Typography>
-            <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
-              You’ve completed the Financial Matrix
-            </Typography>
+        <Stack margin={"30px 24px"}>
+          <Typography fontFamily="LSC Solid" fontSize="30px" fontWeight="400">
+            Congratulations!
+          </Typography>
+          <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
+            You’ve completed the Financial Matrix
+          </Typography>
         </Stack>
         {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
 
+        <Stack sx={{ border: "0.5px solid white",borderWidth:"0.5px 0 0.5px 0"}}>
         <div
           style={{
             position: "relative",
             display: "inline-block",
             height: "156px",
-          }}          
+          }}
         >
           <img
             src={personalitiesGrid}
             alt=""
-            style={{ opacity: "0.5", width: "100%", height: "156px",objectFit:"cover" }}
+            style={{
+              opacity: "0.5",
+              width: "100%",
+              height: "156px",
+              objectFit: "cover",
+            }}
           />
           <Stack
             sx={{
@@ -315,10 +321,10 @@ const Finished = () => {
 
         <Stack
           sx={{
-            padding: "40px 16px",
+            padding: "35px 24px",
             background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
           }}
-          borderBottom={"1px solid white"}
+          borderBottom={"0.5px solid white"}
         >
           {/* <Typography
             fontFamily="LSC Solid"
@@ -347,14 +353,13 @@ const Finished = () => {
               gap="1rem"
               justifyContent="flex-start"
               flexWrap="wrap"
-              margin="2rem 0"
             >
               {userStatic.subCategory.map((item, index) => (
                 <Typography
                   key={index}
                   fontFamily="LSC Solid"
                   fontWeight="400"
-                  fontSize="25px"
+                  fontSize="22px"
                   lineHeight="23px"
                   fontStyle="bold"
                   display="flex"
@@ -377,9 +382,14 @@ const Finished = () => {
             </Stack>
           )}
 
-          <Typography fontFamily={"OCR-A BT"} fontSize={"1.25rem"}>
+          <Typography
+            fontFamily={"OCR-A BT"}
+            fontSize={"1.25rem"}
+            marginTop={"28px"}
+          >
             {userStatic.insights}
           </Typography>
+        </Stack>
         </Stack>
 
         {/* <Stack gap="1rem">
@@ -516,7 +526,7 @@ const Finished = () => {
         {/* Risk taker */}
         <Stack
           borderRadius="10px"
-          border="1px solid white"
+          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
@@ -546,12 +556,12 @@ const Finished = () => {
                   userStatic.badge === "The Dreamer in Debt"
                     ? dreamer
                     : userStatic.badge === "The Risk-Taker"
-                      ? risk
-                      : userStatic.badge === "The Balanced Strategist"
-                        ? balances_strategist
-                        : userStatic.badge === "The Budget Guru"
-                          ? budget_guru
-                          : yolo
+                    ? risk
+                    : userStatic.badge === "The Balanced Strategist"
+                    ? balances_strategist
+                    : userStatic.badge === "The Budget Guru"
+                    ? budget_guru
+                    : yolo
                 }
                 style={{ maxWidth: "none" }}
               />
@@ -585,49 +595,50 @@ const Finished = () => {
           </Stack>
 
           <Stack marginTop="2rem" gap={"2rem"}>
-            {userStatic.riskTaker && Object.entries(userStatic.riskTaker).map(([key, percentage]) => (
-              <Stack key={key} gap={"0.5rem"}>
-                <Stack
-                  display={"flex"}
-                  flexDirection={"row"}
-                  alignItems={"center"}
-                  justifyContent={"space-between"}
-                >
-                  <Typography
-                    fontFamily="OCR-A BT"
-                    fontSize="18px"
-                    lineHeight="25px"
-                    fontWeight={"400"}
+            {userStatic.riskTaker &&
+              Object.entries(userStatic.riskTaker).map(([key, percentage]) => (
+                <Stack key={key} gap={"0.5rem"}>
+                  <Stack
+                    display={"flex"}
+                    flexDirection={"row"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
                   >
-                    {key}
-                  </Typography>
-                  <Typography
-                    fontFamily="OCR-A BT"
-                    fontSize="18px"
-                    lineHeight="25px"
-                    fontWeight={"400"}
-                  >
-                    {percentage}%
-                  </Typography>
+                    <Typography
+                      fontFamily="OCR-A BT"
+                      fontSize="18px"
+                      lineHeight="25px"
+                      fontWeight={"400"}
+                    >
+                      {key}
+                    </Typography>
+                    <Typography
+                      fontFamily="OCR-A BT"
+                      fontSize="18px"
+                      lineHeight="25px"
+                      fontWeight={"400"}
+                    >
+                      {percentage}%
+                    </Typography>
+                  </Stack>
+                  <Box
+                    height={"22px"}
+                    width={`${percentage}%`}
+                    sx={{
+                      background:
+                        "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
+                      borderRadius: "0 12px 12px 0",
+                    }}
+                  />
                 </Stack>
-                <Box
-                  height={"22px"}
-                  width={`${percentage}%`}
-                  sx={{
-                    background:
-                      "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
-                    borderRadius: "0 12px 12px 0",
-                  }}
-                />
-              </Stack>
-            ))}
+              ))}
           </Stack>
         </Stack>
 
         {/* Personality Analysis Graph */}
         <Stack
           borderRadius="10px"
-          border="1px solid white"
+          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
@@ -656,8 +667,8 @@ const Finished = () => {
                 window.innerWidth > 500
                   ? "translateX(-3.5rem)"
                   : window.innerWidth > 400
-                    ? "translateX(-0.2rem)"
-                    : "translateX(-1rem)",
+                  ? "translateX(-0.2rem)"
+                  : "translateX(-1rem)",
               objectFit: "cove",
             }}
           >
@@ -665,7 +676,7 @@ const Finished = () => {
           </Stack>
 
           {userStatic && userStatic.scoreArray && (
-            <Stack display="flex" flexDirection="column" gap="1rem">
+            <Stack display="flex" flexDirection="column" marginTop={"32px"}>
               {[
                 ["Disciplined Saver", 0],
                 ["Balanced Spender", 1],
@@ -719,7 +730,7 @@ const Finished = () => {
         {/* personalities */}
         <Stack
           borderRadius="10px"
-          border="1px solid white"
+          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
@@ -781,8 +792,8 @@ const Finished = () => {
 
         {/* Offerings Section */}
         <Stack
-          borderTop="1px solid white"
-          borderBottom="1px solid white"
+          borderTop="0.5px solid white"
+          borderBottom="0.5px solid white"
           paddingY="22px"
           paddingX="21px"
           margin={"3rem 0 0"}
@@ -844,7 +855,7 @@ const Finished = () => {
               {options.map((option) => (
                 <Stack
                   key={option.id}
-                  border="1px solid white"
+                  border="0.5px solid white"
                   paddingX="17px"
                   paddingY="24px"
                   borderRadius="5px"
@@ -889,7 +900,7 @@ const Finished = () => {
         {/* Lifestyle Benefits Section */}
         <Stack
           borderRadius="7px"
-          border="1px solid white"
+          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
@@ -1015,7 +1026,7 @@ const Finished = () => {
         {/* Claim Reward Section */}
         <Stack
           borderRadius="7px"
-          border="1px solid white"
+          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
@@ -1175,7 +1186,9 @@ const Finished = () => {
             // paddingRight: "30px",
           }}
         >
-          <Typography
+            <IconButton onClick={handleInviteClick}><ShareOutlined sx={{color:"#fff",fontSize:"28px"}}/></IconButton>
+
+          {/* <Typography
             variant={"body3"}
             fontSize="1.4rem"
             fontWeight="400"
@@ -1199,7 +1212,7 @@ const Finished = () => {
               objectFit: "center",
             }}
             alignContent={"center"}
-          />
+          /> */}
         </Stack>
       </Stack>
     </Stack>

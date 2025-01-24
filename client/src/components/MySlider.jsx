@@ -79,12 +79,13 @@ const MySlider = ({ currentSlide }) => {
       >
         <div
           style={{
-            fontSize: windowWidth < 400 ? "40px" : "45px",
+            fontSize: "32px",
+            // fontSize: windowWidth < 400 ? "24px" : "45px",
             fontWeight: "200",
             color: "#FBF9ED",
             width: "100%",
             padding: "0 30px",
-            marginBottom: "30px",
+            marginBottom: "20px",
           }}
         >
           <Box
@@ -221,11 +222,12 @@ const MySlider = ({ currentSlide }) => {
       >
         <div
           style={{
-            fontSize: windowWidth < 400 ? "40px" : "45px",
+            fontSize:"32px",
+            // fontSize: windowWidth < 400 ? "40px" : "45px",
             fontWeight: "200",
             color: "#FBF9ED",
             width: "100%",
-            marginBottom: "30px",
+            marginBottom: "20px",
             padding: "0 30px",
           }}
         >

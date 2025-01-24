@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   duration,
+  IconButton,
   Stack,
   Typography,
   useTheme,
@@ -14,6 +15,7 @@ import MySlider from "../../../components/MySlider";
 import { useNavigate } from "react-router-dom";
 import sendIcon from "../../../assets/send.png";
 import { motion } from "framer-motion";
+import { ShareOutlined } from "@mui/icons-material";
 
 const Home = () => {
   const theme = useTheme();
@@ -115,7 +117,7 @@ const Home = () => {
           >
             <Typography
               variant={"h3"}
-              fontSize="44px"
+              fontSize="40px"
               fontWeight="400"
               textAlign={"center"}
               zIndex={1}
@@ -161,7 +163,8 @@ const Home = () => {
             flexDirection={"row"}
             marginTop={"8px"}
           >
-            <Button onClick={handleShare}>
+            <IconButton onClick={handleShare}><ShareOutlined sx={{color:"#fff",fontSize:"28px"}}/></IconButton>
+            {/* <Button onClick={handleShare}>
               <Typography
                 variant={"button"}
                 fontSize="20px"
@@ -182,7 +185,7 @@ const Home = () => {
               <Box>
                 <img src={sendIcon} alt="send icon" />
               </Box>
-            </Button>
+            </Button> */}
           </Stack>
         </Stack>
       )}

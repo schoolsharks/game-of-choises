@@ -10,7 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { handleHaptic } from "../../../utils/haptic";
 import blueAA from "../../../assets/optionA.webp";
-import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
+// import optionArrowLeft from "../../../assets/optionArrowLeft.svg";
 import { motion, AnimatePresence, delay } from "framer-motion";
 
 const optionVariants = {
@@ -158,20 +158,20 @@ const OptionA = ({ text, onOptionSelect }) => {
             transform: `translateX(${position}px)`,
             position: "relative",
             width: "100%",
-            minHeight: "175px",
+            minHeight: "160px",
             background: `url(${blueAA})`,
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
             justifyContent: "center",
-            overflow:"hidden"
+            overflow:"hidden",
           }}
         >
           <Stack
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            padding="12px"
-            margin={"24px"}
+            // margin={"24px"}
+            margin={"12px 60px 12px 12px"}
           >
             <Typography
               variant="body1"
@@ -180,6 +180,7 @@ const OptionA = ({ text, onOptionSelect }) => {
               fontSize="1rem"
               fontFamily="LSC Solid"
               color="#FBF9ED"
+              textAlign={"right"}
               // sx={{ width: "70%" }}
             >
               {text}

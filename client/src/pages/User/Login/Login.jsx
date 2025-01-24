@@ -20,7 +20,7 @@ import "../../../App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
 import sendIcon from "../../../assets/send.png";
-import { Close } from "@mui/icons-material";
+import { Close, ShareOutlined } from "@mui/icons-material";
 
 const Login = () => {
   const theme = useTheme();
@@ -83,7 +83,7 @@ const Login = () => {
       }}
     >
       <Typography
-        fontSize="40px"
+        fontSize="32px"
         fontWeight="400"
         zIndex={1}
         marginTop={"80px"}
@@ -123,8 +123,7 @@ const Login = () => {
           alignContent={"center"}
           alignItems={"center"}
           paddingTop={"10px"}
-          bgcolor={"#020101A6"}
-          
+          bgcolor={"#000000"}
         >
           <Stack
             sx={{
@@ -249,7 +248,11 @@ const Login = () => {
             flexDirection={"row"}
             marginTop={"8px"}
           >
-            <Button onClick={handleShare}>
+            <IconButton onClick={handleShare}>
+              <ShareOutlined sx={{ color: "#fff", fontSize: "28px" }} />
+            </IconButton>
+
+            {/* <Button onClick={handleShare}>
               <Typography
                 variant={"button"}
                 fontSize="20px"
@@ -270,7 +273,7 @@ const Login = () => {
               <Box>
                 <img src={sendIcon} alt="send icon" />
               </Box>
-            </Button>
+            </Button> */}
           </Stack>
         </Stack>
       </Stack>
@@ -284,7 +287,7 @@ const Login = () => {
         }}
         PaperProps={{
           sx: {
-            bgcolor: "#00000024",
+            bgcolor: "#000000",
             backdropFilter: "blur(4px)",
             borderRadius: "12px",
             border: "2px solid #fff",
@@ -313,45 +316,49 @@ export default Login;
 
 const TermsAndConditionsContent = () => {
   return (
-    <>
-      <Typography fontSize={"1.5rem"} textAlign={"center"}>
+    <Box>
+      <Typography
+        fontSize={"1.5rem"}
+        textAlign={"center"}
+        fontFamily={"OCR-A BT"}
+      >
         TERMS & CONDITIONS
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-      <Typography marginTop={"8px"}>
+      <Typography marginTop={"8px"} fontFamily={"OCR-A BT"}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
         corporis, aperiam blanditiis obcaecati suscipit dolorem perspiciatis
         nisi consectetur, officiis vero iusto aliquam? Alias tempora odit rat
       </Typography>
-    </>
+    </Box>
   );
 };
