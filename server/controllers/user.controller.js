@@ -23,11 +23,21 @@ function aggregateValues(set) {
 
   set.forEach(item => {
     Object.values(item.options).forEach(option => {
-      aggregatedValues.Max_Disciplined_Saver += option.Disciplined_Saver;
-      aggregatedValues.Max_Balanced_Spender += option.Balanced_Spender;
-      aggregatedValues.Max_The_Hustler += option.The_Hustler;
-      aggregatedValues.Max_Hopeful_Borrower += option.Hopeful_Borrower;
-      aggregatedValues.Max_Live_for_today_Spender += option.Live_for_today_Spender;
+      if (option.Disciplined_Saver > 0) {
+        aggregatedValues.Max_Disciplined_Saver += option.Disciplined_Saver;
+      }
+      if (option.Balanced_Spender > 0) {
+        aggregatedValues.Max_Balanced_Spender += option.Balanced_Spender;
+      }
+      if (option.The_Hustler > 0) {
+        aggregatedValues.Max_The_Hustler += option.The_Hustler;
+      }
+      if (option.Hopeful_Borrower > 0) {
+        aggregatedValues.Max_Hopeful_Borrower += option.Hopeful_Borrower;
+      }
+      if (option.Live_for_today_Spender > 0) {
+        aggregatedValues.Max_Live_for_today_Spender += option.Live_for_today_Spender;
+      }
     });
   });
 
@@ -60,7 +70,7 @@ const evaluatingOfferPercentage = async () => {
 
     return offers;
   }
-  catch(error){
+  catch (error) {
     console.log();
     return [];
   }
