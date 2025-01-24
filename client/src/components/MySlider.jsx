@@ -99,7 +99,9 @@ const MySlider = ({ currentSlide }) => {
               "& .Typewriter__cursor": {
                 fontSize: "50px",
                 lineHeight: "52px",
-                height: "35px",
+                height: "28px",
+                width:"16px",
+                marginLeft:"8px"
               },
             }}
           >
@@ -242,7 +244,9 @@ const MySlider = ({ currentSlide }) => {
               "& .Typewriter__cursor": {
                 fontSize: "50px",
                 lineHeight: "52px",
-                height: "35px",
+                height: "28px",
+                width:"16px",
+                marginLeft:"8px"
               },
             }}
           >

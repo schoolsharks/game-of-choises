@@ -53,6 +53,7 @@ export const initializeAuth = async (navigate, dispatch) => {
     }
   } catch (error) {
     console.error("Error initializing authentication:", error);
+    localStorage.clear()
     navigate("/login");
   }
 };

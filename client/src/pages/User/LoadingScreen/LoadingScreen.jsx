@@ -9,7 +9,7 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/questions");
+      // navigate("/questions");
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -37,9 +37,11 @@ const LoadingScreen = () => {
               },
             },
             "& .Typewriter__cursor": {
-              fontSize: "50px", 
-              lineHeight: "40px", 
-              height:"38px",
+              fontSize: "50px",
+              lineHeight: "40px",
+              height: "38px",
+              width: "22px",
+              marginLeft: "16px",
             },
           }}
         >
