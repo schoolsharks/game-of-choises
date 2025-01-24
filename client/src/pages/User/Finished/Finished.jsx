@@ -90,19 +90,19 @@ const personalities = [
     id: 1,
     heading: "THE HUSTLER ",
     content:
-      "The Player is ambitious and risk-tolerant. His bold moves can lead to great rewards, but watch out for overconfidence!",
+      "The Player is ambitious and risk-tolerant. His bold moves can lead to great rewards, but should watch out for overconfidence!",
   },
   {
     id: 2,
     heading: "BALANCED SPENDER",
     content:
-      "Player has mastered the art of balance! While he prioritize his financial goals, he also ensure life is enjoyable in the moment.",
+      "The player has mastered the art of balance! While he prioritize his financial goals, he also ensures life is enjoyable in the moment.",
   },
   {
     id: 3,
     heading: "DISCIPLINED SAVER",
     content:
-      "The Player is strategist of the financial world. His meticulous planning ensures a secure future, but don’t forget to enjoy the present once in a while.",
+      "The Player is strategist of the financial world. His meticulous planning ensures a secure future, but should not forget to enjoy the present once in a while.",
   },
   {
     id: 4,
@@ -114,7 +114,7 @@ const personalities = [
     id: 5,
     heading: "LIVE-FOR-TODAY SPENDER",
     content:
-      "He know how to enjoy life to the fullest, but future-he might appreciate a bit more financial foresight.",
+      "The player knows how to enjoy life to the fullest, but in future-he must appreciate a bit more financial foresight.",
   },
 ];
 
