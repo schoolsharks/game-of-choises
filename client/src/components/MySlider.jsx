@@ -100,8 +100,8 @@ const MySlider = ({ currentSlide }) => {
                 fontSize: "50px",
                 lineHeight: "52px",
                 height: "28px",
-                width:"16px",
-                marginLeft:"8px"
+                width: "16px",
+                marginLeft: "8px",
               },
             }}
           >
@@ -139,7 +139,7 @@ const MySlider = ({ currentSlide }) => {
               padding: "26px",
             }}
           >
-            <Typography fontSize={"18px"} fontFamily="OCR-A BT">
+            <Typography fontSize={"16px"} fontFamily="OCR-A BT">
               Just like in The Matrix, The Game Of Choices challenges you to
               make decisions that shape your path.
               <br />
@@ -224,7 +224,7 @@ const MySlider = ({ currentSlide }) => {
       >
         <div
           style={{
-            fontSize:"32px",
+            fontSize: "32px",
             // fontSize: windowWidth < 400 ? "40px" : "45px",
             fontWeight: "200",
             color: "#FBF9ED",
@@ -233,7 +233,7 @@ const MySlider = ({ currentSlide }) => {
             padding: "0 30px",
           }}
         >
-           <Box
+          <Box
             sx={{
               "& .Typewriter": {
                 "& *": {
@@ -245,24 +245,24 @@ const MySlider = ({ currentSlide }) => {
                 fontSize: "50px",
                 lineHeight: "52px",
                 height: "28px",
-                width:"16px",
-                marginLeft:"8px"
+                width: "16px",
+                marginLeft: "8px",
               },
             }}
           >
-          <Typewriter
-            options={{
-              delay: 60,
-              cursor: "",
-            }}
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("GAME PLAY")
-                .pauseFor(400)
-                .callFunction(handletitleComplete)
-                .start();
-            }}
-          />
+            <Typewriter
+              options={{
+                delay: 60,
+                cursor: "",
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("GAME PLAY")
+                  .pauseFor(400)
+                  .callFunction(handletitleComplete)
+                  .start();
+              }}
+            />
           </Box>
         </div>
 
@@ -279,7 +279,7 @@ const MySlider = ({ currentSlide }) => {
             padding: "26px",
           }}
         >
-          <Typography fontSize={"18px"} fontFamily="OCR-A BT">
+          <Typography fontSize={"16px"} fontFamily="OCR-A BT">
             Swipe left or right to build good habits, unlock your financial
             strengths, and uncover your financial personality.
             <br />
@@ -340,6 +340,10 @@ const MySlider = ({ currentSlide }) => {
               }}
             ></div>
           </div>
+          <Typography fontSize={"16px"} fontFamily="OCR-A BT">
+            Make smart moves to break free!
+          </Typography>
+
           <Typography fontSize={"1.25rem"} fontFamily="OCR-A BT"></Typography>
         </motion.div>
       </div>

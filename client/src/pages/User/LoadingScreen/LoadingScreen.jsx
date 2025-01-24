@@ -49,7 +49,7 @@ const LoadingScreen = () => {
             id="typewriter-text"
             style={{
               display: "inline-block",
-              fontSize: "50px",
+              fontSize: "42px",
               width: "100%",
               whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
               textIndent: "-30px",
@@ -67,7 +67,6 @@ const LoadingScreen = () => {
                 wrapperClassName: "typewriter-wrapper",
                 strings: ["Let's get started"],
                 autoStart: true,
-                fontSize: "50px",
                 loop: false,
                 cursorBlinking: true,
                 deleteSpeed: Infinity,

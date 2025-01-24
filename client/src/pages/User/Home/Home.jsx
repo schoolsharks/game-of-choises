@@ -117,7 +117,7 @@ const Home = () => {
           >
             <Typography
               variant={"h3"}
-              fontSize="40px"
+              fontSize="32px"
               fontWeight="400"
               textAlign={"center"}
               zIndex={1}

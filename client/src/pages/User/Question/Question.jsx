@@ -226,7 +226,8 @@ const Question = () => {
                     display={"flex"}
                     width={"100%"}
                     maxWidth={"431px"}
-                    marginTop={"100px"}
+                    marginTop={"64px"}
+                    // justifyContent={"center"}
                     // marginBottom={"20px"}
                     alignSelf={"flex-start"}
                     sx={{

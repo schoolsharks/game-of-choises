@@ -286,7 +286,8 @@ const Finished = () => {
               position: "absolute",
               top: "50%",
               // left: "50%",
-              transform: "translate(16px ,-50%)",
+              transform: "translate(0,-50%)",
+              padding:"24px"
             }}
           >
             <Typography
@@ -294,12 +295,13 @@ const Finished = () => {
               fontSize="1.8rem"
               lineHeight="36px"
               fontWeight="400"
-              whiteSpace={"nowrap"}
+              // whiteSpace={"nowrap"}
               sx={{
                 color: "white",
                 zIndex: 1,
               }}
             >
+              {/* Live for today spendor */}
               {userStatic.personalityName}
             </Typography>
             <Typography
@@ -565,12 +567,11 @@ const Finished = () => {
                 style={{ maxWidth: "none" }}
               />
             </Stack>
-            <Stack display={"flex"} flexDirection={"column"} gap={"2px"}>
+            <Stack display={"flex"} flexDirection={"column"}>
               <Typography
                 fontFamily="OCR-A BT"
                 fontWeight="400"
                 fontSize="12px"
-                lineHeight={"25px"}
               >
                 WOW! You have earned a badge.
               </Typography>
@@ -578,15 +579,13 @@ const Finished = () => {
                 fontFamily="OCR-A BT"
                 fontWeight="400"
                 fontSize="25px"
-                lineHeight={"25px"}
               >
                 {userStatic.badge}
               </Typography>
               <Typography
                 fontFamily="OCR-A BT"
                 fontWeight="400"
-                fontSize="15px"
-                lineHeight={"17px"}
+                fontSize="14px"
               >
                 {userStatic.badge_tagline}
               </Typography>
@@ -662,13 +661,13 @@ const Finished = () => {
             sx={{
               width: "100%",
               margin: "auto",
-              transform:
-                window.innerWidth > 500
-                  ? "translateX(-3.5rem)"
-                  : window.innerWidth > 400
-                  ? "translateX(-0.2rem)"
-                  : "translateX(-1rem)",
-              objectFit: "cove",
+              // transform:
+              //   window.innerWidth > 500
+              //     ? "translateX(-3.5rem)"
+              //     : window.innerWidth > 400
+              //     ? "translateX(-0.2rem)"
+              //     : "translateX(-1rem)",
+              // objectFit: "cove",
             }}
           >
             <RadarChart dataValues={userStatic?.scoreArray} />

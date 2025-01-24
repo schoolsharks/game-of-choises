@@ -93,7 +93,7 @@ const Login = () => {
           fontFamily: "LSC Solid",
           lineHeight: "52.8px",
           letterSpacing: "5%",
-          margin: "48px 16px 0",
+          margin: "48px 28px 0",
         }}
       >
         LOGIN
@@ -110,7 +110,6 @@ const Login = () => {
         alignContent={"center"}
         alignItems={"center"}
         flex={1}
-        paddingTop={"10px"}
       >
         <Stack
           display={"flex"}
@@ -127,7 +126,6 @@ const Login = () => {
         >
           <Stack
             sx={{
-              width: "90%",
               maxWidth: "433px",
               gap: "25px",
               // height: "40%",
@@ -137,6 +135,7 @@ const Login = () => {
               fontFamily: "OCR-A BT",
               lineHeight: "52.8px",
               letterSpacing: "5%",
+              margin:"0 28px",
               "&.MuiInputBase-input, .MuiInputLabel-root": {
                 fontFamily: "OCR-A BT",
               },
@@ -187,7 +186,7 @@ const Login = () => {
               }}
             />
 
-            <Stack direction={"row"} alignItems={"center"}>
+            <Stack direction={"row"} alignItems={"center"} marginLeft={"-14px"}>
               <Checkbox
                 checked={tncAccepted}
                 onChange={() => setTncAccepted((prev) => !prev)}
@@ -199,6 +198,7 @@ const Login = () => {
                 fontFamily={"OCR-A BT"}
                 fontWeight={"500"}
                 color={"#ffffffad"}
+                fontSize={"14px"}
               >
                 I agree to the
                 <span
@@ -207,7 +207,6 @@ const Login = () => {
                     textDecoration: "underline",
                     cursor: "pointer",
                     marginLeft: "4px",
-                    fontFamily: "Roboto",
                     color: "#ffffff",
                   }}
                 >
@@ -241,7 +240,7 @@ const Login = () => {
           alignContent={"center"}
           alignSelf={"center"}
         >
-          <SwipeBar onSwipe={handleSubmit} text={"Get Started"} />
+          <SwipeBar onSwipe={handleSubmit} text={"Play Now"} />
           <Stack
             alignContent={"center"}
             justifyContent={"end"}
