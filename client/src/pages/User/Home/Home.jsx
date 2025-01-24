@@ -117,7 +117,7 @@ const Home = () => {
           >
             <Typography
               variant={"h3"}
-              fontSize="32px"
+              fontSize="40px"
               fontWeight="400"
               textAlign={"center"}
               zIndex={1}
@@ -125,7 +125,6 @@ const Home = () => {
               // maxWidth={"280px"}
               margin="auto"
               color={"#FBF9ED"}
-              className="lcd-font"
               sx={{
                 fontFamily: "LSC Solid",
                 lineHeight: "52.8px",
