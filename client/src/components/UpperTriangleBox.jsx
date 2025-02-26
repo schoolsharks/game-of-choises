@@ -9,10 +9,11 @@ const UpperTriangleBox = ({ children, sx }) => {
           component={"img"}
           src={triangle}
           alt=""
-          // style={{ filter: "drop-shadow(0 0 15px #fff)" }}
+          sx={{width:"100%"}}
+
         />
       </Box>
-      <Stack sx={{ bgcolor: "#000000", marginTop: "-1px", flex: "1",zIndex:"1"}}>
+      <Stack sx={{ bgcolor: "#000000", marginTop: "-4px", flex: "1",zIndex:"1"}}>
         {children}
       </Stack>
     </Stack>

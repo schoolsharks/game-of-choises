@@ -42,7 +42,7 @@ const Main = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/home" element={<Navigate to="/home/1" />} />
-          <Route path="/home/:page" element={<AnimatedPage Component={HomeMain} />} />
+          <Route path="/home/:page" element={<HomeMain/>} />
           <Route path="/login" element={<AnimatedPage Component={Login} />} />
           <Route path="/info" element={<AnimatedPage Component={LoadingScreen} />} />
 
