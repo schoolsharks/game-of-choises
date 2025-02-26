@@ -10,28 +10,36 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import Logo from "../../../assets/SchoolSharks-logo.webp";
-import SwipeBar from "../../../components/SwipeBar";
+// import Logo from "../../../assets/SchoolSharks-logo.webp";
+// import SwipeBar from "../../../components/SwipeBar";
 import { Navigate, useNavigate } from "react-router-dom";
 import { loginValidation } from "../../../utils/loginValidation";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../../app/userSlice";
 import "../../../App.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SendIcon from "@mui/icons-material/Send";
-import sendIcon from "../../../assets/send.png";
-import { Close, ShareOutlined } from "@mui/icons-material";
+// import { createTheme, ThemeProvider } from "@mui/material/styles";
+// import SendIcon from "@mui/icons-material/Send";
+// import sendIcon from "../../../assets/send.png";
+import { ArrowBack, Close, ShareOutlined } from "@mui/icons-material";
+import UpperTriangleBox from "../../../components/UpperTriangleBox";
+import "./Login.css";
 
 const Login = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [companyName, setCompanyName] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    companyName: "",
+  });
+  // const [email, setEmail] = useState("");
+  // const [name, setName] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
-  const [tncModal, setTncModal] = useState(false);
+  const [tncModalOpen, setTncModalOpen] = useState(false);
   const [tncAccepted, setTncAccepted] = useState(false);
   const { user, error: userError, status } = useSelector((state) => state.user);
 
@@ -45,16 +53,29 @@ const Login = () => {
 
   const handleSubmit = () => {
     setError("");
-    const response = loginValidation(email, name, phone, companyName);
+    const response = loginValidation(formValues);
     if (!response.success) {
       setError(response.error);
     } else {
       if (!tncAccepted) {
         setError("Accept terms and conditions to continue");
       } else {
-        dispatch(createUser({ username: name, email, phone, companyName }));
+        dispatch(
+          createUser({
+            username: formValues.name,
+            email: formValues.email,
+            phone: formValues.contact,
+            companyName: formValues,
+          })
+        );
       }
     }
+  };
+  const handleChange = (field) => (e) => {
+    setFormValues((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+    }));
   };
 
   if (user) {
@@ -72,241 +93,211 @@ const Login = () => {
     }
   };
   return (
-    <Stack
-      width="100%"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: window.innerHeight + "px",
-        gap: "20px",
-        justifyContent: "center",
-      }}
-    >
-      <Typography
-        fontSize="32px"
-        fontWeight="400"
-        zIndex={1}
-        marginTop={"80px"}
-        color={theme.palette.primary.main}
-        className="lcd-font"
+    <Stack minHeight={window.innerHeight} flex={"1"} bgcolor={theme.palette.primary.main}>
+      {/* {!tncModalOpen ? ( */}
+      <UpperTriangleBox
         sx={{
-          fontFamily: "LSC Solid",
-          lineHeight: "52.8px",
-          letterSpacing: "5%",
-          margin: "48px 28px 0",
+          height: "100%",
+          flex: !tncModalOpen ? "1" : "auto",
+          borderRadius: !tncModalOpen ? "0" : "20px",
+          margin: !tncModalOpen ? "0" : "36px 20px ",
+          transition: "all 0.3s ease",
+          filter:"drop-shadow(0 0 15px #fff)"
         }}
       >
-        LOGIN
-      </Typography>
-
-      <Stack
-        width={"100%"}
-        maxWidth="433px"
-        color={theme.palette.primary.main}
-        display={"flex"}
-        marginBottom={"40px"}
-        // gap={""}
-        justifyContent={"space-between"}
-        alignContent={"center"}
-        alignItems={"center"}
-        flex={1}
-      >
-        <Stack
-          display={"flex"}
-          flexDirection={"column"}
-          justifyContent={"start"}
-          paddingBottom={"20px"}
-          height={"75%"}
-          width={"100%"}
-          gap={"10px"}
-          alignContent={"center"}
-          alignItems={"center"}
-          paddingTop={"10px"}
-          bgcolor={"#000000"}
-        >
-          <Stack
-            sx={{
-              maxWidth: "433px",
-              gap: "25px",
-              // height: "40%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              fontFamily: "OCR-A BT",
-              lineHeight: "52.8px",
-              letterSpacing: "5%",
-              margin:"0 28px",
-              "&.MuiInputBase-input, .MuiInputLabel-root": {
-                fontFamily: "OCR-A BT",
-              },
-            }}
-          >
-            <TextField
-              label="Name *"
-              variant="standard"
-              // color="white"
-              placeholder="eg. Vanessa Jenson"
-              value={name}
-              onChange={(e) => {
-                setError("");
-                setName(e.target.value);
-              }}
-            />
-
-            <TextField
-              label="Email *"
-              type="email"
-              variant="standard"
-              placeholder="eg. xoxo@gmail.com"
-              value={email}
-              onChange={(e) => {
-                setError("");
-                setEmail(e.target.value);
-              }}
-            />
-            <TextField
-              label="Phone Number *"
-              variant="standard"
-              type="number"
-              placeholder="eg. xxxxxxxxxx"
-              value={phone}
-              onChange={(e) => {
-                setError("");
-                setPhone(e.target.value);
-              }}
-            />
-            <TextField
-              label="Company Name *"
-              variant="standard"
-              placeholder="e.g School Shark"
-              value={companyName}
-              onChange={(e) => {
-                setError("");
-                setCompanyName(e.target.value);
-              }}
-            />
-
-            <Stack direction={"row"} alignItems={"center"} marginLeft={"-14px"}>
-              <Checkbox
-                checked={tncAccepted}
-                onChange={() => setTncAccepted((prev) => !prev)}
-                sx={{
-                  "&.MuiCheckbox-root": { color: "#ffffff" },
-                }}
+        {!tncModalOpen ? (
+          <Stack padding="16px" flex={"1"} marginTop={"-36px"}>
+            <Typography color="#fff" fontSize={"30px"} fontWeight={"700"}>
+              LOGIN
+            </Typography>
+            <Stack spacing={3} marginTop={"32px"}>
+              <TextField
+                id="name"
+                label="Name"
+                variant="standard"
+                placeholder="eg. Vanessa Jenson"
+                value={formValues.name}
+                onChange={handleChange("name")}
               />
-              <Typography
-                fontFamily={"OCR-A BT"}
-                fontWeight={"500"}
-                color={"#ffffffad"}
-                fontSize={"14px"}
+              <TextField
+                id="email"
+                label="Email"
+                // className="not-mandate"
+                variant="standard"
+                placeholder="eg. vanessa.jenson@example.com"
+                value={formValues.email}
+                onChange={handleChange("email")}
+              />
+              <TextField
+                id="contact"
+                label="Contact"
+                variant="standard"
+                // className="not-mandate"
+                placeholder="eg. +91 XXXXX XXXXX"
+                value={formValues.contact}
+                onChange={handleChange("contact")}
+              />
+              <TextField
+                id="companyName"
+                label="Company Name"
+                variant="standard"
+                // className="not-mandate"
+                placeholder="eg. XYZ Corp"
+                value={formValues.companyName}
+                onChange={handleChange("companyName")}
+              />
+              {error && (
+                <Typography
+                  fontSize={"12px"}
+                  color="red"
+                  bgcolor="white"
+                  padding="0 10px"
+                >
+                  {error}
+                </Typography>
+              )}
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                sx={{ transform: "translateX(-14px)" }}
               >
-                I agree to the
-                <span
-                  onClick={() => setTncModal(true)}
-                  style={{
-                    textDecoration: "underline",
-                    cursor: "pointer",
-                    marginLeft: "4px",
+                <Checkbox
+                  checked={tncAccepted}
+                  onChange={() => setTncAccepted((prev) => !prev)}
+                  sx={{
+                    "&.MuiCheckbox-root": { color: "#ffffff" },
+                  }}
+                />
+                <Typography
+                  fontWeight={"500"}
+                  color={"#ffffffad"}
+                  fontSize={"14px"}
+                >
+                  I agree to the
+                  <span
+                    onClick={() => setTncModalOpen(true)}
+                    style={{
+                      cursor: "pointer",
+                      marginLeft: "4px",
+                      color: "#ffffff",
+                    }}
+                  >
+                    Terms & conditions{" "}
+                  </span>
+                </Typography>
+              </Stack>
+            </Stack>
+            <Stack
+              direction={"row"}
+              margin={"auto 0 16px"}
+              padding="8px"
+              alignItems={"center"}
+              gap={"16px"}
+            >
+              <IconButton
+                onClick={() => navigate("/onboarding/1")}
+                sx={{ padding: "0" }}
+              >
+                <ArrowBack
+                  sx={{
+                    border: "2px solid white",
+                    fontSize: "40px",
+                    padding: "4px",
+                    borderRadius: "50%",
                     color: "#ffffff",
                   }}
-                >
-                  Terms & conditions{" "}
-                </span>
-                of IDFC
-              </Typography>
+                />
+              </IconButton>
+              <Button
+                variant="outlined"
+                onClick={handleSubmit}
+                sx={{
+                  width: "max-content",
+                  textTransform: "none",
+                  borderRadius: "48px",
+                  fontSize: "18px",
+                  padding: "0 18px",
+                  height: "40px",
+                  border: "2px solid #fff",
+                  color:"#fff",
+                }}
+              >
+                Start
+              </Button>
             </Stack>
-            {error && (
-              <Typography
-                color="#ff0000"
-                sx={{
-                  minHeight: "1rem",
-                  bgcolor: "#fff",
-                  borderRadius: "2px",
-                  padding: "0 8px",
-                }}
-              >
-                {error}!
-              </Typography>
-            )}
           </Stack>
-        </Stack>
-        <Stack
-          position={"relative"}
-          maxHeight={"88px"}
-          maxWidth={"370px"}
-          height={"12%"}
-          width={"80%"}
-          marginBottom="12px"
-          alignContent={"center"}
-          alignSelf={"center"}
-        >
-          <SwipeBar onSwipe={handleSubmit} text={"Play Now"} />
+        ) : (
           <Stack
-            alignContent={"center"}
-            justifyContent={"end"}
-            flexDirection={"row"}
-            marginTop={"8px"}
+            color={"#fff"}
+            padding={"16px"}
+            marginBottom={"32px"}
+            marginTop={"-20px"}
           >
-            <IconButton onClick={handleShare}>
-              <ShareOutlined sx={{ color: "#fff", fontSize: "28px" }} />
-            </IconButton>
-
-            {/* <Button onClick={handleShare}>
-              <Typography
-                variant={"button"}
-                fontSize="20px"
-                fontWeight="400"
-                textAlign={"center"}
-                zIndex={1}
-                // width={"80%"}
-                // maxWidth={"280px"}
-                color={"#FBF9ED"}
-                className="lcd-font"
-                sx={{
-                  fontFamily: "LSC Solid",
-                  letterSpacing: "5%",
-                }}
-              >
-                Share
-              </Typography>
-              <Box>
-                <img src={sendIcon} alt="send icon" />
-              </Box>
-            </Button> */}
+            <Stack direction={"row-reverse"}>
+              <IconButton onClick={() => setTncModalOpen(false)}>
+                <Close sx={{ color: "#fff" }} />
+              </IconButton>
+            </Stack>
+            <Typography
+              fontSize={"25px"}
+              fontWeight={"800"}
+              textAlign={"center"}
+              marginTop={"16px"}
+            >
+              TERMS & CONDITIONS
+            </Typography>
+            <Typography marginTop={"12px"}>
+              This game is designed for fun and educational purposes only!{" "}
+              <br />
+              <br />
+              No real data will be collected, stored, or shared during the game.{" "}
+              <br />
+              <br />
+              All inputs will be erased after the game concludes unless you
+              explicitly request to stay connected for follow-up discussions or
+              insights. <br />
+              <br />
+              Enjoy the experience without any worries! <br />
+              <br />
+            </Typography>
           </Stack>
-        </Stack>
-      </Stack>
-
-      {/* </div> */}
-
-      <Dialog
-        open={tncModal}
-        onClose={() => {
-          setTncModal(false);
-        }}
-        PaperProps={{
-          sx: {
-            bgcolor: "#000000",
-            backdropFilter: "blur(4px)",
-            borderRadius: "12px",
-            border: "2px solid #fff",
-            overflowY: "scroll",
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-            scrollbarWidth: "none",
-          },
-        }}
-      >
-        <Stack padding={"12px"} color={"#fff"}>
-          <Stack alignItems={"flex-end"}>
-            <IconButton onClick={() => setTncModal(false)}>
-              <Close sx={{ color: "#fff" }} />
-            </IconButton>
+        )}
+      </UpperTriangleBox>
+      {/* ) : ( */}
+      {/* <UpperTriangleBox
+          sx={{ height: "100%", margin: "72px 20px ", borderRadius: "20px" }}
+        >
+          <Stack color={"#fff"} padding={"16px"} marginBottom={"32px"} marginTop={"-20px"}>
+            <Stack direction={"row-reverse"}>
+              <IconButton onClick={() => setTncModalOpen(false)}>
+                <Close sx={{ color: "#fff" }} />
+              </IconButton>
+            </Stack>
+            <Typography
+              fontSize={"24px"}
+              fontWeight={"800"}
+              textAlign={"center"}
+              marginTop={"16px"}
+            >
+              TERMS & CONDITIONS
+            </Typography>
+            <Typography marginTop={"12px"}>
+              This game is designed for fun and educational purposes only!{" "}
+              <br />
+              <br />
+              No real data will be collected, stored, or shared during the game.{" "}
+              <br />
+              <br />
+              All inputs will be erased after the game concludes unless you
+              explicitly request to stay connected for follow-up discussions or
+              insights. <br />
+              <br />
+              Enjoy the experience without any worries! <br />
+              <br />
+            </Typography>
           </Stack>
-          <TermsAndConditionsContent />
-        </Stack>
-      </Dialog>
+        </UpperTriangleBox>
+      )} */}
     </Stack>
   );
 };

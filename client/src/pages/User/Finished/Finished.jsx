@@ -35,7 +35,11 @@ import yolo from "../../../assets/yolo.webp";
 import dreamer from "../../../assets/dreamer.webp";
 import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
-import { ShareOutlined } from "@mui/icons-material";
+import { ArrowBack, ShareOutlined } from "@mui/icons-material";
+
+import hustlerBadge from "../../../assets/badges/hustler-badge.png";
+import saverBadge from "../../../assets/badges/saver-badge.png";
+import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
 // import personalityGrid2 from "../../../assets/personalityGrid2.svg";
 // import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
@@ -58,7 +62,7 @@ const options = [
   {
     id: 4,
     text: "Technology & Convenience",
-    percentage: 30
+    percentage: 30,
   },
 ];
 
@@ -188,7 +192,12 @@ const Finished = () => {
         console.error("Failed to copy URL: ", err);
       });
   };
-  console.log(userStatic?.personalityName);
+
+  const lifestyleBenefits = [
+    "Complimentary 1-year Times Prime Membership with 20+ Exclusive Brand Benefits",
+    "Swiggy One Lite Quarterly Membership: Access Free Delivery & Extra Discounts on Instamart & Restaurants",
+    "Amazon Prime Quarterly Membership: Prime Video, Shopping Deals & Free 1-day Delivery",
+  ];
   // const personalityImage = data2[index];
   return (
     <Stack
@@ -215,16 +224,15 @@ const Finished = () => {
         }}
       >
         <Stack
-          backgroundColor="#A00612"
+          backgroundColor={theme.palette.primary.main}
           margin="1rem"
           paddingX="20px"
           paddingY="12px"
-          borderRadius="18px"
+          borderRadius="42px"
           border="1px solid #FBF9ED"
           fontWeight="600"
           fontSize="1.1rem"
           lineHeight="26px"
-          fontFamily="OCR-A BT"
           display="flex"
           justifyContent="space-between"
           direction={"row"}
@@ -238,6 +246,7 @@ const Finished = () => {
             src={idfc}
             alt="option A"
             style={{
+              width: "24px",
               objectFit: "contain",
             }}
           />
@@ -254,346 +263,55 @@ const Finished = () => {
         }}
       >
         <Stack margin={"30px 24px 45px"}>
-          <Typography fontFamily="LSC Solid" fontSize="30px" fontWeight="400">
-            Congratulations!
+          <img
+            src={hustlerBadge}
+            alt=""
+            style={{ width: "170px", margin: "auto" }}
+          />
+          <Typography textAlign={"center"} fontSize={"24px"} fontWeight={"700"}>
+            <span style={{ fontSize: "40px", fontWeight: "500" }}>90%</span> The
+            Hustler
           </Typography>
-          <Typography fontFamily="OCR-A BT" fontSize="1.25rem" fontWeight="400">
-            You’ve completed the Financial Matrix
+          <Typography fontSize={"12px"} marginTop={"5px"} fontWeight={"400"}>
+            You start as a hustler, making bold choices in your financial
+            journey. Over time, you evolve into someone empowered, learning from
+            your mistakes and striving for success.
           </Typography>
-        </Stack>
-        {/* <img src={personalitiesGrid} alt="" style={{ opacity: "0.5" }} /> */}
-
-        <Stack sx={{ borderTop:"1px solid white",borderBottom:"1px solid white"}}>
-          <div
-            style={{
-              position: "relative",
-              display: "inline-block",
-              height: "156px",
-            }}
-          >
-            <img
-              src={personalitiesGrid}
-              alt=""
-              style={{
-                opacity: "0.8",
-                width: "100%",
-                height: "156px",
-                objectFit: "cover",
-              }}
-            />
-            <Stack
-              sx={{
-                position: "absolute",
-                top: "50%",
-                // left: "50%",
-                transform: "translate(0,-50%)",
-                padding:"36px 24px"
-              }}
-            >
-              <Typography
-                fontFamily="LSC Solid"
-                fontSize="2.2rem"
-                lineHeight="42px"
-                fontWeight="400"
-                // whiteSpace={"nowrap"}
-                sx={{
-                  color: "white",
-                  zIndex: 1,
-                }}
-              >
-                {/* Live for today spendor */}
-                {userStatic.personalityName}
-              </Typography>
-              <Typography
-                fontFamily="OCR-A BT"
-                fontSize="20px"
-                lineHeight="36px"
-                fontWeight="400"
-                whiteSpace={"nowrap"}
-                sx={{
-                  color: "white",
-                  zIndex: 1,
-                }}
-              >
-                Your Dominent Archetype
-              </Typography>
-            </Stack>
-          </div>
 
           <Stack
-            sx={{
-              padding: "56px 24px 35px",
-              background: " linear-gradient(180deg, #000000 0%, #A00612 100%)",
-            }}
+            direction={"row"}
+            marginTop={"18px"}
+            justifyContent={"space-between"}
+            gap={"8px"}
           >
-            {/* <Typography
-              fontFamily="LSC Solid"
-              fontSize="45px"
-              lineHeight="36px"
-              fontWeight="400"
-            >
-              You are {userStatic.personalityScore}%
-            </Typography> */}
-            {/* <Typography
-              fontFamily="OCR-A BT"
-              fontSize="30px"
-              lineHeight="36px"
-              fontWeight="400"
-              marginTop={"14px"}
-              textTransform={"uppercase"}
-            >
-              {userStatic.personalityName}
-            </Typography> */}
-
-            {/* SubCategory Section */}
-            {userStatic && userStatic.subCategory?.length > 0 && (
-              <Stack
-                display="flex"
-                flexDirection="row"
-                gap="1rem"
-                justifyContent="flex-start"
-                flexWrap="wrap"
-              >
-                {userStatic.subCategory.map((item, index) => (
-                  <Typography
-                    key={index}
-                    fontFamily="LSC Solid"
-                    fontWeight="400"
-                    fontSize="22px"
-                    lineHeight="23px"
-                    fontStyle="bold"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="10px"
-                  >
-                    {item}
-                    <div
-                      className="blinking-div"
-                      style={{
-                        height: "22px",
-                        width: "11px",
-                        backgroundColor: "white",
-                        animation: "blink 1s infinite",
-                      }}
-                    />
-                  </Typography>
-                ))}
-              </Stack>
+            {["Bold", "Calculated", "Visionary", "Ambitious"].map(
+              (item, index) => (
+                <Typography fontSize={"15px"} fontWeight={"800"} key={index}>
+                  {item}
+                </Typography>
+              )
             )}
-
-            <Typography
-              fontFamily={"OCR-A BT"}
-              fontSize={"1.25rem"}
-              marginTop={"28px"}
-            >
-              {userStatic.insights}
-            </Typography>
           </Stack>
         </Stack>
 
-        {/* <Stack gap="1rem">
-          {userStatic && userStatic?.strengths?.length > 0 && (
-            <Stack
-              borderRadius="10px"
-              border="2px dotted white"
-              paddingRight="50px"
-              paddingTop="11px"
-              paddingLeft={"14px"}
-              marginX="1rem"
-              minHeight="100px"
-              backgroundColor="#A0061280"
-            >
-              <Stack
-                display="flex"
-                flexDirection="row"
-                gap="4px"
-                // justifyContent="flex-start"s
-                flexWrap="wrap"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    fontFamily="OCR-A BT"
-                    fontWeight="400"
-                    width={"100%"}
-                    fontSize="18px"
-                    lineHeight="25px"
-                    display="inline-flex"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <Typewriter
-                      // key={data.id}
-                      options={{
-                        delay: 20,
-                        cursor: "|",
-                        wrapperClassName: "typewriter-wrapper",
-                      }}
-                      onInit={(typewriter) => {
-                        typewriter
-                          .typeString(userStatic.strengths.join(" ")) // Type the current slide description
+        {/* Your Preferences */}
 
-                          .pauseFor(500)
-                          .start();
-                      }}
-                    />
-                  </Typography>
-                </div>
-              </Stack>
-            </Stack>
-          )}
-
-
-
-          {userStatic && userStatic?.challenges?.length > 0 && (
-            <Stack
-              borderRadius="10px"
-              border="2px dotted white"
-              paddingLeft="50px"
-              paddingTop="11px"
-              marginX="1rem"
-              minHeight="100px"
-              backgroundColor="#A0061280"
-            >
-              <Stack
-                display="flex"
-                flexDirection="row"
-                gap="1rem"
-                justifyContent="flex-end"
-                flexWrap="wrap"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "end",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    fontFamily="OCR-A BT"
-                    fontWeight="400"
-                    width="100%"
-                    fontSize="16px"
-                    lineHeight="25px"
-                    text="10px"
-                    alignItems="end"
-                    sx={{
-                      textIndent: "70px",
-                    }}
-                  >
-                    <Typewriter
-                      // key={data.id}
-                      options={{
-                        delay: 20,
-                        cursor: "|",
-                        wrapperClassName: "typewriter-wrapper",
-                      }}
-                      onInit={(typewriter) => {
-                        typewriter
-                          .typeString(userStatic.challenges.join(" ")) // Type the current slide description
-
-                          .pauseFor(500)
-                          .start();
-                      }}
-                    />
-
-                    <span
-                      className="blinking-div"
-                      style={{
-                        height: "28px",
-                        width: "11px",
-
-                        backgroundColor: "white",
-                        animation: "blink 1s infinite",
-                        marginLeft: "5px", // Adds space between the text and the cursor
-                      }}
-                    />
-                  </Typography>
-                </div>
-              </Stack>
-            </Stack>
-          )}
-        </Stack> */}
-
-        {/* Risk taker */}
+        <Typography
+          marginTop={"50px"}
+          fontSize={"24px"}
+          fontWeight={"700"}
+          textAlign={"center"}
+        >
+          Your Preferences
+        </Typography>
         <Stack
           borderRadius="10px"
-          border="0.5px solid white"
           paddingX="1rem"
           paddingY="1.5rem"
           gap="1rem"
-          margin="3rem 1rem 0"
-          sx={{
-            background: "linear-gradient(180deg, #A00612 0%, #000000 100%)",
-          }}
+          margin="8px 1rem 0"
+          bgcolor={theme.palette.primary.main}
         >
-          <Stack
-            display={"flex"}
-            gap={"1rem"}
-            flexDirection={"row"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Stack
-              sx={{
-                width: "88px",
-                height: "79px",
-                display: "flex",
-                justifyContent: "center",
-                color: "white",
-              }}
-            >
-              <img
-                src={
-                  userStatic.badge === "The Dreamer in Debt"
-                    ? dreamer
-                    : userStatic.badge === "The Risk-Taker"
-                    ? risk
-                    : userStatic.badge === "The Balanced Strategist"
-                    ? balances_strategist
-                    : userStatic.badge === "The Budget Guru"
-                    ? budget_guru
-                    : yolo
-                }
-                style={{ maxWidth: "none" }}
-              />
-            </Stack>
-            <Stack display={"flex"} flexDirection={"column"}>
-              <Typography
-                fontFamily="OCR-A BT"
-                fontWeight="400"
-                fontSize="12px"
-              >
-                WOW! You have earned a badge.
-              </Typography>
-              <Typography
-                fontFamily="OCR-A BT"
-                fontWeight="400"
-                fontSize="25px"
-                margin={"4px 0"}
-                lineHeight={"27px"}
-              >
-                The Balanced Strategist
-                {/* {userStatic.badge} */}
-              </Typography>
-              <Typography
-                fontFamily="OCR-A BT"
-                fontWeight="400"
-                fontSize="14px"
-              >
-                {userStatic.badge_tagline}
-              </Typography>
-            </Stack>
-          </Stack>
-
           <Stack marginTop="2rem" gap={"2rem"}>
             {userStatic.riskTaker &&
               Object.entries(userStatic.riskTaker).map(([key, percentage]) => (
@@ -605,7 +323,6 @@ const Finished = () => {
                     justifyContent={"space-between"}
                   >
                     <Typography
-                      fontFamily="OCR-A BT"
                       fontSize="18px"
                       lineHeight="25px"
                       fontWeight={"400"}
@@ -613,7 +330,6 @@ const Finished = () => {
                       {key}
                     </Typography>
                     <Typography
-                      fontFamily="OCR-A BT"
                       fontSize="18px"
                       lineHeight="25px"
                       fontWeight={"400"}
@@ -635,7 +351,7 @@ const Finished = () => {
           </Stack>
         </Stack>
 
-        {/* Personality Analysis Graph */}
+        {/* Personality Analysis Graph
         <Stack
           borderRadius="10px"
           border="0.5px solid white"
@@ -648,7 +364,6 @@ const Finished = () => {
           }}
         >
           <Typography
-            fontFamily="LSC Solid"
             fontWeight="500"
             fontSize="1.6rem"
             sx={{
@@ -705,7 +420,6 @@ const Finished = () => {
                       <img src={diamond} style={{ maxWidth: "none" }} />
                     </Stack>
                     <Typography
-                      fontFamily="OCR-A BT"
                       fontSize="18px"
                       lineHeight="36px"
                       fontWeight="400"
@@ -714,7 +428,6 @@ const Finished = () => {
                     </Typography>
                   </Stack>
                   <Typography
-                    fontFamily="OCR-A BT"
                     fontSize="18px"
                     lineHeight="36px"
                     fontWeight="400"
@@ -725,10 +438,10 @@ const Finished = () => {
               ))}
             </Stack>
           )}
-        </Stack>
+        </Stack> */}
 
         {/* personalities */}
-        <Stack
+        {/* <Stack
           borderRadius="10px"
           border="0.5px solid white"
           paddingX="1rem"
@@ -768,7 +481,6 @@ const Finished = () => {
               {personalities.map((option) => (
                 <Stack key={option.in} marginBottom={"1rem"} gap={"0.5rem"}>
                   <Typography
-                    fontFamily="OCR-A BT"
                     fontSize="24px"
                     lineHeight="25px"
                     fontWeight={"400"}
@@ -777,7 +489,6 @@ const Finished = () => {
                     {option.heading}
                   </Typography>
                   <Typography
-                    fontFamily="OCR-A BT"
                     fontSize="18px"
                     lineHeight="25px"
                     fontWeight={"400"}
@@ -788,37 +499,24 @@ const Finished = () => {
               ))}
             </Stack>
           )}
-        </Stack>
+        </Stack> */}
 
         {/* Offerings Section */}
         <Stack
-          borderTop="0.5px solid white"
+          borderRadius="10px"
+          paddingX="1rem"
+          paddingY="40px"
+          margin="50px 1rem 0"
+          bgcolor={theme.palette.primary.main}
           borderBottom="0.5px solid white"
-          paddingY="22px"
-          paddingX="21px"
-          margin={"3rem 0 0"}
-          sx={{
-            background: "linear-gradient(180deg, #000000 0%, #A00612 100%)",
-          }}
         >
-          <Stack
-            textAlign="right"
-            display="flex"
-            flexDirection="column"
-            alignItems="flex-end"
-            gap="1rem"
-          >
-            <Typography
-              fontFamily="LSC Solid"
-              fontWeight={400}
-              fontSize="45px"
-              lineHeight="36px"
-            >
+          <Stack display="flex" flexDirection="column">
+            <Typography fontWeight={400} fontSize="45px" lineHeight="28px">
               Over 70%
             </Typography>
             <Typography
-              fontFamily="LSC Solid"
               fontWeight={400}
+              marginTop={"12px"}
               fontSize="20px"
               lineHeight="36px"
             >
@@ -833,13 +531,8 @@ const Finished = () => {
                 cursor: "pointer",
               }}
             >
-              <Typography
-                fontFamily="LSC Solid"
-                fontWeight={400}
-                fontSize="15px"
-                lineHeight="36px"
-              >
-                Preferences
+              <Typography fontWeight={400} fontSize="15px" lineHeight="36px">
+                Find out why?
               </Typography>
               <KeyboardArrowUpIcon
                 sx={{
@@ -852,368 +545,164 @@ const Finished = () => {
 
           {toggle && (
             <Stack marginTop="2rem">
-              {userStatic.offers && userStatic.offers.map((option) => (
-                <Stack
-                  key={option.id}
-                  border="0.5px solid white"
-                  paddingX="17px"
-                  paddingY="24px"
-                  borderRadius="5px"
-                  marginBottom="1rem"
-                >
-                  <Typography
-                    fontFamily="OCR-A BT"
-                    fontSize="15px"
-                    lineHeight="18.15px"
-                    fontWeight={"400"}
+              {userStatic.offers &&
+                userStatic.offers.map((option) => (
+                  <Stack
+                    key={option.id}
+                    // border="0.5px solid white"
+                    bgcolor={"#fff"}
+                    color={"#000"}
+                    paddingX="17px"
+                    paddingY="24px"
+                    borderRadius="5px"
+                    marginBottom="1rem"
                   >
-                    {option.offer}
-                  </Typography>
-                  <LinearProgress
-                    variant="determinate"
-                    value={option.percentage}
-                    sx={{
-                      height: 8,
-                      borderRadius: 2,
-                      marginTop: "24px",
-                      backgroundColor: "#A00612",
-                      "& .MuiLinearProgress-bar": {
-                        backgroundColor: "white",
-                      },
-                    }}
-                  />
-                  <Typography
-                    fontFamily="Roboto"
-                    fontWeight={500}
-                    fontSize="15px"
-                    lineHeight="18.15px"
-                    marginTop={"12px"}
-                  >
-                    Opt - {option.percentage}%
-                  </Typography>
-                </Stack>
-              ))}
+                    <Typography
+                      fontSize="15px"
+                      lineHeight="18.15px"
+                      fontWeight={"500"}
+                    >
+                      {option.offer}
+                    </Typography>
+                    <LinearProgress
+                      variant="determinate"
+                      value={option.percentage}
+                      sx={{
+                        height: 8,
+                        borderRadius: 2,
+                        marginTop: "20px",
+                        backgroundColor: "#A00612",
+                        "& .MuiLinearProgress-bar": {
+                          backgroundColor: "black",
+                        },
+                      }}
+                    />
+                    <Typography
+                      fontSize="12px"
+                      fontWeight="600"
+                      lineHeight="18.15px"
+                      marginTop={"5px"}
+                    >
+                      Opt - {option.percentage}%
+                    </Typography>
+                  </Stack>
+                ))}
             </Stack>
           )}
-
         </Stack>
 
         {/* Lifestyle Benefits Section */}
-        <Stack
-          borderRadius="7px"
-          border="0.5px solid white"
-          paddingX="1rem"
-          paddingY="1.5rem"
-          gap="1rem"
-          margin="2rem 1rem 0"
-        >
+        <Stack borderRadius="7px" paddingX="1rem" marginTop={"50px"} gap="1rem">
           <Typography
-            fontFamily="OCR-A BT"
-            fontWeight="400"
+            textAlign={"center"}
+            fontWeight="700"
             fontSize="20px"
             lineHeight="20.6px"
           >
             Lifestyle Benefits
           </Typography>
-          <Stack borderRadius="5px" backgroundColor="#A00612">
+          <Stack
+            borderRadius="5px"
+            backgroundColor={theme.palette.primary.main}
+          >
             <Stack
               borderRadius="10px"
               paddingY="1.5rem"
-              backgroundColor="#A00612"
               textAlign="left"
               gap="1rem"
               paddingX="1rem"
             >
-              <Typography
-                fontFamily="OCR-A BT"
-                fontWeight="400"
-                fontSize="15px"
-                lineHeight="15.45px"
-              >
-                Submit response to claim your reward
-              </Typography>
-
-              <Stack gap={"0.8rem"}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionA" ? "#A00620" : "#A00612",
-                    textTransform: "none",
-                    fontWeight: 400,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%",
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionA")}
-                >
-                  1. Option A
-                </Button>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionB" ? "#A00620" : "#A00612",
-                    textTransform: "none",
-                    fontWeight: 500,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%",
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionB")}
-                >
-                  2. Option B
-                </Button>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionC" ? "#A00620" : "#A00612", // Change background if selected
-                    textTransform: "none",
-                    fontWeight: 500,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%", // Make button full width
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionC")}
-                >
-                  3. Option C
-                </Button>
-              </Stack>
-
               <Stack
-                display={"flex"}
-                flexDirection={"row"}
-                justifyContent={"space-between"}
-                alignItems={"center"}
-                borderRadius="5px"
-                border="1px solid #FFFFFF78"
-                paddingX="1.2rem"
-                paddingY={"0.8rem"}
-                backgroundColor="rgba(0,0,0,0.4)"
-                color="#F1E9DE"
-                sx={{
-                  opacity: "0.7",
-                }}
+                gap={"0.8rem"}
+                bgcolor={"#fff"}
+                padding={"12px"}
+                borderRadius={"5px"}
               >
-                <Typography
-                  fontWeight={"400"}
-                  fontFamily={"OCR-A BT"}
-                  fontSize={"20px"}
-                >
-                  Claim reward
-                </Typography>
-
-                <img src={rightArrow} height={"16px"}></img>
+                {lifestyleBenefits.map((item, index) => (
+                  <Button
+                    variant="contained"
+                    sx={{
+                      bgcolor: "#fff",
+                      textTransform: "none",
+                      border: "1px solid #000000",
+                      justifyContent: "left",
+                      width: "100%",
+                      color: "#000",
+                      boxShadow: "none",
+                      textAlign: "left",
+                    }}
+                    onClick={() => setSelectedOption("optionA")}
+                  >
+                    <Stack direction={"row"} gap={"5px"}>
+                      <Typography>{index + 1}.</Typography>
+                      <Typography fontSize={"15px"} fontWeight={"400"}>
+                        {item}
+                      </Typography>
+                    </Stack>
+                  </Button>
+                ))}
               </Stack>
             </Stack>
           </Stack>
         </Stack>
-
-        {/* Claim Reward Section */}
         <Stack
-          borderRadius="7px"
-          border="0.5px solid white"
-          paddingX="1rem"
-          paddingY="1.5rem"
+          direction={"row"}
+          backgroundColor={theme.palette.primary.main}
+          margin="1rem"
+          paddingX="20px"
+          paddingY="12px"
+          borderRadius="42px"
+          border="1px solid #FBF9ED"
+          fontWeight="600"
+          fontSize="1.1rem"
+          lineHeight="26px"
+          justifyContent="space-between"
+          color="#FFFFFF"
           gap="1rem"
-          margin="2rem 1rem 0"
+          alignItems="center"
+          whiteSpace={"nowrap"}
         >
-          <Typography
-            fontFamily="OCR-A BT"
-            fontWeight="400"
-            fontSize="20px"
-            lineHeight="20.6px"
-          >
-            What will make you Switch to IDFC?
+          <Typography fontWeight={"400"} fontSize={"20px"}>
+            Claim reward
           </Typography>
-          <Stack borderRadius="5px" backgroundColor="#A00612">
-            <Stack
-              borderRadius="10px"
-              paddingY="1.5rem"
-              backgroundColor="#A00612"
-              textAlign="left"
-              gap="1rem"
-              paddingX="1rem"
-            >
-              <Typography
-                fontFamily="OCR-A BT"
-                fontWeight="400"
-                fontSize="15px"
-                lineHeight="15.45px"
-              >
-                Submit response to claim your reward
-              </Typography>
 
-              <Stack gap={"0.8rem"}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionA" ? "#A00620" : "#A00612",
-                    textTransform: "none",
-                    fontWeight: 400,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%",
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionA")}
-                >
-                  1. Option A
-                </Button>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionB" ? "#A00620" : "#A00612",
-                    textTransform: "none",
-                    fontWeight: 500,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%",
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionB")}
-                >
-                  2. Option B
-                </Button>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      selectedOption === "optionC" ? "#A00620" : "#A00612", // Change background if selected
-                    textTransform: "none",
-                    fontWeight: 500,
-                    paddingY: "9px",
-                    border: "1px solid #FFFFFF78",
-                    justifyContent: "left",
-                    fontFamily: "OCR-A BT",
-                    fontSize: "1rem",
-                    width: "100%", // Make button full width
-                    color: "#ffffff",
-                  }}
-                  onClick={() => setSelectedOption("optionC")}
-                >
-                  3. Option C
-                </Button>
-              </Stack>
-
-              <Stack
-                display={"flex"}
-                flexDirection={"row"}
-                justifyContent={"space-between"}
-                alignItems={"center"}
-                borderRadius="5px"
-                border="1px solid #FFFFFF78"
-                paddingX="1.2rem"
-                paddingY={"0.8rem"}
-                backgroundColor="rgba(0,0,0,0.4)"
-                color="#F1E9DE"
-                sx={{
-                  opacity: "0.7",
-                }}
-              >
-                <Typography
-                  fontWeight={"400"}
-                  fontFamily={"OCR-A BT"}
-                  fontSize={"20px"}
-                >
-                  Claim reward
-                </Typography>
-
-                <img src={rightArrow} height={"16px"}></img>
-              </Stack>
-            </Stack>
-
-            <Stack
-              backgroundColor={"#ffffff"}
-              height={"300px"}
-              borderRadius={"5px"}
-              marginBottom={"1.5rem"}
-              marginX={"1px"}
-            ></Stack>
-          </Stack>
+          <img src={idfc} style={{width:"28px"}}></img>
         </Stack>
 
         <Stack
-          position={"relative"}
-          marginTop={"48px"}
-          marginBottom={"10px"}
-          maxHeight={"88px"}
-          maxWidth={"361px"}
-          height={"15%"}
-          width={"80%"}
-          alignContent={"center"}
-          alignSelf={"center"}
+          direction={"row"}
+          margin={"50px 16px 16px"}
+          padding="8px"
+          alignItems={"center"}
+          gap={"16px"}
+          justifyContent={"space-between"}
         >
-          <SwipeBar onSwipe={handleReset} text={"Play Again"} />
-        </Stack>
-        <Stack
-          sx={{
-            gap: "10px",
-            display: "flex",
-            flexDirection: "row",
-            alignContent: "center",
-            justifyContent: "end",
-            alignItems: "center",
-            width: "88%",
-            // height: "40%",
-            marginTop: "2px",
-            maxHeight: "300px",
-            cursor: "pointer",
-            // paddingRight: "30px",
-          }}
-        >
-            <IconButton onClick={handleInviteClick}><ShareOutlined sx={{color:"#fff",fontSize:"28px"}}/></IconButton>
-
-          {/* <Typography
-            variant={"body3"}
-            fontSize="1.4rem"
-            fontWeight="400"
-            textAlign={"end"}
-            zIndex={1}
-            fontFamily={"OCR-A BT"}
-            color={theme.palette.primary.main}
-            onClick={handleInviteClick}
-          >
-            Share
-          </Typography>
-          <Box
-            component="img"
-            src={send}
-            alt="send"
-            loading="lazy"
+          <Button
+            variant="outlined"
             sx={{
-              width: "24px",
-              height: "24px",
-
-              objectFit: "center",
+              width: "max-content",
+              textTransform: "none",
+              borderRadius: "48px",
+              fontSize: "18px",
+              padding: "0 18px",
+              height: "40px",
+              border: "2px solid #fff",
+              color: "#fff",
             }}
-            alignContent={"center"}
-          /> */}
+          >
+            Play Again
+          </Button>
+          <IconButton
+            onClick={() => navigate("/onboarding/1")}
+            sx={{ padding: "0" }}
+          >
+            <ShareOutlined
+              sx={{
+                fontSize: "28px",
+                color: "#ffffff",
+              }}
+            />
+          </IconButton>
         </Stack>
       </Stack>
     </Stack>

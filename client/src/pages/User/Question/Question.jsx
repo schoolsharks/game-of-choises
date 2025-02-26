@@ -28,9 +28,10 @@ const questionVariants = {
     x: 0,
     scale: 1,
     transition: {
+      duration:0.1,
       type: "spring",
-      damping: 15,
-      stiffness: 90,
+      damping: 12,
+      stiffness: 70,
     },
   },
   out: {
@@ -38,9 +39,10 @@ const questionVariants = {
     x: "-100vw",
     scale: 0.8,
     transition: {
+      duration:0.1,
       type: "spring",
-      damping: 15,
-      stiffness: 90,
+      damping: 12,
+      stiffness: 70,
     },
   },
 };
@@ -105,9 +107,8 @@ const Question = () => {
       alignItems={"center"}
       flexDirection={"column"}
       justifyContent={"start"}
-      sx={{
-        background: "linear-gradient(360deg, #A00612 0%, #000000 100%)",
-      }}
+      bgcolor={theme.palette.primary.main}
+      
 
       // sx={{
       //   // aspectRatio: "116/45",
@@ -165,6 +166,9 @@ const Question = () => {
                   width: "100%",
                   height: "100%",
                   maxWidth: "100%",
+                  fontWeight:"700",
+                  fontFamily:"Red Hat Display",
+                  textShadow:"0 8px 6px #00000043"
                 }}
               >
                 <Stack
@@ -256,7 +260,7 @@ const Question = () => {
                         id="typewriter-text"
                         style={{
                           display: "inline-block",
-                          fontSize: "20px",
+                          fontSize: "24px",
                           width: "100%",
                           marginRight: "25px",
                           whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
@@ -264,6 +268,7 @@ const Question = () => {
                           textAlign: "start",
                           position: "relative",
                           overflowWrap: "break-word",
+
                         }}
                       >
                         {currentQuestion}

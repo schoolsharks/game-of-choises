@@ -160,6 +160,7 @@ const OptionA = ({ text, onOptionSelect }) => {
             width: "100%",
             minHeight: "160px",
             background: `url(${blueAA})`,
+            filter:"drop-shadow(0 8px 10px #0000008f)",
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
             justifyContent: "center",
@@ -175,10 +176,10 @@ const OptionA = ({ text, onOptionSelect }) => {
           >
             <Typography
               variant="body1"
-              fontWeight="400"
+              fontWeight="500"
               lineHeight="25px"
-              fontSize="1rem"
-              fontFamily="LSC Solid"
+              fontSize="1.25rem"
+              // fontFamily="LSC Solid"
               color="#FBF9ED"
               textAlign={"right"}
               // sx={{ width: "70%" }}

@@ -22,7 +22,7 @@ const LoadingScreen = () => {
         minHeight: window.innerHeight + "px",
       }}
     >
-      <Stack margin={"auto"} justifyContent="center" padding={"16px"}>
+      <Stack margin={"auto 50px"} padding={"20px"}>
         <Typography
           sx={{
             color: "#FFFFFF",
@@ -41,7 +41,7 @@ const LoadingScreen = () => {
               lineHeight: "40px",
               height: "38px",
               width: "22px",
-              marginLeft: "16px",
+              // marginLeft: "0",
             },
           }}
         >
@@ -52,11 +52,12 @@ const LoadingScreen = () => {
               fontSize: "42px",
               width: "100%",
               whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
-              textIndent: "-30px",
               lineHeight: "52px",
-              textAlign: "center",
+              textAlign: "left",
               position: "relative",
-              fontFamily: "LSC Solid",
+              // fontFamily: "LSC Solid",
+              fontFamily:"Red Hat Display",
+              fontWeight:"700"
             }}
           >
             <Typewriter
@@ -65,7 +66,7 @@ const LoadingScreen = () => {
                 cursor: "|",
                 width: "100%",
                 wrapperClassName: "typewriter-wrapper",
-                strings: ["Let's get started"],
+                strings: ["Let's get \nstarted"],
                 autoStart: true,
                 loop: false,
                 cursorBlinking: true,
@@ -80,12 +81,11 @@ const LoadingScreen = () => {
         <Typography
           variant={"caption"}
           fontSize={"10px"}
-          fontWeight="100"
+          fontWeight="500"
           textAlign={"center"}
           zIndex={1}
           color={"#FBF9ED"}
           sx={{
-            fontFamily: "OCR-A BT",
             fontSize: "1.0rem",
           }}
         >
@@ -94,12 +94,11 @@ const LoadingScreen = () => {
         <Typography
           variant={"caption"}
           fontSize={"10px"}
-          fontWeight="100"
+          fontWeight="500"
           textAlign={"center"}
           zIndex={1}
           color={"#FBF9ED"}
           sx={{
-            fontFamily: "OCR-A BT",
             fontSize: "1.0rem",
             marginBottom: "4px",
           }}

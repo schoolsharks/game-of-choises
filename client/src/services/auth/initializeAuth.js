@@ -9,7 +9,7 @@ export const initializeAuth = async (navigate, dispatch) => {
     if (window.location.pathname === "/login") {
       navigate("/login");
     } else {
-      navigate("/home");
+      navigate("/home/1");
     }
     return;
   }

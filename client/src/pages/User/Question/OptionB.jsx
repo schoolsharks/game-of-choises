@@ -167,6 +167,7 @@ const OptionB = ({ text, onOptionSelect }) => {
             paddingRight: "12px",
             minHeight: "160px",
             background: `url(${redBB})`,
+            filter:"drop-shadow(0 8px 10px #0000008f)",
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
             justifyContent:"center",
@@ -180,10 +181,10 @@ const OptionB = ({ text, onOptionSelect }) => {
           >
             <Typography
               variant="body1"
-              fontWeight="400"
+              fontWeight="500"
               lineHeight="25px"
-              fontSize="1rem"
-              fontFamily="LSC Solid"
+              fontSize="1.25rem"
+              // fontFamily="LSC Solid"
               color="#FBF9ED"
               // sx={{ width: "70%" }}
             >

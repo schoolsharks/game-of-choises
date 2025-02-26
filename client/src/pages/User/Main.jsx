@@ -8,15 +8,15 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Home from "./Home/Home";
 import Login from "./Login/Login";
-import Info from "./Info/Info";
+// import Info from "./Info/Info";
 import Question from "./Question/Question";
 import Finished from "./Finished/Finished";
 import { initializeAuth } from "../../services/auth/initializeAuth";
 import { useDispatch } from "react-redux";
 import AnimatedPage from "../../utils/AnimatedPage";
 import LoadingScreen from "./LoadingScreen/LoadingScreen";
+import HomeMain from "./Home/HomeMain";
 
 const Main = () => {
   const theme = useTheme();
@@ -41,7 +41,8 @@ const Main = () => {
     >
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          <Route path="/home" element={<AnimatedPage Component={Home} />} />
+          <Route path="/home" element={<Navigate to="/home/1" />} />
+          <Route path="/home/:page" element={<AnimatedPage Component={HomeMain} />} />
           <Route path="/login" element={<AnimatedPage Component={Login} />} />
           <Route path="/info" element={<AnimatedPage Component={LoadingScreen} />} />
 

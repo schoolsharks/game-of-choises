@@ -1,4 +1,5 @@
-export const loginValidation = (email, name, phone, companyName) => {
+export const loginValidation = ({email, name, contact, companyName}) => {
+  console.log(name, email, contact, companyName);
   if (name.trim() === "") {
     return { success: false, error: "Name is required" };
   }
@@ -13,11 +14,11 @@ export const loginValidation = (email, name, phone, companyName) => {
       return { success: false, error: "Email must be valid" };
     }
   }
-  if (phone.trim() === "") {
+  if (contact.trim() === "") {
     return { success: false, error: "Phone number is required" };
   }
 
-  if (phone.length < 10) {
+  if (contact.length < 10) {
     return { success: false, error: "Phone number must be at least 10 digits" };
   }
 
