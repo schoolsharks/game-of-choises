@@ -34,6 +34,7 @@ const HomeMain = () => {
         position: "relative",
         minHeight:window.innerHeight,
         bgcolor: theme.palette.primary.main,
+        filter:"drop-shadow(0 0 15px #fff)"
       }}
     >
       <Stack marginTop="-48px" flex={"1"}>
