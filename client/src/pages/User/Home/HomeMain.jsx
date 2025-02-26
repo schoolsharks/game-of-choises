@@ -5,11 +5,15 @@ import { ArrowBack, ArrowForward, ShareOutlined } from "@mui/icons-material";
 import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
 import hustlerBadge from "../../../assets/badges/hustler-badge.png";
 import saverBadge from "../../../assets/badges/saver-badge.png";
+import { useEffect, useState } from "react";
+import SplashScreen from "../../../components/SplashScreen";
+import {motion} from "framer-motion";
 
 const HomeMain = () => {
   const { page } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
+  const [loading,setLoading]=useState(true)
 
   const currentPage = Number(page);
 
@@ -26,6 +30,14 @@ const HomeMain = () => {
       navigate("/login");
     }
   };
+
+  useEffect(() => {
+    setTimeout(()=>setLoading(false),2500)
+  }, []);
+
+  if(loading){
+    return <SplashScreen/>
+  }
 
   return (
     <UpperTriangleBox
@@ -92,7 +104,7 @@ const Page1 = ({handleForward}) => {
   ];
 
   return (
-    <Stack color={"#ffffff"} padding={"24px"} flex={"1"}>
+    <motion.div style={{color:"#fff",padding:"24px",flex:"1"}}>
       <Typography fontSize={"2.5rem"} fontWeight={"700"}>
         WELCOME
       </Typography>
@@ -136,6 +148,6 @@ const Page1 = ({handleForward}) => {
         </Button>
         <IconButton><ShareOutlined sx={{color:"#fff",fontSize:"28px"}}/></IconButton>
       </Stack>
-    </Stack>
+    </motion.div>
   );
 };
