@@ -40,6 +40,9 @@ import { ArrowBack, ShareOutlined } from "@mui/icons-material";
 import hustlerBadge from "../../../assets/badges/hustler-badge.png";
 import saverBadge from "../../../assets/badges/saver-badge.png";
 import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
+import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png";
+import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png";
+import DoYouKnow from "../Question/DoYouKnow";
 // import personalityGrid2 from "../../../assets/personalityGrid2.svg";
 // import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
@@ -93,32 +96,32 @@ const personalities = [
   {
     id: 1,
     heading: "THE HUSTLER ",
-    content:
-      "The Player is ambitious and risk-tolerant. His bold moves can lead to great rewards, but should watch out for overconfidence!",
+    content: "High-risk, high-reward financial player",
+    badge: hustlerBadge,
   },
   {
     id: 2,
     heading: "BALANCED SPENDER",
-    content:
-      "The player has mastered the art of balance! While he prioritize his financial goals, he also ensures life is enjoyable in the moment.",
+    content: "Smart financial strategist",
+    badge: balancedSpendorBadge,
   },
   {
     id: 3,
     heading: "DISCIPLINED SAVER",
-    content:
-      "The Player is strategist of the financial world. His meticulous planning ensures a secure future, but should not forget to enjoy the present once in a while.",
+    content: "Master of structured financial planning",
+    badge: saverBadge,
   },
   {
     id: 4,
     heading: "HOPEFUL BORROWER",
-    content:
-      "The player is optimistic and rely on external support, but learning to plan better will ease his financial journey.",
+    content: "Optimistic but financially unstructured",
+    badge: hopefulBorrowerBadge,
   },
   {
     id: 5,
     heading: "LIVE-FOR-TODAY SPENDER",
-    content:
-      "The player knows how to enjoy life to the fullest, but in future-he must appreciate a bit more financial foresight.",
+    content: "Loves the moment, but at a cost",
+    badge: liveForTodaySpendorBadge,
   },
 ];
 
@@ -131,7 +134,7 @@ const Finished = () => {
     useSelector((state) => state.user);
 
   const [userStatic, setUserStatic] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  // const [selectedOption, setSelectedOption] = useState("");
   const [toggle, setToggle] = useState(false);
   const [personlityToggle, setPersonalityToggle] = useState(false);
 
@@ -146,9 +149,9 @@ const Finished = () => {
   // const index = data1.findIndex((item) => item === userStatic?.personalityName);
   // console.log(index);
 
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setSelectedOption(event.target.value);
+  // };
 
   console.log(userStatic);
   // if (localStorage.getItem("dataValues")) {
@@ -199,6 +202,10 @@ const Finished = () => {
     "Amazon Prime Quarterly Membership: Prime Video, Shopping Deals & Free 1-day Delivery",
   ];
   // const personalityImage = data2[index];
+
+  useEffect(() => {
+    console.log(userStatic);
+  }, [userStatic]);
   return (
     <Stack
       sx={{
@@ -214,6 +221,7 @@ const Finished = () => {
       }}
     >
       {/* Sticky Header */}
+      {/* <DoYouKnow id={1}/> */}
       <Link
         to="#"
         style={{
@@ -241,12 +249,14 @@ const Finished = () => {
           alignItems="center"
           whiteSpace={"nowrap"}
         >
-          <p>Start banking with IDFC</p>
+          <Typography fontWeight={"600"} fontSize={"1.25rem"}>
+            Start banking with IDFC
+          </Typography>
           <img
             src={idfc}
             alt="option A"
             style={{
-              width: "24px",
+              width: "31px",
               objectFit: "contain",
             }}
           />
@@ -262,36 +272,43 @@ const Finished = () => {
           width: "100%",
         }}
       >
-        <Stack margin={"30px 24px 45px"}>
+        <Stack margin={"30px 24px 0"}>
           <img
-            src={hustlerBadge}
+            src={
+              userStatic?.personalityName &&
+              personalities.find(
+                (person) =>
+                  person.heading.toLocaleLowerCase().replace(" ", "") ===
+                  userStatic?.personalityName
+                    ?.toLocaleLowerCase()
+                    .replace(" ", "")
+              )?.badge
+            }
             alt=""
             style={{ width: "170px", margin: "auto" }}
           />
           <Typography textAlign={"center"} fontSize={"24px"} fontWeight={"700"}>
-            <span style={{ fontSize: "40px", fontWeight: "500" }}>90%</span> The
-            Hustler
+            {userStatic?.personalityName}
           </Typography>
-          <Typography fontSize={"12px"} marginTop={"5px"} fontWeight={"400"}>
-            You start as a hustler, making bold choices in your financial
-            journey. Over time, you evolve into someone empowered, learning from
-            your mistakes and striving for success.
+          <Typography textAlign={"center"} fontSize={"15px"} fontWeight={"300"}>
+            (Your Archetype)
           </Typography>
-
-          <Stack
-            direction={"row"}
-            marginTop={"18px"}
-            justifyContent={"space-between"}
-            gap={"8px"}
+          <Typography
+            textAlign={"center"}
+            fontSize={"20px"}
+            marginTop={"5px"}
+            fontWeight={"400"}
           >
-            {["Bold", "Calculated", "Visionary", "Ambitious"].map(
-              (item, index) => (
-                <Typography fontSize={"15px"} fontWeight={"800"} key={index}>
-                  {item}
-                </Typography>
-              )
-            )}
-          </Stack>
+            {
+              personalities.find(
+                (person) =>
+                  person.heading.toLocaleLowerCase().replace(" ", "") ===
+                  userStatic?.personalityName
+                    ?.toLocaleLowerCase()
+                    .replace(" ", "")
+              )?.content
+            }
+          </Typography>
         </Stack>
 
         {/* Your Preferences */}
@@ -302,7 +319,7 @@ const Finished = () => {
           fontWeight={"700"}
           textAlign={"center"}
         >
-          Your Preferences
+          Your Choices
         </Typography>
         <Stack
           borderRadius="10px"
@@ -312,41 +329,64 @@ const Finished = () => {
           margin="8px 1rem 0"
           bgcolor={theme.palette.primary.main}
         >
-          <Stack marginTop="2rem" gap={"2rem"}>
-            {userStatic.riskTaker &&
-              Object.entries(userStatic.riskTaker).map(([key, percentage]) => (
-                <Stack key={key} gap={"0.5rem"}>
-                  <Stack
-                    display={"flex"}
-                    flexDirection={"row"}
-                    alignItems={"center"}
-                    justifyContent={"space-between"}
-                  >
-                    <Typography
-                      fontSize="18px"
-                      lineHeight="25px"
-                      fontWeight={"400"}
-                    >
-                      {key}
+          <Stack gap={"20px"}>
+            {userStatic?.riskTaker &&
+              Object.entries(userStatic?.riskTaker).map(([key, value]) => (
+                <>
+                  <Stack gap={"5px"}>
+                    <Typography fontSize={"18px"} fontWeight={"600"}>
+                      {key.replaceAll("_", " ")}
                     </Typography>
-                    <Typography
-                      fontSize="18px"
-                      lineHeight="25px"
-                      fontWeight={"400"}
-                    >
-                      {percentage}%
-                    </Typography>
+                    <Stack borderRadius={"5px"} overflow={"hidden"} gap={"4px"}>
+                      <Stack direction={"row"} height={"100px"} gap={"4px"}>
+                        <Stack
+                          flex={"1"}
+                          height={"100%"}
+                          bgcolor={"#ffffff"}
+                          color={"#000000"}
+                          padding={"10px"}
+                        >
+                          <Typography fontSize={"15px"} fontWeight={"600"}>
+                            Your Score
+                          </Typography>
+                          <Typography
+                            marginTop={"auto"}
+                            fontSize={"25px"}
+                            fontWeight={"700"}
+                          >
+                            {value.user}%
+                          </Typography>
+                        </Stack>
+                        <Stack
+                          flex={"1"}
+                          height={"100%"}
+                          bgcolor={"#383838"}
+                          padding={"10px"}
+                        >
+                          <Typography
+                            fontSize={"15px"}
+                            fontWeight={"600"}
+                            whiteSpace={"nowrap"}
+                          >
+                            Community Average
+                          </Typography>
+                          <Typography
+                            marginTop={"auto"}
+                            fontSize={"25px"}
+                            fontWeight={"700"}
+                          >
+                            {value.avg}%
+                          </Typography>
+                        </Stack>
+                      </Stack>
+                      <Box bgcolor={"#000"} padding={"22px 11px"}>
+                        <Typography fontWeight={"600"}>
+                          Keep saving, but allow for fun too!
+                        </Typography>
+                      </Box>
+                    </Stack>
                   </Stack>
-                  <Box
-                    height={"22px"}
-                    width={`${percentage}%`}
-                    sx={{
-                      background:
-                        "linear-gradient(270deg, #FE7C86 21.5%, rgba(152, 74, 80, 0) 100%)",
-                      borderRadius: "0 12px 12px 0",
-                    }}
-                  />
-                </Stack>
+                </>
               ))}
           </Stack>
         </Stack>
@@ -510,10 +550,11 @@ const Finished = () => {
           bgcolor={theme.palette.primary.main}
           borderBottom="0.5px solid white"
         >
-          <Stack display="flex" flexDirection="column">
+          <Stack>
             <Typography fontWeight={400} fontSize="45px" lineHeight="28px">
               Over 70%
             </Typography>
+
             <Typography
               fontWeight={400}
               marginTop={"12px"}
@@ -557,34 +598,46 @@ const Finished = () => {
                     borderRadius="5px"
                     marginBottom="1rem"
                   >
-                    <Typography
-                      fontSize="15px"
-                      lineHeight="18.15px"
-                      fontWeight={"500"}
+                    <Stack direction={"row"} justifyContent={"space-between"}>
+                      <Typography
+                        fontSize="15px"
+                        lineHeight="18.15px"
+                        fontWeight={"600"}
+                      >
+                        {option.offer}
+                      </Typography>
+                      <Typography
+                        fontSize="15px"
+                        fontWeight="600"
+                        lineHeight="18.15px"
+                      >
+                        Opt - {option.percentage}%
+                      </Typography>
+                    </Stack>
+                    <Box
+                      position={"relative"}
+                      height="22px"
+                      marginTop={"25px"}
+                      bgcolor={"#FE7C86"}
+                      borderRadius={"0 20px 20px 0"}
+                      border={"2px solid #D15151"}
+                      width={option.percentage + "%"}
                     >
-                      {option.offer}
-                    </Typography>
-                    <LinearProgress
-                      variant="determinate"
-                      value={option.percentage}
-                      sx={{
-                        height: 8,
-                        borderRadius: 2,
-                        marginTop: "20px",
-                        backgroundColor: "#A00612",
-                        "& .MuiLinearProgress-bar": {
-                          backgroundColor: "black",
-                        },
-                      }}
-                    />
-                    <Typography
-                      fontSize="12px"
-                      fontWeight="600"
-                      lineHeight="18.15px"
-                      marginTop={"5px"}
-                    >
-                      Opt - {option.percentage}%
-                    </Typography>
+                      <Box
+                        position={"absolute"}
+                        top={"0"}
+                        left="0"
+                        width={"calc(100% + 4px)"}
+                        height={"calc(100% + 4px)"}
+                        bgcolor={"red"}
+                        borderRadius={"0 20px 20px 0"}
+                        sx={{
+                          transform: "translate(-2px, -2px)",
+                          background:
+                            "linear-gradient(90deg, #ffffff 0%, #ffffff19 100%)",
+                        }}
+                      ></Box>
+                    </Box>
                   </Stack>
                 ))}
             </Stack>
@@ -619,8 +672,7 @@ const Finished = () => {
                 borderRadius={"5px"}
               >
                 {lifestyleBenefits.map((item, index) => (
-                  <Button
-                    variant="contained"
+                  <Box
                     sx={{
                       bgcolor: "#fff",
                       textTransform: "none",
@@ -630,8 +682,10 @@ const Finished = () => {
                       color: "#000",
                       boxShadow: "none",
                       textAlign: "left",
+                      padding: "12px",
+                      borderRadius: "5px",
                     }}
-                    onClick={() => setSelectedOption("optionA")}
+                    // onClick={() => setSelectedOption("optionA")}
                   >
                     <Stack direction={"row"} gap={"5px"}>
                       <Typography>{index + 1}.</Typography>
@@ -639,8 +693,15 @@ const Finished = () => {
                         {item}
                       </Typography>
                     </Stack>
-                  </Button>
+                  </Box>
                 ))}
+                <Typography
+                  fontSize={"12px"}
+                  fontWeight={"500"}
+                  color="#0000007e"
+                >
+                  T&C applied
+                </Typography>
               </Stack>
             </Stack>
           </Stack>
@@ -666,12 +727,12 @@ const Finished = () => {
             Claim reward
           </Typography>
 
-          <img src={idfc} style={{width:"28px"}}></img>
+          <img src={idfc} style={{ width: "28px" }}></img>
         </Stack>
 
         <Stack
           direction={"row"}
-          margin={"50px 16px 16px"}
+          margin={"12px 16px 16px"}
           padding="8px"
           alignItems={"center"}
           gap={"16px"}
@@ -679,6 +740,7 @@ const Finished = () => {
         >
           <Button
             variant="outlined"
+            onClick={handleReset}
             sx={{
               width: "max-content",
               textTransform: "none",

@@ -190,9 +190,7 @@ export const handleGetQuestion = async (req, res) => {
 
     const sequence = sqDecoded.sequence;
 
-    // console.log("sequence", sequence);
-    const questionSequece = sequence.map((q) => q.id);
-    // console.log("sequence", sequence)
+    // const questionSequece = sequence.map((q) => q.id);
 
     // console.log(user);
     let questionSet;
@@ -238,6 +236,18 @@ export const handleGetQuestion = async (req, res) => {
       const nextQuestion = nextQuesId;
       // console.log("nextQuestion", nextQuestion);
       const session = await Session.findById(user.session).select("totalPlayers")
+      let doYouKnow=undefined;
+      if(updatedUser.answered_count===5){
+        doYouKnow=1;
+      }
+      else if(updatedUser.answered_count===9){
+        doYouKnow=2;
+      }
+      else if(updatedUser.answered_count===14){
+        doYouKnow=3;
+      }
+
+
       res.status(200).json({
         nextQ: nextQuestion.question,
         nextOptions: {
@@ -246,6 +256,7 @@ export const handleGetQuestion = async (req, res) => {
         },
         nextQuesId: nextQuestion.id,
         totalPlayers: session.totalPlayers,
+        doYouKnow:doYouKnow,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });
     } else {

@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Typewriter from "typewriter-effect";
+// import Typewriter from "typewriter-effect";
 import "../Info/Info.css";
 import {
   Stack,
   Typography,
-  LinearProgress,
+  // LinearProgress,
   useTheme,
   Box,
   CircularProgress,
-  useMediaQuery,
+  // useMediaQuery,
 } from "@mui/material";
 import { fetchNextQuestion } from "../../../app/questionSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import OptionA from "./OptionA";
 import OptionB from "./OptionB";
-import Button from "../../../components/Button";
+// import Button from "../../../components/Button";
 // import homeIcon from "../../../assets/homeIcon.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 // import bgQuestion from "../../../assets/bg-question.png";
 import Advertisement from "../../../components/Advertisement";
+import MidQuestionPopups from "./MidQuestionPopups";
+import DoYouKnow from "./DoYouKnow";
 
 const questionVariants = {
   initial: { opacity: 0, x: "100vw", scale: 0.8 },
@@ -65,8 +67,15 @@ const Question = () => {
   const { user, sq, wealth, investment, answered } = useSelector(
     (state) => state.user
   );
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const [midQuestionsPopup, setMidQuestionsPopup] = useState({open:false,popup:null});
+  const [doYouKnowPopup, setDoYouKnowPopup] = useState({open:false,popup:null});
 
+  // const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
+
+  const handleQuestionsEnd=()=>{
+    setMidQuestionsPopup({open:true,popup:3})
+  }
   useEffect(() => {
     if (!currentQuestion && user) {
       dispatch(
@@ -75,11 +84,13 @@ const Question = () => {
           sq: sq,
           response: "",
           quesId: "",
-          navigate,
+          handleQuestionsEnd,
+          setDoYouKnowPopup
         })
       );
     }
   }, [currentQuestion, dispatch, user]);
+
 
   const handleOptionSelect = (response) => {
     dispatch(
@@ -88,14 +99,28 @@ const Question = () => {
         sq: sq,
         response,
         quesId: quesId,
-        navigate,
+        handleQuestionsEnd,
+        setDoYouKnowPopup
       })
     );
   };
 
-  if (answered === 30) {
-    return <Navigate to="/completed" />;
-  }
+
+
+  // if (answered === 30) {
+  //   return <Navigate to="/completed" />;
+  // }
+
+
+  useEffect(()=>{
+    if(answered===5 && !midQuestionsPopup.open){
+      setMidQuestionsPopup({open:true,popup:1})
+    }
+    else if(answered===10 && !midQuestionsPopup.open){
+      setMidQuestionsPopup({open:true,popup:2})
+    }
+  },[answered])
+
 
   return (
     <Box
@@ -152,6 +177,8 @@ const Question = () => {
           position="relative"
           alignItems={"center"}
         >
+          {midQuestionsPopup.open && <MidQuestionPopups id={midQuestionsPopup.popup} handleClose={()=>setMidQuestionsPopup({open:false,popup:null})}/>}
+          {doYouKnowPopup.open && <DoYouKnow id={doYouKnowPopup.popup} handleClose={()=>setDoYouKnowPopup({open:false,popup:null})}/>}
           <AnimatePresence mode="wait">
             {currentQuestion && (
               <motion.div

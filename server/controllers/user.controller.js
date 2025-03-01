@@ -322,6 +322,7 @@ export const handleAnalysis = async (req, res) => {
     else if (userDetails.activeSet === "SET_2") {
       questionSet = SET_2
     }
+
     let {
       Max_Disciplined_Saver,
       Max_Balanced_Spender,
@@ -374,24 +375,62 @@ export const handleAnalysis = async (req, res) => {
 
       const offers = await evaluatingOfferPercentage();
 
+      const overallUsersData = await User.aggregate([
+        {
+          $group: {
+            _id: null,
+            Disciplined_Saver: { $avg: "$Disciplined_Saver" },
+            Balanced_Spender: { $avg: "$Balanced_Spender" },
+            The_Hustler: { $avg: "$The_Hustler" },
+            Hopeful_Borrower: { $avg: "$Hopeful_Borrower" },
+            Live_for_today_Spender: { $avg: "$Live_for_today_Spender" },
+            totalUsers: { $sum: 1 }
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            Disciplined_Saver: 1,
+            Balanced_Spender: 1,
+            The_Hustler: 1,
+            Hopeful_Borrower: 1,
+            Live_for_today_Spender: 1,
+            totalUsers: 1
+          }
+        }
+      ]);
+
+
       return res.status(200).json({
         success: true,
         message: "Data fetched successfully.",
         analyticsData: {
           name: userDetails.name,
           email: userDetails.email,
-          score: {
-            Disciplined_Saver: (userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100,
-            Balanced_Spender: (userDetails.Balanced_Spender / Max_Balanced_Spender) * 100,
-            The_Hustler: (userDetails.The_Hustler / Max_The_Hustler) * 100,
-            Hopeful_Borrower: (userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100,
-            Live_for_today_Spender: (userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100,
-          },
+          // score: {
+          //   Disciplined_Saver: (userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100,
+          //   Balanced_Spender: (userDetails.Balanced_Spender / Max_Balanced_Spender) * 100,
+          //   The_Hustler: (userDetails.The_Hustler / Max_The_Hustler) * 100,
+          //   Hopeful_Borrower: (userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100,
+          //   Live_for_today_Spender: (userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100,
+          // },
           riskTaker: {
-            Savings_Behaviour: Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),
-            Investment_Risk_Tolerance: Math.round(((userDetails.The_Hustler + userDetails.Balanced_Spender) / (Max_The_Hustler + Max_Balanced_Spender)) * 100),
-            Debt_Management: Math.round((userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100),
-            Lifestyle_Choices: Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100)
+            Savings_Behaviour: {
+              user: Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),
+              avg: Math.round((overallUsersData[0].Disciplined_Saver / Max_Disciplined_Saver) * 100),
+            },
+            Investment_Risk_Tolerance: {
+              user: Math.round(((userDetails.The_Hustler + userDetails.Balanced_Spender) / (Max_The_Hustler + Max_Balanced_Spender)) * 100),
+              avg: Math.round(((overallUsersData[0].The_Hustler + overallUsersData[0].Balanced_Spender) / (Max_The_Hustler + Max_Balanced_Spender)) * 100),
+            },
+            Debt_Management: {
+              user: Math.round((userDetails.Hopeful_Borrower / Max_Hopeful_Borrower) * 100),
+              avg: Math.round((overallUsersData[0].Hopeful_Borrower / Max_Hopeful_Borrower) * 100)
+            },
+            Lifestyle_Choices: {
+              user: Math.round((userDetails.Live_for_today_Spender / Max_Live_for_today_Spender) * 100),
+              avg: Math.round((overallUsersData[0].Live_for_today_Spender / Max_Live_for_today_Spender) * 100)
+            }
           },
           scoreArray: [
             Math.round((userDetails.Disciplined_Saver / Max_Disciplined_Saver) * 100),

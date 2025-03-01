@@ -22,13 +22,12 @@ import { setUser } from './userSlice';
 
 export const fetchNextQuestion = createAsyncThunk(
   'questions/fetchNextQuestion',
-  async ({ userId, sq, response, quesId, navigate }, thunkAPI) => {
+  async ({ userId, sq, response, quesId, handleQuestionsEnd,setDoYouKnowPopup}, thunkAPI) => {
     try {
       const Apiresponse = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/users/ques`,
         { id: userId, sq, response, quesId }
       );
-      console.log('Apiresponse', Apiresponse);
 
       if (Apiresponse?.data) {
         thunkAPI.dispatch(setUser({
@@ -38,8 +37,11 @@ export const fetchNextQuestion = createAsyncThunk(
           totalPlayers: Apiresponse.data.totalPlayers
         }));
 
+        if(Apiresponse?.data?.doYouKnow){
+          setDoYouKnowPopup({open:true,popup:Apiresponse?.data?.doYouKnow})
+        }
         if (Apiresponse?.data?.message?.includes("You have answered")) {
-          navigate('/completed');
+          handleQuestionsEnd();
         }
         return Apiresponse.data;
       }
