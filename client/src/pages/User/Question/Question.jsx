@@ -22,6 +22,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Advertisement from "../../../components/Advertisement";
 import MidQuestionPopups from "./MidQuestionPopups";
 import DoYouKnow from "./DoYouKnow";
+import WildcardPopup from "./WildcardPopup";
 
 const questionVariants = {
   initial: { opacity: 0, x: "100vw", scale: 0.8 },
@@ -69,6 +70,7 @@ const Question = () => {
   );
   const [midQuestionsPopup, setMidQuestionsPopup] = useState({open:false,popup:null});
   const [doYouKnowPopup, setDoYouKnowPopup] = useState({open:false,popup:null});
+  const [wildCardPopup, setWildCardPopup] = useState({open:false,alert:null,content:null});
 
   // const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -85,7 +87,9 @@ const Question = () => {
           response: "",
           quesId: "",
           handleQuestionsEnd,
-          setDoYouKnowPopup
+          setDoYouKnowPopup,
+        setWildCardPopup
+
         })
       );
     }
@@ -100,7 +104,8 @@ const Question = () => {
         response,
         quesId: quesId,
         handleQuestionsEnd,
-        setDoYouKnowPopup
+        setDoYouKnowPopup,
+        setWildCardPopup
       })
     );
   };
@@ -179,6 +184,7 @@ const Question = () => {
         >
           {midQuestionsPopup.open && <MidQuestionPopups id={midQuestionsPopup.popup} handleClose={()=>setMidQuestionsPopup({open:false,popup:null})}/>}
           {doYouKnowPopup.open && <DoYouKnow id={doYouKnowPopup.popup} handleClose={()=>setDoYouKnowPopup({open:false,popup:null})}/>}
+          {wildCardPopup.open && <WildcardPopup alert={wildCardPopup.alert} content={wildCardPopup.content} handleClose={()=>setWildCardPopup({open:false,alert:null,text:null})}/>}
           <AnimatePresence mode="wait">
             {currentQuestion && (
               <motion.div

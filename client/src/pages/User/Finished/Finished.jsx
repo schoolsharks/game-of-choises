@@ -135,7 +135,7 @@ const Finished = () => {
 
   const [userStatic, setUserStatic] = useState([]);
   // const [selectedOption, setSelectedOption] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [personlityToggle, setPersonalityToggle] = useState(false);
 
   // const data1 = [
@@ -180,7 +180,7 @@ const Finished = () => {
       { userId: user }
     );
     // localStorage.clear();
-    navigate("/home");
+    navigate("/questions");
     window.location.reload();
   };
 

@@ -1,13 +1,14 @@
 import { Box, Stack } from "@mui/material";
-import triangle from "../assets/triangle.png";
+import triangleBlack from "../assets/triangle-black.png";
+import triangleRed from "../assets/triangle-red.png";
 
-const UpperTriangleBox = ({ children, sx }) => {
+const UpperTriangleBox = ({ children, sx,variant="black" }) => {
   return (
     <Stack sx={{ ...sx, overflow: "hidden" }}>
       <Box sx={{ overflow: "hidden" }}>
         <Box
           component={"img"}
-          src={triangle}
+          src={variant==="black"?triangleBlack:triangleRed}
           alt=""
           sx={{width:"100%"}}
 

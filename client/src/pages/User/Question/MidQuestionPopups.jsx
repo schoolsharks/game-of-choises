@@ -64,7 +64,7 @@ const MidQuestionPopups = ({ id, handleClose }) => {
   const navigate = useNavigate();
   const handleNext = () => {
     if (id === 3) {
-      navigate("/completed");
+      navigate("/feedback");
     } else {
       handleClose();
     }

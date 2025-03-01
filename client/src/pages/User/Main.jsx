@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import AnimatedPage from "../../utils/AnimatedPage";
 import LoadingScreen from "./LoadingScreen/LoadingScreen";
 import HomeMain from "./Home/HomeMain";
+import Feedback from "./Feedback/Feedback";
 
 const Main = () => {
   const theme = useTheme();
@@ -54,6 +55,10 @@ const Main = () => {
           <Route
             path="/questions"
             element={<AnimatedPage Component={Question} />}
+          />
+          <Route
+            path="/feedback"
+            element={<AnimatedPage Component={Feedback} />}
           />
         </Routes>
       </AnimatePresence>

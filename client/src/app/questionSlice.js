@@ -22,7 +22,7 @@ import { setUser } from './userSlice';
 
 export const fetchNextQuestion = createAsyncThunk(
   'questions/fetchNextQuestion',
-  async ({ userId, sq, response, quesId, handleQuestionsEnd,setDoYouKnowPopup}, thunkAPI) => {
+  async ({ userId, sq, response, quesId, handleQuestionsEnd,setDoYouKnowPopup,setWildCardPopup}, thunkAPI) => {
     try {
       const Apiresponse = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/users/ques`,
@@ -43,6 +43,10 @@ export const fetchNextQuestion = createAsyncThunk(
         if (Apiresponse?.data?.message?.includes("You have answered")) {
           handleQuestionsEnd();
         }
+        if(Apiresponse?.data?.wildCard){
+          setWildCardPopup({open:true,alert:Apiresponse?.data?.wildCard.alert,content:Apiresponse?.data?.wildCard.content})
+        }
+
         return Apiresponse.data;
       }
       else {
@@ -62,6 +66,14 @@ export const fetchNextQuestion = createAsyncThunk(
     }
   }
 );
+
+export const handleFeedback=async({choice,userId})=>{
+  await axios.post(
+    `${import.meta.env.VITE_SERVER_URL}/users/feedback`,
+    { choice,userId }
+  );
+
+}
 
 
 const questionSlice = createSlice({
