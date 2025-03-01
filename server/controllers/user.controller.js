@@ -90,10 +90,16 @@ export const handleCreateUser = async (req, res) => {
       return res.status(403).json({ message: "No Active Session" });
     }
 
-    const shuffledQuestionIds = questions.map((q) => q.id);
-    const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
+    // const shuffledQuestionIds = questions.map((q) => q.id);
 
-    const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+    // Removed Shuffeling of questions
+
+    // const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
+
+    // const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+    const questionIdsArray = SET_1.map((q) => q.id);
+    
+
     console.log("shuffledQuestionArray", questionIdsArray);
     const sq = jwt.sign(
       { sequence: questionIdsArray },
@@ -263,9 +269,11 @@ export const handleStorage = async (req, res) => {
     if (user.activeSet === "SET_2") {
       user.activeSet = 'SET_1'
 
-      const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
-      console.log("shuffledQuestionArray", shuffledQuestionArray)
-      const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+      // const shuffledQuestionArray = shuffleQuestions(SET_1, trigger_SET_1);
+      // console.log("shuffledQuestionArray", shuffledQuestionArray)
+      // const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+
+      const questionIdsArray = SET1.map((q) => q.id);
       const sq = jwt.sign(
         { sequence: questionIdsArray },
         process.env.JWT_SECRET,
@@ -275,9 +283,11 @@ export const handleStorage = async (req, res) => {
       user.sq = sq;
     }
     else if (user.activeSet === "SET_1") {
-      const shuffledQuestionArray = shuffleQuestions(SET_2, trigger_SET_2);
-      console.log("shuffledQuestionArray", shuffledQuestionArray)
-      const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+      // const shuffledQuestionArray = shuffleQuestions(SET_2, trigger_SET_2);
+      // console.log("shuffledQuestionArray", shuffledQuestionArray)
+      // const questionIdsArray = shuffledQuestionArray.map((q) => q.id);
+      
+      const questionIdsArray = SET_2.map((q) => q.id);
       const sq = jwt.sign(
         { sequence: questionIdsArray },
         process.env.JWT_SECRET,

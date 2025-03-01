@@ -610,7 +610,7 @@ export const SET_1 = [
       }
     }
   },
-  
+
   {
     id: 11,
     question: "A new AI app promises to automate your investments.",
@@ -976,7 +976,7 @@ export const SET_1 = [
       }
     }
   },
-  
+
   {
     id: 24,
     question: "You see a trendy crowdfunding campaign for a sustainable startup.",
@@ -1061,7 +1061,7 @@ export const SET_1 = [
       }
     }
   },
-  
+
   {
     id: 27,
     question: "IDFC FIRST Bank offers a savings account with 7% monthly interest and a goal-based app to automate investments.",
@@ -2054,4 +2054,50 @@ export const trigger_SET_2 = [
   { questionId: 8, triggerAfter: 9 },
   { questionId: 14, triggerAfter: 15 },
   { questionId: 18, triggerAfter: 19 },
+]
+
+
+export const wildCards = [
+  {
+    set: "SET_1",
+    wildCards: [
+      {
+        after: 9,
+        condition: {
+          question: 4,
+          choice: {
+            "A": {
+              alert: "Crypto Crash",
+              content: "RIP your savings. The market tanked, and you went down with it.<br/>Time to rethink your next move!"
+            },
+            "B": {
+              alert: "Crypto Crash",
+              content: "Market dipped, but you played it smart. Minimal losses, max survival.<br/>Keep those diamond hands steady!"
+            },
+          }
+        }
+      }
+    ]
+  },
+  {
+    set: "SET_2",
+    wildCards: [
+      {
+        after: 18,
+        condition: {
+          question: 15,
+          choice: {
+            "A": {
+              alert: "The Windfall Trap",
+              content: "Drip secured, but uh-oh… unexpected expenses just hit. That ₹1 lakh could’ve come in clutch.<br/><br/>Hope the watch tells the time and your regrets."
+            },
+            "B": {
+              alert: "The Windfall Trap",
+              content: "Future-you just sent a thank-you note. While others flex, your ₹1 lakh is busy growing.<br/><br/>Patience = power."
+            },
+          }
+        }
+      }
+    ]
+  },
 ]

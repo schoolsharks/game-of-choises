@@ -1,6 +1,6 @@
 import { Session } from '../models/session.model.js';
 import { User } from '../models/user.model.js';
-import { goalTarget, questions, SET_1, SET_2, trigger_SET_1 } from '../utils/data/questions.js';
+import { goalTarget, questions, SET_1, SET_2, trigger_SET_1, wildCards } from '../utils/data/questions.js';
 import jwt from 'jsonwebtoken';
 
 import mongoose from 'mongoose';
@@ -237,6 +237,7 @@ export const handleGetQuestion = async (req, res) => {
       // console.log("nextQuestion", nextQuestion);
       const session = await Session.findById(user.session).select("totalPlayers")
       let doYouKnow=undefined;
+      
       if(updatedUser.answered_count===5){
         doYouKnow=1;
       }
@@ -246,7 +247,19 @@ export const handleGetQuestion = async (req, res) => {
       else if(updatedUser.answered_count===14){
         doYouKnow=3;
       }
+      
+      let wildCard=undefined;
 
+      const activeWildCards = wildCards.find((w) => w.set === user.activeSet)?.wildCards;
+      const wildCardEntry = activeWildCards?.find((q) => q.after === quesId);
+      
+      if (wildCardEntry) {
+        const choices = wildCardEntry.condition.choice;
+        const ques = wildCardEntry.condition.question;
+        
+      
+        wildCard = choices[updatedUser.responses.find((r) => r.quesId === ques)?.response];
+      }
 
       res.status(200).json({
         nextQ: nextQuestion.question,
@@ -257,6 +270,7 @@ export const handleGetQuestion = async (req, res) => {
         nextQuesId: nextQuestion.id,
         totalPlayers: session.totalPlayers,
         doYouKnow:doYouKnow,
+        wildCard:wildCard,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });
     } else {
@@ -346,3 +360,26 @@ export const updateUserResponses = async (userId, quesId, response, questionSet)
     }
   }
 };
+
+
+export const handleFeedbackStore=async(req,res,next)=>{
+  try{
+    const {choice,userId}=req.body
+    const user = await User.findById(userId.toString());
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    if(!choice){
+      return res.status(400).json({message:"Choice is required"})
+    }
+
+    user.feedbackResponse=choice;
+    user.save()
+    return res.status(200).json({message:"Feedback Stored Sucessfully"})
+  }
+  catch{
+    return res.status(404).json({ message: 'User not found' });
+
+  }
+}

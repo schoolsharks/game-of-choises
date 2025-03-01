@@ -6,7 +6,7 @@ import {
   handleStorage,
   handleGetUser,
 } from "../../controllers/user.controller.js";
-import { handleGetQuestion } from "../../controllers/questions.controller.js";
+import { handleFeedbackStore, handleGetQuestion } from "../../controllers/questions.controller.js";
 
 const router = express.Router();
 
@@ -15,6 +15,9 @@ router.get("/getUser", handleGetUser);
 router.post("/ques", handleGetQuestion);
 router.get("/analysis", handleAnalysis);
 router.post("/storedata", handleStorage);
+router.post("/feedback", handleFeedbackStore);
+
+
 // router.post("/connectionRequest",handleConnectRequest)
 
 export default router;
