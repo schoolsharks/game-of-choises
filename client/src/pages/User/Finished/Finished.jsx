@@ -181,7 +181,7 @@ const Finished = () => {
     );
     // localStorage.clear();
     navigate("/questions");
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleInviteClick = () => {

@@ -1,6 +1,7 @@
 import { Session } from '../models/session.model.js';
 import { User } from '../models/user.model.js';
 import {  SET_1, SET_2, 
+  WildCardEffects, 
   // trigger_SET_1,
    wildCards } from '../utils/data/questions.js';
 import jwt from 'jsonwebtoken';
@@ -257,10 +258,19 @@ export const handleGetQuestion = async (req, res) => {
       
       if (wildCardEntry) {
         const choices = wildCardEntry.condition.choice;
-        const ques = wildCardEntry.condition.question;
-        
-      
+        const ques = wildCardEntry.condition.question;        
         wildCard = choices[updatedUser.responses.find((r) => r.quesId === ques)?.response];
+
+        const impact=wildCard.impact
+        if(impact===WildCardEffects.BALANCED_SAVER_2){
+          user.Balanced_Saver*=2;
+        }
+        else if(impact===WildCardEffects.DISCIPLINED_SAVER_2){
+          user.Disciplined_Saver*=2;
+        }
+        else if(impact===WildCardEffects.LIVE_FOR_TODAY_SPENDOR_2){
+          user.Live_for_today_Spender*=2;
+        }
       }
 
       res.status(200).json({

@@ -735,18 +735,25 @@ export const SET_2 = [
 // ]
 
 
+export const WildCardEffects={
+  BALANCED_SAVER_2:"BALANCED_SAVER_2",
+  LIVE_FOR_TODAY_SPENDOR_2:"LIVE_FOR_TODAY_SPENDOR_2",
+  DISCIPLINED_SAVER_2:"DISCIPLINED_SAVER_2",
+}
+
 export const wildCards = [
   {
     set: "SET_1",
     wildCards: [
       {
-        after: 9,
+        after: 7,
         condition: {
           question: 4,
           choice: {
             "A": {
               alert: "Crypto Crash",
-              content: "RIP your savings. The market tanked, and you went down with it.<br/>Time to rethink your next move!"
+              content: "RIP your savings. The market tanked, and you went down with it.<br/>Time to rethink your next move!",
+              impact:WildCardEffects.BALANCED_SAVER_2
             },
             "B": {
               alert: "Crypto Crash",
@@ -761,17 +768,19 @@ export const wildCards = [
     set: "SET_2",
     wildCards: [
       {
-        after: 18,
+        after: 15,
         condition: {
-          question: 15,
+          question: 12,
           choice: {
             "A": {
               alert: "The Windfall Trap",
-              content: "Drip secured, but uh-oh… unexpected expenses just hit. That ₹1 lakh could’ve come in clutch.<br/><br/>Hope the watch tells the time and your regrets."
+              content: "Drip secured, but uh-oh… unexpected expenses just hit. That ₹1 lakh could’ve come in clutch.<br/><br/>Hope the watch tells the time and your regrets.",
+              impact:WildCardEffects.LIVE_FOR_TODAY_SPENDOR_2
             },
             "B": {
               alert: "The Windfall Trap",
-              content: "Future-you just sent a thank-you note. While others flex, your ₹1 lakh is busy growing.<br/><br/>Patience = power."
+              content: "Future-you just sent a thank-you note. While others flex, your ₹1 lakh is busy growing.<br/><br/>Patience = power.",
+              impact:WildCardEffects.DISCIPLINED_SAVER_2
             },
           }
         }
