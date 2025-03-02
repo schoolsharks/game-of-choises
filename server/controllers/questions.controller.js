@@ -1,10 +1,12 @@
 import { Session } from '../models/session.model.js';
 import { User } from '../models/user.model.js';
-import { goalTarget, questions, SET_1, SET_2, trigger_SET_1, wildCards } from '../utils/data/questions.js';
+import {  SET_1, SET_2, 
+  // trigger_SET_1,
+   wildCards } from '../utils/data/questions.js';
 import jwt from 'jsonwebtoken';
 
 import mongoose from 'mongoose';
-import { shuffleArray, shuffleQuestions } from '../utils/shuffleArray.js';
+// import { shuffleArray, shuffleQuestions } from '../utils/shuffleArray.js';
 import { Offer } from '../models/offers.model.js';
 
 

@@ -1,5 +1,7 @@
 import { User } from "../models/user.model.js";
-import { goalTarget, questions, SET_1, SET_2, trigger_SET_1, trigger_SET_2 } from "../utils/data/questions.js";
+import { goalTarget, SET_1, SET_2,
+  //  trigger_SET_1, trigger_SET_2 
+  } from "../utils/data/questions.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Admin } from "../models/admin.model.js";
@@ -115,8 +117,6 @@ export const handleCreateUser = async (req, res) => {
       session: admin.current_session,
       responses: [],
       answered_count: 0,
-      wealth: 10000,
-      investment: 500,
       sq: sq,
     });
 
@@ -180,33 +180,6 @@ export const handleGetUser = async (req, res) => {
 
     let goalReachPercentage;
 
-    const result = await User.aggregate([
-      { $match: { session: userData.session } },
-      {
-        $group: {
-          _id: null,
-          totalUsers: { $sum: 1 },
-          wealthyUsers: {
-            $sum: {
-              $cond: [
-                { $gt: [{ $add: ["$wealth", "$investment"] }, goalTarget] },
-                1,
-                0,
-              ],
-            },
-          },
-        },
-      },
-      {
-        $project: {
-          percentage: {
-            $multiply: [{ $divide: ["$wealthyUsers", "$totalUsers"] }, 100],
-          },
-        },
-      },
-    ]);
-
-    goalReachPercentage = result.length ? result[0].percentage : 0;
 
     res.status(200).json({
       success: true,
@@ -215,10 +188,7 @@ export const handleGetUser = async (req, res) => {
       email: userData.email,
       session: userData.session,
       sq: userData.sq,
-      wealth: userData.wealth,
       totalPlayers: session?.totalPlayers || 0,
-      investment: userData.investment,
-      // goalReachPercentage: goalReachPercentage,
       answered: userData.answered_count,
     });
   } catch (error) {
@@ -260,9 +230,7 @@ export const handleStorage = async (req, res) => {
     user.The_Hustler = 0;
     user.Hopeful_Borrower = 0;
     user.Live_for_today_Spender = 0;
-    user.wealth = 0;
     user.avgResponseTime = 0;
-    user.investment = 0;
     user.answered_count = 0;
 
 

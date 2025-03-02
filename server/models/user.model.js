@@ -72,18 +72,6 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-
-    wealth: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    investment: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-
     avgResponseTime: {
       type: Number,
       default: 0,
@@ -105,8 +93,6 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.index({ session: 1 });
-userSchema.index({ wealth: -1 });
-userSchema.index({ investment: -1 });
 
 const User = mongoose.model("User", userSchema);
 
