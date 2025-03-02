@@ -4,8 +4,9 @@
 }
 
 .Typewriter__cursor {
-  display: inline-block;
+  /* display: inline-block; */
   margin-left: 10px;
+  display: none;
   width: 12px;
   height: 25px;
   align-content: "center";

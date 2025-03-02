@@ -39,7 +39,7 @@ const SplashScreen = ({ loading }) => {
       }}
     >
       <Box maxHeight="240px" overflow={"hidden"} marginTop={"-100px"}>
-        {isPageLoaded && <img key={gifKey} src={`${loader}?t=${gifKey}`} alt="Loading..." />}
+        {isPageLoaded && <img key={gifKey} src={`${loader}?t=${gifKey}`} alt="Loading..." style={{transformOrigin:"center", transform:"scale(1.5)"}} />}
       </Box>
     </Stack>
   );

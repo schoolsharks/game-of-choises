@@ -12,6 +12,8 @@ import { ArrowBack, ArrowForward, ShareOutlined } from "@mui/icons-material";
 import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
 import hustlerBadge from "../../../assets/badges/hustler-badge.png";
 import saverBadge from "../../../assets/badges/saver-badge.png";
+import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png"
+import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png"
 import { useEffect, useState } from "react";
 import SplashScreen from "../../../components/SplashScreen";
 import { motion } from "framer-motion";
@@ -47,7 +49,7 @@ const HomeMain = () => {
   // }
 
   return (
-    <>
+    <Stack bgcolor={theme.palette.primary.main}>
       <SplashScreen loading={loading}/>
 
       <UpperTriangleBox
@@ -55,7 +57,6 @@ const HomeMain = () => {
           flex: "1",
           position: "relative",
           minHeight: window.innerHeight,
-          bgcolor: theme.palette.primary.main,
           filter: "drop-shadow(0 0 15px #fff)",
         }}
       >
@@ -65,7 +66,7 @@ const HomeMain = () => {
           {currentPage === 1 && <Page1 handleForward={handleForward} />}
         </Stack>
       </UpperTriangleBox>
-    </>
+    </Stack>
   );
 };
 
@@ -76,8 +77,8 @@ const Page1 = ({ handleForward }) => {
     balancedSpendorBadge,
     hustlerBadge,
     saverBadge,
-    balancedSpendorBadge,
-    hustlerBadge,
+    hopefulBorrowerBadge,
+    liveForTodaySpendorBadge
   ];
 
   return (
@@ -88,14 +89,16 @@ const Page1 = ({ handleForward }) => {
         flex: "1",
       }}
     >
-      <Typography fontSize={"2.5rem"} fontWeight={"700"}>
+      <Typography fontSize={"2.2rem"} fontWeight={"700"}>
         WELCOME
       </Typography>
-      <Typography fontSize={"18px"} fontWeight={"600"} marginTop={"40px"}>
-        Swipe left or right to build good habits, unlock your financial
-        strengths, and uncover your financial personality.
+      <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"24px"}>
+      To a game where your money decisions shape your future. Every choice you make today will impact your future-self for better or worse.
       </Typography>
-      <Typography fontSize={"18px"} fontWeight={"600"} marginTop={"22px"}>
+      <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"40px"}>
+      Swipe left for Option A & swipe right for Option B, to make bold financial moves.
+      </Typography>
+      <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"22px"}>
         Discover who you are:
       </Typography>
       <Stack
@@ -105,7 +108,7 @@ const Page1 = ({ handleForward }) => {
         gap={"10px"}
       >
         {badges.map((badge, index) => (
-          <img key={index} src={badge} alt="badge" style={{ width: "58px" }} />
+          <img key={index} src={badge} alt="badge" style={{ width: "42px" }} />
         ))}
       </Stack>
       <Typography fontSize={"18px"} fontWeight={"600"} marginTop={"22px"}>

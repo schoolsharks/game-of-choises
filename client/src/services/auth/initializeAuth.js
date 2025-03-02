@@ -30,8 +30,6 @@ export const initializeAuth = async (navigate, dispatch) => {
         email,
         session,
         sq,
-        wealth,
-        investment,
         answered,
         totalPlayers,
         goalReachPercentage,
@@ -43,9 +41,7 @@ export const initializeAuth = async (navigate, dispatch) => {
           email: email,
           session,
           sq,
-          wealth,
           answered,
-          investment,
           goalReachPercentage,
           totalPlayers,
         })

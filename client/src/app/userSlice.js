@@ -7,10 +7,6 @@ const initialState = {
   email:null,
   session: null,
   sq: null,
-  investment: 0,
-  wealth: 0,
-  // happiness: 0,
-  // ranking: 0,
   answered: 0,
   error: null,
   status: 'idle',
@@ -74,8 +70,6 @@ const usersSlice = createSlice({
       state.name = action.payload?.name ?? state.name;
       state.sq = action.payload?.sq ?? state.sq;
       state.email=action.payload?.email??state.email;
-      state.investment = action.payload?.investment ?? state.investment;
-      state.wealth = action.payload?.wealth ?? state.wealth;
       state.goalReachPercentage=action.payload?.goalReachPercentage ?? state.goalReachPercentage
       // state.happiness = action.payload?.happiness ?? state.happiness;
       state.answered = action.payload?.answered ?? state.answered;
@@ -89,8 +83,6 @@ const usersSlice = createSlice({
       state.name =null;
       state.sq =null;
       state.email=null;
-      state.investment =null;
-      state.wealth =null;
       state.goalReachPercentage=null;
       state.answered =null;
       state.totalPlayers =null;

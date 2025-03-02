@@ -14,7 +14,7 @@ const UpperTriangleBox = ({ children, sx,variant="black" }) => {
 
         />
       </Box>
-      <Stack sx={{ bgcolor: "#000000", marginTop: "-4px", flex: "1",zIndex:"1"}}>
+      <Stack sx={{ bgcolor: "#000000", marginTop: "-10px", flex: "1",zIndex:"1"}}>
         {children}
       </Stack>
     </Stack>

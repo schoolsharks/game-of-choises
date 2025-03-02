@@ -285,7 +285,7 @@ const Finished = () => {
               )?.badge
             }
             alt=""
-            style={{ width: "170px", margin: "auto" }}
+            style={{ width: "130px", margin: "auto" }}
           />
           <Typography textAlign={"center"} fontSize={"24px"} fontWeight={"700"}>
             {userStatic?.personalityName}

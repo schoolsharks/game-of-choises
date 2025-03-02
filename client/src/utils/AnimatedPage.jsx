@@ -4,15 +4,15 @@ import { motion } from 'framer-motion';
 const pageVariants = {
   initial: {
     opacity: 0,
-    x: '100vw',
+    // x: '100vw',
   },
   in: {
     opacity: 1,
-    x: 0,
+    // x: 0,
   },
   out: {
     opacity: 0,
-    x: '-100vw',
+    // x: '-100vw',
   },
 };
 
