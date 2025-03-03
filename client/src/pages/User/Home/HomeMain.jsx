@@ -76,6 +76,7 @@ const HomeMain = () => {
           top: "12px",
           right: "12px",
           zIndex: "99",
+          filter:"drop-shadow(0 0 3px #00000073)"
         }}
       />
       <UpperTriangleBox

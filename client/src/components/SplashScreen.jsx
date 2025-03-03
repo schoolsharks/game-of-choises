@@ -43,9 +43,11 @@ const SplashScreen = ({ loading }) => {
           top: "12px",
           right: "12px",
           zIndex: "99",
+          filter:"drop-shadow(0 0 3px #00000073)"
+
         }}
       />
-      <UpperTriangleBox sx={{ flex: "1", position: "relative" }}>
+      <UpperTriangleBox sx={{ flex: "1", position: "relative",filter:"drop-shadow(0 0 15px #ffffff)" }}>
         <Box
           maxHeight="240px"
           marginTop={"24px"}

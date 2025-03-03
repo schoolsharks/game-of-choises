@@ -25,9 +25,9 @@ const optionVariants = {
     x: 0,
     scale: 1,
     transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
+      type: "easeIn",
+      // damping: 12,
+      // stiffness: 100,
       delay: 0.5,
     },
   },
@@ -39,12 +39,12 @@ const optionVariants = {
       duration: 0.6,
     },
   },
-  hover: {
-    scale: 1.02,
-    transition: {
-      duration: 0.5,
-    },
-  },
+  // hover: {
+  //   scale: 1.02,
+  //   transition: {
+  //     duration: 0.5,
+  //   },
+  // },
 };
 
 const OptionA = ({ text, onOptionSelect }) => {
@@ -172,7 +172,7 @@ const OptionA = ({ text, onOptionSelect }) => {
             alignItems="center"
             justifyContent="space-between"
             // margin={"24px"}
-            margin={"12px 60px 12px 12px"}
+            margin={"12px 35px 12px 12px"}
           >
             <Typography
               variant="body1"

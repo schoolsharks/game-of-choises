@@ -231,6 +231,7 @@ const Question = () => {
                     margin: "30px 30px 0px",
                     borderRadius: "20px",
                     flex: "1",
+                    position: "relative",
                   }}
                 >
                   <Stack

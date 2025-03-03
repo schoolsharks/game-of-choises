@@ -18,9 +18,9 @@ const optionVariants = {
     x: 0,
     scale: 1,
     transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
+      type: "easeIn",
+      // damping: 12,
+      // stiffness: 100,
       delay: 0.9, // Slightly delayed after Option A
     },
   },
@@ -32,12 +32,12 @@ const optionVariants = {
       duration: 0.9,
     },
   },
-  hover: {
-    scale: 1.02,
-    transition: {
-      duration: 0.8,
-    },
-  },
+  // hover: {
+  //   scale: 1.02,
+  //   transition: {
+  //     duration: 0.8,
+  //   },
+  // },
 };
 
 const OptionB = ({ text, onOptionSelect }) => {
@@ -146,8 +146,8 @@ const OptionB = ({ text, onOptionSelect }) => {
         exit="exit"
         whileHover="hover"
         style={{
-          width: "346px",
-          marginLeft: "auto",
+          // width: "346px",
+          // marginLeft: "auto",
           marginTop:"20px"
         }}
       >
@@ -177,7 +177,7 @@ const OptionB = ({ text, onOptionSelect }) => {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            margin={"12px 48px 12px 60px"}
+            margin={"12px 35px 12px 35px"}
           >
             <Typography
               variant="body1"
