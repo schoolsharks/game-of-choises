@@ -20,7 +20,7 @@ import "../../../App.css";
 // import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import SendIcon from "@mui/icons-material/Send";
 // import sendIcon from "../../../assets/send.png";
-import { ArrowBack, Close, ShareOutlined } from "@mui/icons-material";
+import { ArrowBack, Close } from "@mui/icons-material";
 import UpperTriangleBox from "../../../components/UpperTriangleBox";
 import "./Login.css";
 import WildcardPopup from "../Question/WildcardPopup";
@@ -103,7 +103,7 @@ const Login = () => {
           borderRadius: !tncModalOpen ? "0" : "20px",
           margin: !tncModalOpen ? "0" : "36px 20px ",
           transition: "all 0.3s ease",
-          filter:"drop-shadow(0 0 15px #fff)"
+          filter:!tncModalOpen?"drop-shadow(0 0 15px #fff)":"none"
         }}
       >
         {!tncModalOpen ? (

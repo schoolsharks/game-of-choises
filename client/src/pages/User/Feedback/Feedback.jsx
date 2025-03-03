@@ -32,7 +32,7 @@ const Feedback = () => {
                 key={index}
                 border={"1px solid #54545680"}
                 padding={"8px"}
-                height={"112px"}
+                height={"90px"}
                 alignItems={"center"}
                 gap={"10px"}
                 onClick={() => setSelectedOption(item)}
@@ -40,8 +40,8 @@ const Feedback = () => {
                 <Stack
                   alignItems={"center"}
                   justifyContent={"center"}
-                  width={"35px"}
-                  height="35px"
+                  width={"28px"}
+                  height="28px"
                   border={"1px solid #fff"}
                 >
                   {item === selectedOption ? <Check /> : null}

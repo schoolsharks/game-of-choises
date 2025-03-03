@@ -13,7 +13,7 @@ const Content1 = () => {
       <img
         src={doYouKnow1}
         alt="Do You Know"
-        style={{ width: "277px", margin: "48px 0 20px" }}
+        style={{ width: "277px", margin: "48px auto 20px" }}
       />
       <Typography fontWeight="600">
         INFLATION Reduces Purchasing Power

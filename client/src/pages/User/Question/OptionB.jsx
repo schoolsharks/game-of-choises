@@ -177,7 +177,7 @@ const OptionB = ({ text, onOptionSelect }) => {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            margin={"12px 12px 12px 60px"}
+            margin={"12px 48px 12px 60px"}
           >
             <Typography
               variant="body1"

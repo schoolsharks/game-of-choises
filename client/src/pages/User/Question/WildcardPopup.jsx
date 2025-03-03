@@ -111,8 +111,9 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
+        style={{width:"100%"}}
       >
-        <Stack direction={"row"} width={"100%"} marginTop={"20px"} justifyContent="center">
+        <Stack direction={"row"} width={"100%"} marginTop={"20px"}>
           <Button
             variant="outlined"
             onClick={handleClose}

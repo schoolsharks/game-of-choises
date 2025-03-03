@@ -46,8 +46,8 @@ const TickMarks = ({ id }) => {
             border: `2px solid ${item === id ? "#fff" : "#FFFFFF61"}`,
             scale: item === id ? 1.2 : 1,
             filter: item < id ? "blur(2px)" : "none",
-            width: item === id ? "40px" : "34px",
-            height: item === id ? "40px" : "34px",
+            width: item === id ? "42px" : "28px",
+            height: item === id ? "42px" : "28px",
             borderRadius: "50%",
           }}
         >

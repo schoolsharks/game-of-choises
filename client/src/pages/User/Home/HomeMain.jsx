@@ -81,6 +81,18 @@ const Page1 = ({ handleForward }) => {
     liveForTodaySpendorBadge
   ];
 
+  const handleShare = () => {
+    const websiteURL = window.location.origin;
+    navigator.clipboard
+      .writeText(websiteURL)
+      .then(() => {
+        alert("Website URL copied to clipboard: " + websiteURL);
+      })
+      .catch((err) => {
+        console.error("Failed to copy URL: ", err);
+      });
+  };
+
   return (
     <Stack
       style={{
@@ -136,7 +148,7 @@ const Page1 = ({ handleForward }) => {
         >
           Start
         </Button>
-        <IconButton>
+        <IconButton onClick={handleShare}>
           <ShareOutlined sx={{ color: "#fff", fontSize: "28px" }} />
         </IconButton>
       </Stack>

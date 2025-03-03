@@ -241,7 +241,7 @@ export const handleGetQuestion = async (req, res) => {
       const session = await Session.findById(user.session).select("totalPlayers")
       let doYouKnow=undefined;
       
-      if(updatedUser.answered_count===5){
+      if(updatedUser.answered_count===4){
         doYouKnow=1;
       }
       else if(updatedUser.answered_count===9){

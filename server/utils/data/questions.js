@@ -296,7 +296,7 @@ export const SET_1 = [
     question: "IDFC FIRST Bank’s account offers free airport lounge access and ₹50,000 trip cancellation cover.",
     options: {
       A: {
-        content: "Ignore benefits because “who needs it?",
+        content: "Ignore benefits because “who needs it?”",
         Disciplined_Saver: 0,
         Balanced_Spender: 0,
         The_Hustler: 0,

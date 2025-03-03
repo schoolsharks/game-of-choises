@@ -184,7 +184,7 @@ const Finished = () => {
     // window.location.reload();
   };
 
-  const handleInviteClick = () => {
+  const handleShare = () => {
     const websiteURL = window.location.origin;
     navigator.clipboard
       .writeText(websiteURL)
@@ -755,7 +755,7 @@ const Finished = () => {
             Play Again
           </Button>
           <IconButton
-            onClick={() => navigate("/onboarding/1")}
+            onClick={handleShare}
             sx={{ padding: "0" }}
           >
             <ShareOutlined
