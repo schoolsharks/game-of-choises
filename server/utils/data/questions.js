@@ -182,28 +182,6 @@ export const SET_1 = [
   },
   {
     id: 9,
-    question: "Stock Market Crash – Stay or Sell?",
-    options: {
-      A: {
-        content: "Sell everything in panic",
-        Disciplined_Saver: 0,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 3,
-        Live_for_today_Spender: 0,
-      },
-      B: {
-        content: "Stay invested for long-term gains",
-        Disciplined_Saver: 3,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-      }
-    }
-  },
-  {
-    id: 10,
     question: "IDFC FIRST Bank provides ₹6 lakh lost card liability and ₹50 lakh accident insurance.",
     options: {
       A: {
@@ -226,7 +204,7 @@ export const SET_1 = [
   },
 
   {
-    id: 11,
+    id: 10,
     question: "Crowdfunding a Friend’s Dream Project",
     options: {
       A: {
@@ -248,7 +226,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 12,
+    id: 11,
     question: "Designer Sneakers or Debt Payment",
     options: {
       A: {
@@ -270,7 +248,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 13,
+    id: 12,
     question: "Side Gig Windfall – Spend or Save?",
     options: {
       A: {
@@ -292,7 +270,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 14,
+    id: 13,
     question: "IDFC FIRST Bank’s account offers free airport lounge access and ₹50,000 trip cancellation cover.",
     options: {
       A: {
@@ -314,7 +292,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 15,
+    id: 14,
     question: "Career vs. Work-Life Balance",
     options: {
       A: {
@@ -336,7 +314,7 @@ export const SET_1 = [
     }
   },
   {
-    id: 16,
+    id: 15,
     question: "Ethical Investing Decision",
     options: {
       A: {
@@ -671,28 +649,6 @@ export const SET_2 = [
   },
   {
     id: 15,
-    question: "Friends' Peer Pressure Spending ",
-    options: {
-      A: {
-        content: "Join them for expensive outings despite budget strain ",
-        Disciplined_Saver: 0,
-        Balanced_Spender: 0,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 3,
-      },
-      B: {
-        content: "Suggest affordable alternatives ",
-        Disciplined_Saver: 0,
-        Balanced_Spender: 3,
-        The_Hustler: 0,
-        Hopeful_Borrower: 0,
-        Live_for_today_Spender: 0,
-      }
-    }
-  },
-  {
-    id: 16,
     question: "IDFC FIRST Bank provides ₹6 lakh lost card liability and ₹50 lakh accident insurance.",
     options: {
       A: {
@@ -757,7 +713,8 @@ export const wildCards = [
             },
             "B": {
               alert: "Crypto Crash",
-              content: "Market dipped, but you played it smart. Minimal losses, max survival.<br/>Keep those diamond hands steady!"
+              content: "Market dipped, but you played it smart. Minimal losses, max survival.<br/>Keep those diamond hands steady!",
+              impact:WildCardEffects.DISCIPLINED_SAVER_2
             },
           }
         }
@@ -768,9 +725,9 @@ export const wildCards = [
     set: "SET_2",
     wildCards: [
       {
-        after: 15,
+        after: 14,
         condition: {
-          question: 12,
+          question: 13,
           choice: {
             "A": {
               alert: "The Windfall Trap",
