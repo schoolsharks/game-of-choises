@@ -12,46 +12,72 @@ import { ArrowBack, ArrowForward, ShareOutlined } from "@mui/icons-material";
 import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
 import hustlerBadge from "../../../assets/badges/hustler-badge.png";
 import saverBadge from "../../../assets/badges/saver-badge.png";
-import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png"
-import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png"
+import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png";
+import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png";
 import { useEffect, useState } from "react";
 import SplashScreen from "../../../components/SplashScreen";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import logos from "../../../assets/logos.webp";
 
 const HomeMain = () => {
   const { page } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
   const [loading, setLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+  const [nextRoute, setNextRoute] = useState(null);
 
   const currentPage = Number(page);
 
   const handleBack = () => {
     if (currentPage > 1) {
-      navigate(`/home/${currentPage - 1}`);
+      handleNavigation(`/home/${currentPage - 1}`);
     }
   };
 
   const handleForward = () => {
     if (currentPage < 1) {
-      navigate(`/home/${currentPage + 1}`);
+      handleNavigation(`/home/${currentPage + 1}`);
     } else {
-      navigate("/login");
+      handleNavigation("/login");
     }
   };
+
+  const handleNavigation = (route) => {
+    setIsExiting(true);
+    setNextRoute(route);
+  };
+
+  useEffect(() => {
+    if (isExiting && nextRoute) {
+      const timer = setTimeout(() => {
+        navigate(nextRoute);
+        setIsExiting(false);
+        setNextRoute(null);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isExiting, nextRoute, navigate]);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
-  // if(loading){
-  //   return <SplashScreen/>
-  // }
-
   return (
-    <Stack bgcolor={theme.palette.primary.main}>
-      <SplashScreen loading={loading}/>
-
+    <Stack bgcolor={theme.palette.primary.main} position={"relative"}>
+      <SplashScreen loading={loading} />
+      <img
+        src={logos}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "130px",
+          top: "12px",
+          right: "12px",
+          zIndex: "99",
+        }}
+      />
       <UpperTriangleBox
         sx={{
           flex: "1",
@@ -60,11 +86,28 @@ const HomeMain = () => {
           filter: "drop-shadow(0 0 15px #fff)",
         }}
       >
-        <Stack height={"100%"}
-          style={{ marginTop: "-48px", flex: "1", opacity: loading ? 0 : 1 }}
-        >
-          {currentPage === 1 && <Page1 handleForward={handleForward} />}
-        </Stack>
+        <AnimatePresence mode="wait">
+          {!isExiting && (
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: loading ? 0 : 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                marginTop: "-48px",
+                flex: "1",
+              }}
+            >
+              {currentPage === 1 && (
+                <Page1 loading={loading} handleForward={handleForward} />
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </UpperTriangleBox>
     </Stack>
   );
@@ -72,13 +115,13 @@ const HomeMain = () => {
 
 export default HomeMain;
 
-const Page1 = ({ handleForward }) => {
+const Page1 = ({ handleForward, loading }) => {
   const badges = [
     balancedSpendorBadge,
     hustlerBadge,
     saverBadge,
     hopefulBorrowerBadge,
-    liveForTodaySpendorBadge
+    liveForTodaySpendorBadge,
   ];
 
   const handleShare = () => {
@@ -105,10 +148,12 @@ const Page1 = ({ handleForward }) => {
         WELCOME
       </Typography>
       <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"24px"}>
-      To a game where your money decisions shape your future. Every choice you make today will impact your future-self for better or worse.
+        To a game where your money decisions shape your future. Every choice you
+        make today will impact your future-self for better or worse.
       </Typography>
       <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"40px"}>
-      Swipe left for Option A & swipe right for Option B, to make bold financial moves.
+        Swipe left for Option A & swipe right for Option B, to make bold
+        financial moves.
       </Typography>
       <Typography fontSize={"16px"} fontWeight={"600"} marginTop={"22px"}>
         Discover who you are:
@@ -119,9 +164,24 @@ const Page1 = ({ handleForward }) => {
         justifyContent={"space-between"}
         gap={"10px"}
       >
-        {badges.map((badge, index) => (
-          <img key={index} src={badge} alt="badge" style={{ width: "42px" }} />
-        ))}
+        {!loading &&
+          badges.map((badge, index) => (
+            <motion.img
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 10,
+                duration: 0.3,
+                delay: 0.2 * index,
+              }}
+              key={index}
+              src={badge}
+              alt="badge"
+              style={{ width: "42px" }}
+            />
+          ))}
       </Stack>
       <Typography fontSize={"18px"} fontWeight={"600"} marginTop={"22px"}>
         Make smart moves to break free!

@@ -239,17 +239,6 @@ export const handleGetQuestion = async (req, res) => {
       const nextQuestion = nextQuesId;
       // console.log("nextQuestion", nextQuestion);
       const session = await Session.findById(user.session).select("totalPlayers")
-      let doYouKnow=undefined;
-      
-      if(updatedUser.answered_count===4){
-        doYouKnow=1;
-      }
-      else if(updatedUser.answered_count===9){
-        doYouKnow=2;
-      }
-      else if(updatedUser.answered_count===14){
-        doYouKnow=3;
-      }
       
       let wildCard=undefined;
 
@@ -281,7 +270,6 @@ export const handleGetQuestion = async (req, res) => {
         },
         nextQuesId: nextQuestion.id,
         totalPlayers: session.totalPlayers,
-        doYouKnow:doYouKnow,
         wildCard:wildCard,
         answered: updatedUser ? updatedUser.answered_count : user.answered_count,
       });

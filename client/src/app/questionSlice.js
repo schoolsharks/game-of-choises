@@ -37,9 +37,6 @@ export const fetchNextQuestion = createAsyncThunk(
           totalPlayers: Apiresponse.data.totalPlayers
         }));
 
-        if(Apiresponse?.data?.doYouKnow){
-          setDoYouKnowPopup({open:true,popup:Apiresponse?.data?.doYouKnow})
-        }
         if (Apiresponse?.data?.message?.includes("You have answered")) {
           handleQuestionsEnd();
         }

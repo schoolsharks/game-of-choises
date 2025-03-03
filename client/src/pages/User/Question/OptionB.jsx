@@ -165,7 +165,7 @@ const OptionB = ({ text, onOptionSelect }) => {
             transform: `translateX(${position + 52}px)`,
             position: "relative",
             paddingRight: "12px",
-            minHeight: "160px",
+            minHeight: "130px",
             background: `url(${redBB})`,
             filter:"drop-shadow(0 8px 10px #0000008f)",
             backgroundSize: "100% 100%",
@@ -183,7 +183,7 @@ const OptionB = ({ text, onOptionSelect }) => {
               variant="body1"
               fontWeight="500"
               lineHeight="25px"
-              fontSize="1.25rem"
+              fontSize="16px"
               // fontFamily="LSC Solid"
               color="#FBF9ED"
               // sx={{ width: "70%" }}

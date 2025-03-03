@@ -157,8 +157,8 @@ const OptionA = ({ text, onOptionSelect }) => {
             userSelect: "none",
             transform: `translateX(${position}px)`,
             position: "relative",
-            width: "100%",
-            minHeight: "160px",
+            width: "80%",
+            minHeight: "130px",
             background: `url(${blueAA})`,
             filter:"drop-shadow(0 8px 10px #0000008f)",
             backgroundSize: "100% 100%",
@@ -178,7 +178,7 @@ const OptionA = ({ text, onOptionSelect }) => {
               variant="body1"
               fontWeight="500"
               lineHeight="25px"
-              fontSize="1.25rem"
+              fontSize="16px"
               // fontFamily="LSC Solid"
               color="#FBF9ED"
               textAlign={"right"}

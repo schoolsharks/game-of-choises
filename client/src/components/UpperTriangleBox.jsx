@@ -10,7 +10,7 @@ const UpperTriangleBox = ({ children, sx,variant="black" }) => {
           component={"img"}
           src={variant==="black"?triangleBlack:triangleRed}
           alt=""
-          sx={{width:"100%"}}
+          sx={{width:"100%",height:"100%",objectFit:"fill",aspectRatio:"1/0.30"}}
 
         />
       </Box>

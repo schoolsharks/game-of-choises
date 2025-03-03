@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Stack } from "@mui/material";
 import loader from "../assets/GIFS/loader.gif";
+import UpperTriangleBox from "./UpperTriangleBox";
+import logos from "../assets/logos.webp";
 
 const SplashScreen = ({ loading }) => {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
@@ -26,21 +28,41 @@ const SplashScreen = ({ loading }) => {
       minHeight={window.innerHeight}
       alignItems={"center"}
       justifyContent={"center"}
-      position={"fixed"}
-      top={0}
-      left={"50%"}
+      position={"absolute"}
       zIndex={loading && isPageLoaded ? 100 : -1}
-      bgcolor={"#000"}
+      bgcolor={"#9D1D27"}
       opacity={loading && isPageLoaded ? 1 : 0}
-      sx={{
-        transition: "all 0.3s ease",
-        transform: "translateX(-50%)",
-        width: window.innerWidth,
-      }}
+      width="100%"
     >
-      <Box maxHeight="240px" overflow={"hidden"} marginTop={"-100px"}>
-        {isPageLoaded && <img key={gifKey} src={`${loader}?t=${gifKey}`} alt="Loading..." style={{transformOrigin:"center", transform:"scale(1.5)"}} />}
-      </Box>
+      <img
+        src={logos}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "130px",
+          top: "12px",
+          right: "12px",
+          zIndex: "99",
+        }}
+      />
+      <UpperTriangleBox sx={{ flex: "1", position: "relative" }}>
+        <Box
+          maxHeight="240px"
+          marginTop={"24px"}
+          overflow={"hidden"}
+          width={"100%"}
+          height={window.innerHeight}
+        >
+          {isPageLoaded && (
+            <img
+              key={gifKey}
+              src={`${loader}?t=${gifKey}`}
+              alt="Loading..."
+              style={{ transformOrigin: "center", transform: "scale(1.5)" }}
+            />
+          )}
+        </Box>
+      </UpperTriangleBox>
     </Stack>
   );
 };

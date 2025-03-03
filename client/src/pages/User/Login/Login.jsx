@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Checkbox,
-  Dialog,
   IconButton,
   Stack,
   TextField,
@@ -10,20 +9,16 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-// import Logo from "../../../assets/SchoolSharks-logo.webp";
-// import SwipeBar from "../../../components/SwipeBar";
 import { Navigate, useNavigate } from "react-router-dom";
 import { loginValidation } from "../../../utils/loginValidation";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../../app/userSlice";
 import "../../../App.css";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import SendIcon from "@mui/icons-material/Send";
-// import sendIcon from "../../../assets/send.png";
 import { ArrowBack, Close } from "@mui/icons-material";
 import UpperTriangleBox from "../../../components/UpperTriangleBox";
 import "./Login.css";
-import WildcardPopup from "../Question/WildcardPopup";
+import { motion } from "framer-motion";
+import logos from "../../../assets/logos.webp"
 
 const Login = () => {
   const theme = useTheme();
@@ -94,7 +89,23 @@ const Login = () => {
     }
   };
   return (
-    <Stack minHeight={window.innerHeight} flex={"1"} bgcolor={theme.palette.primary.main}>
+    <Stack
+      minHeight={window.innerHeight}
+      flex={"1"}
+      bgcolor={theme.palette.primary.main}
+    >
+      <img
+        src={logos}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "130px",
+          top: "12px",
+          right: "12px",
+          zIndex: "99",
+        }}
+      />
+
       {/* {!tncModalOpen ? ( */}
       <UpperTriangleBox
         sx={{
@@ -103,49 +114,64 @@ const Login = () => {
           borderRadius: !tncModalOpen ? "0" : "20px",
           margin: !tncModalOpen ? "0" : "36px 20px ",
           transition: "all 0.3s ease",
-          filter:!tncModalOpen?"drop-shadow(0 0 15px #fff)":"none"
+          filter: !tncModalOpen ? "drop-shadow(0 0 15px #fff)" : "none",
         }}
       >
         {!tncModalOpen ? (
-          <Stack padding="16px" flex={"1"} marginTop={"-36px"}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              display: "flex",
+              padding: "24px",
+              flexDirection: "column",
+              flex: "1",
+              marginTop: "-36px",
+            }}
+          >
             <Typography color="#fff" fontSize={"30px"} fontWeight={"700"}>
               LOGIN
             </Typography>
             <Stack spacing={3} marginTop={"32px"}>
               <TextField
                 id="name"
-                label="Name"
+                // label="Name"
                 variant="standard"
-                placeholder="eg. Vanessa Jenson"
+                placeholder="Name*"
                 value={formValues.name}
                 onChange={handleChange("name")}
+                
               />
               <TextField
                 id="email"
-                label="Email"
+                // label="Email"
                 // className="not-mandate"
                 variant="standard"
-                placeholder="eg. vanessa.jenson@example.com"
+                placeholder="Email*"
                 value={formValues.email}
                 onChange={handleChange("email")}
+                
               />
               <TextField
                 id="contact"
-                label="Contact"
+                // label="Contact"
                 variant="standard"
                 // className="not-mandate"
-                placeholder="eg. +91 XXXXX XXXXX"
+                placeholder="Contact*"
                 value={formValues.contact}
                 onChange={handleChange("contact")}
+                
               />
               <TextField
                 id="companyName"
-                label="Company Name"
+                // label="Company Name"
                 variant="standard"
                 // className="not-mandate"
-                placeholder="eg. XYZ Corp"
+                placeholder="Comapny Name*"
                 value={formValues.companyName}
                 onChange={handleChange("companyName")}
+                
               />
               {error && (
                 <Typography
@@ -191,7 +217,7 @@ const Login = () => {
             <Stack
               direction={"row"}
               margin={"auto 0 16px"}
-              padding="8px"
+              padding="8px 0"
               alignItems={"center"}
               gap={"16px"}
             >
@@ -202,7 +228,7 @@ const Login = () => {
                 <ArrowBack
                   sx={{
                     border: "2px solid white",
-                    fontSize: "40px",
+                    fontSize: "36px",
                     padding: "4px",
                     borderRadius: "50%",
                     color: "#ffffff",
@@ -218,21 +244,26 @@ const Login = () => {
                   borderRadius: "48px",
                   fontSize: "18px",
                   padding: "0 18px",
-                  height: "40px",
+                  height: "36px",
                   border: "2px solid #fff",
-                  color:"#fff",
+                  color: "#fff",
                 }}
               >
                 Start
               </Button>
             </Stack>
-          </Stack>
+          </motion.div>
         ) : (
-          <Stack
-            color={"#fff"}
-            padding={"16px"}
-            marginBottom={"32px"}
-            marginTop={"-20px"}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              color: "#fff",
+              padding: "16px",
+              marginBottom: "32px",
+              marginTop: "-20px",
+            }}
           >
             <Stack direction={"row-reverse"}>
               <IconButton onClick={() => setTncModalOpen(false)}>
@@ -261,7 +292,7 @@ const Login = () => {
               Enjoy the experience without any worries! <br />
               <br />
             </Typography>
-          </Stack>
+          </motion.div>
         )}
       </UpperTriangleBox>
       {/* ) : ( */}

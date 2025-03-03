@@ -9,6 +9,7 @@ import {
   useTheme,
   Box,
   CircularProgress,
+  IconButton,
   // useMediaQuery,
 } from "@mui/material";
 import { fetchNextQuestion } from "../../../app/questionSlice";
@@ -23,6 +24,9 @@ import Advertisement from "../../../components/Advertisement";
 import MidQuestionPopups from "./MidQuestionPopups";
 import DoYouKnow from "./DoYouKnow";
 import WildcardPopup from "./WildcardPopup";
+import UpperTriangleBox from "../../../components/UpperTriangleBox";
+import { HomeOutlined } from "@mui/icons-material";
+import homeIcon from "../../../assets/icons/homeIcon.png";
 
 const questionVariants = {
   initial: { opacity: 0, x: "100vw", scale: 0.8 },
@@ -31,7 +35,7 @@ const questionVariants = {
     x: 0,
     scale: 1,
     transition: {
-      duration:0.1,
+      duration: 0.1,
       type: "spring",
       damping: 12,
       stiffness: 70,
@@ -42,7 +46,7 @@ const questionVariants = {
     x: "-100vw",
     scale: 0.8,
     transition: {
-      duration:0.1,
+      duration: 0.1,
       type: "spring",
       damping: 12,
       stiffness: 70,
@@ -68,16 +72,25 @@ const Question = () => {
   const { user, sq, wealth, investment, answered } = useSelector(
     (state) => state.user
   );
-  const [midQuestionsPopup, setMidQuestionsPopup] = useState({open:false,popup:null});
-  const [doYouKnowPopup, setDoYouKnowPopup] = useState({open:false,popup:null});
-  const [wildCardPopup, setWildCardPopup] = useState({open:false,alert:null,content:null});
+  const [midQuestionsPopup, setMidQuestionsPopup] = useState({
+    open: false,
+    popup: null,
+  });
+  const [doYouKnowPopup, setDoYouKnowPopup] = useState({
+    open: false,
+    popup: null,
+  });
+  const [wildCardPopup, setWildCardPopup] = useState({
+    open: false,
+    alert: null,
+    content: null,
+  });
 
   // const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
-
-  const handleQuestionsEnd=()=>{
-    setMidQuestionsPopup({open:true,popup:3})
-  }
+  const handleQuestionsEnd = () => {
+    setDoYouKnowPopup({ open: true, popup: 3 });
+  };
   useEffect(() => {
     if (!currentQuestion && user) {
       dispatch(
@@ -87,14 +100,11 @@ const Question = () => {
           response: "",
           quesId: "",
           handleQuestionsEnd,
-          setDoYouKnowPopup,
-        setWildCardPopup
-
+          setWildCardPopup,
         })
       );
     }
   }, [currentQuestion, dispatch, user]);
-
 
   const handleOptionSelect = (response) => {
     dispatch(
@@ -105,27 +115,22 @@ const Question = () => {
         quesId: quesId,
         handleQuestionsEnd,
         setDoYouKnowPopup,
-        setWildCardPopup
+        setWildCardPopup,
       })
     );
   };
-
-
 
   // if (answered === 30) {
   //   return <Navigate to="/completed" />;
   // }
 
-
-  useEffect(()=>{
-    if(answered===5 && !midQuestionsPopup.open){
-      setMidQuestionsPopup({open:true,popup:1})
+  useEffect(() => {
+    if (answered === 5 && !midQuestionsPopup.open) {
+      setDoYouKnowPopup({ open: true, popup: 1 });
+    } else if (answered === 10 && !midQuestionsPopup.open) {
+      setDoYouKnowPopup({ open: true, popup: 2 });
     }
-    else if(answered===10 && !midQuestionsPopup.open){
-      setMidQuestionsPopup({open:true,popup:2})
-    }
-  },[answered])
-
+  }, [answered]);
 
   return (
     <Box
@@ -138,7 +143,6 @@ const Question = () => {
       flexDirection={"column"}
       justifyContent={"start"}
       bgcolor={theme.palette.primary.main}
-      
 
       // sx={{
       //   // aspectRatio: "116/45",
@@ -181,10 +185,25 @@ const Question = () => {
           maxWidth={"431px"}
           position="relative"
           alignItems={"center"}
+          flex={"1"}
         >
-          {midQuestionsPopup.open && <MidQuestionPopups id={midQuestionsPopup.popup} handleClose={()=>setMidQuestionsPopup({open:false,popup:null})}/>}
-          {doYouKnowPopup.open && <DoYouKnow id={doYouKnowPopup.popup} handleClose={()=>setDoYouKnowPopup({open:false,popup:null})}/>}
-          {wildCardPopup.open && <WildcardPopup alert={wildCardPopup.alert} content={wildCardPopup.content} handleClose={()=>setWildCardPopup({open:false,alert:null,text:null})}/>}
+          {doYouKnowPopup.open && (
+            <DoYouKnow
+              id={doYouKnowPopup.popup}
+              handleClose={() =>
+                setDoYouKnowPopup({ open: false, popup: null })
+              }
+            />
+          )}
+          {wildCardPopup.open && (
+            <WildcardPopup
+              alert={wildCardPopup.alert}
+              content={wildCardPopup.content}
+              handleClose={() =>
+                setWildCardPopup({ open: false, alert: null, text: null })
+              }
+            />
+          )}
           <AnimatePresence mode="wait">
             {currentQuestion && (
               <motion.div
@@ -199,156 +218,61 @@ const Question = () => {
                   width: "100%",
                   height: "100%",
                   maxWidth: "100%",
-                  fontWeight:"700",
-                  fontFamily:"Red Hat Display",
-                  textShadow:"0 8px 6px #00000043"
+                  fontWeight: "700",
+                  fontFamily: "Red Hat Display",
+                  textShadow: "0 8px 6px #00000043",
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "1",
                 }}
               >
-                <Stack
-                  padding="0 0px"
-                  // height={`${
-                  //   window.innerHeight < 616 ? 616 : window.innerHeight
-                  // }px`}
-                  maxWidth="431px"
-                  width="100%"
-                  height={"100%"}
-                  gap={"10px"}
-                  // sx={{ overflowX: "hidden",overflowY:"visible" }}
+                <UpperTriangleBox
+                  sx={{
+                    margin: "30px 30px 0px",
+                    borderRadius: "20px",
+                    flex: "1",
+                  }}
                 >
-                  {/* <Stack
-                    direction="row"
-                    marginTop="24px"
-                    justifyContent="space-around"
-                    color={theme.palette.primary.main}
-                  >
-                    <Stack alignItems="center" flex={1}>
-                      <Typography fontWeight={"500"}>
-                        Bank Balance
-                      </Typography>
-                      <Typography variant="h6" fontWeight={"700"}>
-                        {wealth}
-                      </Typography>
-                    </Stack>
-                    <Stack alignItems="center" flex={1} fontWeight={"500"}>
-                      <Typography >Investments</Typography>
-                      <Typography variant="h6" fontWeight={"700"}>
-                        {investment}
-                      </Typography>
-                    </Stack>
-                    <Stack alignItems="center" flex={1} fontWeight={"500"}>
-                      <Typography >Year</Typography>
-                      <Typography variant="h6" fontWeight={"700"}>
-                        {year}
-                      </Typography>
-                    </Stack>
-                  </Stack> */}
-
-                  {/* <LinearProgress
-                    variant="determinate"
-                    value={(answered * 100) / 25}
-                    sx={{
-                      margin: "16px 0 8px",
-                      borderRadius: "2px",
-                      "& .MuiLinearProgress-bar": {
-                        backgroundColor: theme.palette.primary.main,
-                      },
-                      backgroundColor: "#7793AF",
-                      boxShadow: "0 0 10px #ffffff"
-                    }}
-                  /> */}
-
-                  {/* questions */}
                   <Stack
-                    // margin="16px 0px"
-                    display={"flex"}
-                    width={"100%"}
-                    maxWidth={"431px"}
-                    marginTop={"64px"}
-                    // justifyContent={"center"}
-                    // marginBottom={"20px"}
-                    alignSelf={"flex-start"}
-                    sx={{
-                      minHeight: window.innerWidth < 500 ? "180px" : "180px",
-                    }}
+                    padding="0 0px"
+                    maxWidth="431px"
+                    width="100%"
+                    height={"100%"}
+                    gap={"10px"}
+                    paddingBottom={"20px"}
+                    // sx={{ overflowX: "hidden",overflowY:"visible" }}
                   >
-                    <Typography
-                      variant="typ"
-                      sx={{
-                        width: "90%",
-                        height: "100%",
-                        color: "#FFFFFF",
-                        position: "relative",
-                        marginLeft: "25px",
-                        display: "inline-block",
-                        wordWrap: "break-word",
-                        "& .Typewriter": {
-                          "& *": {
-                            fontSize: "inherit",
-                            wordBreak: "break-word",
-                          },
-                        },
-                      }}
-                    >
-                      <span
-                        id="typewriter-text"
-                        style={{
-                          display: "inline-block",
-                          fontSize: "24px",
-                          width: "100%",
-                          marginRight: "25px",
-                          whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
-                          lineHeight: "35px",
-                          textAlign: "start",
-                          position: "relative",
-                          overflowWrap: "break-word",
-
-                        }}
-                      >
-                        {currentQuestion}
-                        {/* <Typewriter
-                          // key={data.id}
-                          options={{
-                            delay: 20,
-                            cursor: "|",
-                            wrapperClassName: "typewriter-wrapper",
-                          }}
-                          onInit={(typewriter) => {
-                            typewriter
-                              .typeString(currentQuestion) // Type the current slide description
-
-                              .pauseFor(500)
-                              .start();
-                          }}
-                        /> */}
-                      </span>
-                    </Typography>
-                  </Stack>
-
-                  {/* options */}
-                  {options && (
+                    {/* questions */}
                     <Stack
-                      marginTop="10px"
+                      // margin="16px 0px"
                       display={"flex"}
-                      flexDirection={"column"}
-                      maxWidth={"380px"}
-                      width={"95%"}
-                      sx={{
-                        // gap: window.innerWidth < 400 ? "0" : "3rem",
-                      }}
+                      width={"100%"}
+                      maxWidth={"431px"}
+                      // justifyContent={"center"}
+                      // marginBottom={"20px"}
+                      alignSelf={"flex-start"}
+                      padding={"0 16px"}
+                      minHeight={"90px"}
                     >
-                      <OptionA
-                        text={options["A"]}
-                        onOptionSelect={handleOptionSelect}
-                      />
-                      <OptionB
-                        text={options["B"]}
-                        onOptionSelect={handleOptionSelect}
-                      />
+                      <Typography
+                        fontSize={"20px"}
+                        fontWeight={"700"}
+                        color="#ffffff"
+                      >
+                        {" "}
+                        {currentQuestion}
+                      </Typography>
                     </Stack>
-                  )}
-                  {/* <Stack marginTop="16px" position="relative" direction="column" columnGap={"2.5rem"}>
+
+                    {/* options */}
                     {options && (
-                      <>
+                      <Stack
+                        marginTop="10px"
+                        display={"flex"}
+                        flexDirection={"column"}
+                        maxWidth={"380px"}
+                        width={"95%"}
+                      >
                         <OptionA
                           text={options["A"]}
                           onOptionSelect={handleOptionSelect}
@@ -357,38 +281,21 @@ const Question = () => {
                           text={options["B"]}
                           onOptionSelect={handleOptionSelect}
                         />
-                      </>
+                      </Stack>
                     )}
-                  </Stack> */}
-
-                  {/* <Stack
-                    alignItems="center"
-                    position="relative"
-                    margin="auto 0 35px"
-                    left="0"
-                    width="100%"
+                  </Stack>
+                </UpperTriangleBox>
+                <Box
+                  margin={"auto"}
+                  sx={{ transform: "translateY(-50%)", zIndex: "9999" }}
+                >
+                  <IconButton
+                  onClick={()=>navigate("/home/1")}
+                    sx={{ bgcolor: "#000000", "&:hover": { bgcolor: "#000" } }}
                   >
-                    <Box
-                      width="80%"
-                      height="4px"
-                      bgcolor="#fff"
-                      borderRadius="4px"
-                    />
-                    <Box
-                      position="absolute"
-                      onClick={() => navigate("/home")}
-                      left="50%"
-                      sx={{
-                        top: "50%",
-                        transform: "translateX(-50%) translateY(-50%)",
-                      }}
-                    >
-                      <Button>
-                        <img src={homeIcon} alt="" style={{ width: "32px", objectFit: "contain" }} />
-                      </Button>
-                    </Box>
-                  </Stack> */}
-                </Stack>
+                    <img src={homeIcon} alt="" style={{ width: "32px" }} />
+                  </IconButton>
+                </Box>
               </motion.div>
             )}
           </AnimatePresence>

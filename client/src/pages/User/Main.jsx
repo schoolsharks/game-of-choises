@@ -44,7 +44,7 @@ const Main = () => {
         <Routes location={location} key={location.pathname}>
           <Route path="/home" element={<Navigate to="/home/1" />} />
           <Route path="/home/:page" element={<HomeMain/>} />
-          <Route path="/login" element={<AnimatedPage Component={Login} />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/info" element={<AnimatedPage Component={LoadingScreen} />} />
 
           <Route

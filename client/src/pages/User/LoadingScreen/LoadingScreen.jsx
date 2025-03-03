@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
 import handIcon from "../../../assets/handIcon.png";
 import { useNavigate } from "react-router-dom";
+import OptionA from "../Question/OptionA";
+import OptionB from "../Question/OptionB";
 
 const LoadingScreen = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const LoadingScreen = () => {
         minHeight: window.innerHeight + "px",
       }}
     >
-      <Stack margin={"auto 50px"} padding={"20px"}>
+      <Stack padding={"20px"} marginTop={"48px"}>
         <Typography
           sx={{
             color: "#FFFFFF",
@@ -49,24 +51,23 @@ const LoadingScreen = () => {
             id="typewriter-text"
             style={{
               display: "inline-block",
-              fontSize: "42px",
+              fontSize: "40px",
               width: "100%",
               whiteSpace: "pre-wrap", // Changed from pre to pre-wrap for wrapping
-              lineHeight: "52px",
+              lineHeight: "50px",
               textAlign: "left",
               position: "relative",
               // fontFamily: "LSC Solid",
-              fontFamily:"Red Hat Display",
-              fontWeight:"700"
+              fontFamily: "Red Hat Display",
+              fontWeight: "700",
             }}
           >
             <Typewriter
               options={{
                 delay: 30,
-                cursor: "|",
                 width: "100%",
                 wrapperClassName: "typewriter-wrapper",
-                strings: ["Let's get \nstarted"],
+                strings: ["LET'S GET \nSTARTED"],
                 autoStart: true,
                 loop: false,
                 cursorBlinking: true,
@@ -76,36 +77,12 @@ const LoadingScreen = () => {
           </span>
         </Typography>
       </Stack>
+      <Stack width={"100%"} marginTop={"42px"}>
+        <OptionA text={"Swipe left for Option A"} />
+        <OptionB text={"Swipe right for Option B"} />
+      </Stack>
 
-      <Stack direction={"column"} alignItems={"center"} marginBottom={"12px"}>
-        <Typography
-          variant={"caption"}
-          fontSize={"10px"}
-          fontWeight="500"
-          textAlign={"center"}
-          zIndex={1}
-          color={"#FBF9ED"}
-          sx={{
-            fontSize: "1.0rem",
-          }}
-        >
-          Swipe left for option A
-        </Typography>
-        <Typography
-          variant={"caption"}
-          fontSize={"10px"}
-          fontWeight="500"
-          textAlign={"center"}
-          zIndex={1}
-          color={"#FBF9ED"}
-          sx={{
-            fontSize: "1.0rem",
-            marginBottom: "4px",
-          }}
-        >
-          Swipe right for option B
-        </Typography>
-
+      <Stack marginTop={"auto"} direction={"column"} alignItems={"center"} marginBottom={"12px"}>
         <img src={handIcon} alt="hand Icon" width={"40px"} />
       </Stack>
     </Stack>

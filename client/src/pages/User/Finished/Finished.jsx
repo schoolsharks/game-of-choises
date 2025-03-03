@@ -43,6 +43,7 @@ import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.
 import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png";
 import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png";
 import DoYouKnow from "../Question/DoYouKnow";
+import { motion } from "framer-motion";
 // import personalityGrid2 from "../../../assets/personalityGrid2.svg";
 // import personalityGrid3 from "../../../assets/personalityGrid3.jpg";
 
@@ -203,6 +204,13 @@ const Finished = () => {
   ];
   // const personalityImage = data2[index];
 
+  const yourChoicesTexts = {
+    Savings_Behaviour: "Keep saving, but allow for fun too!",
+    Investment_Risk_Tolerance: "Explore calculated investment opportunities.",
+    Debt_Management: "Watch out for impulse spending!",
+    Lifestyle_Choices: "You enjoy life! Just ensure future security.",
+  };
+
   useEffect(() => {
     console.log(userStatic);
   }, [userStatic]);
@@ -273,7 +281,26 @@ const Finished = () => {
         }}
       >
         <Stack margin={"30px 24px 0"}>
-          <img
+          <motion.img
+            initial={{
+              rotateY: -180,
+              opacity: 0,
+              scale: 0.7,
+            }}
+            animate={{
+              rotateY: 0,
+              opacity: 1,
+              scale: 1,
+              z: 0,
+            }}
+            transition={{
+              duration: 1.2,
+              delay: 1,
+              ease: [0.16, 1, 0.3, 1], 
+              type: "spring",
+              stiffness: 80,
+              damping: 15,
+            }}
             src={
               userStatic?.personalityName &&
               personalities.find(
@@ -285,7 +312,12 @@ const Finished = () => {
               )?.badge
             }
             alt=""
-            style={{ width: "130px", margin: "auto" }}
+            style={{
+              transformStyle: "preserve-3d",
+              transformOrigin: "center center",
+              width: "130px",
+              margin: "auto",
+            }}
           />
           <Typography textAlign={"center"} fontSize={"24px"} fontWeight={"700"}>
             {userStatic?.personalityName}
@@ -331,63 +363,73 @@ const Finished = () => {
         >
           <Stack gap={"20px"}>
             {userStatic?.riskTaker &&
-              Object.entries(userStatic?.riskTaker).map(([key, value]) => (
-                <>
-                  <Stack gap={"5px"}>
-                    <Typography fontSize={"18px"} fontWeight={"600"}>
-                      {key.replaceAll("_", " ")}
-                    </Typography>
-                    <Stack borderRadius={"5px"} overflow={"hidden"} gap={"4px"}>
-                      <Stack direction={"row"} height={"100px"} gap={"4px"}>
-                        <Stack
-                          flex={"1"}
-                          height={"100%"}
-                          bgcolor={"#ffffff"}
-                          color={"#000000"}
-                          padding={"10px"}
+              Object.entries(userStatic?.riskTaker).map(
+                ([key, value], index) => (
+                  <>
+                    <Stack gap={"5px"}>
+                      <Typography fontSize={"18px"} fontWeight={"600"}>
+                        {key.replaceAll("_", " ")}
+                      </Typography>
+                      <Stack
+                        borderRadius={"5px"}
+                        overflow={"hidden"}
+                        gap={"4px"}
+                      >
+                        <Stack direction={"row"} height={"100px"} gap={"4px"}>
+                          <Stack
+                            flex={"1"}
+                            height={"100%"}
+                            bgcolor={index >= 2 ? "#000000" : "#ffffff"}
+                            color={index >= 2 ? "#ffffff" : "#000000"}
+                            padding={"10px"}
+                          >
+                            <Typography fontSize={"15px"} fontWeight={"600"}>
+                              Your Score
+                            </Typography>
+                            <Typography
+                              marginTop={"auto"}
+                              fontSize={"25px"}
+                              fontWeight={"700"}
+                            >
+                              {value.user}%
+                            </Typography>
+                          </Stack>
+                          <Stack
+                            flex={"1"}
+                            height={"100%"}
+                            bgcolor={"#383838"}
+                            padding={"10px"}
+                          >
+                            <Typography
+                              fontSize={"15px"}
+                              fontWeight={"600"}
+                              whiteSpace={"nowrap"}
+                            >
+                              Community Average
+                            </Typography>
+                            <Typography
+                              marginTop={"auto"}
+                              fontSize={"25px"}
+                              fontWeight={"700"}
+                            >
+                              {value.avg}%
+                            </Typography>
+                          </Stack>
+                        </Stack>
+                        <Box
+                          bgcolor={index >= 2 ? "#ffffff" : "#000"}
+                          color={index >= 2 ? "#000000" : "#ffffff"}
+                          padding={"22px 11px"}
                         >
                           <Typography fontSize={"15px"} fontWeight={"600"}>
-                            Your Score
+                            {yourChoicesTexts[key]}
                           </Typography>
-                          <Typography
-                            marginTop={"auto"}
-                            fontSize={"25px"}
-                            fontWeight={"700"}
-                          >
-                            {value.user}%
-                          </Typography>
-                        </Stack>
-                        <Stack
-                          flex={"1"}
-                          height={"100%"}
-                          bgcolor={"#383838"}
-                          padding={"10px"}
-                        >
-                          <Typography
-                            fontSize={"15px"}
-                            fontWeight={"600"}
-                            whiteSpace={"nowrap"}
-                          >
-                            Community Average
-                          </Typography>
-                          <Typography
-                            marginTop={"auto"}
-                            fontSize={"25px"}
-                            fontWeight={"700"}
-                          >
-                            {value.avg}%
-                          </Typography>
-                        </Stack>
+                        </Box>
                       </Stack>
-                      <Box bgcolor={"#000"} padding={"22px 11px"}>
-                        <Typography fontWeight={"600"}>
-                          Keep saving, but allow for fun too!
-                        </Typography>
-                      </Box>
                     </Stack>
-                  </Stack>
-                </>
-              ))}
+                  </>
+                )
+              )}
           </Stack>
         </Stack>
 
@@ -754,10 +796,7 @@ const Finished = () => {
           >
             Play Again
           </Button>
-          <IconButton
-            onClick={handleShare}
-            sx={{ padding: "0" }}
-          >
+          <IconButton onClick={handleShare} sx={{ padding: "0" }}>
             <ShareOutlined
               sx={{
                 fontSize: "28px",
