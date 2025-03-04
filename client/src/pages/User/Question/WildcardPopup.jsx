@@ -68,13 +68,16 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
             transition: { duration: 0.3 }
           }}
         >
-          <UpperTriangleBox variant="red">
+          <UpperTriangleBox variant="red" sx={{
+            filter:"drop-shadow(0 0 15px #ffffffad)",
+            borderRadius: "0 0 20px 20px",
+          }}>
             <Stack
               bgcolor={"#9D1D27"}
               textAlign={"center"}
               color={"#fff"}
-              borderRadius={"0 0 20px 20px"}
               padding={"24px 18px"}
+              height={"350px"}
               sx={{
                 position: "relative",
                 "&::before": {
@@ -84,8 +87,7 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
                   left: 0,
                   right: 0,
                   height: "30%",
-                  borderRadius: "0 0 50% 50%",
-                  opacity: 0.7
+                  opacity: 0.7,
                 }
               }}
             >

@@ -137,10 +137,10 @@ const OptionA = ({ text, onOptionSelect }) => {
   return (
     <AnimatePresence>
       <motion.div
-        variants={optionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
+        // variants={optionVariants}
+        // initial="initial"
+        // animate="animate"
+        // exit="exit"
         whileHover="hover"
         style={{ width: "346px" }}
       >

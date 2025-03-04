@@ -47,12 +47,13 @@ const SplashScreen = ({ loading }) => {
 
         }}
       />
-      <UpperTriangleBox sx={{ flex: "1", position: "relative",filter:"drop-shadow(0 0 15px #ffffff)" }}>
+      <UpperTriangleBox sx={{ flex: "1",marginTop:"15px", position: "relative",filter:"drop-shadow(0 0 15px #ffffff)" }}>
         <Box
           maxHeight="240px"
           marginTop={"24px"}
           overflow={"hidden"}
           width={"100%"}
+          position={"absolute"}
           height={window.innerHeight}
         >
           {isPageLoaded && (

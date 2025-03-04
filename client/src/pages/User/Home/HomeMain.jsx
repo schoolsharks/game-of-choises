@@ -83,8 +83,9 @@ const HomeMain = () => {
         sx={{
           flex: "1",
           position: "relative",
+          marginTop:"15px",
           minHeight: window.innerHeight,
-          filter: "drop-shadow(0 0 15px #fff)",
+          filter:"drop-shadow(0 0 15px #ffffffad)",
         }}
       >
         <AnimatePresence mode="wait">
@@ -143,8 +144,10 @@ const Page1 = ({ handleForward, loading }) => {
         color: "#fff",
         padding: "24px",
         flex: "1",
+        justifyContent:"space-between"
       }}
     >
+      <Stack>
       <Typography fontSize={"2.2rem"} fontWeight={"700"}>
         WELCOME
       </Typography>
@@ -187,11 +190,12 @@ const Page1 = ({ handleForward, loading }) => {
       <Typography fontSize={"18px"} fontWeight={"600"} marginTop={"22px"}>
         Make smart moves to break free!
       </Typography>
+      </Stack>
       <Stack
         direction={"row"}
         alignItems={"center"}
         justifyContent={"space-between"}
-        margin={"auto 0 20px"}
+        margin={"20px 0"}
       >
         <Button
           variant="outlined"

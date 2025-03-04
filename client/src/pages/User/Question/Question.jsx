@@ -10,6 +10,7 @@ import {
   Box,
   CircularProgress,
   IconButton,
+  boxClasses,
   // useMediaQuery,
 } from "@mui/material";
 import { fetchNextQuestion } from "../../../app/questionSlice";
@@ -25,7 +26,7 @@ import MidQuestionPopups from "./MidQuestionPopups";
 import DoYouKnow from "./DoYouKnow";
 import WildcardPopup from "./WildcardPopup";
 import UpperTriangleBox from "../../../components/UpperTriangleBox";
-import { HomeOutlined } from "@mui/icons-material";
+import { HomeOutlined, PinDropSharp } from "@mui/icons-material";
 import homeIcon from "../../../assets/icons/homeIcon.png";
 
 const questionVariants = {
@@ -232,6 +233,7 @@ const Question = () => {
                     borderRadius: "20px",
                     flex: "1",
                     position: "relative",
+                    filter:"drop-shadow(0 0 15px #ffffffad)",
                   }}
                 >
                   <Stack

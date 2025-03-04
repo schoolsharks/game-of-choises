@@ -115,7 +115,8 @@ const Login = () => {
           borderRadius: !tncModalOpen ? "0" : "20px",
           margin: !tncModalOpen ? "0" : "36px 20px ",
           transition: "all 0.3s ease",
-          filter: !tncModalOpen ? "drop-shadow(0 0 15px #fff)" : "none",
+          marginTop:"10px",
+          filter: "drop-shadow(0 0 15px #ffffffad)",
         }}
       >
         {!tncModalOpen ? (

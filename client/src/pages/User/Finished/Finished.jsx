@@ -379,8 +379,8 @@ const Finished = () => {
                           <Stack
                             flex={"1"}
                             height={"100%"}
-                            bgcolor={index >= 2 ? "#000000" : "#ffffff"}
-                            color={index >= 2 ? "#ffffff" : "#000000"}
+                            bgcolor={"#ffffff"}
+                            color={"#000000"}
                             padding={"10px"}
                           >
                             <Typography fontSize={"15px"} fontWeight={"600"}>
@@ -417,8 +417,8 @@ const Finished = () => {
                           </Stack>
                         </Stack>
                         <Box
-                          bgcolor={index >= 2 ? "#ffffff" : "#000"}
-                          color={index >= 2 ? "#000000" : "#ffffff"}
+                          bgcolor={ "#000"}
+                          color={"#ffffff"}
                           padding={"22px 11px"}
                         >
                           <Typography fontSize={"15px"} fontWeight={"600"}>

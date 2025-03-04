@@ -24,7 +24,7 @@ const LoadingScreen = () => {
         minHeight: window.innerHeight + "px",
       }}
     >
-      <Stack padding={"20px"} marginTop={"48px"}>
+      <Stack padding={"20px 40px"} marginTop={"48px"}>
         <Typography
           sx={{
             color: "#FFFFFF",
@@ -60,6 +60,7 @@ const LoadingScreen = () => {
               // fontFamily: "LSC Solid",
               fontFamily: "Red Hat Display",
               fontWeight: "700",
+              height:"100px"
             }}
           >
             <Typewriter
@@ -77,7 +78,7 @@ const LoadingScreen = () => {
           </span>
         </Typography>
       </Stack>
-      <Stack width={"100%"} marginTop={"42px"}>
+      <Stack width={"100%"} marginTop={"42px"} gap={"30px"}>
         <OptionA text={"Swipe left for Option A"} />
         <OptionB text={"Swipe right for Option B"} />
       </Stack>

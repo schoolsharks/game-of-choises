@@ -20,7 +20,7 @@ const Feedback = () => {
 
   return (
     <Stack bgcolor={theme.palette.primary.main} minHeight={window.innerHeight}>
-      <UpperTriangleBox sx={{ margin: "27px",borderRadius:"20px" }}>
+      <UpperTriangleBox sx={{ margin: "27px",borderRadius:"20px",filter:"drop-shadow(0 0 15px #ffffffad)", }}>
         <Stack color="#fff" bgcolor={"#000000"} padding={"0 44px"}>
           <Typography fontSize={"20px"} fontWeight={"700"}>
             What will it take you to switch to IDFC FIRST Bank?

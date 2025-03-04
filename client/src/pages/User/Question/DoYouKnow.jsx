@@ -18,7 +18,7 @@ const Content1 = () => {
       <img
         src={doYouKnow1}
         alt="Do You Know"
-        style={{ width: "240px", margin: "48px auto 20px" }}
+        style={{ width: "220px", margin: "48px auto 20px" }}
       />
       <Typography fontWeight="600">
         INFLATION Reduces Purchasing Power
@@ -98,6 +98,7 @@ const DoYouKnow = ({ id, handleClose }) => {
       height={window.innerHeight}
       sx={{ overflowY: "scroll", overflowX: "hidden", scrollbarWidth: "none" }}
     >
+      <Typography position={"absolute"} fontSize={"1.25rem"} fontWeight={"700"} sx={{top:"30px",right:"30px"}}>Do You Know?</Typography>
       <motion.div
         initial={{
           rotateY: 180,
@@ -139,7 +140,9 @@ const DoYouKnow = ({ id, handleClose }) => {
           }}
         >
           <UpperTriangleBox
-            sx={{ margin: "30px 30px 0", borderRadius: "20px" }}
+            sx={{ margin: "40px 30px 0", borderRadius: "20px",
+              filter:"drop-shadow(0 0 15px #ffffffad)",
+             }}
           >
             <Stack padding={"0 20px"}>
               {id === 1 && <Content1 />}
