@@ -116,7 +116,7 @@ const Login = () => {
         sx={{
           height: "100%",
           flex: !tncModalOpen ? "1" : "auto",
-          borderRadius: !tncModalOpen ? "0" : "20px",
+          borderRadius: !tncModalOpen ? "0" : "0 0 20px 20px",
           margin: !tncModalOpen ? "0" : "36px 20px ",
           transition: "all 0.3s ease",
           marginTop:"10px",

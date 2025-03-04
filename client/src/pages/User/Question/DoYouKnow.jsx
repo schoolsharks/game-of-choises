@@ -18,7 +18,7 @@ const Content1 = () => {
       <img
         src={doYouKnow1}
         alt="Do You Know"
-        style={{ width: "220px", margin: "48px auto 20px" }}
+        style={{ width: "240px", margin: "48px auto 20px" }}
       />
       <Typography fontWeight="600">
         INFLATION Reduces Purchasing Power
@@ -36,7 +36,7 @@ const Content2 = () => {
       <img
         src={doYouKnow2}
         alt="Do You Know"
-        style={{ width: "240px", margin: "48px 0 20px" }}
+        style={{ width: "240px", margin: "48px auto 20px" }}
       />
       <Typography fontWeight="600">That’s the POWER OF COMPOUNDING</Typography>
     </Stack>
@@ -53,7 +53,7 @@ const Content3 = () => {
       <img
         src={doYouKnow3}
         alt="Do You Know"
-        style={{ width: "277px", margin: "48px 0 20px" }}
+        style={{ width: "240px", margin: "48px auto 20px" }}
       />
       <Typography fontWeight="400" fontSize={"12px"}>
         *Rate of return of 12% is used for illustrative purpose only, names are
