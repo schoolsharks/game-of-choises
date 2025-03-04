@@ -93,6 +93,10 @@ const Login = () => {
       minHeight={window.innerHeight}
       flex={"1"}
       bgcolor={theme.palette.primary.main}
+      sx={{
+        transform:"translateZ(0)",
+        overflow:"visible"
+      }}
     >
       <img
         src={logos}
@@ -132,7 +136,7 @@ const Login = () => {
               marginTop: "-36px",
             }}
           >
-            <Typography color="#fff" fontSize={"30px"} fontWeight={"700"}>
+            <Typography  color="#fff" fontSize={"30px"} fontWeight={"700"}>
               LOGIN
             </Typography>
             <Stack spacing={3} marginTop={"32px"}>

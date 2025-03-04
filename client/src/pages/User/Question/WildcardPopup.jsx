@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 
 const WildcardPopup = ({ alert, content, handleClose }) => {
   const [isFlipped, setIsFlipped] = useState(true);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsFlipped(false);
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,27 +28,27 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
       padding={"35px"}
       sx={{ perspective: "1200px" }}
     >
-      <motion.div 
+      <motion.div
         initial={{
           rotateY: 180,
           opacity: 0,
           scale: 0.7,
-          z: -200
-        }} 
+          z: -200,
+        }}
         animate={{
           rotateY: isFlipped ? 180 : 0,
           opacity: 1,
           scale: 1,
-          z: 0
-        }} 
+          z: 0,
+        }}
         transition={{
           duration: 1.2,
-          delay:0.5,
+          delay: 0.5,
           ease: [0.16, 1, 0.3, 1], // Custom cubic bezier for more dramatic effect
           type: "spring",
           stiffness: 80,
-          damping: 15
-        }} 
+          damping: 15,
+        }}
         style={{
           transformStyle: "preserve-3d",
           width: "100%",
@@ -62,16 +62,19 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
             backfaceVisibility: "hidden",
             // boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.6)"
           }}
-          whileHover={{ 
+          whileHover={{
             scale: 1.02,
             rotateY: -5,
-            transition: { duration: 0.3 }
+            transition: { duration: 0.3 },
           }}
         >
-          <UpperTriangleBox variant="red" sx={{
-            filter:"drop-shadow(0 0 15px #ffffffad)",
-            borderRadius: "0 0 20px 20px",
-          }}>
+          <UpperTriangleBox
+            variant="red"
+            sx={{
+              filter: "drop-shadow(0 0 15px #ffffffad)",
+              borderRadius: "0 0 20px 20px",
+            }}
+          >
             <Stack
               bgcolor={"#9D1D27"}
               textAlign={"center"}
@@ -80,6 +83,7 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
               height={"350px"}
               sx={{
                 position: "relative",
+                borderRadius:"0 0 20px 20px",
                 "&::before": {
                   content: '""',
                   position: "absolute",
@@ -88,13 +92,18 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
                   right: 0,
                   height: "30%",
                   opacity: 0.7,
-                }
+                },
               }}
             >
               <Typography fontSize={"24px"} fontWeight={"700"}>
                 Alert : {alert}
               </Typography>
-              <Typography fontSize={"16px"} fontWeight={"500"} textAlign="center" sx={{ marginTop: "8px" }}>
+              <Typography
+                fontSize={"16px"}
+                fontWeight={"500"}
+                textAlign="center"
+                sx={{ marginTop: "8px" }}
+              >
                 Wild Card
               </Typography>
               <Typography
@@ -113,7 +122,7 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        style={{width:"100%"}}
+        style={{ width: "100%" }}
       >
         <Stack direction={"row"} width={"100%"} marginTop={"20px"}>
           <Button
@@ -131,8 +140,8 @@ const WildcardPopup = ({ alert, content, handleClose }) => {
               fontWeight: "600",
               "&:hover": {
                 backgroundColor: "rgba(255,255,255,0.1)",
-                borderWidth: "2px"
-              }
+                borderWidth: "2px",
+              },
             }}
           >
             Next

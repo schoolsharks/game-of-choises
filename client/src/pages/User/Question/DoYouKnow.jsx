@@ -140,7 +140,7 @@ const DoYouKnow = ({ id, handleClose }) => {
           }}
         >
           <UpperTriangleBox
-            sx={{ margin: "40px 30px 0", borderRadius: "20px",
+            sx={{ margin: "40px 30px 0", borderRadius: "0 0 20px 20px",
               filter:"drop-shadow(0 0 15px #ffffffad)",
              }}
           >

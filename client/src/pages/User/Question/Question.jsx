@@ -230,7 +230,7 @@ const Question = () => {
                 <UpperTriangleBox
                   sx={{
                     margin: "30px 30px 0px",
-                    borderRadius: "20px",
+                    borderRadius: "0 0 20px 20px",
                     flex: "1",
                     position: "relative",
                     filter:"drop-shadow(0 0 15px #ffffffad)",
@@ -243,6 +243,7 @@ const Question = () => {
                     height={"100%"}
                     gap={"10px"}
                     paddingBottom={"20px"}
+                    overflow={"hidden"}
                     // sx={{ overflowX: "hidden",overflowY:"visible" }}
                   >
                     {/* questions */}

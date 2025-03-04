@@ -4,7 +4,7 @@ import triangleRed from "../assets/triangle-red.png";
 
 const UpperTriangleBox = ({ children, sx,variant="black" }) => {
   return (
-    <Stack sx={{ ...sx, overflow: "hidden" }}>
+    <Stack sx={{ ...sx, overflow: "visible" }}>
       <Box sx={{ overflow: "hidden" }}>
         <Box
           component={"img"}
@@ -14,7 +14,7 @@ const UpperTriangleBox = ({ children, sx,variant="black" }) => {
 
         />
       </Box>
-      <Stack sx={{ bgcolor: "#000000", marginTop: "-10px", flex: "1",zIndex:"1"}}>
+      <Stack sx={{ bgcolor: "#000000", marginTop: "-10px", flex: "1",zIndex:"1",borderRadius:sx.borderRadius}}>
         {children}
       </Stack>
     </Stack>
