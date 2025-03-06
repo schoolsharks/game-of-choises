@@ -9,11 +9,11 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import UpperTriangleBox from "../../../components/UpperTriangleBox";
 import { ArrowBack, ArrowForward, ShareOutlined } from "@mui/icons-material";
-import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
-import hustlerBadge from "../../../assets/badges/hustler-badge.png";
-import saverBadge from "../../../assets/badges/saver-badge.png";
-import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png";
-import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png";
+import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.webp";
+import hustlerBadge from "../../../assets/badges/hustler-badge.webp";
+import saverBadge from "../../../assets/badges/saver-badge.webp";
+import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.webp";
+import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.webp";
 import { useEffect, useState } from "react";
 import SplashScreen from "../../../components/SplashScreen";
 import { motion, AnimatePresence } from "framer-motion";

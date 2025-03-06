@@ -37,11 +37,11 @@ import balances_strategist from "../../../assets/balanced_strategist.webp";
 import budget_guru from "../../../assets/budget_guru.webp";
 import { ArrowBack, ShareOutlined } from "@mui/icons-material";
 
-import hustlerBadge from "../../../assets/badges/hustler-badge.png";
-import saverBadge from "../../../assets/badges/saver-badge.png";
-import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.png";
-import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.png";
-import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.png";
+import hustlerBadge from "../../../assets/badges/hustler-badge.webp";
+import saverBadge from "../../../assets/badges/saver-badge.webp";
+import balancedSpendorBadge from "../../../assets/badges/balanced-spendor-badge.webp";
+import hopefulBorrowerBadge from "../../../assets/badges/hopeful-borrower-badge.webp";
+import liveForTodaySpendorBadge from "../../../assets/badges/live-for-today-badge.webp";
 import DoYouKnow from "../Question/DoYouKnow";
 import { motion } from "framer-motion";
 // import personalityGrid2 from "../../../assets/personalityGrid2.svg";
@@ -603,7 +603,7 @@ const Finished = () => {
               fontSize="20px"
               lineHeight="36px"
             >
-              Liked IDFC Bank offerings
+              Liked IDFC First Bank offerings
             </Typography>
             <Stack
               display="flex"

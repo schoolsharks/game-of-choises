@@ -1,7 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
-import doYouKnow1 from "../../../assets/DoYouKnow/do-you-know-1.png";
-import doYouKnow2 from "../../../assets/DoYouKnow/do-you-know-2.png";
-import doYouKnow3 from "../../../assets/DoYouKnow/do-you-know-3.png";
+import doYouKnow1 from "../../../assets/DoYouKnow/do-you-know-1.webp";
+import doYouKnow2 from "../../../assets/DoYouKnow/do-you-know-2.webp";
+import doYouKnow3 from "../../../assets/DoYouKnow/do-you-know-3.webp";
 import UpperTriangleBox from "../../../components/UpperTriangleBox";
 import { Check } from "@mui/icons-material";
 import { motion } from "framer-motion";
